@@ -41,10 +41,10 @@
 |point|integer|
 
 ### Association
-- has_many :products
-- has_many :histories
-- has_one  :credit
-- has_one  :address
+- has_many :products, dependent: :destroy
+- has_many :histories, dependent: :destroy
+- has_one  :credit, dependent: :destroy
+- has_one  :address, dependent: :destroy
 
 
 ## addressesテーブル
@@ -103,11 +103,11 @@
 ### Association
 - belongs_to :user
 - belongs_to :category
-- has_many :images
+- belongs_to :brand
+- has_many :images, dependent: :destroy
 - has_one :size
-- has_one :brand
-- has_one :status
-- has_one :history
+- has_one :status, dependent: :destroy
+- has_one :history, dependent: :destroy
 
 
 ## imagesテーブル
@@ -127,7 +127,7 @@
 |product_id|integer|foreign_key: true, null: false|
 
 ### Association
-- belongs_to :product
+- has_many :products
 
 
 ## statusesテーブル
@@ -160,5 +160,5 @@
 |product_id|integer|foreign_key: true, null: false|
 
 ### Association
-- belongs_to :product
+- has_many :products
 - has_many :sizes
