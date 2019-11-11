@@ -1,24 +1,169 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Description
+ フリマアプリ【メルカリ】のクローンサイト。
+ 誰でも簡単に売買が楽しめるフリマアプリ機能を再現しています。
+ ユーザー登録、出品、購入機能を再現しています。
 
-Things you may want to cover:
+ ## Features
 
-* Ruby version
+- HAML/SASS記法とBEMの命名規則に基づいたマークアップ
+- SNS認証に基づく新規登録、ログイン機能
+- ajaxを使用した非同期通信
+- RSpecを使った単体テスト
+- AWS EC2へのデプロイ
 
-* System dependencies
+## Requirement
 
-* Configuration
+- Ruby 2.5.1
+- Rails 5.2.3
 
-* Database creation
+## Installation
 
-* Database initialization
+   $ git clone http://github.com/kooo0401/freemarket_sample_62a.git
+   $ cd freemarket_sample_62a
+   $ bundle install
 
-* How to run the test suite
+# DB設計
 
-* Services (job queues, cache servers, search engines, etc.)
+## usersテーブル
+|Column|Type|Options|
+|------|----|-------|
+|name|string|null: false|
+|nickname|string|null: false|
+|email|string|null: false, unique: true|
+|password|string|null: false|
+|name_kana|string|null: false|
+|birthday|date|null: false|
+|tel|integer|null: false|
+|self_introduction|text|
+|money|integer|
+|point|integer|
+|zip|integer|
+|prefecture|string|
+|city_name|string|
+|block_name|string|
+|bill_name|string|
 
-* Deployment instructions
+### Association
+- has_many :products, dependent: :destroy
+- has_many :histories, dependent: :destroy
+- has_one  :credit, dependent: :destroy
+- has_one  :address, dependent: :destroy
 
-* ...
+
+## addressesテーブル
+|Column|Type|Options|
+|------|----|-------|
+|name|string|null: false|
+|name_kana|string|null: false|
+|zip|integer|null: false|
+|prefecture|string|null: false|
+|city_name|string|null: false|
+|block_name|string|null: false|
+|bill_name|string|
+|tel|integer|
+|user_id|integer|foreign_key: true, null: false|
+
+### Association
+- belongs_to :user
+
+
+## creditsテーブル
+|Column|Type|Options|
+|------|----|-------|
+|card_number|integer|null: false|
+|exp_date|integer|null: false|
+|security_code|integer|null: false|
+|user_id|integer|foreign_key: true, null: false|
+
+### Association
+- belongs_to :user
+
+
+## historiesテーブル
+|Column|Type|Options|
+|------|----|-------|
+|user_id|integer|foreign_key: true, null: false|
+|product_id|integer|foreign_key: true, null: false|
+
+### Association
+- belongs_to :user
+- belongs_to :product
+
+
+## productsテーブル
+|Column|Type|Options|
+|------|----|-------|
+|description|text|null :false|
+|name|string|null: false|
+|price|integer|null: false|
+|delivery_charged|string|null: false|
+|area|string|null: false|
+|delivery_days|string|null: false|
+|sales_status|string|null: false|
+|delivery_way|string|null: false|
+|user_id|integer|foreign_key: true, null: false|
+
+### Association
+- belongs_to :user
+- belongs_to :category
+- belongs_to :brand
+- has_many :images, dependent: :destroy
+- has_one :size
+- has_one :status, dependent: :destroy
+- has_one :history, dependent: :destroy
+
+
+## imagesテーブル
+|Column|Type|Options|
+|------|----|-------|
+|image|string|null: false|
+|product_id|integer|foreign_key: true, null: false|
+
+### Association
+- belongs_to :product
+
+
+## brandsテーブル
+|Column|Type|Options|
+|------|----|-------|
+|name|string|null: false|
+|product_id|integer|foreign_key: true, null: false|
+
+### Association
+- has_many :products
+
+
+## statusesテーブル
+|Column|Type|Options|
+|------|----|-------|
+|name|string|null: false|
+|product_id|integer|foreign_key: true, null: false|
+
+### Association
+- belongs_to :product
+
+
+## sizesテーブル
+|Column|Type|Options|
+|------|----|-------|
+|size_name|string|null: false|
+|size_tag|integer|
+|product_id|integer|foreign_key: true, null: false|
+
+### Association
+- belongs_to :product
+
+
+## categoriesテーブル
+|Column|Type|Options|
+|------|----|-------|
+|name|string|null: false|
+|ancestry|string|foreign_key: true, null: false|
+|size_tag|integer|
+|product_id|integer|foreign_key: true, null: false|
+
+### Association
+- has_many :products
+- has_many :sizes
