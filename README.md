@@ -39,6 +39,11 @@
 |self_introduction|text|
 |money|integer|
 |point|integer|
+|zip|integer|
+|prefecture|string|
+|city_name|string|
+|block_name|string|
+|bill_name|string|
 
 ### Association
 - has_many :products, dependent: :destroy
@@ -53,7 +58,7 @@
 |name|string|null: false|
 |name_kana|string|null: false|
 |zip|integer|null: false|
-|prefecxture|string|null: false|
+|prefecture|string|null: false|
 |city_name|string|null: false|
 |block_name|string|null: false|
 |bill_name|string|
