@@ -1,0 +1,200 @@
+.footer{
+  font-family: Arial,游ゴシック体,YuGothic,メイリオ,Meiryo,sans-serif;
+  font-weight: 500;
+  height: 660px;
+  width: 100%;
+  &__top{
+    height: 260px;
+    width: 100%;
+    float: left;
+    }
+    .footer__top-image{
+      height: 100%;
+      width: 100%;
+    }
+  &__bottom{
+    height: 400px;
+    width: 100%;
+    background-color: #212121;
+    float: left;
+    .footer__bottom-about{
+      height: 300px;
+      width: 960px;
+      margin: 0 auto;
+      }
+      .footer__bottom-about-merukari{
+        width: 20%;
+        float: left;
+        padding-right: 30px;
+        padding-top: 20px;
+        }
+        .merukari{
+          color: #ffffff;
+          font-size: 1.0rem;
+        }
+        .merukari-detail{
+          width: 100%;
+          float: left;
+          font-size: 0.6rem;
+          color: gainsboro;
+          margin-top: 10px;
+          text-decoration: none;
+        }
+        .merukari-icon-twitter{
+          height: 100%;
+          width: 30%;
+          float: left;
+          }
+          .twitter-icon{
+            float: left;
+            color: #ffffff;
+            margin-top: 20px;
+            font-size: 35px;
+          }
+        .merukari-icon-facebook{
+          height: 100%;
+          width: 30%;
+          float: left;
+          }
+          .facebook-icon{
+            float: left;
+            color: #ffffff;
+            margin-top: 20px;
+            font-size: 35px;
+          }
+      .footer__bottom-about-help{
+        width: 20%;
+        float: left;
+        padding: 0 20px 0 20px;
+        padding-top: 20px;
+        }
+        .help{
+          color: #ffffff;
+          font-size: 1.0rem;
+        }
+        .help-detail{
+          width: 100%;
+          float: left;
+          font-size: 0.6rem;
+          color: gainsboro;
+          margin-top: 10px;
+          text-decoration: none;
+        }
+      .footer__bottom-about-privacy{
+        width: 40%;
+        float: left;
+        padding: 0 20px 0 40px;
+        padding-top: 20px;
+        .privacy{
+          color: #ffffff;
+          font-size: 1.0rem;
+        }
+        &__left{
+          height: 100%;
+          width: 50%;
+          float: left;
+          padding-right: 5px;
+          }
+          .privacy-left-detail{
+            width: 100%;
+            float: left;
+            font-size: 0.6rem;
+            color: gainsboro;
+            margin-top: 10px;
+            text-decoration: none;
+          }
+        &__right{
+          height: 100%;
+          width: 50%;
+          float: right;
+          padding-left: 5px;
+          }
+          .privacy-right-detail{
+            width: 100%;
+            float: left;
+            font-size: 0.7rem;
+            color: gainsboro;
+            margin-top: 10px;
+            text-decoration: none;
+          }
+        }
+      .footer__bottom-about-country{
+        width: 20%;
+        float: left;
+        padding-left: 50px;
+        padding-top: 20px;
+        }
+        .country{
+          color: #ffffff;
+          font-size: 1.0rem;
+          }
+          .country-detail{
+            width: 100%;
+            float: left;
+            font-size: 0.6rem;
+            color: gainsboro;
+            margin-top: 10px;
+            text-decoration: none;
+          }
+    .footer__bottom-company{
+      height: 100px;
+      width: 100%;
+      padding: 0 350px 0 220px;
+      }
+      .mercari-logo{
+        height: 100px;
+        width: 200px;
+        background-size: cover;
+        float: left;
+      }
+      .footer__bottom-image{
+        height: 100px;
+        width: 200px;
+        background-size: cover;
+        padding: 30px 60px 30px 0;
+        margin-right: 200px;
+        float: left;
+      }
+      .merukari-establish{
+        height: 70%;
+        width: 300px;
+        float: left;
+        margin: 0 0 100px 150px;
+        color: #ffffff;
+        line-height: 100px;
+        text-align: center;
+        font-size: 0.8rem;
+      }
+  }
+ }
+ 
+ .exhibit-btn{
+   height: 160px;
+   width: 160px;
+   border-radius: 80px;
+   position: fixed;
+   bottom: 30px;
+   right: 30px;
+   text-decoration: none;
+   background-color: red;
+   }
+   .exhibit-name{
+     height: 18px;
+     width: 100%;
+     margin-top: 10px;
+     color: #ffffff;
+     font-size: 1.5rem;
+     text-align: center;
+   }
+   .exhibit-icon{
+     color: #ffffff;
+     padding: 0 43px ;
+     margin-top: 30px;
+     margin-bottom: 20px;
+     font-size: 70px !important;
+     float: left;
+   }
+ 
+ 
+ 
+ 
