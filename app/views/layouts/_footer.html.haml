@@ -1,0 +1,54 @@
+.footer
+  .footer__top
+    = image_tag("/assets/IMG_footer-top-image.png", class: "footer__top-image")
+  .footer__bottom
+    .footer__bottom-about
+      .footer__bottom-about-merukari
+        %p.merukari
+          メルカリについて
+        =link_to "会社概要（運営会社）", "#", class: "merukari-detail"
+        =link_to "採用情報", "#", class: "merukari-detail"
+        =link_to "プレスリリース", "#", class: "merukari-detail"
+        =link_to "公式ブログ", "#", class: "merukari-detail"
+        =link_to "メルカリロゴ利用ガイドライン", "#", class: "merukari-detail"
+        =link_to "#", class: "merukari-icon-twitter" do
+          = fa_icon 'twitter', class: 'twitter-icon'
+        =link_to "#", class: "merukari-icon-facebook" do
+          = fa_icon 'facebook-square', class: 'facebook-icon'
+      .footer__bottom-about-help
+        %p.help
+          ヘルプ＆ガイド
+        =link_to "らくらくメルカリ便", "#", class: "help-detail"
+        =link_to "ゆうゆうメルカリ便", "#", class: "help-detail"
+        =link_to "大型メルカリ便", "#", class: "help-detail"
+        =link_to "車体取引ガイド", "#", class: "help-detail"
+        =link_to "メルカリあんしん・あんぜん宣言！", "#", class: "help-detail"
+        =link_to "偽ブランド品撲滅への取り組み", "#", class: "help-detail"
+        =link_to "メルカリボックス", "#", class: "help-detail"
+      .footer__bottom-about-privacy
+        %p.privacy
+          プライバシーと利用規約
+        .footer__bottom-about-privacy__left
+          =link_to "プライバシーポリシー", "#", class: "privacy-left-detail"
+          =link_to "メルカリ利用規約", "#", class: "privacy-left-detail"
+          =link_to "あんしんスマホサポート制度に関する利用特約", "#", class: "privacy-left-detail"
+          =link_to "コンプライアンスポリシー", "#", class: "privacy-left-detail"
+        .footer__bottom-about-privacy__right
+          =link_to "個人データの安全管理に係る基本方針", "#", class: "privacy-right-detail"
+          =link_to "特定商取引に関する表記", "#", class: "privacy-right-detail"
+          =link_to "資金決済法に基づく表示", "#", class: "privacy-right-detail"
+          =link_to "法令順守と犯罪抑止のために", "#", class: "privacy-right-detail"
+      .footer__bottom-about-country
+        %p.country
+          国
+        =link_to "国", "#", class: "country-detail"
+        =link_to "United States", "#", class: "country-detail"
+    .footer__bottom-company
+      =link_to "#", class: "mercari-logo" do
+        = image_tag("/assets/IMG_mercari-footer-image.png", class: "footer__bottom-image")
+      %p.merukari-establish
+        @ 2019 Mercari
+=link_to  "#", class: "exhibit-btn" do
+  %p.exhibit-name
+    出品
+  = fa_icon 'camera', class: 'exhibit-icon'
