@@ -47,6 +47,7 @@ group :development, :test do
   gem 'sprockets', '3.7.2'
   gem 'devise'
   gem 'rspec-rails'  #  新たにgem入れました
+  gem 'factory_bot_rails' #  新たにgem入れました
 end
 
 group :development do
@@ -73,4 +74,4 @@ gem "font-awesome-rails"
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'fog-aws'
-
+gem 'rails-i18n'
