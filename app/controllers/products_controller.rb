@@ -26,6 +26,9 @@ class ProductsController < ApplicationController
   def edit
   end
 
+  def create
+  end
+
   # 以下、仮に人気カテゴリー、人気ブランドをリアルタイム対応させる場合の記述。
   # productテーブルにcategory_idカラムとbrand_idカラムを追加した後に実装予定
   # ------------------------------------------------------------------------------------------------
@@ -36,6 +39,6 @@ class ProductsController < ApplicationController
   #  category_rankingが上手くいったらbrand_rankingも同様にここに追加する
   # ------------------------------------------------------------------------------------------------
   private
-
+  # 商品出品実装時にstrong parameterを追加する
 
 end
