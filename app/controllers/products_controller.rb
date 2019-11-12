@@ -1,17 +1,19 @@
 class ProductsController < ApplicationController
-  # before_action :category_ranking, only: :index
-  # before_action :brand_ranking, only: :index
 
   def index
     @products = Product.order("id DESC").limit(10)
-    # 以下、いずれproductsの内、人気カテゴリーベスト4、人気ブランドベスト4 10個ずつ持ってくるよう変更予定
+    # 以下、カテゴリ・
+    # productsの内、人気カテゴリーベスト4、人気ブランドベスト4 10個ずつ持ってくるよう変更予定
     # ------------------------------------------------------------------------------------------------
-    # コード案（上手くいくか未確認）
-    # ranked_caegory_ids.each_with_index do |id, i|
-    #   products_of_the_category = Product.where(id: id).order("id DESC").limit(10)
-    #   instance_variable_set('@products_category_number' + i, products_of_the_category)
-    # end
-    #  category_rankingが上手くいったらbrand_rankingも同様にここに追加する
+    # @products_ladies = Product.where(category_id:?).order("id DESC").limit(10)
+    # @products_mens = Product.where(category_id:?).order("id DESC").limit(10)
+    # @products_homeappliance = Product.where(category_id:?).order("id DESC").limit(10)
+    # @products_toys = Product.where(category_id:?).order("id DESC").limit(10)
+
+    # @products_chanel = Product.where(brand_id:?).order("id DESC").limit(10)
+    # @products_louisvuitton = Product.where(brand_id:?).order("id DESC").limit(10)
+    # @products_supreme = Product.where(brand_id:?).order("id DESC").limit(10)
+    # @products_nike = Product.where(brand_id:?).order("id DESC").limit(10)
     # ------------------------------------------------------------------------------------------------
   end
 
@@ -24,7 +26,8 @@ class ProductsController < ApplicationController
   def edit
   end
 
-  # 以下、productテーブルにcategory_idカラムとbrand_idカラムを追加した後に実装予定
+  # 以下、仮に人気カテゴリー、人気ブランドをリアルタイム対応させる場合の記述。
+  # productテーブルにcategory_idカラムとbrand_idカラムを追加した後に実装予定
   # ------------------------------------------------------------------------------------------------
   # def category_ranking
   #   ranked_category_ids = Product.group(:category_id).order('category_id DESC).limit(4).count(:category_id).keys
