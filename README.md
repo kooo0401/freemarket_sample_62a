@@ -104,6 +104,9 @@
 |sales_status|string|null: false|
 |delivery_way|string|null: false|
 |user_id|integer|foreign_key: true, null: false|
+|category_id|integer|foreign_key: true, null: false|
+|brand_id|integer|foreign_key: true, null: false|
+<!-- categorry_idカラム, brand_idカラムを追加 191112平野 -->
 
 ### Association
 - belongs_to :user
@@ -129,7 +132,7 @@
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false|
-|product_id|integer|foreign_key: true, null: false|
+<!-- product_idカラムを削除しました 191112平野 -->
 
 ### Association
 - has_many :products
@@ -162,8 +165,12 @@
 |name|string|null: false|
 |ancestry|string|foreign_key: true, null: false|
 |size_tag|integer|
-|product_id|integer|foreign_key: true, null: false|
+<!-- product_idカラムを削除しました 191112平野 -->
 
 ### Association
 - has_many :products
 - has_many :sizes
+
+
+<!-- brandsテーブルとcategoryテーブルが紐づいている可能性あり
+brands,categoryの中身をメルカリサイトから引っ張ってくる際に対応予定 -->
