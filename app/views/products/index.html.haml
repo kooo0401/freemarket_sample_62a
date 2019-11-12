@@ -1,2 +1,394 @@
-%h1 Products#index
-%p Find me in app/views/products/index.html.haml
+.main 
+  .slide-zone
+    %section.slide-banner.owl-carousel
+      = link_to "", root_path, class: "slide-banner__link slide-banner__link--natsukashi"
+      = link_to "", root_path, class: "slide-banner__link slide-banner__link--new-life"
+      = link_to "", root_path, class: "slide-banner__link slide-banner__link--bokurano-heisei"
+  .popularity-category
+    %h2 人気のカテゴリー
+    .popularity-category__categories
+      %ul.category-lists
+        %li.category-list
+          =link_to '/#ladies', class: "link-category", id: "ladies" do
+            レディース
+        %li.category-list
+          =link_to '/', class: "link-category" do
+            メンズ
+        %li.category-list
+          =link_to '/', class: "link-category" do
+            家電・スマホ・カメラ
+        %li.category-list
+          =link_to '/', class: "link-category" do
+            おもちゃ・ホビー・グッズ
+  .category-products
+    .category-products--new
+      .category-products--new__introduction
+        %h3#ladies.new-category レディース新着アイテム
+        =link_to "#", class: "more-read"  do
+          もっと見る >
+      .category-products--new__lists
+        %ul.new-category__lists
+          %li.new-item
+            .new-item__content
+              =link_to "#", class: "new-item-image" do
+                %figure.figure-container
+                  %figcaption.figure-container__figcaption
+                    %span.figure-container__figcaption__span
+                      ＠product.nameオシャレに消えるようにしています
+                  .figure-container__image
+                    %span.figure-container__image__price
+                      ¥10,00
+                    =image_tag("/assets/mercari-logo.png", class: "image-price")
+          %li.new-item
+            .new-item__content
+              =link_to "#", class: "new-item-image" do
+                %figure.figure-container
+                  %figcaption.figure-container__figcaption
+                    %span.figure-container__figcaption__span
+                      ＠product.nameオシャレに消えるようにしています
+                  .figure-container__image
+                    %span.figure-container__image__price
+                      ¥10,00
+                    =image_tag("/assets/mercari-logo.png", class: "image-price")
+          %li.new-item
+            .new-item__content
+              =link_to "#", class: "new-item-image" do
+                %figure.figure-container
+                  %figcaption.figure-container__figcaption
+                    %span.figure-container__figcaption__span
+                      ＠product.nameオシャレに消えるようにしています
+                  .figure-container__image
+                    %span.figure-container__image__price
+                      ¥10,00
+                    =image_tag("/assets/mercari-logo.png", class: "image-price")
+          %li.new-item
+            .new-item__content
+              =link_to "#", class: "new-item-image" do
+                %figure.figure-container
+                  %figcaption.figure-container__figcaption
+                    %span.figure-container__figcaption__span
+                      ＠product.nameオシャレに消えるようにしています
+                  .figure-container__image
+                    %span.figure-container__image__price
+                      ¥10,00
+                    =image_tag("/assets/mercari-logo.png", class: "image-price")
+          %li.new-item
+            .new-item__content
+              =link_to "#", class: "new-item-image" do
+                %figure.figure-container
+                  %figcaption.figure-container__figcaption
+                    %span.figure-container__figcaption__span
+                      ＠product.nameオシャレに消えるようにしています
+                  .figure-container__image
+                    %span.figure-container__image__price
+                      ¥10,00
+                    =image_tag("/assets/mercari-logo.png", class: "image-price")
+          %li.new-item
+            .new-item__content
+              =link_to "#", class: "new-item-image" do
+                %figure.figure-container
+                  %figcaption.figure-container__figcaption
+                    %span.figure-container__figcaption__span
+                      ＠product.nameオシャレに消えるようにしています
+                  .figure-container__image
+                    %span.figure-container__image__price
+                      ¥10,00
+                    =image_tag("/assets/mercari-logo.png", class: "image-price")
+          %li.new-item
+            .new-item__content
+              =link_to "#", class: "new-item-image" do
+                %figure.figure-container
+                  %figcaption.figure-container__figcaption
+                    %span.figure-container__figcaption__span
+                      ＠product.nameオシャレに消えるようにしています
+                  .figure-container__image
+                    %span.figure-container__image__price
+                      ¥10,00
+                    =image_tag("/assets/mercari-logo.png", class: "image-price")
+          %li.new-item
+            .new-item__content
+              =link_to "#", class: "new-item-image" do
+                %figure.figure-container
+                  %figcaption.figure-container__figcaption
+                    %span.figure-container__figcaption__span
+                      ＠product.nameオシャレに消えるようにしています
+                  .figure-container__image
+                    %span.figure-container__image__price
+                      ¥10,00
+                    =image_tag("/assets/mercari-logo.png", class: "image-price")
+          %li.new-item
+            .new-item__content
+              =link_to "#", class: "new-item-image" do
+                %figure.figure-container
+                  %figcaption.figure-container__figcaption
+                    %span.figure-container__figcaption__span
+                      ＠product.nameオシャレに消えるようにしています
+                  .figure-container__image
+                    %span.figure-container__image__price
+                      ¥10,00
+                    =image_tag("/assets/mercari-logo.png", class: "image-price")
+          %li.new-item
+            .new-item__content
+              =link_to "#", class: "new-item-image" do
+                %figure.figure-container
+                  %figcaption.figure-container__figcaption
+                    %span.figure-container__figcaption__span
+                      ＠product.nameオシャレに消えるようにしています
+                  .figure-container__image
+                    %span.figure-container__image__price
+                      ¥10,00
+                    =image_tag("/assets/mercari-logo.png", class: "image-price")
+  .category-products
+    .category-products--new
+      .category-products--new__introduction
+        %h3.new-category レディース新着アイテム
+        =link_to "#", class: "more-read"  do
+          もっと見る >
+      .category-products--new__lists
+        %ul.new-category__lists
+          %li.new-item
+            .new-item__content
+              =link_to "#", class: "new-item-image" do
+                %figure.figure-container
+                  %figcaption.figure-container__figcaption
+                    %span.figure-container__figcaption__span
+                      ＠product.nameオシャレに消えるようにしています
+                  .figure-container__image
+                    %span.figure-container__image__price
+                      ¥10,00
+                    =image_tag("/assets/mercari-logo.png", class: "image-price")
+          %li.new-item
+            .new-item__content
+              =link_to "#", class: "new-item-image" do
+                %figure.figure-container
+                  %figcaption.figure-container__figcaption
+                    %span.figure-container__figcaption__span
+                      ＠product.nameオシャレに消えるようにしています
+                  .figure-container__image
+                    %span.figure-container__image__price
+                      ¥10,00
+                    =image_tag("/assets/mercari-logo.png", class: "image-price")
+          %li.new-item
+            .new-item__content
+              =link_to "#", class: "new-item-image" do
+                %figure.figure-container
+                  %figcaption.figure-container__figcaption
+                    %span.figure-container__figcaption__span
+                      ＠product.nameオシャレに消えるようにしています
+                  .figure-container__image
+                    %span.figure-container__image__price
+                      ¥10,00
+                    =image_tag("/assets/mercari-logo.png", class: "image-price")
+          %li.new-item
+            .new-item__content
+              =link_to "#", class: "new-item-image" do
+                %figure.figure-container
+                  %figcaption.figure-container__figcaption
+                    %span.figure-container__figcaption__span
+                      ＠product.nameオシャレに消えるようにしています
+                  .figure-container__image
+                    %span.figure-container__image__price
+                      ¥10,00
+                    =image_tag("/assets/mercari-logo.png", class: "image-price")
+          %li.new-item
+            .new-item__content
+              =link_to "#", class: "new-item-image" do
+                %figure.figure-container
+                  %figcaption.figure-container__figcaption
+                    %span.figure-container__figcaption__span
+                      ＠product.nameオシャレに消えるようにしています
+                  .figure-container__image
+                    %span.figure-container__image__price
+                      ¥10,00
+                    =image_tag("/assets/mercari-logo.png", class: "image-price")
+          %li.new-item
+            .new-item__content
+              =link_to "#", class: "new-item-image" do
+                %figure.figure-container
+                  %figcaption.figure-container__figcaption
+                    %span.figure-container__figcaption__span
+                      ＠product.nameオシャレに消えるようにしています
+                  .figure-container__image
+                    %span.figure-container__image__price
+                      ¥10,00
+                    =image_tag("/assets/mercari-logo.png", class: "image-price")
+          %li.new-item
+            .new-item__content
+              =link_to "#", class: "new-item-image" do
+                %figure.figure-container
+                  %figcaption.figure-container__figcaption
+                    %span.figure-container__figcaption__span
+                      ＠product.nameオシャレに消えるようにしています
+                  .figure-container__image
+                    %span.figure-container__image__price
+                      ¥10,00
+                    =image_tag("/assets/mercari-logo.png", class: "image-price")
+          %li.new-item
+            .new-item__content
+              =link_to "#", class: "new-item-image" do
+                %figure.figure-container
+                  %figcaption.figure-container__figcaption
+                    %span.figure-container__figcaption__span
+                      ＠product.nameオシャレに消えるようにしています
+                  .figure-container__image
+                    %span.figure-container__image__price
+                      ¥10,00
+                    =image_tag("/assets/mercari-logo.png", class: "image-price")
+          %li.new-item
+            .new-item__content
+              =link_to "#", class: "new-item-image" do
+                %figure.figure-container
+                  %figcaption.figure-container__figcaption
+                    %span.figure-container__figcaption__span
+                      ＠product.nameオシャレに消えるようにしています
+                  .figure-container__image
+                    %span.figure-container__image__price
+                      ¥10,00
+                    =image_tag("/assets/mercari-logo.png", class: "image-price")
+          %li.new-item
+            .new-item__content
+              =link_to "#", class: "new-item-image" do
+                %figure.figure-container
+                  %figcaption.figure-container__figcaption
+                    %span.figure-container__figcaption__span
+                      ＠product.nameオシャレに消えるようにしています
+                  .figure-container__image
+                    %span.figure-container__image__price
+                      ¥10,00
+                    =image_tag("/assets/mercari-logo.png", class: "image-price")
+  
+  .popularity-bland
+    %h2 人気のブランド
+    .popularity-bland__categories
+      %ul.bland-lists
+        %li.bland-list
+          =link_to '/', class: "link-bland" do
+            シャネル
+        %li.bland-list
+          =link_to '/', class: "link-bland" do
+            ルイヴィトン
+        %li.bland-list
+          =link_to '/', class: "link-bland" do
+            シュプリーム
+        %li.bland-list
+          =link_to '/', class: "link-bland" do
+            ナイキ 
+  
+  .category-products
+    .category-products--new
+      .category-products--new__introduction
+        %h3.new-category レディース新着アイテム
+        =link_to "#", class: "more-read"  do
+          もっと見る >
+      .category-products--new__lists
+        %ul.new-category__lists
+          %li.new-item
+            .new-item__content
+              =link_to "#", class: "new-item-image" do
+                %figure.figure-container
+                  %figcaption.figure-container__figcaption
+                    %span.figure-container__figcaption__span
+                      ＠product.nameオシャレに消えるようにしています
+                  .figure-container__image
+                    %span.figure-container__image__price
+                      ¥10,00
+                    =image_tag("/assets/mercari-logo.png", class: "image-price")
+          %li.new-item
+            .new-item__content
+              =link_to "#", class: "new-item-image" do
+                %figure.figure-container
+                  %figcaption.figure-container__figcaption
+                    %span.figure-container__figcaption__span
+                      ＠product.nameオシャレに消えるようにしています
+                  .figure-container__image
+                    %span.figure-container__image__price
+                      ¥10,00
+                    =image_tag("/assets/mercari-logo.png", class: "image-price")
+          %li.new-item
+            .new-item__content
+              =link_to "#", class: "new-item-image" do
+                %figure.figure-container
+                  %figcaption.figure-container__figcaption
+                    %span.figure-container__figcaption__span
+                      ＠product.nameオシャレに消えるようにしています
+                  .figure-container__image
+                    %span.figure-container__image__price
+                      ¥10,00
+                    =image_tag("/assets/mercari-logo.png", class: "image-price")
+          %li.new-item
+            .new-item__content
+              =link_to "#", class: "new-item-image" do
+                %figure.figure-container
+                  %figcaption.figure-container__figcaption
+                    %span.figure-container__figcaption__span
+                      ＠product.nameオシャレに消えるようにしています
+                  .figure-container__image
+                    %span.figure-container__image__price
+                      ¥10,00
+                    =image_tag("/assets/mercari-logo.png", class: "image-price")
+          %li.new-item
+            .new-item__content
+              =link_to "#", class: "new-item-image" do
+                %figure.figure-container
+                  %figcaption.figure-container__figcaption
+                    %span.figure-container__figcaption__span
+                      ＠product.nameオシャレに消えるようにしています
+                  .figure-container__image
+                    %span.figure-container__image__price
+                      ¥10,00
+                    =image_tag("/assets/mercari-logo.png", class: "image-price")
+          %li.new-item
+            .new-item__content
+              =link_to "#", class: "new-item-image" do
+                %figure.figure-container
+                  %figcaption.figure-container__figcaption
+                    %span.figure-container__figcaption__span
+                      ＠product.nameオシャレに消えるようにしています
+                  .figure-container__image
+                    %span.figure-container__image__price
+                      ¥10,00
+                    =image_tag("/assets/mercari-logo.png", class: "image-price")
+          %li.new-item
+            .new-item__content
+              =link_to "#", class: "new-item-image" do
+                %figure.figure-container
+                  %figcaption.figure-container__figcaption
+                    %span.figure-container__figcaption__span
+                      ＠product.nameオシャレに消えるようにしています
+                  .figure-container__image
+                    %span.figure-container__image__price
+                      ¥10,00
+                    =image_tag("/assets/mercari-logo.png", class: "image-price")
+          %li.new-item
+            .new-item__content
+              =link_to "#", class: "new-item-image" do
+                %figure.figure-container
+                  %figcaption.figure-container__figcaption
+                    %span.figure-container__figcaption__span
+                      ＠product.nameオシャレに消えるようにしています
+                  .figure-container__image
+                    %span.figure-container__image__price
+                      ¥10,00
+                    =image_tag("/assets/mercari-logo.png", class: "image-price")
+          %li.new-item
+            .new-item__content
+              =link_to "#", class: "new-item-image" do
+                %figure.figure-container
+                  %figcaption.figure-container__figcaption
+                    %span.figure-container__figcaption__span
+                      ＠product.nameオシャレに消えるようにしています
+                  .figure-container__image
+                    %span.figure-container__image__price
+                      ¥10,00
+                    =image_tag("/assets/mercari-logo.png", class: "image-price")
+          %li.new-item
+            .new-item__content
+              =link_to "#", class: "new-item-image" do
+                %figure.figure-container
+                  %figcaption.figure-container__figcaption
+                    %span.figure-container__figcaption__span
+                      ＠product.nameオシャレに消えるようにしています
+                  .figure-container__image
+                    %span.figure-container__image__price
+                      ¥10,00
+                    =image_tag("/assets/mercari-logo.png", class: "image-price")

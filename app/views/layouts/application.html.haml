@@ -1,0 +1,112 @@
+!!!
+%html
+  %head
+    %meta{content: "text/html: charset=UTF-8", "http-equiv": "Content-Type"}/
+    %title FREEMARKET
+    = csrf_meta_tags
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application'
+  %body
+    .header
+      .header__container 
+        .header__container__top
+          .header__container__top__logo
+            =link_to '/', class:"logo-link" do
+              =image_tag("/assets/mercari-logo.png", class: "image-logo")
+          %form.search-form{:action => "/jp/search/"}
+            %input{:name => "keyword", :placeholder => "何かお探しですか？", :type => "search", :class => "search-box"}
+              .search-icon= fa_icon 'search' 
+        .header__container__bottom
+          .header__container__bottom__left
+            .header__container__bottom__left__category
+              =link_to '/', class: "link-category" do
+                カテゴリーから探す
+                =fa_icon 'list-ul '
+            .header__container__bottom__left__bland
+              =link_to '/', class: "link-bland" do
+                ブランドから探す
+                =fa_icon 'tags'
+
+                -# ここに、jsを実装予定!!   
+
+          .header__container__bottom__right
+            - if user_signed_in?
+              %ul.user-lists 
+                %li.user-list
+                  =link_to '#', class: "user-list__contents" do
+                    =fa_icon 'heart'
+                    いいね！一覧
+                %li.user-list
+                  =link_to '#', class: "user-list__contents" do
+                    =fa_icon 'bell'
+                    お知らせ
+                %li.user-list
+                  =link_to '#', class: "user-list__contents" do
+                    =fa_icon 'check'
+                    やることリスト
+                %li.user-list
+                  =link_to '#', class: "user-list__contents" do
+                    =fa_icon 'user-circle'
+                    マイページ
+            - else
+              .header__container__bottom__right__sign-up
+                =link_to "新規会員登録",new_user_registration_path, class: "sign-up-btn" 
+              .header__container__bottom__right__sign-in
+                =link_to "ログイン",new_user_session_path, class: "sign-in-btn" 
+
+    = yield
+
+    .footer
+      .footer__top
+        = image_tag("/assets/IMG_footer-top-image.png", class: "footer__top-image")
+      .footer__bottom
+        .footer__bottom-about
+          .footer__bottom-about-merukari
+            %p.merukari
+              メルカリについて
+            =link_to "会社概要（運営会社）", "#", class: "merukari-detail"
+            =link_to "採用情報", "#", class: "merukari-detail"
+            =link_to "プレスリリース", "#", class: "merukari-detail"
+            =link_to "公式ブログ", "#", class: "merukari-detail"
+            =link_to "メルカリロゴ利用ガイドライン", "#", class: "merukari-detail"
+            =link_to "#", class: "merukari-icon-twitter" do
+              = fa_icon 'twitter', class: 'twitter-icon'
+            =link_to "#", class: "merukari-icon-facebook" do
+              = fa_icon 'facebook-square', class: 'facebook-icon'
+          .footer__bottom-about-help
+            %p.help
+              ヘルプ＆ガイド
+            =link_to "らくらくメルカリ便", "#", class: "help-detail"
+            =link_to "ゆうゆうメルカリ便", "#", class: "help-detail"
+            =link_to "大型メルカリ便", "#", class: "help-detail"
+            =link_to "車体取引ガイド", "#", class: "help-detail"
+            =link_to "メルカリあんしん・あんぜん宣言！", "#", class: "help-detail"
+            =link_to "偽ブランド品撲滅への取り組み", "#", class: "help-detail"
+            =link_to "メルカリボックス", "#", class: "help-detail"
+          .footer__bottom-about-privacy
+            %p.privacy
+              プライバシーと利用規約
+            .footer__bottom-about-privacy__left
+              =link_to "プライバシーポリシー", "#", class: "privacy-left-detail"
+              =link_to "メルカリ利用規約", "#", class: "privacy-left-detail"
+              =link_to "あんしんスマホサポート制度に関する利用特約", "#", class: "privacy-left-detail"
+              =link_to "コンプライアンスポリシー", "#", class: "privacy-left-detail"
+            .footer__bottom-about-privacy__right
+              =link_to "個人データの安全管理に係る基本方針", "#", class: "privacy-right-detail"
+              =link_to "特定商取引に関する表記", "#", class: "privacy-right-detail"
+              =link_to "資金決済法に基づく表示", "#", class: "privacy-right-detail"
+              =link_to "法令順守と犯罪抑止のために", "#", class: "privacy-right-detail"
+          .footer__bottom-about-country
+            %p.country
+              国
+            =link_to "国", "#", class: "country-detail"
+            =link_to "United States", "#", class: "country-detail"
+        .footer__bottom-company
+          =link_to "#", class: "mercari-logo" do
+            = image_tag("/assets/IMG_mercari-footer-image.png", class: "footer__bottom-image")
+          %p.merukari-establish
+            @ 2019 Mercari
+  =link_to  "#", class: "exhibit-btn" do
+    %p.exhibit-name
+      出品
+    = fa_icon 'camera', class: 'exhibit-icon'
