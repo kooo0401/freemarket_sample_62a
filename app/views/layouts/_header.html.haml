@@ -1,0 +1,46 @@
+.header
+  .header__container 
+    .header__container__top
+      .header__container__top__logo
+        =link_to '/', class:"logo-link" do
+          =image_tag("/mercari-logo.png", class: "image-logo")
+      %form.search-form{:action => "/jp/search/"}
+        %input{:name => "keyword", :placeholder => "何かお探しですか？", :type => "search", :class => "search-box"}
+          .search-icon= fa_icon 'search' 
+    .header__container__bottom
+      .header__container__bottom__left
+        .header__container__bottom__left__category
+          =link_to '/', class: "link-category" do
+            カテゴリーから探す
+            =fa_icon 'list-ul '
+        .header__container__bottom__left__bland
+          =link_to '/', class: "link-bland" do
+            ブランドから探す
+            =fa_icon 'tags'
+
+            -# ここに、jsを実装予定!!   
+
+      .header__container__bottom__right
+        - if user_signed_in?
+          %ul.user-lists 
+            %li.user-list
+              =link_to '#', class: "user-list__contents" do
+                =fa_icon 'heart'
+                いいね！一覧
+            %li.user-list
+              =link_to '#', class: "user-list__contents" do
+                =fa_icon 'bell'
+                お知らせ
+            %li.user-list
+              =link_to '#', class: "user-list__contents" do
+                =fa_icon 'check'
+                やることリスト
+            %li.user-list
+              =link_to '#', class: "user-list__contents" do
+                =fa_icon 'user-circle'
+                マイページ
+        - else
+          .header__container__bottom__right__sign-up
+            =link_to "新規会員登録",new_user_registration_path, class: "sign-up-btn" 
+          .header__container__bottom__right__sign-in
+            =link_to "ログイン",new_user_session_path, class: "sign-in-btn" 
