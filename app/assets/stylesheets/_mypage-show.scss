@@ -1,0 +1,273 @@
+body{
+  height: 100%;
+  width: 100%;
+  background-color: #f5f5f5;
+  font-family: Arial,游ゴシック体,YuGothic,メイリオ,Meiryo,sans-serif;
+}
+.main{
+  height: 1320px;
+  width: 1020px;
+  margin: 40px auto;
+  &__left{
+    height: 100%;
+    width: 280px;
+    float: left;
+    .main__left-list{
+      height: 50px;
+      width: 100%;
+      background-color: #ffffff;
+      margin-bottom: 1px;
+      float: left;
+      .main__left-list__nav{
+        height: 100%;
+        width: 100%;
+        background-color: #ffffff;
+        color: black;
+        text-decoration: none;
+        line-height: 50px;
+        padding-left: 10px;
+        float: left;
+        font-size: 0.9rem;
+      }
+      .btn:hover{
+        color: darkgray;
+      }
+      .select-icon-space{
+        height: 100%;
+        width: 14%;
+        float: right;
+        }
+        .select-icon{
+          background-color: #ffffff;
+          float: left;
+          font-size: 25px;
+          margin-right: 30px;
+          line-height: 50px;
+          color: darkgrey;
+        }
+        .i1.i2.i3.i4.i5.i6.i7.i8.i9.i10.i11.i12.i13.i14.i15.i16.i17.i18.i19.i20.i21.i22.i23{
+          float: left;
+          width: 5%;
+        }
+    }
+    .merupay{
+      color: black;
+      margin-top: 40px;
+      font-size: 1.0rem;
+      float: left;
+      font-weight: bold;
+    }
+    .setting{
+      color: black;
+      margin-top: 40px;
+      font-size: 1.0rem;
+      float: left;
+      font-weight: bold;
+    }
+  }
+  &__right{
+    height: 100%;
+    width: 700px;
+    float: right;
+    .main__right-mypage{
+      height: 200px;
+      width: 700px;
+      background: url("/assets/IMG_mypage-background.jpeg");
+      background-size: cover;
+      }
+      .mypage-icon{
+        height:100px;
+        width: 700px;
+        margin-top: 50px;
+        text-decoration: none;
+      }
+      .mypage-img{
+        height: 60px;
+        width: 60px;
+        margin: 50px 320px 0;
+        border-radius: 50px;
+      }
+      .mypage-name{
+        height: 10px; ;
+        margin: 0 320px;
+        color: black;
+        text-align: center;
+      }
+      .mypage-evaluation-exhibit{
+        padding: 0 280px;
+        color: black;
+      }
+      .mypage-evaluation{
+        float: left;
+        margin: 20px 5px;
+      }
+      .mypage-evaluation-count{
+        float: left;
+        margin: 23px 5px;
+      }
+      .mypage-exhibit{
+        float: left;
+        margin: 20px 5px;
+      }
+      .mypage-exhibit-count{
+        float: left;
+        margin: 23px 5px;
+      }
+    .main__right-news-todo{
+      height: 75px;
+      width: 700px;
+      }
+      .border-red-1{
+        height: 2px;
+        width: 350px;
+        background-color: red;
+      }
+      .news-todo-tab{
+        height: 75px;
+        width: 350px;
+        float: left;
+        text-align: center;
+        line-height: 50px;
+        background-color: #ffffff;
+        text-decoration: none;
+        color: black;
+        font-weight: bold;
+        }
+        .btn:hover{
+          opacity: 0.5;
+        }
+      .main__right-news-list{
+        height: 405px;
+        width: 700px;
+        float: left;
+      }
+      .main__right-todo-list{
+        height: 240px;
+        width: 700px;
+        float: left;
+        background-color: #ffffff;
+        }
+        .main__right-todo-list-each{
+          height: 240px;
+          width: 700px;
+          float: left;
+          background: url("/assets/IMG_no-todo-image.png");
+          background-size: cover;
+        }
+        .main__right-news-todo-list-each{
+          height: 80px;
+          width: 700px;
+          background-color: #ffffff;
+          float: left;
+          margin-bottom: 1px;
+          }
+          .btn:hover{
+            opacity: 0.5;
+          }
+          .news-todo-list-image{
+            height: 70px;
+            width: 70px;
+            margin: 5px 0 0 5px;
+            float: left;
+          }
+          .news-todo-list-message{
+            height: 90px;
+            width: 550px;
+            margin-left: 10px;
+            float: left;
+            color: black;
+          }
+          .news-todo-select-icon{
+            height: 90%;
+            width: 50px;
+            float: right;
+            line-height: 75px;
+            text-align: center;
+            font-size: 25px;
+            color: black;
+            text-decoration: none;
+          }
+          .main__right-news-todo-list-show{
+            height: 80px;
+            width: 700px;
+            background-color: #ffffff;
+            float: left;
+            }
+            .main__right-news-todo-list-show-btn{
+              height: calc(100% - 32px);
+              width: calc(100% - 32px);
+              margin: 16px;
+              background-color: darkgrey;
+              display: inline-block;
+              text-align: center;
+              text-decoration: none;
+              color: black;
+              line-height: 48px;
+            }
+            .btn:hover{
+              opacity: 0.5;
+            }
+      .buy-product{
+        height: 75px;
+        width: 700px;
+        background-color: #ffffff;
+        color: black;
+        float: left;
+        margin-top: 100px;
+        }
+        .buy-product-title{
+          line-height: 50px;
+          margin-left: 10px; 
+          font-weight: bold;
+        }
+      .border-red-2{
+        height: 2px;
+        width: 350px;
+        background-color: red;
+      }
+      .transaction{
+        height: 75px;
+        width: 700px;
+        float: left;
+        }
+        .transaction-now{
+          height: 75px;
+          width: 350px;
+          float: left;
+          text-align: center;
+          line-height: 50px;
+          background-color: #ffffff;
+          text-decoration: none;
+          color: black;
+          font-weight: bold;
+        }
+        .transaction-past{
+          height: 75px;
+          width: 350px;
+          float: left;
+          text-align: center;
+          line-height: 50px;
+          background-color: #ffffff;
+          text-decoration: none;
+          color: black;
+          font-weight: bold;
+          }
+          .btn:hover{
+            opacity: 0.5;
+          }
+          .buy-products-now-list{
+            height: 240px;
+            width: 700px;
+            float: left;
+            background: url("/assets/IMG_no-buy-products-now.png");
+            background-size: cover;
+            }
+          .buy-products-past-list{
+            height: 240px;
+            width: 700px;
+            float: left;
+            background: url("/assets/IMG_no-buy-products-past.png");
+            background-size: cover;
+            }
+  }
+}
