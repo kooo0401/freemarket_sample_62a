@@ -1,0 +1,82 @@
+@mixin slide-banner-owl-nav-btn($background-image) {
+  background-image: image_url($background-image) !important;
+  cursor: pointer;
+  height: 46px;
+  width: 31px;
+  background-size: cover;
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-23px);
+  transform: translateY(-23px);
+}
+
+@mixin slide-banner-owl-item-background($background-image) {
+  background: image_url($background-image);
+  background-size: auto 100%;
+  background-position: center;
+}
+
+.slide-banner {
+  height: 300px;
+  overflow: hidden;
+  position: relative;
+  &__link {
+    display: block;
+    &--natsukashi {
+      @include slide-banner-owl-item-background("banner-natsukashi.jpg");
+    }
+    &--new-life {
+      @include slide-banner-owl-item-background("banner-new-life.jpg");
+    }
+    &--bokurano-heisei {
+      @include slide-banner-owl-item-background("banner-bokurano-heisei.jpg");
+    }
+  }
+  
+  & .owl-prev {
+    @include slide-banner-owl-nav-btn("carousel-prev.png");
+    left: 60px;
+  }
+  & .owl-next {
+    @include slide-banner-owl-nav-btn("carousel-next.png");
+    right: 60px;
+  }
+  & .owl-dots {
+    margin: -30px;
+    text-align: center;
+  }
+  & .owl-dot {
+    position: relative;
+    background: white !important;
+    opacity: 0.4;
+    border-radius: 50%;
+    height: 12px;
+    width: 12px;
+    min-height: 12px;
+    margin-right: 15px;
+    &.active {
+      opacity: 1;
+      background: rgba(0,0,0,0.5) !important;
+    }
+  }
+  & .owl-stage-outer, .owl-stage, .owl-item, .owl-item>a {
+    height: 100%;
+  }
+}
+@media screen and (min-width: 1068px) {
+  .slide-banner {
+    height: 390px;
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 1068px) {
+  .slide-banner {
+    height: 290px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .slide-banner .owl-dots {
+    display: none;
+  }
+}
+
+
