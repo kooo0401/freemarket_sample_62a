@@ -31,16 +31,20 @@ ja:
               confirmation: "が内容とあっていません。"
             tel:
               blank: "が入力されていません。"
+              invalid: "は有効でありません。"
             zip:
               blank: "が入力されていません。"
+              invalid: "は有効でありません。"
             prefecture:
               blank: "が入力されていません。"
             city_name: 
               blank: "が入力されていません。"
             block_name:
               blank: "が入力されていません。"
+              too_long: "は%{count}文字以下に設定して下さい。"
             bill_name:
               blank: "が入力されていません。"
+              too_long: "は%{count}文字以下に設定して下さい。"
     attributes:
       user:
         current_password: "現在のパスワード"
