@@ -1,46 +1,44 @@
-.header
-  =link_to '/', class: "home-link" do
-    = image_tag("//www-mercari-jp.akamaized.net/assets/img/common/common/logo.svg?404657508",size: "189x49",class: "image")
-
-.middle
-  .main
-    .main__head
+= render "layouts/exhibit-header"
+.exhibitmiddle
+  .exhibitmain
+    .exhibitmain__head
       商品の情報を入力
-
-    .main__uploadbox
-      .main__uploadbox__head
+    .exhibitmain__uploadbox
+      .exhibitmain__uploadbox__head
         出品画像 
         %span 必須
-      .main__uploadbox__content
+      .exhibitmain__uploadbox__content
         最大10枚までアップロードできます
-      .main__uploadbox__item
-        %input.sell-upload-drop-file{:type => "file" }
-    .main__description
-      .main__description__name
+      .exhibitmain__uploadbox__item
+        ドラッグアンドドロップ
+        %br>/
+        またはクリックしてファイルをアップロード
+
+    .exhibitmain__description
+      .exhibitmain__description__name
         商品名
         %span 必須
       %input{:maxlength => "20", :name => "in01", :size => "67px", :type => "text", :placeholder => "商品名 (必須40文字まで)"}
-      .main__description__explanation
+      .exhibitmain__description__explanation
         商品の説明
         %span 必須
-      .main__description__explanation-box 
+      .exhibitmain__description__explanation-box 
         %textarea{:cols => "75", :rows => "8",:placeholder => "商品の説明（必須1,000文字以内 (色、素材、重さ、定価、注意点など)例)2010年頃に１万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。"} 
-
-    .main__details
-      .main__details__name
+    .exhibitmain__details
+      .exhibitmain__details__name
         商品の詳細
-      .main__details__category-name
+      .exhibitmain__details__category-name
         カテゴリー
         %span 必須
-      .main__details__category-box  
+      .exhibitmain__details__category-box  
         %select{:required => ""}
           %option{:hidden => "", :value => ""} ---
           %option{:value => "1"} cat
           %option{:value => "2"} dog
-      .main__details__status-name
+      .exhibitmain__details__status-name
         商品の状態
         %span 必須 
-      .main__details__status-box 
+      .exhibitmain__details__status-box 
         %select{:required => ""}
           %option{:hidden => "", :value => ""} ---
           %option{:value => "1"} 新品、未使用
@@ -49,116 +47,52 @@
           %option{:value => "4"}やや傷や汚れなし
           %option{:value => "5"}傷や汚れなし
           %option{:value => "6"}全体的に状態が悪い
-      
-        
-    .main__delivery
-      .main__delivery__name
+    .exhibitmain__delivery
+      .exhibitmain__delivery__name
         配送について
-      .main__delivery__burden
+      .exhibitmain__delivery__burden
         配送料の負担
         %span 必須 
-      .main__delivery__burden-box
+      .exhibitmain__delivery__burden-box
         %select{:required => ""}
           %option{:hidden => "", :value => ""} ---
           %option{:value => "1"} 送料込み（出品者負担）
           %option{:value => "2"} 着払い（購入者負担）
-      .main__delivery__way
-        配送の方法
-        %span 必須 
-      .main__delivery__way-box    
-        %select{:required => ""}
-          %option{:hidden => "", :value => ""} ---
-          %option{:value => "1"} 未定
-          %option{:value => "2"} クロネコヤマト
-          %option{:value => "3"} ゆうパック
-          %option{:value => "4"} ゆうメール
-      .main__delivery__area
+      .exhibitmain__delivery__area
         配送元の地域
         %span 必須 
-      .main__delivery__area-box
-        %select{:required => ""}
-          %option{:hidden => "", :value => ""} ---
-          %option{:value => "1"} 北海道
-          %option{:value => "2"} 青森県
-          %option{:value => "3"} 岩手県
-          %option{:value => "4"} 宮城県
-          %option{:value => "5"} 秋田県
-          %option{:value => "6"} 山形県
-          %option{:value => "7"} 福島県
-          %option{:value => "8"} 茨城県
-          %option{:value => "9"} 栃木県
-          %option{:value => "10"} 群馬県
-          %option{:value => "11"} 埼玉県
-          %option{:value => "12"} 千葉県
-          %option{:value => "13"} 東京都
-          %option{:value => "14"} 神奈川県
-          %option{:value => "15"} 新潟県
-          %option{:value => "16"} 富山県
-          %option{:value => "17"} 石川県
-          %option{:value => "18"} 福井県
-          %option{:value => "19"} 山梨県
-          %option{:value => "20"} 長野県
-          %option{:value => "21"} 岐阜県
-          %option{:value => "22"} 静岡県
-          %option{:value => "23"} 愛知県
-          %option{:value => "24"} 三重県
-          %option{:value => "25"} 滋賀県
-          %option{:value => "26"} 京都府
-          %option{:value => "27"} 大阪府
-          %option{:value => "28"} 兵庫県
-          %option{:value => "29"} 奈良県
-          %option{:value => "30"} 和歌山県
-          %option{:value => "31"} 鳥取県
-          %option{:value => "32"} 島根県
-          %option{:value => "33"} 岡山県
-          %option{:value => "34"} 広島県
-          %option{:value => "35"} 山口県
-          %option{:value => "36"} 徳島県
-          %option{:value => "37"} 香川県
-          %option{:value => "38"} 愛媛県
-          %option{:value => "39"} 高知県
-          %option{:value => "40"} 福岡県
-          %option{:value => "41"} 佐賀県
-          %option{:value => "42"} 長崎県
-          %option{:value => "43"} 熊本県
-          %option{:value => "44"} 大分県
-          %option{:value => "45"} 宮崎県
-          %option{:value => "46"} 鹿児島県
-          %option{:value => "47"} 沖縄県
-          %option{:value => "48"} 未定
-          
-      .main__delivery__days  
+      .exhibitmain__delivery__area-box
+        = form_with model: @product, local: true do |f|
+          = f.collection_select :prefecture_id, Prefecture.all, :id, :name
+      .exhibitmain__delivery__days  
         配送までの日数
         %span 必須
-      .main__delivery__days-box
+      .exhibitmain__delivery__days-box
         %select{:required => ""}
           %option{:hidden => "", :value => ""} ---
           %option{:value => "1"} 1日~2日で発送
           %option{:value => "2"} 2日~3日で発送
           %option{:value => "3"} 4日~7日で発送
-    
-    .main__price
-      .main__price__name
+    .exhibitmain__price
+      .exhibitmain__price__name
         販売価格(300~9,999,999)
-      .main__price__group
-        .main__price__group__left
+      .exhibitmain__price__group
+        .exhibitmain__price__group__left
           価格
           %span 必須
-        .main__price__group__right
+        .exhibitmain__price__group__right
           ¥      
           %input{:maxlength => "20", :name => "in03", :size => "67px", :type => "text", :placeholder => "例） 300"}
-      .main__price__fee
-        .main__price__fee__left
+      .exhibitmain__price__fee
+        .exhibitmain__price__fee__left
           販売手数料（10％）
-        .main__price__fee__right
-      .main__price__profit
-        .main__price__profit__left
+        .exhibitmain__price__fee__right
+      .exhibitmain__price__profit
+        .exhibitmain__price__profit__left
           販売利益
-        .main__price__profit__right
-      
-
-    .main__exhibit
-      .main__exhibit__text
+        .exhibitmain__price__profit__right
+    .exhibitmain__exhibit
+      .exhibitmain__exhibit__text
         %a{:href => "＃", :target => "_blank"} 禁止されている出品
         、
         %a{:href => "＃", :target => "_blank"}行為
@@ -171,19 +105,10 @@
         また、出品をもちまして
         %a{:href => "＃", :target => "_blank"}加盟店規約
         に同意したことになります。
-      .main__exhibit__btn
+      .exhibitmain__exhibit__btn
         %button{:onclick => "location.href='https://www.sakurada.net'", :type => "“button”"} 出品する
-      .main__exhibit__return
+      .exhibitmain__exhibit__return
         %button{:onclick => "location.href='https://www.sakurada.net'", :type => "“button”"} もどる
 
-.footer
-  .footer__content
-    %a{:href => "＃", :target => "_blank"}プライバシーポリシー  
-    %a{:href => "＃", :target => "_blank"}メルカリ利用規約
-    %a{:href => "＃", :target => "_blank"}特定商取引に関する表記
-    =link_to '/', class: "home-link" do
-      = image_tag("//www-mercari-jp.akamaized.net/assets/img/common/common/logo-gray.svg?404657508",size: "80x65",class: "image")
-    %br>
-    © 2019 Mercari
-    
-
+= render "layouts/exhibit-footer"
+        

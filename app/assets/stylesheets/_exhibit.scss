@@ -15,34 +15,25 @@
   font-size: 14px;
   color: #333333;
 }
-
- .header{
-  height: 88px;
-  width: 100%;
-  background-color: #f5f5f5;
-  text-align: center;
-  padding-top: 40px;
- }
-
- .middle{
+ .exhibitmiddle{
   font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
   height: 2016px;
   width: 100%;
   background-color: #f5f5f5;
-  .main{
+  .exhibitmain{
     width: 700px;
     margin: 0 auto;
     background-color: white;
-  .main__head{
-    padding: 32px 16px;
+  .exhibitmain__head{
+    padding: 32px 16px 0px 16px;
     font-size: 22px;
     text-align: center;
-    height: 33px;
+    height: 97px;
     font-weight: bold;
     border-bottom: solid 2px #f5f5f5;
   }
-  .main__uploadbox{
-    height: 223px;
+  .exhibitmain__uploadbox{
+    height: 303px;
     padding: 40px;
     border-bottom: solid 2px #f5f5f5;
     &__head{
@@ -59,17 +50,17 @@
       color: #333333;
       margin-bottom: 10px;
     }
-    input {
+    &__item {
       width: 580px;
-      height: 102px;
-      padding: 20px;
-      border: dashed 1px;
+      height: 162px;
+      padding: 40px;
+      border: dashed gray 1px;
       text-align: center;
-     
+      background-color: #f5f5f5;
   }
   }
-  .main__description{
-    height: 275px;
+  .exhibitmain__description{
+    height: 355px;
     padding: 40px;
     border-bottom: solid 2px #f5f5f5;
     &__name{
@@ -82,22 +73,15 @@
     input {
       margin-top: 8px;
       padding: 10px 16px 8px;
-      border: solid 1px #cccccc;
       color: #cccccc;
     }
     &__explanation{
       margin-top: 40px;
     @include title;
     }
-    &__explanation-box{
-      margin-top: 8px;
-      padding: 10px;
-      border: solid 1px #cccccc;
-      color: #cccccc;
-    }
   }
-  .main__details{
-    height: 181px;
+  .exhibitmain__details{
+    height: 241px;
     padding: 40px;
     border-bottom: solid 2px #f5f5f5;
     &__name{
@@ -131,8 +115,8 @@
       } 
     }
   }
-  .main__delivery{
-    height: 291px;
+  .exhibitmain__delivery{
+    height: 381px;
     padding: 40px;
     border-bottom: solid 2px #f5f5f5;
     span {
@@ -154,17 +138,17 @@
         @include box;
       } 
     }
-    // &__way{
-    //   @include title;
-    //   text-indent: 220px;
-    //   margin-top:40px;
-    // }
-    // &__way-box{
-    //   padding-left: 217px;
-    //   select{
-    //     @include box;
-    //   } 
-    // }
+    &__way{
+      @include title;
+      text-indent: 220px;
+      margin-top:40px;
+    }
+    &__way-box{
+      padding-left: 217px;
+      select{
+        @include box;
+      } 
+    }
     &__area{
       @include title;
       text-indent: 220px;
@@ -188,7 +172,7 @@
       } 
     }
   }
-  .main__price{
+  .exhibitmain__price{
     height: 219px;
     padding: 40px;
     border-bottom: solid 2px #f5f5f5;
@@ -233,7 +217,6 @@
       &__left{
         font-size: 16px;
         color: #333333;
-
       }
     }
     &__profit{
@@ -247,11 +230,10 @@
          color: #333333;
          font-weight: bold;
       }
-
     }
   }
-  .main__exhibit{
-    height: 249px;
+  .exhibitmain__exhibit{
+    height: 349px;
     padding: 40px;
     border-bottom: solid 2px #f5f5f5;
     font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
@@ -286,49 +268,4 @@
     }
   }
   }
-}
-
-.footer{
-  width: 100%;
-  height: 220px;
-  background-color: #f5f5f5;
-  font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
-  &__content{
-    width: 456px;
-    height: 143px;
-    padding: 40px;
-    margin: 0 auto;
-    color: #333333;
-    font-size: 13px;
-  a{
-    text-decoration:none;
-    color: #333333;
-    text-align: center;
-    padding-left: 15px;
-    font-size: 12px;
-  }
-    text-align: center;
-  img {
-   padding-top:40px;
-   padding-bottom: 10px;
-  }
-
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-}
+ }
