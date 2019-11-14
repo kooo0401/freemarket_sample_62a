@@ -10,5 +10,35 @@ itembuy-content {
     line-height: 1.4;
     font-weight: bold;
   }
-  
+
+
+
+
+
+
+
+}
+
+.itembuy-user-ratings{
+  display: inline-block;
+  margin: 8px 0 0 16px;
+}
+.fas.fa-smile {
+  font-size: 16px;
+  vertical-align: middle;
+  color: #ef5185;
+  margin: 0;
+}
+.fas.fa-meh{
+  font-size: 16px;
+  vertical-align: middle;
+  color: #fba933;
+}
+.fas.fa-frown{
+  font-size: 16px;
+  vertical-align: middle;
+  color: #6ab5d8;
+}
+#itembuy-icon-good{
+  margin: 0px;
 }
