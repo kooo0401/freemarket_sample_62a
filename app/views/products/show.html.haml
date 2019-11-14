@@ -1,2 +1,8 @@
-%h1 Products#show
-%p Find me in app/views/products/show.html.haml
+.itembuy-container
+  = render 'products/item_header'
+  %section.itembuy-content
+    %h1.itembuy-content__name
+      @product.name
+    .itembuy-content__clearfix
+      .itembuy-content__photo
+        .itembuy-content__auter
