@@ -27,6 +27,7 @@ class ProductsController < ApplicationController
   end
 
   def create
+    @product = Product.create
   end
 
   # 以下、仮に人気カテゴリー、人気ブランドをリアルタイム対応させる場合の記述。
