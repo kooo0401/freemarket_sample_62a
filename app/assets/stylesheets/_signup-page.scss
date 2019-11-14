@@ -1,0 +1,79 @@
+.icon {
+  font-size: 25px;
+  position: absolute;
+  float: left;
+  top: 12px;
+  left: 12px;
+}
+
+.user-signin {
+  height: calc(100vh - 323px);
+  .user-category {
+    width: 700px;
+    margin: 0 auto;
+    background-color: #fff;
+    &__top {
+      border-bottom-style: solid;
+      border-width: 1px;
+      border-color: whitesmoke;
+      font-size: 22px;
+      padding: 32px;
+      text-align: center;
+      font-weight: bold;
+    }
+    &__fut {
+      padding: 24px 16px 40px;
+      .login-category {
+        max-width: 343px;
+        margin: 0 auto;
+        &__email {
+          width: 100%;
+          display: block;
+          text-align: center;
+          background-color: #ea352d;
+          color: #fff;
+          line-height: 48px;
+          text-decoration: none;
+          border-radius: 4px;
+          font-size: 14px;
+          position: relative;
+          transition:all meease-out .3s;  //:hoverの内容を、0.3秒で行う
+          cursor: pointer;
+        }
+        &__email:hover {  //マウスオーバーしたら画像を白くする
+          opacity: 0.7;
+        }
+        &__facebook {
+          width: 343px;
+          display: block;
+          text-align: center;
+          background-color: #385185;
+          color: #fff;
+          line-height: 48px;
+          text-decoration: none;
+          border-radius: 4px;
+          margin: 16px 0 0;
+          font-size: 14px;
+          position: relative;
+
+        }
+        &__google {
+          width: 343px;
+          display: block;
+          text-align: center;
+          background-color: #fff;
+          color: #333;
+          line-height: 48px;
+          text-decoration: none;
+          border-radius: 4px;
+          margin: 16px 0 0;
+          font-size: 14px;
+          border: #979797 solid 1px;
+          position: relative;
+
+        }
+
+      }
+    }
+  }
+}
