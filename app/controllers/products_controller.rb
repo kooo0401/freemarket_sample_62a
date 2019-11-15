@@ -18,6 +18,7 @@ class ProductsController < ApplicationController
   end
 
   def new
+    # 以下、ログイン機能設計次第で要不要判断
     # 以下の記述はログイン、ログアウト機能の導入後にコメントアウトを外すこと
     # redirect_to: controller: :user, action: :ログイン画面に対応するアクション unless user_signed_in?
   end
