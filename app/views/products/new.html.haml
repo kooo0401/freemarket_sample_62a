@@ -1,114 +1,96 @@
 = render "layouts/exhibit-header"
 .exhibitmiddle
-  .exhibitmain
-    .exhibitmain__head
-      商品の情報を入力
-    .exhibitmain__uploadbox
-      .exhibitmain__uploadbox__head
-        出品画像 
-        %span 必須
-      .exhibitmain__uploadbox__content
-        最大10枚までアップロードできます
-      .exhibitmain__uploadbox__item
-        ドラッグアンドドロップ
-        %br
-        またはクリックしてファイルをアップロード
-
-    .exhibitmain__description
-      .exhibitmain__description__name
-        商品名
-        %span 必須
-      %input{maxlength: "20", name: "in01", size: "67px", type: "text", placeholder: "商品名 (必須40文字まで)"}
-      .exhibitmain__description__explanation
-        商品の説明
-        %span 必須
-      .exhibitmain__description__explanation-box 
-        %textarea{cols: "75", rows: "8",placeholder: "商品の説明（必須1,000文字以内 (色、素材、重さ、定価、注意点など)例)2010年頃に１万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。"} 
-    .exhibitmain__details
-      .exhibitmain__details__name
-        商品の詳細
-      .exhibitmain__details__category-name
-        カテゴリー
-        %span 必須
-      .exhibitmain__details__category-box  
-        %select{required: ""}
-          %option{hidden:  "", value: ""} ---
-          %option{value:  "1"} cat
-          %option{value: "2"} dog
-      .exhibitmain__details__status-name
-        商品の状態
-        %span 必須 
-      .exhibitmain__details__status-box 
-        %select{required: ""}
-          %option{hidden:"", :value => ""} ---
-          %option{value: "1"} 新品、未使用
-          %option{value: "2"} 未使用に近い
-          %option{value: "3"}目立った傷や汚れなし
-          %option{value: "4"}やや傷や汚れなし
-          %option{value: "5"}傷や汚れなし
-          %option{value: "6"}全体的に状態が悪い
-    .exhibitmain__delivery
-      .exhibitmain__delivery__name
-        配送について
-      .exhibitmain__delivery__burden
-        配送料の負担
-        %span 必須 
-      .exhibitmain__delivery__burden-box
-        %select{required: ""}
-          %option{hidden: "",value:""} ---
-          %option{value: "1"} 送料込み（出品者負担）
-          %option{value: "2"} 着払い（購入者負担）
-      .exhibitmain__delivery__area
-        配送元の地域
-        %span 必須 
-      .exhibitmain__delivery__area-box
-        = form_with model: @product, local: true do |f|
-          = f.collection_select :prefecture_id, Prefecture.all, :id, :name
-      .exhibitmain__delivery__days  
-        配送までの日数
-        %span 必須
-      .exhibitmain__delivery__days-box
-        %select{required:""}
-          %option{hidden: "", value:""} ---
-          %option{value: "1"} 1日~2日で発送
-          %option{value: "2"} 2日~3日で発送
-          %option{value: "3"} 4日~7日で発送
-    .exhibitmain__price
-      .exhibitmain__price__name
-        販売価格(300~9,999,999)
-      .exhibitmain__price__group
-        .exhibitmain__price__group__left
-          価格
+  = form_with model: @product, local: true do |f|
+    .exhibitmain
+      .exhibitmain__head
+        商品の情報を入力
+      .exhibitmain__uploadbox
+        .exhibitmain__uploadbox__head
+          出品画像 
           %span 必須
-        .exhibitmain__price__group__right
-          ¥      
-          %input{maxlength: "20", name: "in03", size: "67px", type: "text", placeholder: "例） 300"}
-      .exhibitmain__price__fee
-        .exhibitmain__price__fee__left
-          販売手数料（10％）
-        .exhibitmain__price__fee__right
-      .exhibitmain__price__profit
-        .exhibitmain__price__profit__left
-          販売利益
-        .exhibitmain__price__profit__right
-    .exhibitmain__exhibit
-      .exhibitmain__exhibit__text
-        = link_to("禁止されている出品", "＃")
-        、
-        = link_to("行為", "＃")
-        を必ずご確認ください。
-        %br
-        またブランド品でシリアルナンバー等がある場合はご記載ください。
-        = link_to("偽ブランドの販売", "＃")
-        は犯罪であり処罰される可能性があります。
-        %br
-        また、出品をもちまして
-        = link_to("加盟店規約", "＃")
-        に同意したことになります。
-      .exhibitmain__exhibit__btn
-        %button{onclick: "location.href='https://www.sakurada.net'", type: "“button”"} 出品する
-      .exhibitmain__exhibit__return
-        %button{onclick: "location.href='https://www.sakurada.net'",type: "“button”"} もどる
-
+        .exhibitmain__uploadbox__content
+          最大10枚までアップロードできます
+        .exhibitmain__uploadbox__item
+          ドラッグアンドドロップ
+          %br
+          またはクリックしてファイルをアップロード
+      .exhibitmain__description
+        .exhibitmain__description__name
+          商品名
+          %span 必須
+        = f.text_field :title, class: "hogehoge" ,size: "67px", placeholder: "商品名 (必須40文字まで)" 
+        .exhibitmain__description__explanation
+          商品の説明
+          %span 必須
+        .exhibitmain__description__explanation-box 
+          = f.text_area :content, class: "hogehoge", size: "75x8",placeholder: "商品の説明（必須1,000文字以内 (色、素材、重さ、定価、注意点など)例)2010年頃に１万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。"
+      .exhibitmain__details
+        .exhibitmain__details__name
+          商品の詳細
+        .exhibitmain__details__category-name
+          カテゴリー
+          %span 必須
+        .exhibitmain__details__category-box  
+          = f.select :karamu, [["---", 0],["dog", 1],["cat", 2]] 
+        .exhibitmain__details__status-name
+          商品の状態
+          %span 必須 
+        .exhibitmain__details__status-box 
+          = f.select :karamu, [["---", 0],["新品、未使用", 1],["未使用に近い", 2],["目立った傷や汚れなし",3],["やや傷や汚れなし", 4],["傷や汚れなし", 5],["全体的に状態が悪い",6] ]
+      .exhibitmain__delivery
+        .exhibitmain__delivery__name
+          配送について
+        .exhibitmain__delivery__burden
+          配送料の負担
+          %span 必須 
+        .exhibitmain__delivery__burden-box
+          = f.select :karamu, [["---", 0],["送料込み（出品者負担）", 1],["着払い（購入者負担）", 2]] 
+        .exhibitmain__delivery__area
+          配送元の地域
+          %span 必須 
+        .exhibitmain__delivery__area-box
+          = f.collection_select :prefecture_id, Prefecture.all, :id, :name
+        .exhibitmain__delivery__days  
+          配送までの日数
+          %span 必須
+        .exhibitmain__delivery__days-box
+          = f.select :karamu, [["---", 0],["1日~2日で発送", 1],["2日~3日で発送", 2],["4日~7日で発送"]] 
+      .exhibitmain__price
+        .exhibitmain__price__name
+          販売価格(300~9,999,999)
+        .exhibitmain__price__group
+          .exhibitmain__price__group__left
+            価格
+            %span 必須
+          .exhibitmain__price__group__right
+            ¥
+            = f.text_field :title, class: "hogehoge" , placeholder: "例） 300"     
+        .exhibitmain__price__fee
+          .exhibitmain__price__fee__left
+            販売手数料（10％）
+          .exhibitmain__price__fee__right
+        .exhibitmain__price__profit
+          .exhibitmain__price__profit__left
+            販売利益
+          .exhibitmain__price__profit__right
+      .exhibitmain__exhibit
+        .exhibitmain__exhibit__text
+          = link_to("禁止されている出品", "＃")
+          、
+          = link_to("行為", "＃")
+          を必ずご確認ください。
+          %br
+          またブランド品でシリアルナンバー等がある場合はご記載ください。
+          = link_to("偽ブランドの販売", "＃")
+          は犯罪であり処罰される可能性があります。
+          %br
+          また、出品をもちまして
+          = link_to("加盟店規約", "＃")
+          に同意したことになります。
+        .exhibitmain__exhibit__btn
+          %button{type: "submit"} 
+          -# "ここはjsで実装予定"
+        .exhibitmain__exhibit__return
+          = link_to :back do
+            %button 戻る
 = render "layouts/exhibit-footer"
-        
