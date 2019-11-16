@@ -1,4 +1,4 @@
--# = render "layouts/itembuy_header"
+= render "layouts/header"
 .itembuy-container
   %section.itembuy-content
     %h1.itembuy-content__name
@@ -15,7 +15,7 @@
           %tr
             %th 出品者
             %td
-              = link_to "むらっち", "#"
+              = link_to "@user.nickname", "#"
               %div
                 .itembuy-content__ratings{ id: 'itembuy-icon-good' }
                   =fa_icon 'smile-o', class: 'icon-r'
@@ -124,6 +124,25 @@
           = fa_icon 'twitter-square', class: 'icon-twitter'
       %li
         =link_to '/' do
-          = fa_icon 'line', class: 'icon-line'
+          = fa_icon 'pinterest-square', class: 'icon-pinterest'
+  .itembuy-user-profile
+    %section.itembuy-user-profile__box
+    %h2.itembuy-user-profile__head
+      = link_to '/' do
+        @user.nicknameさんのその他の出品
+    .itembuy-user-profile__content
+      =link_to '/' do
+        =image_tag("/mercari-logo.png", class: 'image-box')
+        =image_tag("/mercari-logo.png", class: 'image-box')
+        =image_tag("/mercari-logo.png", class: 'image-box')
+        =image_tag("/mercari-logo.png", class: 'image-box')
+        =image_tag("/mercari-logo.png", class: 'image-box')
+        =image_tag("/mercari-logo.png", class: 'image-box')
+        .itembuy-user-profile__box
+          %section.itembuy-user-profile__items
+            .itembuy-user-profile__body
+              %h3.itembuy-user-profile__name
+                @product.name
 
-            
+
+

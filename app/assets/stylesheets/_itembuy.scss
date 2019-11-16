@@ -244,8 +244,33 @@
     .icon-twitter {
       color: #5d9dc9;
     }
-    .icon-line {
-      
+    .icon-pinterest {
+      color: #aa262a;
     }
   }
-} 
+}
+.itembuy-user-profile{
+  width: 700px;
+  // margin: 0 auto;
+  h2{
+    font-size: 22px;
+    margin: 24px 0 8px;
+  }
+  &__content{
+    text-decoration: none;
+    width: 700px;
+    section{
+      a{
+        display: block;
+        color: #333;
+        text-decoration: none;
+      }
+    }
+  }
+  .image-box{
+    background: #fff;
+    width: 220px;
+    margin: 0 10px 20px 0;
+    display: inline-block;
+  }
+}
