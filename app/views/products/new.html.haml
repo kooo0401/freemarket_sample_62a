@@ -18,12 +18,12 @@
         .exhibitmain__description__name
           商品名
           %span 必須
-        = f.text_field :title, class: "hogehoge" ,size: "67px", placeholder: "商品名 (必須40文字まで)" 
+        = f.text_field :title,size: "67px", placeholder: "商品名 (必須40文字まで)" 
         .exhibitmain__description__explanation
           商品の説明
           %span 必須
         .exhibitmain__description__explanation-box 
-          = f.text_area :content, class: "hogehoge", size: "75x8",placeholder: "商品の説明（必須1,000文字以内 (色、素材、重さ、定価、注意点など)例)2010年頃に１万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。"
+          = f.text_area :content, size: "75x8",placeholder: "商品の説明（必須1,000文字以内 (色、素材、重さ、定価、注意点など)例)2010年頃に１万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。"
       .exhibitmain__details
         .exhibitmain__details__name
           商品の詳細
@@ -64,7 +64,7 @@
             %span 必須
           .exhibitmain__price__group__right
             ¥
-            = f.text_field :title, class: "hogehoge" , placeholder: "例） 300"     
+            = f.text_field :title, placeholder: "例） 300"     
         .exhibitmain__price__fee
           .exhibitmain__price__fee__left
             販売手数料（10％）
