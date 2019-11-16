@@ -80,10 +80,50 @@
         @product.description
     .itembuy-button
       .itembuy-button__left
+        =link_to "#", class: "new-item-image" do
+          %button
+            = fa_icon 'heart-o', class: 'icon-g'
+            %span
+              いいね! ０
+      .itembuy-button__left__report
+        =link_to "#", class: "new-item-image" do
+          %button 
+            =fa_icon 'flag-o', class: 'icon-g'
+            %span 
+              不適切な商品の報告
+      .itembuy-button__right
+        =link_to "#", class: "new-item-image" do
+          %button
+            =fa_icon 'shopping-bag', class: 'icon-b'
+            %span
+              あんしん・あんぜんへの取り組み
+.itembuy-content-box
+  .itembuy-detail-message
+    .itembuy-content__comment
+      %form.itembuy-message__form
+        %p 相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
+        %textarea
         %button
-          = fa_icon 'heart-o', class: 'icon-b'
-          %span いいね! ０ 
-          
-          =fa_icon 'frown-o', class: 'icon-b'
-          %span 不適切な商品の報告
-          
+          %span 
+            コメントする
+      %ul.itembuy-nav
+        %li.itembuy-nav__left
+          = fa_icon 'chevron-left', class: 'icon-g'
+          = link_to "@prev_product.name","#"
+      %ul.itembuy-nav
+        %li.itembuy-nav__right
+          = link_to "@next_product.name","#"
+          = fa_icon 'chevron-right', class: 'icon-g'
+  .itembuy-media-box
+    %ul.itembuy-media-box__list
+      %li
+        =link_to '/' do
+          = fa_icon 'facebook-square', class: 'icon-facebook'
+      %li
+        =link_to '/' do
+          = fa_icon 'twitter-square', class: 'icon-twitter'
+      %li
+        =link_to '/' do
+          = fa_icon 'line', class: 'icon-line'
+
+            
