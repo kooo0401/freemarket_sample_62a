@@ -18,6 +18,7 @@ class ProductsController < ApplicationController
   end
 
   def new
+    @product = Product.new
   end
 
   def show
@@ -27,7 +28,18 @@ class ProductsController < ApplicationController
   end
 
   def create
-    @product = Product.create
+
+    @product = Product.new(product_params)
+    if @product.save
+      # ビュー（アラートでビューを表示）
+      #   続けて出品する（リンク product/new）
+      #   商品詳細ページへ (リンク product/show)
+    else
+      # render :new
+      # 入力内容がおかしい所に赤字で表示
+        # → 例：選択して下さい
+        # おそらくJS
+    end
   end
 
   # 以下、仮に人気カテゴリー、人気ブランドをリアルタイム対応させる場合の記述。
@@ -39,7 +51,35 @@ class ProductsController < ApplicationController
   # end
   #  category_rankingが上手くいったらbrand_rankingも同様にここに追加する
   # ------------------------------------------------------------------------------------------------
+  
   private
-  # 商品出品実装時にstrong parameterを追加する
+    #  ↑ ちなみに、Privateメソッドとは？
+    # 記述されたコントローラの内部でのみ、実行することができるメソッド。
 
+      # 商品出品実装時にstrong parameterを追加する
+    # → 髙橋担当！！
+    # <大前提>：Strong Parameterを設定する理由
+    # →画面内の入力項目以外のデータについては受け取らないようにできる
+    # →セキュリティを強固にできるメリットがある
+ # ------------------------------------------------------------------------------------------------
+
+  def product_params
+    params.require(:product)
+            .permit(:description, :name, :price, :delivery_charged,
+                    :area, :delivery_days, :seles_status, :delivery_way, 
+                    :category_id,
+                    :brand_id,
+                    :size_id,
+                    images: [:image])
+          .merge(user_id: current_user.id)
+  end
+
+    # 事実：product.images[0].image でトップページで画像が取得できている
+      # ⇨ product.images.image で 出品したproductのimagesのimageを取得できるはず。。。
+    # mergeメソッドを使うことによって、ストロングパラメーター(create_params)が生成される際にuser_idとgroup_idのキーと値を持つハッシュを追加することができます。
+    # ＜要検討事項＞
+    # category_id  →  取得必須（入力アリ）
+    # brand_id  →  取得必須（入力アリ）
+    # size_id  →  取得必須（入力アリ）
+    # status_id  →  入力欄ナシ（最初は必ず”出品中”という表現になるはず）
 end

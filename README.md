@@ -106,17 +106,21 @@
 |user_id|integer|foreign_key: true, null: false|
 |category_id|integer|foreign_key: true, null: false|
 |brand_id|integer|foreign_key: true, null: false|
+|status_id|integer|foreign_key: true, default: 1|
+|size_id||integer||foreign_key: true|
 <!-- categorry_idカラム, brand_idカラムを追加 191112平野 -->
+<!-- status_idカラム, size_idカラムを追加 191117村上・髙橋 -->
+
 
 ### Association
 - belongs_to :user
 - belongs_to :category
 - belongs_to :brand
+- belongs_to :status
+- belongs_to :size
 - has_many :images, dependent: :destroy
-- has_one :size
-- has_one :status, dependent: :destroy
 - has_one :history, dependent: :destroy
-
+<!-- size,status を belongs_to に変更191117髙橋-->
 
 ## imagesテーブル
 |Column|Type|Options|
@@ -142,21 +146,23 @@
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false|
-|product_id|integer|foreign_key: true, null: false|
+<!-- |product_id|integer|foreign_key: true, null: false|  ← 削除しました 191117髙橋 -->
 
 ### Association
-- belongs_to :product
+- has_many :products
 
 
 ## sizesテーブル
 |Column|Type|Options|
 |------|----|-------|
 |size_name|string|null: false|
-|size_tag|integer|
-|product_id|integer|foreign_key: true, null: false|
+<!-- |size_tag|integer|  ←  一旦削除しました 191117髙橋 -->
+<!-- |product_id|integer|foreign_key: true, null: false|  ←  削除しました 191117髙橋 -->
+
 
 ### Association
-- belongs_to :product
+- has_many :products
+- belongs_to :catefory
 
 
 ## categoriesテーブル
@@ -164,9 +170,9 @@
 |------|----|-------|
 |name|string|null: false|
 |ancestry|string|foreign_key: true, null: false|
-|size_tag|integer|
-<!-- product_idカラムを削除しました 191112平野 -->
 
+<!-- product_idカラムを削除しました 191112平野 -->
+<!-- |size_tag|integer| を削除しました　191117髙橋 -->
 ### Association
 - has_many :products
 - has_many :sizes

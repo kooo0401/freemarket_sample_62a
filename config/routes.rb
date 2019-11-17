@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   root 'products#index'
   
-  resources :products, only: [:index, :new, :show, :edit]
+  resources :products, only: [:index, :new, :show, :edit, :create]
   resources :users, only: [:show, :edit] do
     collection do
       get :signup
