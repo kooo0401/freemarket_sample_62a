@@ -1,0 +1,8 @@
+= form_for @user, url: view4_signup_index_path, method: :get, html: {class: 'signup-view-block__form'} do |f|
+  = f.text_field :zip, placeholder: '例） 山田'
+  = f.text_field :zip, placeholder: '例） 彩'
+  = f.text_field :zip, placeholder: '例） ヤマダ'
+  = f.text_field :zip, placeholder: '例） アヤ'
+  = f.text_field :zip, placeholder: '例） 123-4567'
+  -# = f.collection_select :prefecture_id, Prefecture.all, :id, :name
+  = f.submit '次へ進む'

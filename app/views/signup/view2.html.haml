@@ -1,0 +1,3 @@
+= form_for @user, url: view3_signup_index_path, method: :get, html: {class: 'signup-view-block__form'} do |f|
+  = f.text_field :tel, placeholder: '携帯電話の番号を入力'
+  = f.submit '次へ進む'
