@@ -2,14 +2,17 @@
 .itembuy-container
   %section.itembuy-content
     %h1.itembuy-content__name
-      @product.name
+      product.name
     .itembuy-content__clearfix
       .itembuy-content__photo
         .itembuy-content__auter
           .itembuy-content__owl-carousel
-            =image_tag("/mercari-logo.png", class: "image-price",size: '300x300')
+            =image_tag("/mercari-logo.png", size: '300x300')
         .itembuy-content__owl-carousel-thumb
-            
+          =image_tag("/mercari-logo.png", size:'60x60')
+          =image_tag("/mercari-logo.png", size:'60x60')
+          =image_tag("/mercari-logo.png", size:'60x60')
+          =image_tag("/mercari-logo.png", size:'60x60')
       %table.itembuy-content__table
         %tbody
           %tr
@@ -77,7 +80,7 @@
         購入画面に進む
     .itembuy-detail
       %p.itembuy-detail__inner
-        @product.description
+        product.description
     .itembuy-button
       .itembuy-button__left
         =link_to "#", class: "new-item-image" do
@@ -125,21 +128,5 @@
       %li
         =link_to '/' do
           = fa_icon 'pinterest-square', class: 'icon-pinterest'
-  .itembuy-user-profile
-    .itembuy-user-profile__box
-      .itembuy-user-profile__box__head
-        %h3#itembuy.other-category
-        = link_to '/' do
-          @user.nicknameさんのその他の出品
-    -# .itembuy-user-profile__content
-    -#   =link_to '/' do
-    -#     =image_tag("/mercari-logo.png", class: 'image-box')
-    -#     .itembuy-user-profile__box
-    -#       %section.itembuy-user-profile__items
-    -#         .itembuy-user-profile__body
-    -#           %h3.itembuy-user-profile__name
-    -#             @product.name
-    -#           .itembuy-user-profile__num
-    -#             .itembuy-user-profile__price
-    -#               ¥3,580
-    
+  = render "products/itembuy"
+= render "layouts/footer"
