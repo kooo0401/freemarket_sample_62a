@@ -15,10 +15,10 @@ Rails.application.routes.draw do
   resources :signup, only: [:create] do 
     collection do
       get 'new'
-      get 'registration1'
-      get 'registration2'
-      get 'registration3'
-      get 'registration4'
+      get 'user_registration1'
+      get 'user_registration2'
+      get 'user_registration3'
+      get 'user_registration4'
       get 'done'
     end
   end

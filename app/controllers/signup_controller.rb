@@ -3,11 +3,11 @@ class SignupController < ApplicationController
   def new
   end
 
-  def registration1
+  def user_registration1
     @user = User.new
   end
 
-  def registration2
+  def user_registration2
     session[:nickname] = user_params[:nickname]
     session[:email] = user_params[:email]
     session[:password] = user_params[:password]
@@ -21,12 +21,12 @@ class SignupController < ApplicationController
     @user = User.new
   end
 
-  def registration3
+  def user_registration3
     session[:tel] = user_params[:tel]
     @user = User.new
   end
 
-  def registration4
+  def user_registration4
     @user = User.new
   end
 
