@@ -1,4 +1,7 @@
 class SignupController < ApplicationController
+  before_action :validates_step1, only: :user_registration2
+  before_action :validates_step2, only: :user_registration3
+  before_action :validates_step3, only: :user_registration4
 
   def new
   end
@@ -8,6 +11,20 @@ class SignupController < ApplicationController
   end
 
   def user_registration2
+    @user = User.new
+  end
+
+  def user_registration3
+    @user = User.new
+  end
+
+  def user_registration4
+    @user = User.new
+  end
+
+
+  def validates_step1
+
     session[:nickname] = user_params[:nickname]
     session[:email] = user_params[:email]
     session[:password] = user_params[:password]
@@ -18,17 +35,36 @@ class SignupController < ApplicationController
     session[:first_name_kana] = user_params[:first_name_kana]
     params[:birthday] = birthday_join
     session[:birthday] = params[:birthday] 
-    @user = User.new
+
+    @user = User.new(
+      nickname: session[:nickname],
+      email: session[:email],
+      password: session[:password],
+      password_confirmation: session[:password_confirmation],
+      last_name: session[:last_name],
+      first_name: session[:first_name],
+      last_name_kana: session[:last_name_kana],
+      first_name_kana: session[:first_name_kana],
+      birthday: session[:birthday]
+    )
+    render user_registration1_signup_index_path unless @user.valid?(:validates_step1)
+
   end
 
-  def user_registration3
+  def validates_step2
+
     session[:tel] = user_params[:tel]
-    @user = User.new
+
+    @user = User.new(tel: session[:tel])
+    render user_registration2_signup_index_path unless @user.valid?(:validates_step2)
+    
   end
 
-  def user_registration4
-    @user = User.new
+  def validates_step3
+    # 住所とか
+    render user_registration3_signup_index_path unless @user.valid?(:validates_step3)
   end
+
 
   def done
     sign_in User.find(session[:id]) unless user_signed_in?
