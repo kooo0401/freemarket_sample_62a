@@ -1,0 +1,83 @@
+.user-container
+  .user-container-header
+    %h1.user-container-header__left
+      =link_to root_path, class: "signup-home-link" do
+        = image_tag("//www-mercari-jp.akamaized.net/assets/img/common/common/logo.svg?404657508",size: "189x49",class: "image")
+    %nav.user-signup-bar
+      %ol.user-signup-bar-progress
+        %li.user-signup-bar-progress__type-red
+          会員情報
+          .user-signup-bar-progress__rod-red
+        %li.user-signup-bar-progress__type
+          電場番号認証
+          .user-signup-bar-progress__rod
+        %li.user-signup-bar-progress__type
+          お届け先住所入力
+          .user-signup-bar-progress__rod
+        %li.user-signup-bar-progress__type
+          支払い方法
+          .user-signup-bar-progress__rod
+        %li.user-signup-bar-progress__type
+          完了
+          .user-signup-bar-progress__rod-last
+
+
+  .signup-view-1page
+    %section.signup-view-block
+      %h2.signup-view-block__explanation 
+        会員情報入力
+
+      = form_for @user, url: user_registration2_signup_index_path, method: :get, html: {class: 'signup-view-block__form'} do |f|
+        .signup-view-block__form--top
+          .signup-form1
+            %label.signup-form1__label
+              ニックネーム
+            %span.signup-form1__span
+              必須
+            = f.text_field :nickname, placeholder: '例) メルカリ太郎', class: 'signup-form1__form'
+          .signup-form1
+            %label.signup-form1__label
+              メールアドレス
+            %span.signup-form1__span
+              必須
+            = f.email_field :email, placeholder: 'PC・携帯どちらでも可', class: 'signup-form1__form'
+          .signup-form1
+            %label.signup-form1__label
+              パスワード
+            %span.signup-form1__span
+              必須
+            = f.password_field :password, placeholder: '6文字以上', class: 'signup-form1__form'
+            = f.password_field :password_confirmation, placeholder: '6文字以上', class: 'signup-form1__form'
+          %p.password-open-btn
+            パスワードを表示する
+          .signup-form1
+            %h3.signup-form1__identification
+              本人確認
+            %p.signup-form1__explanation
+              安心・安全にご利用いただくために、お客さまの本人情報の登録にご協力ください。他のお客さまに公開されることはありません。
+
+          .signup-form1
+            %label.signup-form1__label
+              お名前(全角)
+            %span.signup-form1__span
+              必須
+            = f.text_field :last_name, placeholder: '例) 山田', class: 'signup-form1__form'
+            = f.text_field :first_name, placeholder: '例) 彩', class: 'signup-form1__form'
+            %label.signup-form1__label
+              お名前カナ(全角)
+            %span.signup-form1__span
+              必須
+            = f.text_field :last_name_kana, placeholder: '例) ヤマダ', class: 'signup-form1__form'
+            = f.text_field :first_name_kana, placeholder: '例) アヤ', class: 'signup-form1__form'
+            %label.signup-form1__label
+              生年月日
+            %span.signup-form1__span
+              必須
+            .birthday-form
+              != sprintf(f.date_select(:birthday, prefix:'birthday',with_css_classes:'XXXXX', prompt:"--",use_month_numbers:true, start_year:Time.now.year, end_year:1900, date_separator:'%s'),'年','月')+'日'
+            
+            = f.submit '次へ進む'
+
+        .signup-view-block__form--bottom
+
+  = render "layouts/exhibit-footer"

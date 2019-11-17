@@ -1,0 +1,198 @@
+.user-container-header {
+  height: 128px;
+  text-align: center;
+  display: block;
+  &__left {
+    margin: 40px 0 0;
+    display: inline-block;
+    .signup-home-image {
+      width: 185px;
+      height: 49px;
+      line-height: 49px;
+      display: inline-block;
+      margin: 0 8px 0 0;
+    }
+  }
+  .user-signup-bar {
+    padding: 40px 0 0 44px;
+    display: inline-block;
+    vertical-align: top;
+    .user-signup-bar-progress {
+      &__type-red {
+        color: #ea352d;
+        margin: 0 40px 0 0;
+        min-width: 60px;
+        position: relative;
+        z-index: 1;
+        display: inline-block;
+        font-weight: 600;
+        font-size: 12px;
+      }
+      &__rod-red {
+        width: 12px;
+        height: 12px;
+        margin: 8px auto 0;
+        border-radius: 50%;
+        background: #ea352d;
+      }
+      &__rod-red::after {
+        left: 50%;
+        position: absolute;
+        bottom: 5px;
+        z-index: -1;
+        display: block;
+        content: '';
+        width: 100%;
+        height: 2px;
+        background: #ccc;
+      }
+      &__type {
+        margin: 0 40px 0 0;
+        min-width: 60px;
+        position: relative;
+        z-index: 1;
+        display: inline-block;
+        font-weight: 600;
+        font-size: 12px;
+        color: #888;
+      }
+      &__rod {
+        width: 12px;
+        height: 12px;
+        margin: 8px auto 0;
+        border-radius: 50%;
+        background: #ccc;
+      }
+      &__rod::before {
+        right: 50%;
+        position: absolute;
+        bottom: 5px;
+        z-index: -1;
+        display: block;
+        content: '';
+        width: 100%;
+        height: 2px;
+        background: #ccc;
+      }
+      &__rod::after {
+        left: 50%;
+        position: absolute;
+        bottom: 5px;
+        z-index: -1;
+        display: block;
+        content: '';
+        width: 100%;
+        height: 2px;
+        background: #ccc;
+      }
+      &__rod-last {
+        width: 12px;
+        height: 12px;
+        margin: 8px auto 0;
+        border-radius: 50%;
+        background: #ccc;
+      }
+      &__rod-last::before {
+        right: 50%;
+        position: absolute;
+        bottom: 5px;
+        z-index: -1;
+        display: block;
+        content: '';
+        width: 100%;
+        height: 2px;
+        background: #ccc;
+      }
+    }
+    .user-signup-bar-progress::after {
+      content: '';
+      display: block;
+      clear: both;
+    }
+  }
+}
+.signup-view-1page {
+  display: block;
+  .signup-view-block {
+    width: 700px;
+    margin: 0 auto;
+    background-color: #fff;
+    &__explanation {
+      font-size: 22px;
+      padding: 32px;
+      line-height: 1.5;
+      text-align: center;
+      color: rgb(51, 51, 51);
+      font-weight: bold;
+    }
+    &__form {
+      padding: 24px 16px 40px;
+      border-top: 1px solid #f5f5f5;
+      &--top {
+        max-width: 343px;
+        margin: 0 auto;
+        .signup-form1 {
+          margin: 0;
+          &__label {
+            font-weight: 600;
+            display: inline-block;
+            font-size: 14px;
+          }
+          &__span {
+            background: #ea352d;
+            margin: 0 0 0 8px;
+            padding: 2px 4px;
+            border-radius: 2px;
+            color: #fff;
+            font-size: 12px;
+            vertical-align: top;
+          }
+          &__form {
+            width: 100%;
+            margin: 8px 0 0;
+            height: 48px;
+            padding: 10px 16px 8px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            background: #fff;
+            line-height: 1.5;
+            font-size: 16px;
+          }
+          &__identification {
+            font-size: 16px;
+            font-weight: bold;
+            padding: 10px 0 0 0;
+          }
+          &__explanation {
+            margin: 8px 0 0;
+            padding: 0;
+            line-height: 1.5;
+            font-size: 14px;
+          }
+          .birthday-form {
+            .year,.month,.day {
+              width: 76px;
+              margin: 8px 0 0;
+              font-size: 16px;
+              line-height: 1.5;
+              cursor: pointer;
+            }
+          }
+        }
+        .password-open-btn {
+          position: relative;
+          z-index: 2;
+          padding: 10px 0 0 28px;
+          font-size: 14px;
+          font-weight: 400;
+          vertical-align: middle;
+          cursor: pointer;
+        }
+      }
+      &__bottom {
+        max-width: 343px;
+        margin: 0 auto;
+      }
+    }
+  }
+}

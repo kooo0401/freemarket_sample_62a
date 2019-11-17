@@ -7,7 +7,7 @@ FactoryBot.define do
     delivery_charged    {"送付者"}
     area                {"北海道"}
     delivery_days       {5}
-    seles_status        {1}
+    sales_status        {1}
     delivery_way        {1}
     user_id             {1}
     category_id         {1}

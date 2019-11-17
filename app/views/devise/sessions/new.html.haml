@@ -1,0 +1,62 @@
+
+= render "layouts/exhibit-header"
+
+.user-login-page-block
+  .user-login-or-create
+    .user-create
+      .user-create-box
+        %p.user-create-box__explanation アカウントをお持ちでない方はこちら
+        = link_to "新規会員登録", signup_index_path, class: 'user-create-box__btn'
+    .user-login-method
+      = link_to "/", class: 'user-login-method__facebook' do
+        = fa_icon 'facebook-square', class: 'icon'
+        Facebookでログイン
+      = link_to "/", class: 'user-login-method__google' do
+        = fa_icon 'google', class: 'icon'
+        Googleでログイン
+    .user-login-form__block
+      -# = form_for(resource, as: resource_name, url: user_session_path, html: { method: :post }) do |f|
+      = form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "user-login-form"}) do |f|
+        .field
+          = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "メールアドレス"
+        .field
+          = f.password_field :password, autocomplete: "current-password", placeholder: "パスワード"
+        .recaptcha-block
+          .recaptcha-block-frame
+            .recaptcha-block-frame__btn
+              =image_tag("/captcha.png", class: "recaptcha-block-frame__img") # 一旦画像で補完（削除予定）堀
+        .actions
+          = f.submit "ログイン", class: 'login-btn'
+        - if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations'
+          = link_to "パスワードをお忘れの方", new_password_path(resource_name), class: 'forgot-password-btn'
+
+= render "layouts/exhibit-footer"
+
+-# ↓元々のerbファイル、安全の為、ログイン機能実装まで残す
+
+-# <h2>Log in</h2>
+
+-# <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+-#   <div class="field">
+-#     <%= f.label :email %><br />
+-#     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+-#   </div>
+
+-#   <div class="field">
+-#     <%= f.label :password %><br />
+-#     <%= f.password_field :password, autocomplete: "current-password" %>
+-#   </div>
+
+-#   <% if devise_mapping.rememberable? %>
+-#     <div class="field">
+-#       <%= f.check_box :remember_me %>
+-#       <%= f.label :remember_me %>
+-#     </div>
+-#   <% end %>
+
+-#   <div class="actions">
+-#     <%= f.submit "Log in" %>
+-#   </div>
+-# <% end %>
+
+-# <%= render "devise/shared/links" %>
