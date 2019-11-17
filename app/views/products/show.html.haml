@@ -1,2 +1,37 @@
-%h1 Products#show
-%p Find me in app/views/products/show.html.haml
+.product-space
+  = @product.description
+  /13.商品説明
+  = @product.name
+  /12.商品名
+  = @product.price
+  /11.価格
+  = @product.delivery_days
+  /10.発送目安
+  = @product.area
+  /9.配送地域
+  = @product.delivery_way
+  /8.配送方法
+  = @product.delivery_charged
+  /7.配送料
+  = @product.seles_status
+  /6.商品状態
+  = @product.brand.name
+  /5.ブランド
+  = @parent.name
+  = @child.name
+  = @grandchild.name
+  /4.カテゴリー
+  = @product.user.name
+  /3.商品出費者
+  = image_tag("/#{@product.images[1].image}", class: "news-todo-list-image")
+  = image_tag("/#{@product.images[2].image}", class: "news-todo-list-image")
+  = image_tag("/#{@product.images[3].image}", class: "news-todo-list-image")
+  = image_tag("/#{@product.images[4].image}", class: "news-todo-list-image")
+  = image_tag("/#{@product.images[5].image}", class: "news-todo-list-image")
+  = image_tag("/#{@product.images[6].image}", class: "news-todo-list-image")
+  = image_tag("/#{@product.images[7].image}", class: "news-todo-list-image")
+  = image_tag("/#{@product.images[8].image}", class: "news-todo-list-image")
+  = image_tag("/#{@product.images[9].image}", class: "news-todo-list-image")
+  /2.画像（9枚）
+  = image_tag("/#{@product.images[0].image}", class: "news-todo-list-image")
+  /1.画像（top)
