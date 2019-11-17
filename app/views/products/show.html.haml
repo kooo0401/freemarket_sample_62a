@@ -126,23 +126,20 @@
         =link_to '/' do
           = fa_icon 'pinterest-square', class: 'icon-pinterest'
   .itembuy-user-profile
-    %section.itembuy-user-profile__box
-    %h2.itembuy-user-profile__head
-      = link_to '/' do
-        @user.nicknameさんのその他の出品
-    .itembuy-user-profile__content
-      =link_to '/' do
-        =image_tag("/mercari-logo.png", class: 'image-box')
-        =image_tag("/mercari-logo.png", class: 'image-box')
-        =image_tag("/mercari-logo.png", class: 'image-box')
-        =image_tag("/mercari-logo.png", class: 'image-box')
-        =image_tag("/mercari-logo.png", class: 'image-box')
-        =image_tag("/mercari-logo.png", class: 'image-box')
-        .itembuy-user-profile__box
-          %section.itembuy-user-profile__items
-            .itembuy-user-profile__body
-              %h3.itembuy-user-profile__name
-                @product.name
-
-
-
+    .itembuy-user-profile__box
+      .itembuy-user-profile__box__head
+        %h3#itembuy.other-category
+        = link_to '/' do
+          @user.nicknameさんのその他の出品
+    -# .itembuy-user-profile__content
+    -#   =link_to '/' do
+    -#     =image_tag("/mercari-logo.png", class: 'image-box')
+    -#     .itembuy-user-profile__box
+    -#       %section.itembuy-user-profile__items
+    -#         .itembuy-user-profile__body
+    -#           %h3.itembuy-user-profile__name
+    -#             @product.name
+    -#           .itembuy-user-profile__num
+    -#             .itembuy-user-profile__price
+    -#               ¥3,580
+    
