@@ -24,6 +24,11 @@ class ProductsController < ApplicationController
   end
 
   def show
+    @product = Product.find(1)
+    # @product = Product.find(params[:id])
+    @grandchild = Category.find("#{@product.category_id}")
+    @child = @grandchild.parent
+    @parent = @child.parent
   end
 
   def edit
