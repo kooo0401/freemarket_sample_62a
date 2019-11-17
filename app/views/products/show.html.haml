@@ -2,7 +2,7 @@
 .itembuy-container
   %section.itembuy-content
     %h1.itembuy-content__name
-      product.name
+      = @product.name
     .itembuy-content__clearfix
       .itembuy-content__photo
         .itembuy-content__auter
@@ -80,7 +80,7 @@
         購入画面に進む
     .itembuy-detail
       %p.itembuy-detail__inner
-        product.description
+        = @product.description
     .itembuy-button
       .itembuy-button__left
         =link_to "#", class: "new-item-image" do

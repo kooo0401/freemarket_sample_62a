@@ -23,6 +23,7 @@ class ProductsController < ApplicationController
 
   def show
     @products = Product.order('id desc').limit(6)
+    @product = Product.find(9)
   end
 
   def edit
