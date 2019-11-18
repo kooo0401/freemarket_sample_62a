@@ -1,7 +1,7 @@
 .user-confirmation{
   height: 100%;
   width: 100%;
-  }.user-confirmation-title{
+  &__title{
     height: 50px;
     width: 700px;
     background-color: #ffffff;
@@ -11,7 +11,7 @@
     font-size: 24px;
     font-weight: bold;
   }
-  .user-confirmation-main{
+  &__main{
     height: 1200px;
     width: 700px;
     margin-top: 2px;
@@ -193,5 +193,4 @@
           .user-angle-right{
             font-size: 1.2rem;
           }
-
-        
+}
