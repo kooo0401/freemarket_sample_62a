@@ -26,6 +26,7 @@
     %section.signup-view-block
       %h2.signup-view-block__explanation 
         会員情報入力
+      = render partial: 'error-messages', locals: {user: @user, column: "nickname"}
 
       = form_for @user, url: user_registration2_signup_index_path, method: :get, html: {class: 'signup-view-block__form'} do |f|
         .signup-view-block__form--top
@@ -47,7 +48,6 @@
             %span.signup-form1__span
               必須
             = f.password_field :password, placeholder: '6文字以上', class: 'signup-form1__form'
-            = f.password_field :password_confirmation, placeholder: '6文字以上', class: 'signup-form1__form'
           %input.password-open-btn{ type: "checkbox" }
             パスワードを表示する
           .signup-form1

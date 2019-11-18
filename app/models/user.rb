@@ -30,9 +30,26 @@ class User < ApplicationRecord
 
   # user_registration3入力項目
   validates :zip, length: { maximum: 8 }, format: { with: VALID_POSTAL_CODE, message: 'は有効でありません。' }, on: :validates_step3
-  validates :city_name, length: { maximum: 50 }, on: :validates_step3
-  validates :block_name, length: { maximum: 100 }, on: :validates_step3
-  validates :bill_name, length: { maximum: 100 }, on: :validates_step3
+  # validates :city_name, length: { maximum: 50 }, on: :validates_step3
+  # validates :block_name, length: { maximum: 100 }, on: :validates_step3
+  # validates :bill_name, length: { maximum: 100 }, on: :validates_step3
 
+  # 下記の記述が無いと、devise機能によりemailとpasswordのバリデーションが抜けられない
+
+  protected
+  
+  def password_required?
+    # ステップ1のときだけバリデーションがかかるように条件分岐
+    if validation_context == :user_registration1
+      !persisted? || !password.nil? || !password_confirmation.nil?
+    end
+  end
+
+  def email_required?
+    # ステップ1のときだけバリデーションがかかるように条件分岐
+    if validation_context == :user_registration1
+      true
+    end
+  end
 
 end
