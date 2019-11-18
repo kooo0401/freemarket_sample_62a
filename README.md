@@ -37,7 +37,7 @@
 |last_name_kana|string|null: false|
 |first_name_kana|string|null: false|
 |birthday|date|null: false|
-|tel|integer|null: false|
+|tel|string|null: false|
 |self_introduction|text|
 |money|integer|
 |point|integer|
@@ -47,6 +47,7 @@
 |block_name|string|
 |bill_name|string|
 <!-- nameカラム,name_kanaをlast_name,first_name,last_name_kana,first_name_kanaに変更修正 191116堀 -->
+<!-- telカラムのTypeをintegerからstringに変更済み>
 
 ### Association
 - has_many :products, dependent: :destroy
