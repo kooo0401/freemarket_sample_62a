@@ -1,12 +1,47 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  # :confirmable, :lockable, :timeoutable, :trackable and 
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+         :recoverable, :rememberable, :validatable, 
+         :omniauthable
   has_many :products, dependent: :destroy
+  has_many :sns_credentials, dependent: :destroy
   # has_many :histories, dependent: :destroy
   # has_one  :credit, dependent: :destroy
   # has_one  :address, dependent: :destroy
+
+
+  # 以下、Oauth用メソッドです。1メールアドレス(=1userレコード)に複数のsns_credentialがつくことを許容する流れを仮定しています。by平野
+  # -------------------------------------------------------------------------------------------
+  def self.from_omniauth(auth)
+    user = User.where(email: auth.info.email).first
+    sns_credential_record = SnsCredential.where(provider: auth.provider, uid: auth.uid)
+
+    if user.present?
+      unless sns_credential_record.present?
+        SnsCredential.create(
+          user_id: user.id,
+          provider: auth.provider,
+          uid: auth.uid
+        )
+      end
+    elsif
+      user = User.new(
+        id: User.all.last.id + 1,
+        email: auth.info.email,
+        password: Devise.friendly_token[0, 20],
+        nickname: auth.info.name,
+      )
+      SnsCredential.create(
+        provider: auth.provider,
+        uid: auth.uid,
+        user_id: user.id
+      )
+    end 
+  user
+  end
+  # -------------------------------------------------------------------------------------------
+
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   VALID_PASSWORD_REGEX = /\A(?=.*?[a-zA-Z])(?=.*?\d)[a-zA-Z\d!@#\$%\^\&*\)\(+=._-]{7,255}\z/i

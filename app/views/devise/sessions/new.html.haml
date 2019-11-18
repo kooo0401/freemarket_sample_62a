@@ -8,12 +8,24 @@
         %p.user-create-box__explanation アカウントをお持ちでない方はこちら
         = link_to "新規会員登録", signup_index_path, class: 'user-create-box__btn'
     .user-login-method
-      = link_to "/", class: 'user-login-method__facebook' do
-        = fa_icon 'facebook-square', class: 'icon'
-        Facebookでログイン
-      = link_to "/", class: 'user-login-method__google' do
-        = fa_icon 'google', class: 'icon'
-        Googleでログイン
+      -if Rails.env.development?
+        = link_to user_facebook_omniauth_authorize_path, class: 'user-login-method__facebook', method: :post do
+          = fa_icon 'facebook-square', class: 'icon'
+          Facebookでログイン
+        = link_to user_google_oauth2_omniauth_authorize_path, class: 'user-login-method__google', method: :post do
+          = fa_icon 'google', class: 'icon'
+          Googleでログイン
+      -else
+        = link_to "/", class: 'user-login-method__facebook' do
+          = fa_icon 'facebook-square', class: 'icon'
+          Facebookでログイン
+        = link_to "/", class: 'user-login-method__google' do
+          = fa_icon 'google', class: 'icon'
+          Googleでログイン
+
+
+
+
     .user-login-form__block
       -# = form_for(resource, as: resource_name, url: user_session_path, html: { method: :post }) do |f|
       = form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "user-login-form"}) do |f|
