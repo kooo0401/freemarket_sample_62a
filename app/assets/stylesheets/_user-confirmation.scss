@@ -1,0 +1,196 @@
+.user-confirmation{
+  height: 100%;
+  width: 100%;
+  &__title{
+    height: 50px;
+    width: 700px;
+    background-color: #ffffff;
+    color: black;
+    text-align: center;
+    line-height: 50px;
+    font-size: 24px;
+    font-weight: bold;
+  }
+  &__main{
+    height: 1200px;
+    width: 700px;
+    margin-top: 2px;
+    background-color: #ffffff;
+    padding-left: 50px;
+    }
+    .user-confirmation-description{
+      padding: 80px 0 0 0;
+      font-size: 0.9rem;
+      }
+      .user-confirmation-upload{
+        margin: 10px 70px 0 0;
+        float: right;
+        color: #0099e8;
+        font-size: 0.9rem;
+        text-decoration: none;
+        }
+        .user-angle-right{
+          font-size: 1.2rem;
+        }
+        .user-confirmation-name{
+          width: 100%;
+          margin-top: 60px;
+          font-size: 0.9rem;
+          font-weight: bold;
+          float: left;
+        }
+        .user-confirmation-name-each{
+          width: 100%;
+          margin-top: 5px;
+          font-size: 0.9rem;
+          float: left;
+        }
+        .user-confirmation-namekana{
+          width: 100%;
+          margin-top: 30px;
+          font-size: 0.9rem;
+          font-weight: bold;
+          float: left;
+        }
+        .user-confirmation-namekana-each{
+          width: 100%;
+          margin-top: 5px;
+          font-size: 0.9rem;
+          float: left;
+        }
+        .user-confirmation-born{
+          width: 100%;
+          margin-top: 30px;
+          font-size: 0.9rem;
+          font-weight: bold;
+          float: left;
+        }
+        .user-confirmation-born-each{
+          width: 100%;
+          margin-top: 5px;
+          font-size: 0.9rem;
+          float: left;
+        }
+        .user-confirmation-zip-space{
+          margin-top: 30px;
+          height: 30px;
+          width: 100%;
+          float: left;
+          }
+          .user-confirmation-zip{
+            font-size: 0.9rem;
+            font-weight: bold;
+            float: left;
+          }
+          .user-confirmation-any{
+            width: 40px;
+            text-align: center;
+            background-color:darkgrey;
+            color: #ffffff;
+            float: left;
+            font-size: 0.9rem;
+            margin-left: 10px;
+            border-radius: 2px;
+          }
+        .zip-place-holder-field{
+          width: 90%;
+          height: 50px;
+          border-radius: 4px;
+          margin-top: 5px;
+          float: left;
+        }
+        .user-confirmation-prefectures-space{
+          margin-top: 30px;
+          height: 30px;
+          width: 100%;
+          float: left;
+          }
+          .user-confirmation-prefectures{
+            font-size: 0.9rem;
+            font-weight: bold;
+            float: left;
+          }
+        select{
+          width: 90%;
+          height: 50px;
+          border-radius: 4px;
+          margin-top: 5px;
+          float: left;
+        }
+        .user-confirmation-municipalities-space{
+          margin-top: 30px;
+          height: 30px;
+          width: 100%;
+          float: left;
+          }
+          .user-confirmation-municipalities{
+            font-size: 0.9rem;
+            font-weight: bold;
+            float: left;
+          }
+        .municipalities-place-holder-field{
+          width: 90%;
+          height: 50px;
+          border-radius: 4px;
+          margin-top: 5px;
+          float: left;
+        }
+        .user-confirmation-address-space{
+          margin-top: 30px;
+          height: 30px;
+          width: 100%;
+          float: left;
+          }
+          .user-confirmation-address{
+            font-size: 0.9rem;
+            font-weight: bold;
+            float: left;
+          }
+        .address-place-holder-field{
+          width: 90%;
+          height: 50px;
+          border-radius: 4px;
+          margin-top: 5px;
+          float: left;
+        }
+        .user-confirmation-building-space{
+          margin-top: 30px;
+          height: 30px;
+          width: 100%;
+          float: left;
+          }
+          .user-confirmation-building{
+            font-size: 0.9rem;
+            font-weight: bold;
+            float: left;
+          }
+        .building-place-holder-field{
+          width: 90%;
+          height: 50px;
+          border-radius: 4px;
+          margin-top: 5px;
+          float: left;
+        }
+        .user-confirmation-btn{
+          height: 50px;
+          width: 90%;
+          margin-top: 30px;
+          background-color: #ea352d;
+          color: #ffffff;
+          text-align: center;
+          line-height: 50px;
+          text-decoration: none;
+          float: left;
+          font-size: 0.9rem;
+        }
+        .user-confirmation-about{
+          margin: 30px 70px 0 0;
+          float: right;
+          color: #0099e8;
+          font-size: 0.9rem;
+          text-decoration: none;
+          }
+          .user-angle-right{
+            font-size: 1.2rem;
+          }
+}
