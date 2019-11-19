@@ -1,19 +1,25 @@
 $(function(){
   let mouses = $(".owl-carousel-sub");
-  function mouseover(){
+  function imageSelect(){
     $(".active").removeClass("active");
     $(this).addClass("active");
+    $('.active').css('opacity', '1');
     const index = mouses.index(this);
-    $(".owl-carousel-main").removeClass("show").eq(index).addClass("show");
-    $(".owl-carousel-main").addClass("hide").eq(index).removeClass("hide");
-    $('.show').fadeIn(1000);
-    $('.hide').hide();
+    $(".owl-carousel-main").removeClass("show").eq(index).addClass("show", function() {(
+      ('.owl-carousel-space').scrollIntoView('left', '300')
+    );
+  });
+
   }
-  mouses.mouseleave(mouseover); 
+  function imageNotSelect(){
+    $('.active').css('opacity', '0.4');
+  }
+  mouses.mouseenter(imageSelect); 
+  mouses.mouseleave(imageNotSelect)
 });
 
 $(function()  {
   $(window).load(function(){
-    $('.hide').hide()
+    $('.show').show()
   })
 });

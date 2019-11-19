@@ -19,19 +19,36 @@
   &__auter{
     height: 300px;
     width: 300px;
-    z-index: 0;
     overflow: hidden;  
   }
   &__owl-carousel{
     position: relative;
-    height: 0;
-  }
+    height: 300px;
+    width: 300px ;
+    .owl-carousel-space{
+      height: 300px;
+      width: 3000px;
+      display: flex;
+      position: absolute;
+      top: 0;
+      left: -300px;
+      }
+      .owl-carousel-main{
+        height: 300px;
+        width: 300px;
+      }
+    }
   &__owl-carousel-thumb{
     display: inline-block;
     font-size: 0;
     color: #fff;
     position: relative;
-  }
+    overflow: hidden;
+    cursor: pointer;
+    .owl-carousel-sub{
+      opacity: 0.4;
+    }
+    }
   &__clearfix{
     margin-top: 16px;
   }

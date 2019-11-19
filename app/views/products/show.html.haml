@@ -6,20 +6,21 @@
     .itembuy-content__clearfix
       .itembuy-content__photo
         .itembuy-content__auter
-          .itembuy-content__owl-carousel{ id: 'main' }
-            =image_tag("/mercari-logo.png", class: 'owl-carousel-main show', size: '300x300')
-            =image_tag("/IMG_footer-top-image.png", class: 'owl-carousel-main hide', size: '300x300')
-            =image_tag("/IMG_mercari-footer-image.png", class: 'owl-carousel-main hide', size: '300x300')
-            =image_tag("/mercari-logo.png", class: 'owl-carousel-main show', size: '300x300')
-            =image_tag("/IMG_footer-top-image.png", class: 'owl-carousel-main hide', size: '300x300')
-            =image_tag("/IMG_mercari-footer-image.png", class: 'owl-carousel-main hide', size: '300x300')
+          .itembuy-content__owl-carousel
+            .owl-carousel-space
+              =image_tag("/IMG_mercari-footer-image.png", class: 'owl-carousel-main show')
+              =image_tag("/IMG_footer-top-image.png", class: 'owl-carousel-main', size: '300x300')
+              =image_tag("/IMG_mercari-footer-image.png", class: 'owl-carousel-main', size: '300x300')
+              =image_tag("/IMG_footer-top-image.png", class: 'owl-carousel-main', size: '300x300')
+              =image_tag("/IMG_mercari-footer-image.png", class: 'owl-carousel-main', size: '300x300')
+              =image_tag("/IMG_footer-top-image.png", class: 'owl-carousel-main', size: '300x300')
         .itembuy-content__owl-carousel-thumb{id: 'thumbs'}
-          =image_tag("/mercari-logo.png", class: 'owl-carousel-sub active', size: '60x60')
-          =image_tag("/IMG_footer-top-image.png", class: 'owl-carousel-sub', size: '60x60')
-          =image_tag("/IMG_mercari-footer-image.png", class: 'owl-carousel-sub', size: '60x60')
-          =image_tag("/mercari-logo.png", class: 'owl-carousel-sub active', size: '60x60')
-          =image_tag("/IMG_footer-top-image.png", class: 'owl-carousel-sub', size: '60x60')
-          =image_tag("/IMG_mercari-footer-image.png", class: 'owl-carousel-sub', size: '60x60')
+          =image_tag("/IMG_mercari-footer-image.png", class: 'owl-carousel-sub active black', size: '60x60')
+          =image_tag("/IMG_footer-top-image.png", class: 'owl-carousel-sub white', size: '60x60')
+          =image_tag("/IMG_mercari-footer-image.png", class: 'owl-carousel-sub white', size: '60x60')
+          =image_tag("/IMG_footer-top-image.png", class: 'owl-carousel-sub white', size: '60x60')
+          =image_tag("/IMG_mercari-footer-image.png", class: 'owl-carousel-sub white', size: '60x60')
+          =image_tag("/IMG_footer-top-image.png", class: 'owl-carousel-sub white', size: '60x60')
       %table.itembuy-content__table
         %tbody
           %tr
