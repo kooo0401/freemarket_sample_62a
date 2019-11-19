@@ -1,0 +1,31 @@
+.user-container
+  .user-container-header
+    %h1.user-container-header__left
+      =link_to root_path, class: "signup-home-link" do
+        = image_tag("//www-mercari-jp.akamaized.net/assets/img/common/common/logo.svg?404657508",size: "189x49",class: "image")
+    %nav.user-signup-bar
+      %ol.user-signup-bar-progress5
+        %li.user-signup-bar-progress5__type
+          会員情報
+          .user-signup-bar-progress5__rod-red-first
+        %li.user-signup-bar-progress5__type
+          電場番号認証
+          .user-signup-bar-progress5__rod-red
+        %li.user-signup-bar-progress5__type
+          お届け先住所入力
+          .user-signup-bar-progress5__rod-red
+        %li.user-signup-bar-progress5__type
+          支払い方法
+          .user-signup-bar-progress5__rod-red
+        %li.user-signup-bar-progress5__type-red
+          完了
+          .user-signup-bar-progress5__rod-last-red
+
+  .signup-view-1page
+    %section.signup-view-block
+      %h2.signup-view-block__explanation 
+        登録完了
+        .signup-next-submit
+          = link_to 'メルカリを始める', root_path
+
+  = render "layouts/exhibit-footer"

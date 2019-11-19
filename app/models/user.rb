@@ -6,7 +6,9 @@ class User < ApplicationRecord
   has_many :products, dependent: :destroy
   # has_many :histories, dependent: :destroy
   # has_one  :credit, dependent: :destroy
-  # has_one  :address, dependent: :destroy
+  has_one  :myaddress, dependent: :destroy
+  accepts_nested_attributes_for :myaddress
+  # ↑子モデルのデータに保存する為の記述
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   VALID_PASSWORD_REGEX = /\A(?=.*?[a-zA-Z])(?=.*?\d)[a-zA-Z\d!@#\$%\^\&*\)\(+=._-]{7,255}\z/i

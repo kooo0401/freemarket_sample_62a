@@ -57,26 +57,44 @@
               安心・安全にご利用いただくために、お客さまの本人情報の登録にご協力ください。他のお客さまに公開されることはありません。
 
           .signup-form1
-            %label.signup-form1__label
-              お名前(全角)
-            %span.signup-form1__span
-              必須
-            = f.text_field :last_name, placeholder: '例) 山田', class: 'signup-form1__form'
-            = f.text_field :first_name, placeholder: '例) 彩', class: 'signup-form1__form'
-            %label.signup-form1__label
-              お名前カナ(全角)
-            %span.signup-form1__span
-              必須
-            = f.text_field :last_name_kana, placeholder: '例) ヤマダ', class: 'signup-form1__form'
-            = f.text_field :first_name_kana, placeholder: '例) アヤ', class: 'signup-form1__form'
+            .signup-form1-fullname
+              %label.signup-form1__label
+                お名前(全角)
+              %span.signup-form1__span
+                必須
+            = f.text_field :last_name, placeholder: '例) 山田', class: 'signup-form1__last-name'
+            = f.text_field :first_name, placeholder: '例) 彩', class: 'signup-form1__first-name'
+          .signup-form1
+            .signup-form1-fullname
+              %label.signup-form1__label
+                お名前カナ(全角)
+              %span.signup-form1__span
+                必須
+            = f.text_field :last_name_kana, placeholder: '例) ヤマダ', class: 'signup-form1__last-name'
+            = f.text_field :first_name_kana, placeholder: '例) アヤ', class: 'signup-form1__first-name'
+          .signup-form1
             %label.signup-form1__label
               生年月日
             %span.signup-form1__span
               必須
             .birthday-form
               != sprintf(f.date_select(:birthday, prefix:'birthday',with_css_classes:'XXXXX', prompt:"--",use_month_numbers:true, start_year:Time.now.year, end_year:1900, date_separator:'%s'),'年','月')+'日'
+          %p.caution-statement
+            ※ 本人情報は正しく入力してください。会員登録後、修正するにはお時間を頂く場合があります。
+          .recaptcha-block
+            .recaptcha-block-frame
+              .recaptcha-block-frame__btn
+                =image_tag("/captcha.png", class: "recaptcha-block-frame__img") # 一旦画像で補完（削除予定）堀
+            .caution-statement-block
+              %p.caution-statement-block-text
+                次へ進む」のボタンを押すことにより、
+                = link_to( "利用規約", "/" )
+                に同意したものとみなします
+          .signup-next-submit
             = f.submit '次へ進む'
-
+          .signup-text-right
+            %p.signup-text-content
+              = link_to( "本人情報の登録について〉", "/", class: "signup-text-link")
         .signup-view-block__form--bottom
 
   = render "layouts/exhibit-footer"

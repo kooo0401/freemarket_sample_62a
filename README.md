@@ -41,7 +41,7 @@
 |self_introduction|text|
 |money|integer|
 |point|integer|
-|zip|integer|
+|zip|string|
 |prefecture|string|
 |city_name|string|
 |block_name|string|
@@ -63,12 +63,12 @@
 |first_name|string|null: false|
 |last_name_kana|string|null: false|
 |first_name_kana|string|null: false|
-|zip|integer|null: false|
+|zip|string|null: false|
 |prefecture|string|null: false|
 |city_name|string|null: false|
 |block_name|string|null: false|
 |bill_name|string|
-|tel|integer|
+|tel|string|
 |user_id|integer|foreign_key: true, null: false|
 <!-- テーブル名が被った為(都道府県テーブル)、テーブル名修正 191116堀 -->
 

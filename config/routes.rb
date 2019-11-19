@@ -19,6 +19,7 @@ Rails.application.routes.draw do
       get 'user_registration2'
       get 'user_registration3'
       get 'user_registration4'
+      get 'user_registration5'
       get 'done'
     end
   end
