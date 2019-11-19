@@ -1,0 +1,50 @@
+= form_with model: @user, local: true do |f|
+  .user-confirmation
+    .user-confirmation__title
+      %h1 本人情報の登録
+    .user-confirmation__main
+      %p.user-confirmation-description
+        お客さまの本人情報をご登録ください。
+        %br
+        登録されたお名前・生年月日を変更する場合、本人確認書類の提出が必要になります。
+      =link_to "javascript:void(0)", class: "user-confirmation-upload" do
+        本人確認書類のアップロードについて
+        =fa_icon 'angle-right', class: 'user-angle-right'
+      %h2.user-confirmation-name お名前
+      %p.user-confirmation-name-each 村上 雅樹
+      %h3.user-confirmation-namekana お名前カナ
+      %p.user-confirmation-namekana-each ムラカミ マサキ
+      %h4.user-confirmation-born 生年月日
+      %p.user-confirmation-born-each 1996/11/11
+      .user-confirmation-zip-space
+        %h5.user-confirmation-zip 郵便番号
+        %p.user-confirmation-any 任意
+      .zip-place-holder
+        = f.text_field :content, class: 'zip-place-holder-field', placeholder: '例）1234567'
+      .user-confirmation-prefectures-space
+        %h5.user-confirmation-prefectures 都道府県
+        %p.user-confirmation-any 任意
+      .prefectures-place-holder
+        = f.collection_select :prefecture_id, Prefecture.all, :id, :name, class: 'prefectures-place-holder-field'
+      .user-confirmation-municipalities-space
+        %h5.user-confirmation-municipalities 市区町村
+        %p.user-confirmation-any 任意
+        .user-confirmation-any
+      .municipalities-place-holder
+        = f.text_field :content, class: 'municipalities-place-holder-field', placeholder: '例）横浜市緑区'
+      .user-confirmation-address-space
+        %h5.user-confirmation-address 番地
+        %p.user-confirmation-any 任意
+        .user-confirmation-any
+      .address-place-holder
+        = f.text_field :content, class: 'address-place-holder-field', placeholder: '例）青山1-1-1'
+      .user-confirmation-building-space
+        %h5.user-confirmation-building 建物名
+        %p.user-confirmation-any 任意
+        .user-confirmation-any
+      .building-place-holder
+        = f.text_field :content, class: 'building-place-holder-field', placeholder: '例）柳ビル103'
+      =link_to "登録する", "javascript:void(0)", class: "user-confirmation-btn"
+      =link_to "javascript:void(0)", class: "user-confirmation-about" do
+        本人情報の登録について
+        =fa_icon 'angle-right', class: 'user-angle-right'

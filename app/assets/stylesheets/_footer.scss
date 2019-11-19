@@ -159,7 +159,7 @@
         height: 70%;
         width: 300px;
         float: left;
-        margin: 0 0 100px 150px;
+        margin: 0 0 0 300px;
         color: #ffffff;
         line-height: 100px;
         text-align: center;
@@ -177,6 +177,7 @@
    right: 30px;
    text-decoration: none;
    background-color: red;
+   z-index: 100;
    }
    .exhibit-name{
      height: 18px;

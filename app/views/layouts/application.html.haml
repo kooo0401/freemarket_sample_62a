@@ -6,17 +6,7 @@
     = csrf_meta_tags
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application'
-    %link{ href: '//cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.0/slick/slick-theme.scss',
-    rel: 'stylesheet', type: 'text/css' }/
-    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
-    %script{ src: '//cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.0/slick/slick.min.js', type: 'text/javascript' }
   %body
-   
-    -# = render 'layouts/header'
-    
 
 
     = yield
-
-    -# = render 'layouts/footer'
-  

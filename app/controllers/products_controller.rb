@@ -18,18 +18,26 @@ class ProductsController < ApplicationController
   end
 
   def new
-    @product = Product.new
+    # 以下、ログイン機能設計次第で要不要判断
+    # 以下の記述はログイン、ログアウト機能の導入後にコメントアウトを外すこと
+    # redirect_to: controller: :user, action: :ログイン画面に対応するアクション unless user_signed_in?
   end
 
   def show
-    @products = Product.order('id desc').limit(6)
-    @product = Product.find(9)
+    @product = Product.find(1)
+    #実際にテーブルからid:1のproductを取得できているかの記述。
+    # @product = Product.find(params[:id])
+    # 商品出品が可能になったら、一つ一つのproductからidで取得する。
+    @grandchild = Category.find("#{@product.category_id}")
+    @child = @grandchild.parent
+    @parent = @child.parent
   end
 
   def edit
   end
 
   def create
+    @product = Product.create
   end
 
   # 以下、仮に人気カテゴリー、人気ブランドをリアルタイム対応させる場合の記述。

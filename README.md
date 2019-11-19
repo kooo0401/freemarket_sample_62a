@@ -29,13 +29,15 @@
 ## usersテーブル
 |Column|Type|Options|
 |------|----|-------|
-|name|string|null: false|
 |nickname|string|null: false|
 |email|string|null: false, unique: true|
 |password|string|null: false|
-|name_kana|string|null: false|
+|last_name|string|null: false|
+|first_name|string|null: false|
+|last_name_kana|string|null: false|
+|first_name_kana|string|null: false|
 |birthday|date|null: false|
-|tel|integer|null: false|
+|tel|string|null: false|
 |self_introduction|text|
 |money|integer|
 |point|integer|
@@ -44,6 +46,8 @@
 |city_name|string|
 |block_name|string|
 |bill_name|string|
+<!-- nameカラム,name_kanaをlast_name,first_name,last_name_kana,first_name_kanaに変更修正 191116堀 -->
+<!-- telカラムのTypeをintegerからstringに変更済み>
 
 ### Association
 - has_many :products, dependent: :destroy
@@ -52,7 +56,7 @@
 - has_one  :address, dependent: :destroy
 
 
-## addressesテーブル
+## myaddressesテーブル
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false|
@@ -64,6 +68,8 @@
 |bill_name|string|
 |tel|integer|
 |user_id|integer|foreign_key: true, null: false|
+<!-- テーブル名が被った(都道府県テーブル)為、テーブル名修正 191116堀 -->
+
 
 ### Association
 - belongs_to :user
