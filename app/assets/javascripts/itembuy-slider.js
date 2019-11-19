@@ -1,16 +1,17 @@
 $(function(){
   let mouses = $(".owl-carousel-sub");
   function imageSelect(){
-    $(".active").removeClass("active");
-    $(this).addClass("active");
-    $('.active').css('opacity', '1');
+    // $(".active").removeClass("active");
+    // $(this).addClass("active");
+    // $('.active').css('opacity', '1');
     const index = mouses.index(this);
-    $(".owl-carousel-main").removeClass("show").eq(index).addClass("show", function() {(
-      ('.owl-carousel-space').scrollIntoView('left', '300')
-    );
-  });
-
-  }
+    var scrollvalue = -300 * index;
+    $(".active").removeClass("active")
+    $(this).addClass("active")
+    $('.owl-carousel-space').css("left", scrollvalue);
+    $('.active').css('opacity', '1');
+    $(".owl-carousel-main").removeClass("show").eq(index).addClass("show")
+    };
   function imageNotSelect(){
     $('.active').css('opacity', '0.4');
   }
@@ -20,6 +21,7 @@ $(function(){
 
 $(function()  {
   $(window).load(function(){
-    $('.show').show()
+    $('.show').show();
+    $('.active').css('opacity', '1');
   })
 });
