@@ -16,7 +16,6 @@ class User < ApplicationRecord
   def self.from_omniauth(auth)
     user = User.where(email: auth.info.email).first
     sns_credential_record = SnsCredential.where(provider: auth.provider, uid: auth.uid)
-
     if user.present?
       unless sns_credential_record.present?
         SnsCredential.create(

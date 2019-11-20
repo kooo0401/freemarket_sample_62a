@@ -1,5 +1,8 @@
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 require 'spec_helper'
+require 'devise'
+require_relative 'support/controller_macros'
+
 ENV['RAILS_ENV'] ||= 'test'
 
 require File.expand_path('../config/environment', __dir__)
@@ -9,6 +12,23 @@ abort("The Rails environment is running in production mode!") if Rails.env.produ
 require 'rspec/rails'
 # Add additional requires below this line. Rails is not loaded until this point!
 
+module OmniauthMocks
+  def facebook_mock
+    OmniAuth.config.mock_auth[:facebook] = OmniAuth::AuthHash.new(
+      {
+        provider: 'facebook',
+        uid: '12345',
+        info: {
+          name: 'mockuser',
+          email: 'sample@test.com'
+        },
+        credentials: {
+          token: 'hogefuga'
+        }
+      }
+    )
+  end
+end
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
 # run as spec files by default. This means that files in spec/support that end
@@ -41,6 +61,16 @@ RSpec.configure do |config|
   # instead of true.
   config.use_transactional_fixtures = true
 
+  # 以下Omniauthテスト用コードby平野
+  # ----------------------------------
+  OmniAuth.config.test_mode = true
+  config.include OmniauthMocks
+  # ----------------------------------
+  Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
+  config.include Devise::Test::ControllerHelpers, type: :controller
+  config.include Devise::Test::ControllerHelpers, type: :view
+  # config.include Devise::TestHelpers, :type => :controller
+  config.include ControllerMacros, :type => :controller
   # RSpec Rails can automatically mix in different behaviours to your tests
   # based on their file location, for example enabling you to call `get` and
   # `post` in specs under `spec/controllers`.
