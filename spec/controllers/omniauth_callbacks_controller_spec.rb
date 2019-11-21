@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe Users::OmniauthCallbacksController, type: :controller do
-  let(:user) { create(:user) }
   before do
     request.env["devise.mapping"] = Devise.mappings[:user]
   end
@@ -10,7 +9,7 @@ RSpec.describe Users::OmniauthCallbacksController, type: :controller do
     before do
       request.env["omniauth.auth"] = facebook_mock
     end
-    context '認可サーバーから返ってきたメールアドレスを持つuserがすでに登録済みの場合' do
+    context '認可サーバーから返ってきたメールアドレスを、すでに登録済みのuserが持っていた場合' do
       before do
         user = create(:user, email: 'sample@test.com')
       end
