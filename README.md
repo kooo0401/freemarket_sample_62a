@@ -54,7 +54,8 @@
 - has_many :histories, dependent: :destroy
 - has_one  :credit, dependent: :destroy
 - has_one  :address, dependent: :destroy
-
+- has_many :sns_credentials, dependent: destroy
+<!-- oauth認証のため追加 191118平野 -->
 
 ## myaddressesテーブル
 |Column|Type|Options|
@@ -182,3 +183,14 @@
 
 <!-- brandsテーブルとcategoryテーブルが紐づいている可能性あり
 brands,categoryの中身をメルカリサイトから引っ張ってくる際に対応予定 -->
+
+## sns_credentialsテーブル
+|Column|Type|Options|
+|------|----|-------|
+|provider|string|
+|uid|string||
+|user_id|integer|
+
+### Association
+- belongs_to :user
+<!-- oauth認証のため追加 191118平野 -->
