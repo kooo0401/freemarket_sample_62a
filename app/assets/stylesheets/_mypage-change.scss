@@ -1,0 +1,45 @@
+.item-edit-content{
+  padding: 24px 40px 40px;
+  background: #fff;
+  margin: 40px auto 0;
+  width: 700px;
+  h1{
+    font-size: 24px;
+    text-align: center;
+    word-wrap: break-word;
+    line-height: 1.4;
+    font-weight: bold;
+  }
+  &__photo{
+    float: left;
+    min-width: 300px;
+    max-width: 300px;
+    min-height: 375px;
+  }
+  &__auter{
+    height: 300px;
+    width: 300px;
+    z-index: 0;
+    overflow: hidden;
+  }
+  &__owl-carousel{
+    position: relative;
+    height: 300px;
+    width: 300px ;
+    .owl-carousel-space{
+      height: 300px;
+      width: 3000px;
+      display: flex;
+      position: absolute;
+      left: 0;
+      top: 0;
+      }
+      .owl-carousel-main{
+        height: 300px;
+        width: 300px;
+      }
+  }
+  &__clearfix{
+    margin-top: 16px;
+  }
+}
