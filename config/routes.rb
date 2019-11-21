@@ -16,6 +16,7 @@ Rails.application.routes.draw do
       get 'profile_edit'
       get 'credit_edit'
       get 'confirmation_edit'
+      get '/products/:id', to: "products#change"
     end
   end
 
