@@ -1,9 +1,9 @@
-.item-edit-content{
+.itembuy-content {
   padding: 24px 40px 40px;
   background: #fff;
   margin: 40px auto 0;
   width: 700px;
-  h1{
+  h1 {
     font-size: 24px;
     text-align: center;
     word-wrap: break-word;
@@ -19,8 +19,7 @@
   &__auter{
     height: 300px;
     width: 300px;
-    z-index: 0;
-    overflow: hidden;
+    overflow: hidden;  
   }
   &__owl-carousel{
     position: relative;
@@ -38,8 +37,113 @@
         height: 300px;
         width: 300px;
       }
-  }
-  &__clearfix{
-    margin-top: 16px;
+    }
+    &__clearfix{
+      margin-top: 16px;
+    }
+    &__table {
+      float: right;
+      max-width: 300px;
+      height: 420px;
+      margin: 0 auto;
+      width: 100%;
+      border-collapse: collapse;
+      border: 1px solid #f5f5f5;
+      th{
+        width: 39%;
+        text-align: left;
+        font-weight: 400;
+        background: #fafafa;
+        padding: 8px
+    　}
+      td{
+        width: 61%;
+        background: #fff;
+        padding: 8px;
+        border-collapse: collapse;
+        border: 1px solid #f5f5f5;
+      }
+    }
+    &__price{
+      clear: both;
+      margin-top: 24px;
+      text-align: center;
+    }
+    &__bold{
+      margin-right: 16px;
+      font-size: 50px;
+      font-weight: 600;
+    }
+    &__tax{
+      font-size: 10px;
+    }
+    &__fee{
+      display: inline-block;
+      font-size: 16px;
+    }
+    &__ratings {
+      display: inline-block;
+      margin: 8px 0 0 16px;
+    }
+      .icon-r {
+        font-size: 20px;
+        vertical-align: middle;
+        color: #ef5185;
+        margin: 0;
+      }
+      .icon-y {
+        font-size: 20px;
+        vertical-align: middle;
+        color: #fba933;
+      }
+      .icon-b {
+        font-size: 20px;
+        vertical-align: middle;
+        color: #6ab5d8;
+      }
+      .icon-g {
+        font-size: 20px;
+        margin-right: 10px;
+        vertical-align: middle;
+        color: #C0C0C0;
+      }
+      &__change-status  {
+        background-color: #f5f5f5;
+        width: 700px;
+        margin: 30px auto;
+        text-align: center;
+        a:hover {
+          text-decoration: none;
+        }
+        &-btns  {
+          padding: 10px 40px;
+          background-color: #fff;
+        }
+      }
+    
+}
+.itembuy-detail{
+  padding: 32px 0;
+  line-height: 1.5;
+  font-size: 18px;
+  &__inner{
+    white-space: pre-wrap;
   }
 }
+.itembuy-content__text-center {
+  font-size: 24px;
+  line-height: 30px;
+  background-color: #fff;
+}
+.itembuy-gray-box{
+  text-decoration: none;
+  font-size: 24px;
+  line-height: 60px;
+  display: block;
+  margin-top: 3px;
+  background: gray;
+  color: #fff;
+  text-align: center;
+  font-weight: 600;
+}
+
