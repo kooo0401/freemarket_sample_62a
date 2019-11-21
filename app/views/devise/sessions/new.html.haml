@@ -6,31 +6,44 @@
     .user-create
       .user-create-box
         %p.user-create-box__explanation アカウントをお持ちでない方はこちら
-        = link_to "新規会員登録", "/users/signup", class: 'user-create-box__btn'
+        = link_to "新規会員登録", signup_index_path, class: 'user-create-box__btn'
     .user-login-method
-      = link_to "/", class: 'user-login-method__facebook' do
-        = fa_icon 'facebook-square', class: 'icon'
-        Facebookでログイン
-      = link_to "/", class: 'user-login-method__google' do
-        = fa_icon 'google', class: 'icon'
-        Googleでログイン
-    %form.user-login-form
-      .user-login-form__block
-        = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-          .field
-            = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "メールアドレス"
-          .field
-            = f.password_field :password, autocomplete: "current-password", placeholder: "パスワード"
-          .recaptcha-block
-            .recaptcha-block-frame
-              .recaptcha-block-frame__btn
-                =image_tag("/captcha.png", class: "recaptcha-block-frame__img") # 一旦画像で補完（削除予定）堀
-          .actions
-            = f.submit "ログイン", class: 'login-btn'
-          - if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations'
-            = link_to "パスワードをお忘れの方", new_password_path(resource_name), class: 'forgot-password-btn'
+      -if Rails.env.development?
+        = link_to user_facebook_omniauth_authorize_path, class: 'user-login-method__facebook', method: :post do
+          = fa_icon 'facebook-square', class: 'icon'
+          Facebookでログイン
+        = link_to user_google_oauth2_omniauth_authorize_path, class: 'user-login-method__google', method: :post do
+          = fa_icon 'google', class: 'icon'
+          Googleでログイン
+      -else
+        = link_to "/", class: 'user-login-method__facebook' do
+          = fa_icon 'facebook-square', class: 'icon'
+          Facebookでログイン
+        = link_to "/", class: 'user-login-method__google' do
+          = fa_icon 'google', class: 'icon'
+          Googleでログイン
+
+
+
+
+    .user-login-form__block
+      -# = form_for(resource, as: resource_name, url: user_session_path, html: { method: :post }) do |f|
+      = form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "user-login-form"}) do |f|
+        .field
+          = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "メールアドレス", class: "validate[required] custom[email]"
+        .field
+          = f.password_field :password, autocomplete: "current-password", placeholder: "パスワード", class: "validate[required, minSize[6], maxSize[20]]"
+        .recaptcha-block
+          .recaptcha-block-frame
+            .recaptcha-block-frame__btn
+              = recaptcha_tags
+        .actions
+          = f.submit "ログイン", class: 'login-btn'
+        - if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations'
+          = link_to "パスワードをお忘れの方", new_password_path(resource_name), class: 'forgot-password-btn'
 
 = render "layouts/exhibit-footer"
+= javascript_include_tag 'signup.js'
 
 -# ↓元々のerbファイル、安全の為、ログイン機能実装まで残す
 

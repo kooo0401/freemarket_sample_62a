@@ -1,6 +1,28 @@
 # frozen_string_literal: true
 
 class Users::SessionsController < Devise::SessionsController
+
+  # if verify_recaptcha # recaptcha（ロボット認証）
+  #   render action: root_path # trueなら次のページ
+  # else
+  #   render new_user_session_path    # falseなら再度入力
+  # end
+
+    # GET /resource/sign_in
+    def new
+      super
+    end
+  
+    # POST /resource/sign_in
+    def create
+      if verify_recaptcha
+        super
+      else
+        self.resource = resource_class.new
+        respond_with_navigational(resource) { render :new }
+      end
+    end
+  
   # before_action :configure_sign_in_params, only: [:create]
 
   # GET /resource/sign_in
