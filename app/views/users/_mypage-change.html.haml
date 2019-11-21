@@ -1,4 +1,3 @@
-= render "layouts/header"
 .itembuy-container
   %section.itembuy-content
     %h1.itembuy-content__name
@@ -53,63 +52,52 @@
             %th 商品のサイズ
             %td
               %span 
-                M
+                @size.size_name
           %tr
             %th 商品の状態
             %td
               %span
-                目立った傷や汚れなし
+                @condition.value
           %tr
             %th 配送料の負担
             %td
               %span
-                送料込み(出品者負担)
+                @delivery_charge.value
           %tr
             %th 配送の方法
             %td
               %span
-                普通郵便(定形、定形外)
+                @delivery_way.value
           %tr
             %th 配送元地域
             %td
               %span
-              = link_to "大阪府", "#"  
+                = link_to "大阪府", "#"  
           %tr
             %th 発送日の目安
             %td
               %span
-                2~3日で発送
+                @delivery_days.value
     .itembuy-content__price
       %span.itembuy-content__bold<
-        ¥2,100 
+        ＠product.plice
       %span.itembuy-content__tax (税込)
       %span.itembuy-content__fee 送料込み
-      = link_to "#", class: "itembuy-price-box" do
-        購入画面に進む
     .itembuy-detail
       %p.itembuy-detail__inner
-        = @product.description
-    .itembuy-button
-      .itembuy-button__left
-        =link_to "#", class: "new-item-image" do
-          %button
-            = fa_icon 'heart-o', class: 'icon-g'
-            %span
-              いいね! ０
-      .itembuy-button__left__report
-        =link_to "#", class: "new-item-image" do
-          %button 
-            =fa_icon 'flag-o', class: 'icon-g'
-            %span 
-              不適切な商品の報告
-      .itembuy-button__right
-        =link_to "#", class: "new-item-image" do
-          %button
-            =fa_icon 'shopping-bag', class: 'icon-b'
-            %span
-              あんしん・あんぜんへの取り組み
-.itembuy-content-box
-  .itembuy-detail-message
+        @product.description
+  .itembuy-content__change-status
+    .itembuy-content__change-status-btns
+      = link_to '#', class: 'itembuy-red-box' do
+        商品の編集
+    .itembuy-content__text-center
+      or
+    .itembuy-content__change-status-btns
+      = link_to '#', class: 'itembuy-gray-box' do
+        出品を一旦停止する
+    .itembuy-content__change-status-btns
+      = link_to '#', class: 'itembuy-gray-box' do
+        この商品を削除する
     .itembuy-content__comment
       %form.itembuy-message__form
         %p 相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
@@ -117,26 +105,3 @@
         %button
           %span 
             コメントする
-      %ul.itembuy-nav
-        %li.itembuy-nav__left
-          = fa_icon 'chevron-left', class: 'icon-g'
-          = link_to "@prev_product.name","#"
-      %ul.itembuy-nav
-        %li.itembuy-nav__right
-          = link_to "@next_product.name","#"
-          = fa_icon 'chevron-right', class: 'icon-g'
-  .itembuy-media-box
-    %ul.itembuy-media-box__list
-      %li
-        =link_to '/' do
-          = fa_icon 'facebook-square', class: 'icon-facebook'
-      %li
-        =link_to '/' do
-          = fa_icon 'twitter-square', class: 'icon-twitter'
-      %li
-        =link_to '/' do
-          = fa_icon 'pinterest-square', class: 'icon-pinterest'
-  = render "products/itembuy"
-= render "layouts/footer"
-
-= javascript_include_tag 'itembuy-slider.js'
