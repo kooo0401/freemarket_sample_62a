@@ -26,8 +26,8 @@
           %tr
             %th 出品者
             %td
-              = link_to "#" do
-                =@user.nickname
+              = link_to "/" do
+                @user.nickname
               %div
                 .itembuy-content__ratings{ id: 'itembuy-icon-good' }
                   =fa_icon 'smile-o', class: 'icon-r'
@@ -89,7 +89,7 @@
         購入画面に進む
     .itembuy-detail
       %p.itembuy-detail__inner
-        @product.description
+        =@product.description
     .itembuy-button
       .itembuy-button__left
         =link_to "#", class: "new-item-image" do
