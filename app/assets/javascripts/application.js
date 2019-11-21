@@ -14,4 +14,7 @@
 //= require jquery_ujs
 //= require owl.carousel
 //= require activestorage
-//= require_tree .
+
+//= require jquery.validationEngine-en
+//= require jquery.validationEngine
+//= require jquery.validationEngine-ja.js

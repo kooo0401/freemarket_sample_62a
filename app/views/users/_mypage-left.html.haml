@@ -84,7 +84,7 @@
   %h2.setting
     設定
   .main__left-list
-    =link_to "#", class: "main__left-list__nav btn space-17" do
+    =link_to profile_edit_user_path, class: "main__left-list__nav btn space-17" do
       プロフィール
       .select-icon-space
         = fa_icon 'angle-right', class: 'select-icon i17'
@@ -94,7 +94,7 @@
       .select-icon-space
         = fa_icon 'angle-right', class: 'select-icon i18'
   .main__left-list
-    =link_to "#", class: "main__left-list__nav btn space-19" do
+    =link_to credit_edit_user_path, class: "main__left-list__nav btn space-19" do
       支払い方法
       .select-icon-space
         = fa_icon 'angle-right', class: 'select-icon i19'
@@ -104,7 +104,7 @@
       .select-icon-space
         = fa_icon 'angle-right', class: 'select-icon i20'
   .main__left-list
-    =link_to "#", class: "main__left-list__nav btn space-21" do
+    =link_to confirmation_edit_user_path, class: "main__left-list__nav btn space-21" do
       本人情報
       .select-icon-space
         = fa_icon 'angle-right', class: 'select-icon i21'
@@ -114,7 +114,7 @@
       .select-icon-space
         = fa_icon 'angle-right', class: 'select-icon i22'
   .main__left-list
-    =link_to "#", class: "main__left-list__nav btn space-23" do
+    =link_to logout_page_user_path, class: "main__left-list__nav btn space-23" do
       ログアウト
       .select-icon-space
         = fa_icon 'angle-right', class: 'select-icon i23'

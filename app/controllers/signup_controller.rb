@@ -15,6 +15,11 @@ class SignupController < ApplicationController
     @user = User.new
     @user.build_myaddress
 
+    if verify_recaptcha # recaptcha（ロボット認証）
+      render action: 'user_registration2' # trueなら次のページ
+    else
+      render 'user_registration1.html'    # falseなら再度入力
+    end
   end
 
   def user_registration3
@@ -26,7 +31,7 @@ class SignupController < ApplicationController
   end
 
   def validates_step1
-
+    # フォームウィザード形式の為、ページ推移前に
     session[:nickname] = user_params[:nickname]
     session[:email] = user_params[:email]
     session[:password] = user_params[:password]
@@ -49,7 +54,7 @@ class SignupController < ApplicationController
       first_name_kana: session[:first_name_kana],
       birthday: session[:birthday]
     )
-    @user.errors.full_messages_for(:nickname)
+    @user.errors.full_messages
     render user_registration1_signup_index_path unless @user.valid?(:validates_step1)
 
   end
@@ -77,10 +82,18 @@ class SignupController < ApplicationController
     session[:address_tel] = user_params[:myaddress_attributes][:tel]
 
     @user = User.new(
+      last_name: session[:last_name],
+      first_name: session[:first_name],
+      last_name_kana: session[:last_name_kana],
+      first_name_kana: session[:first_name_kana],
       zip: session[:zip],
-
+      prefecture: session[:prefecture],
+      city_name: session[:city_name],
+      block_name: session[:block_name],
+      bill_name: session[:bill_name],
+      tel: session[:address_tel]
     )
-    # render user_registration3_signup_index_path unless @user.valid?(:validates_step3)
+    render user_registration3_signup_index_path unless @user.valid?(:validates_step3)
   end
 
   def validates_step4

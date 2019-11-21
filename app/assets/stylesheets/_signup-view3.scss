@@ -145,14 +145,27 @@
   }
 }
 
-#user_myaddress_attributes_prefecture {
-  width: 100%;
-  margin: 8px 0 0;
-  height: 48px;
-  padding: 10px 16px 8px;
-  border-radius: 4px;
-  border: 1px solid #ccc;
-  background: #fff;
-  line-height: 1.5;
-  font-size: 16px;
+.prefecture-select-wrap {
+  position: relative;
+  #user_myaddress_attributes_prefecture {
+    width: 100%;
+    margin: 8px 0 0;
+    height: 48px;
+    padding: 10px 16px 8px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    background: #fff;
+    line-height: 1.5;
+    font-size: 16px;
+    -webkit-appearance: none;
+  }
+  .fa-chevron-down {
+    position: absolute;//子のポジション指定
+    right: 25px;//右25px空ける
+    top: 60%;//上から60%の位置へ
+    z-index: 2;//親の下へ潜り揉まないようにする
+    color: #888;
+    transform: translate(0, -50%);//translate(X方向の移動距離, Y方向の移動距離)
+    font-size: 18px;
+  }
 }

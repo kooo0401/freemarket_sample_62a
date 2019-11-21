@@ -32,7 +32,7 @@
           .signup-tel-block__form
             %label.signup-tel-block__form--label
               携帯電話の番号
-            = f.text_field :tel, placeholder: '携帯電話の番号を入力'
+            = f.text_field :tel, placeholder: '携帯電話の番号を入力', class: "validate[required,custom[number]]"
           %p.signup-tel-block__content
             本人確認のため、携帯電話のSMS(ショートメッセージサービス)を利用して認証を行います。
           = f.submit 'SMSを送信する', class: "signup-tel-block__btn"
@@ -42,3 +42,4 @@
             = link_to( "電話番号の確認が必要な理由〉", "/", class: "signup-tel-block__text--link")
 
   = render "layouts/exhibit-footer"
+= javascript_include_tag 'signup.js'
