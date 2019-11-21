@@ -118,7 +118,7 @@ ActiveRecord::Schema.define(version: 2019_11_18_080652) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "zip", default: ""
+    t.string "zip"
     t.string "prefecture"
     t.string "city_name"
     t.string "block_name"
