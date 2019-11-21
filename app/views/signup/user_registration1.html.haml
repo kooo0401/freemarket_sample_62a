@@ -84,7 +84,8 @@
           .recaptcha-block
             .recaptcha-block-frame
               .recaptcha-block-frame__btn
-                = recaptcha_tags
+                = flash[:recaptcha_error]
+              = recaptcha_tags
             .caution-statement-block
               %p.caution-statement-block-text
                 次へ進む」のボタンを押すことにより、
