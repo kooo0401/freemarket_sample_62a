@@ -15,6 +15,7 @@ Rails.application.routes.draw do
       get :signup
     end
   end
+  delete 'products/:id' => 'products#destroy'#sakurada
   
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
