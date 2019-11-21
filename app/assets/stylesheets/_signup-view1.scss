@@ -260,14 +260,8 @@
           .recaptcha-block-frame {
             transform: none;
             &__btn {
-              width: 304px;
-              height: 78px;
-              border: 1px solid #ccc;
-              border-radius: 4px;
-              .recaptcha-block-frame__img { //一旦画像で補完してます（削除予定）堀
-                height: 100%;
-                width: 100%;
-              }
+              text-align: center;
+              color: red;
             }
           }
           .caution-statement-block {
