@@ -10,7 +10,7 @@
           - @products.each do |product|
             %li.new-item
               .new-item__content
-                =link_to "/products/#{product.id}", class: "new-item-image" do
+                =link_to product_path(product.id), class: "new-item-image" do
                   %figure.figure-container
                     %figcaption.figure-container__figcaption
                       %span.figure-container__figcaption__span
