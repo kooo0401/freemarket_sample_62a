@@ -38,6 +38,17 @@
         width: 300px;
       }
     }
+    &__owl-carousel-thumb{
+      display: inline-block;
+      font-size: 0;
+      color: #fff;
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      .owl-carousel-sub{
+        opacity: 0.4;
+      }
+    }
     &__clearfix{
       margin-top: 16px;
     }
@@ -137,11 +148,22 @@
 }
 .itembuy-gray-box{
   text-decoration: none;
-  font-size: 24px;
+  font-size: 15px;
   line-height: 60px;
   display: block;
   margin-top: 3px;
   background: gray;
+  color: #fff;
+  text-align: center;
+  font-weight: 600;
+}
+.itembuy-red-box{
+  text-decoration: none;
+  font-size: 15px;
+  line-height: 60px;
+  display: block;
+  margin-top: 16px;
+  background: #ea352d;
   color: #fff;
   text-align: center;
   font-weight: 600;

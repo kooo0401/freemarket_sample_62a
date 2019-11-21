@@ -2,10 +2,9 @@
 = render 'layouts/header' 
 
 .main
-  = render partial: 'users/mypage-change'
-  -# = render partial: 'users/mypage-left'
-  -# .main__right
-  -#   = render partial: 'users/log-out'
+  = render partial: 'users/mypage-left'
+  .main__right
+    = render partial: 'users/log-out'
     
 = render 'layouts/footer'
 

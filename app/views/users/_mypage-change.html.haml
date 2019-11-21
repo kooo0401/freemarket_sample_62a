@@ -8,6 +8,18 @@
           .itembuy-content__owl-carousel
             .owl-carousel-space
               =image_tag("/IMG_mercari-footer-image.png", class: 'owl-carousel-main show', size: '300x300')
+              =image_tag("/IMG_footer-top-image.png", class: 'owl-carousel-main', size: '300x300')
+              =image_tag("/IMG_mercari-footer-image.png", class: 'owl-carousel-main', size: '300x300')
+              =image_tag("/IMG_footer-top-image.png", class: 'owl-carousel-main', size: '300x300')
+              =image_tag("/IMG_mercari-footer-image.png", class: 'owl-carousel-main', size: '300x300')
+              =image_tag("/IMG_footer-top-image.png", class: 'owl-carousel-main', size: '300x300')
+        .itembuy-content__owl-carousel-thumb
+          =image_tag("/IMG_mercari-footer-image.png", class: 'owl-carousel-sub active', size: '60x60')
+          =image_tag("/IMG_footer-top-image.png", class: 'owl-carousel-sub', size: '60x60')
+          =image_tag("/IMG_mercari-footer-image.png", class: 'owl-carousel-sub', size: '60x60')
+          =image_tag("/IMG_footer-top-image.png", class: 'owl-carousel-sub', size: '60x60')
+          =image_tag("/IMG_mercari-footer-image.png", class: 'owl-carousel-sub', size: '60x60')
+          =image_tag("/IMG_footer-top-image.png", class: 'owl-carousel-sub', size: '60x60')
       %table.itembuy-content__table
         %tbody
           %tr
@@ -68,7 +80,7 @@
                 @delivery_days.value
     .itembuy-content__price
       %span.itembuy-content__bold<
-        @product.plice
+        ＠product.plice
       %span.itembuy-content__tax (税込)
       %span.itembuy-content__fee 送料込み
     .itembuy-detail
@@ -76,7 +88,7 @@
         @product.description
   .itembuy-content__change-status
     .itembuy-content__change-status-btns
-      = link_to '#', class: 'itembuy-price-box' do
+      = link_to '#', class: 'itembuy-red-box' do
         商品の編集
     .itembuy-content__text-center
       or

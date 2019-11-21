@@ -10,7 +10,11 @@ Rails.application.routes.draw do
   root 'products#index'
   
   resources :products, only: [:index, :new, :show, :edit]
-  resources :users, only: [:show, :edit]
+  resources :users, only: [:show, :edit] do
+    member do
+      get '/products/:id', to: "products#change"
+    end
+  end
 
   resources :signup, only: [:create] do 
     collection do
