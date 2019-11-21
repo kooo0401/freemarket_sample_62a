@@ -16,8 +16,7 @@ Rails.application.routes.draw do
       get 'logout_page'
       get 'profile_edit'
       get 'credit_edit'
-      get 'confirmation_edit'
-      
+      get 'confirmation_edit' 
     end
   end
 

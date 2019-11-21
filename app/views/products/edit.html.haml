@@ -1,2 +1,79 @@
-%h1 Products#edit
-%p Find me in app/views/products/edit.html.haml
+
+.single-container
+
+  = render "layouts/exhibit-header"
+
+  %main.single-container__single-main
+
+    %section.single-container__single-main__l-single-container.single-container__single-main__buy-item-container
+      %h2.l-single-head
+        購入内容の確認
+    %section.single-container__single-main__buy-content.single-container__single-main__buy-item
+      .buy-content-inner
+        %h3.buy-item-image
+          image_tag
+        %p.buy-item-name.bold
+          ヨーロッパ風 レディース リュック ホワイト マザーズリュック
+        = form_for  do |f|
+          %p.buy-price-ja.bold
+            %span.item-shipping-fee.f14.bold
+          %ul.buy-accordion
+            %li.accordion-parent
+              .accordion-toggle
+                %i.icon-arrow-bottom.accordion-icon
+              %ul.accordion-child
+          %ul.buy-price-table
+            %li.buy-price-row.buy-you-pay.bold
+              .buy-price-cell
+                支払い金額
+              .buy-price-cell
+                %span.data-buy-pay
+                  ¥3,980
+          %p.has-error-text
+            この商品はゆうゆうメルカリ便を利用しているため、アプリからのみ購入できます。
+          %ul.buy-accordion.not-have
+          %p
+            アプリをお持ちでない方は以下よりインストールしてご利用いただけます。
+      %div
+        =link_to
+          %image_tag
+        =link_to
+          %image_tag
+    %section.buy-content.buy-user-info
+      .buy-content-inner 
+        %h3
+        %address.buy-user-info-text
+        郵便番号
+        %br
+        住所
+        %br
+        名前
+        %p
+        ユーザー情報
+        =link_to
+          %span
+            変更する
+          %i
+    %section.buy-content.buy-user-info
+      .buy-content-inner
+        %h3
+          支払い方法
+        %p
+        %figure
+        %p
+        =link_to
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+  = render "layouts/exhibit-footer"
