@@ -36,7 +36,7 @@
         .recaptcha-block
           .recaptcha-block-frame
             .recaptcha-block-frame__btn
-              =image_tag("/captcha.png", class: "recaptcha-block-frame__img") # 一旦画像で補完（削除予定）堀
+              = recaptcha_tags
         .actions
           = f.submit "ログイン", class: 'login-btn'
         - if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations'

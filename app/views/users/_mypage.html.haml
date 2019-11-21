@@ -2,7 +2,7 @@
   =link_to "#", class: "mypage-icon" do
     = image_tag("/assets/IMG_footer-top-image.png", class: "mypage-img")
     %p.mypage-name
-      おさる
+      #{@user.nickname}
     .mypage-evaluation-exhibit
       %p.mypage-evaluation
         評価
@@ -72,3 +72,4 @@
       過去の取引
 .buy-products-now-list.content-2.show-2
 .buy-products-past-list.content-2.hide-2
+= javascript_include_tag 'user.js'
