@@ -41,34 +41,37 @@
 |self_introduction|text|
 |money|integer|
 |point|integer|
-|zip|integer|
+|zip|string|
 |prefecture|string|
 |city_name|string|
 |block_name|string|
 |bill_name|string|
 <!-- nameカラム,name_kanaをlast_name,first_name,last_name_kana,first_name_kanaに変更修正 191116堀 -->
-<!-- telカラムのTypeをintegerからstringに変更済み>
+<!-- telカラムのTypeをintegerからstringに変更済み -->
 
 ### Association
 - has_many :products, dependent: :destroy
 - has_many :histories, dependent: :destroy
 - has_one  :credit, dependent: :destroy
 - has_one  :address, dependent: :destroy
-
+- has_many :sns_credentials, dependent: destroy
+<!-- oauth認証のため追加 191118平野 -->
 
 ## myaddressesテーブル
 |Column|Type|Options|
 |------|----|-------|
-|name|string|null: false|
-|name_kana|string|null: false|
-|zip|integer|null: false|
+|last_name|string|null: false|
+|first_name|string|null: false|
+|last_name_kana|string|null: false|
+|first_name_kana|string|null: false|
+|zip|string|null: false|
 |prefecture|string|null: false|
 |city_name|string|null: false|
 |block_name|string|null: false|
 |bill_name|string|
-|tel|integer|
+|tel|string|
 |user_id|integer|foreign_key: true, null: false|
-<!-- テーブル名が被った(都道府県テーブル)為、テーブル名修正 191116堀 -->
+<!-- テーブル名が被った為(都道府県テーブル)、テーブル名修正 191116堀 -->
 
 
 ### Association
@@ -180,3 +183,14 @@
 
 <!-- brandsテーブルとcategoryテーブルが紐づいている可能性あり
 brands,categoryの中身をメルカリサイトから引っ張ってくる際に対応予定 -->
+
+## sns_credentialsテーブル
+|Column|Type|Options|
+|------|----|-------|
+|provider|string|
+|uid|string||
+|user_id|integer|
+
+### Association
+- belongs_to :user
+<!-- oauth認証のため追加 191118平野 -->

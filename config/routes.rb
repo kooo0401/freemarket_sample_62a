@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users, skip: :sessions #今回はadminなど他のスコープは使用せず、ログイン関係のパス名を変更したい為sessionsをskip（下記のscopeで定義）
+  devise_for :users, skip: :sessions, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' } #今回はadminなど他のスコープは使用せず、ログイン関係のパス名を変更したい為sessionsをskip（下記のscopeで定義）
     
   devise_scope :user do #ログイン関係のパス名をloginとlogoutに変更
     get "login", to: "devise/sessions#new", as: :new_user_session
@@ -13,6 +13,10 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :edit] do
     member do
       get '/products/:id', to: "products#change"
+      get 'logout_page'
+      get 'profile_edit'
+      get 'credit_edit'
+      get 'confirmation_edit'
     end
   end
 
@@ -23,6 +27,7 @@ Rails.application.routes.draw do
       get 'user_registration2'
       get 'user_registration3'
       get 'user_registration4'
+      get 'user_registration5'
       get 'done'
     end
   end
