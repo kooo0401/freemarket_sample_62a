@@ -14,14 +14,28 @@
           -# = image_tag
         %p.buy-item-name.bold
           ヨーロッパ風 レディース リュック ホワイト マザーズリュック
-      -# = form do |f|
-        %p.buy-price-ja.bold
-        %span.item-shipping-fee.f14.bold
+      -# = form_with model: :product. local: true do |f|
+      .form-box-tempolary
+        %p.buy-price-ja.bold ¥8,777
+        %span.item-shipping-fee.f14.bold 送料込み
         %ul.buy-accordion
           %li.accordion-parent
-            .accordion-toggle
+            .accordion-toggle 
+              ポイントを使う
               %i.icon-arrow-bottom.accordion-icon
             %ul.accordion-child
+              %li 所持ポイント: P200
+              %li.form-group
+                .radio-default
+                  %label 
+                    -# f.input ポイントを使わない
+                .radio-default
+                  %label
+                    -# f.input 全てのポイントを使う 200
+                .radio-default
+                  %label
+                    -# f.input 一部のポイントを使う
+                -# f.input 使うポイントを入力
         %ul.buy-price-table
           %li.buy-price-row.buy-you-pay.bold
             .buy-price-cell
@@ -34,7 +48,7 @@
         %ul.buy-accordion.not-have
         %p
           アプリをお持ちでない方は以下よりインストールしてご利用いただけます。
-      %buttom.submit
+      %buttom.submit 購入する
     %div
   -#     = link_to '#'
   -#       = image_tag
