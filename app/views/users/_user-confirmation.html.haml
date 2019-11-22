@@ -11,40 +11,41 @@
         本人確認書類のアップロードについて
         =fa_icon 'angle-right', class: 'user-angle-right'
       %h2.user-confirmation-name お名前
-      %p.user-confirmation-name-each 村上 雅樹
-      %h3.user-confirmation-namekana お名前カナ
-      %p.user-confirmation-namekana-each ムラカミ マサキ
+      %p.user-confirmation-name-each #{@user.last_name} #{@user.first_name} 
+      %h3.user-confirmation-namekana 
+      %p.user-confirmation-namekana-each #{@user.last_name_kana} #{@user.first_name_kana}
       %h4.user-confirmation-born 生年月日
-      %p.user-confirmation-born-each 1996/11/11
+      %p.user-confirmation-born-each #{@user.birthday}
       .user-confirmation-zip-space
         %h5.user-confirmation-zip 郵便番号
         %p.user-confirmation-any 任意
       .zip-place-holder
-        = f.text_field :content, class: 'zip-place-holder-field', placeholder: '例）1234567'
+        = f.text_field :zip, class: 'zip-place-holder-field', value: "#{@user.zip}", placeholder: '例）1234567'
       .user-confirmation-prefectures-space
         %h5.user-confirmation-prefectures 都道府県
         %p.user-confirmation-any 任意
       .prefectures-place-holder
-        = f.collection_select :prefecture_id, Prefecture.all, :id, :name, class: 'prefectures-place-holder-field'
+        = f.collection_select :prefecture, Prefecture.all, :id, :name, { prompt:"---" }, value: "#{@user.prefecture}", class: 'prefectures-place-holder-field'
       .user-confirmation-municipalities-space
         %h5.user-confirmation-municipalities 市区町村
         %p.user-confirmation-any 任意
         .user-confirmation-any
       .municipalities-place-holder
-        = f.text_field :content, class: 'municipalities-place-holder-field', placeholder: '例）横浜市緑区'
+        = f.text_field :city_name, class: 'municipalities-place-holder-field', value: "#{@user.city_name}", placeholder: '例）横浜市緑区'
       .user-confirmation-address-space
         %h5.user-confirmation-address 番地
         %p.user-confirmation-any 任意
         .user-confirmation-any
       .address-place-holder
-        = f.text_field :content, class: 'address-place-holder-field', placeholder: '例）青山1-1-1'
+        = f.text_field :block_name, class: 'address-place-holder-field', value: "#{@user.block_name}", placeholder: '例）青山1-1-1'
       .user-confirmation-building-space
         %h5.user-confirmation-building 建物名
         %p.user-confirmation-any 任意
         .user-confirmation-any
       .building-place-holder
-        = f.text_field :content, class: 'building-place-holder-field', placeholder: '例）柳ビル103'
-      =link_to "登録する", "javascript:void(0)", class: "user-confirmation-btn"
-      =link_to "javascript:void(0)", class: "user-confirmation-about" do
-        本人情報の登録について
-        =fa_icon 'angle-right', class: 'user-angle-right'
+        = f.text_field :bill_name, class: 'building-place-holder-field', value: "#{@user.bill_name}", placeholder: '例）柳ビル103'
+      -# =link_to "登録する", "javascript:void(0)", class: "user-confirmation-btn"
+      %button{type: "submit", class: 'user-confirmation-btn'} 変更する
+      -# = submit class: "user-confirmation-about" do
+      -#   本人情報の登録について
+      -#   =fa_icon 'angle-right', class: 'user-angle-right'
