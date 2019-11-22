@@ -10,17 +10,17 @@ Rails.application.routes.draw do
   root 'products#index'
   
   resources :products, only: [:index, :new, :show, :edit]
-  resources :users, only: [:show, :edit] do
+  resources :users, only: [:show, :edit, :update] do
     member do
       get '/products/:id', to: "products#change"
       get 'logout_page'
       get 'profile_edit'
-      get 'credit_edit'
+      get 'credit_add'
       get 'confirmation_edit'
       
     end
   end
-
+  
   resources :signup, only: [:create] do 
     collection do
       get 'new'

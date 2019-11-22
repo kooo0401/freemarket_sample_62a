@@ -36,7 +36,7 @@
                 =fa_icon 'check'
                 やることリスト
             %li.user-list
-              =link_to "users/#{current_user.id}", class: "user-list__contents" do
+              =link_to user_path(current_user.id), class: "user-list__contents" do
                 =fa_icon 'user-circle'
                 マイページ
         - else
