@@ -12,11 +12,11 @@ Rails.application.routes.draw do
   resources :products, only: [:index, :new, :show, :edit]
   resources :users, only: [:show, :edit] do
     member do
+      get '/products/:id', to: "products#change"
       get 'logout_page'
       get 'profile_edit'
       get 'credit_edit'
       get 'confirmation_edit'
-      get '/products/:id', to: "products#change"
     end
   end
 
