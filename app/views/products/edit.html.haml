@@ -18,11 +18,12 @@
           .form-box-tempolary.form-hairu-yotei
             %p.form-box-tempolary__buy-price.bold 
               ¥8,777
-              %span.form-box-tempolary__buy-price__shipping-fee.f14.bold 送料込み
+              %span.form-box-tempolary__buy-price__shipping-fee.f14 送料込み
             %ul.form-box-tempolary__buy-accordion
               %li.form-box-tempolary__buy-accordion__accordion-parent
                 .form-box-tempolary__buy-accordion__accordion-parent__accordion-toggle#acdn-button
                   ポイントを使う
+                  = fa_icon 'chevron-down'
                   %i.icon-arrow-bottom.accordion-icon
                 %ul.form-box-tempolary__buy-accordion__accordion-parent__accordion-child#acdn-target
                   %li.bold 所持ポイント: P200
@@ -51,35 +52,33 @@
             -#   アプリをお持ちでない方は以下よりインストールしてご利用いただけます。
           %buttom.form-box-tempolary__btm-default.bold 購入する
       %div
-    -#     = link_to '#'
-    -#       = image_tag
-    -#     = link_to '#'
-    -#       = image_tag
-    %section.purchase-confirmation__main__buy-user-info
-      .purchase-confirmation__main__buy-user-info__inner 
-        %h3 配送先
-        %address.buy-user-info-text 
-          郵便番号
-          %br
-          住所
-          %br
-          名前
+       
+      %section.purchase-confirmation__main__container__buy-user-info
+        .purchase-confirmation__main__container__buy-user-info__inner 
+          %h3 配送先
+          %address.buy-user-info-text 
+            郵便番号
+            %br
+            住所
+            %br
+            名前
+            %p
+            = link_to '#', class: "buy-user-info-fix" do
+              %span
+                変更する
+              -# %i.fas.fa-greater-than
+              = fa_icon 'chevron-right'
+
+      %section.purchase-confirmation__main__container__buy-user-info
+        .purchase-confirmation__main__container__buy-user-info__inner.pay-method
+          %h3 支払い方法
+          %p
+          %figure
           %p
           = link_to '#', class: "buy-user-info-fix" do
             %span
               変更する
-            %i
-
-    %section.purchase-confirmation__main__buy-user-info
-      .purchase-confirmation__main__buy-user-info__inner.pay-method
-        %h3 支払い方法
-        %p
-        %figure
-        %p
-        = link_to '#', class: "buy-user-info-fix" do
-          %span
-            変更する
-          %i
+            = fa_icon 'chevron-right'
 
   = render "layouts/exhibit-footer"
 

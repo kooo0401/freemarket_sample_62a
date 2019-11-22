@@ -1,14 +1,18 @@
 
 
 .purchase-confirmation{
-
+  
   &__main{
-    margin: 0 103px;
     text-align: center;
-    background-color: white;
+    font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
+
+    
 
     &__container{
-      
+      width: 700px;
+      margin: 0 auto;
+      background-color: white;
+
       &__head{
         padding: 16px;
         font-size: 22px;
@@ -28,6 +32,7 @@
 
           &__name {
             display: block;
+            font-size: 16px;
             height: 64px;
             width: 240px;
             margin-left: 16px;
@@ -38,7 +43,7 @@
             
             &__buy-price {
               margin-top: 8px;
-              line-height: 15px;
+              line-height: 1.5;
               font-size: 22px;
               &__shipping-fee{
                 margin-left: 8px;
@@ -52,6 +57,7 @@
 
                 &__accordion-toggle{
                   padding: 16px;
+                  font-size: 14px;
                   border: 1px solid #ccc;
                 }
 
@@ -90,11 +96,13 @@
                   display: table-cell;
                   width: 194px;
                   text-align: left;
+                  font-size: 18px;
                 }
                 &__buy-price-cell2{
                   display: table-cell;
                   width: 126px;
                   text-align: right;
+                  font-size: 28px;
                 }
               }
             }   
@@ -120,29 +128,28 @@
           }
         }
         }
-      }
     
+      &__buy-user-info{
+        margin-top: 40px;
+        padding: 24px 12.5% 0;
+        border-top: 1px solid #f5f5f5;
+          &__inner{
+            max-width: 320px;
+            margin: 0 auto;
+            text-align: left;
+            font-size: 14px;
+            h3{
+              
+            }
+            address{
+              margin-top: 8px;
+              line-height: 1.4;
+              
+            }
 
-    &__buy-user-info{
-      margin-top: 40px;
-      padding: 24px 12.5% 0;
-      border-top: 1px solid #f5f5f5;
-        &__inner{
-          max-width: 320px;
-          margin: 0 auto;
-          text-align: left;
-          font-size: 14px;
-          h3{
-            
           }
-          address{
-            margin-top: 8px;
-            line-height: 1.4;
-            
-          }
-
-        }
-    }
+      }
+  }
     
 
   }
@@ -155,6 +162,9 @@
 .buy-user-info-fix{
   display: block;
   text-align: right;
+  font-size: 14px;
+  color: #0099e8;
+  text-decoration: none;
 }
 
 .pay-method{
