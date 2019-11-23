@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user!
+  before_action :ensure_correct_user
   
   def show
     @user = User.find(params[:id])
@@ -59,6 +61,17 @@ class UsersController < ApplicationController
 
   def tel_edit
     @user = User.find(params[:id])
+  end
+
+  # ログイン中ユーザーでなければ、他ユーザーのマイページは見れない
+  def ensure_correct_user
+
+    if current_user.id !=  params[:id].to_i
+     redirect_to new_user_session_path
+    else
+      true
+    end
+  
   end
 
 
