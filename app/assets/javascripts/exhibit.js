@@ -13,12 +13,16 @@ $(function() {
         num = maxNum;
       }
       $(this).val(num);
-      if(num > 300) {
+      if(num < 300){
+        $('#priceboxb').html('');
+        $('#priceboxa').html('');
+      }
+      else if(num > 300) {
         var p = Math.floor(num*0.1);
         var price = '¥' + p;
-        tagOutput.val(price);
+        tagOutput.html(price);
       } 
-        // inputらんが０なら空にする
+    
       
       });
     });
@@ -36,190 +40,46 @@ $(function() {
         num = maxNum;
       }
       $(this).val(num);
-      if(num > 300) {
+        if(num > 300) {
         var p = Math.floor(num*0.9);
         var price = '¥' + p;
-        tagOutput.val(price);
+        tagOutput.html(price);
       } 
       });
       });
-// $(function(){
-//   //画像ファイルプレビュー表示のイベント追加 fileを選択時に発火するイベントを登録
-//   $('form').on('change', 'input[type="file"]', function(e) {
-//     var file = e.target.files[0],
-//         reader = new FileReader(),
-//         $preview = $(".preview");
-//         t = this;
-
-//     // 画像ファイル以外の場合は何もしない
-//     if(file.type.indexOf("image") < 0){
-//       return false;
-//     }
-
-//     // ファイル読み込みが完了した際のイベント登録
-//     reader.onload = (function(file) {
-//       return function(e) {
-//         //既存のプレビューを削除
-//         $preview.empty();
-//         // .prevewの領域の中にロードした画像を表示するimageタグを追加
-//         $preview.append($('<img>').attr({
-//                   src: e.target.result,
-//                   width: "150px",
-//                   class: "preview",
-//                   title: file.name
-//               }));
-//       };
-//     })(file);
-
-//     reader.readAsDataURL(file);
-//   });
-// });
-//     $(function(){
-//       //画像ファイルプレビュー表示のイベント追加 fileを選択時に発火するイベントを登録
-//       $('form').on('change', 'input[type="file"]', function(e) {
-//         var file = e.target.files[0],
-//             reader = new FileReader(),
-//             $preview = $(".preview");
-//             t = this;
-
-//         // 画像ファイル以外の場合は何もしない
-//         if(file.type.indexOf("image") < 0){
-//           return false;
-//         }
-
-//         // ファイル読み込みが完了した際のイベント登録
-//         reader.onload = (function(file) {
-//           return function(e) {
-//             //既存のプレビューを削除
-//             $preview.empty();
-//             // .prevewの領域の中にロードした画像を表示するimageタグを追加
-//             $preview.append($('<img>').attr({
-//                       src: e.target.result,
-//                       width: "150px",
-//                       class: "preview",
-//                       title: file.name
-//                   }));
-//           };
-//         })(file);
-//     reader.readAsDataURL(file);
-//   });
-// });
-
-//   $(function(){
-//       $('#file').change(function(){
-//           $('img').remove();
-//           var file = $(this).prop('files')[0];
-//           if(!file.type.match('image.*')){
-//               return;
-//           }
-//           var fileReader = new FileReader();
-//           fileReader.onloadend = function() {
-//               $('#result').html('<img src="' + fileReader.result + '"/>');
-//           }
-//           fileReader.readAsDataURL(file);
-//       });
-//   });
 
 
+$(function(){
+  //画像ファイルプレビュー表示のイベント追加 fileを選択時に発火するイベントを登録
+  $('form').on('change', 'input[type="file"]', function(e) {
+    var file = e.target.files[0],
+        reader = new FileReader(),
+        $preview = $(".exhibitmain__upbox__imagebox1");
+        t = this;
 
+    // 画像ファイル以外の場合は何もしない
+    if(file.type.indexOf("image") < 0){
+      return false;
+    }
 
+    // ファイル読み込みが完了した際のイベント登録
+    reader.onload = (function(file) {
+      return function(e) {
+        //既存のプレビューを削除
+        $preview.empty();
+        // .prevewの領域の中にロードした画像を表示するimageタグを追加
+        $preview.append($('<img>').attr({
+                  src: e.target.result,
+                  width: "150px",
+                  class: "preview",
+                  title: file.name
+              }));
+      };
+    })(file);
 
-
-
-
-
-
-// $(function(){
-//   // $('preview-1').css("width", "100px");
-//   //画像ファイルプレビュー表示のイベント追加 fileを選択時に発火するイベントを登録
-  
-//   $('form').on('change', 'input[type="file"]', function(e) {
-//     // $('.preview-1').css('width', '100px');
-//     var file = e.target.files[0],
-//         reader = new FileReader(),
-//         $preview = $(".preview-1");
-//         t = this;
-  
-//     // 画像ファイル以外の場合は何もしない
-//     if(file.type.indexOf("image") < 0){
-//       return false;
-//     }
-    
-//     // ファイル読み込みが完了した際のイベント登録
-//     reader.onload = (function(file) {
-//       return function(e) {
-//         //既存のプレビューを削除
-//         $preview.empty();
-//         // .prevewの領域の中にロードした画像を表示するimageタグを追加
-//         $preview.append($('<img>').attr({
-//                   src: e.target.result,
-//                   width: "150px",
-//                   class: "preview-1",
-//                   title: file.name
-//               }));
-//               $('.preview-1').css('width', '100px');
-//       };
-//     })(file);
-//   });
-// });
-    // reader.readAsDataURL(file);
-  // });
-//   //画像ファイルプレビュー表示のイベント追加 fileを選択時に発火するイベントを登録
-  
-//   $('form').on('change', 'input[type="file"]', function(e) {
-//     var file = e.target.files[1],
-//         readers = new FileReader(),
-//         $preview = $(".preview-2");
-//         t = this;
-
-//     // 画像ファイル以外の場合は何もしない
-//     if(file.type.indexOf("image") < 0){
-//       return false;
-//     }
-
-//     // ファイル読み込みが完了した際のイベント登録
-//     readers.onload = (function(file) {
-//       return function(e) {
-//         //既存のプレビューを削除
-//         $preview.empty();
-//         // .prevewの領域の中にロードした画像を表示するimageタグを追加
-//         $preview.append($('<img>').attr({
-//                   src: e.target.result,
-//                   width: "150px",
-//                   class: "preview-2",
-//                   title: file.name
-//               }));
-//               $('.preview-2').css('width', '100px');
-//               // $('.preview-1').css('left', '100px');
-//       };
-//     })(file);
-
-//     readers.readAsDataURL(file);
-//   });
-// });
-
-// $(function() {
-//   var file = e.target.files[0],
-//       reader = new FileReader(),
-//       $preview = $(".preview-2");
-//       t = this;
-//   reader.onload = (function(file) {
-//     return function(e) {
-//       //既存のプレビューを削除
-//       $preview.empty();
-//       // .prevewの領域の中にロードした画像を表示するimageタグを追加
-//       $preview.append($('<img>').attr({
-//                 src: e.target.result,
-//                 width: "150px",
-//                 class: "preview-1",
-//                 title: file.name
-//             }));
-//           }
-//           })
-//   readers.readAsDataURL(file);
-// })
-
-
+    reader.readAsDataURL(file);
+  });
+});
 
   $('.exhibitmain__delivery__burden__box1').change(function() {
       var a = $('.exhibitmain__delivery__burden__box1').val();
