@@ -18,3 +18,6 @@ Rails.application.config.assets.precompile += %w( user.js )
 Rails.application.config.assets.precompile += %w( owl-carousel.js )
 Rails.application.config.assets.precompile += %w( itembuy-slider.js )
 Rails.application.config.assets.precompile += %w( purchase-confirmation.js )
+Rails.application.config.assets.precompile += %w( exhibit.js )
+Rails.application.config.assets.precompile += %w( mypage-change.js )
+
