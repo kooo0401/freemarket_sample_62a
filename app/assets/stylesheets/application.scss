@@ -23,7 +23,6 @@
 @import "owl.theme.default";
 @import "validation-engine";
 
-
 @import "products/header";
 @import "products/footer";
 @import "products/main-top";
@@ -48,3 +47,5 @@
 @import "mypage/myproducts_list_exhibiting";
 @import "mypage/myproducts_list_trading";
 @import "mypage/myproducts_list_sold";
+@import "breadcrumbs";
+@import "purchase-confirmation";
