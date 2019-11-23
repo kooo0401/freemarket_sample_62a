@@ -11,21 +11,23 @@
       %section.purchase-confirmation__main__container__buy-content
         .purchase-confirmation__main__container__buy-content__inner
           %h3.purchase-confirmation__main__container__buy-content__inner__image
-            = image_tag("/IMG_mercari-footer-image.png", height: '64', width: '64')
+            = image_tag("/#{@product.images[0].image}", height: '64', width: '64')
           %p.purchase-confirmation__main__container__buy-content__inner__name.bold
-            ヨーロッパ風 レディース リュック ホワイト マザーズリュック
+            = @product.name
 
           .form-box-tempolary.form-hairu-yotei
             %p.form-box-tempolary__buy-price.bold 
-              ¥3,980
-              %span.form-box-tempolary__buy-price__shipping-fee.f14 送料込み
+              = "¥#{@product.price}"
+              %span.form-box-tempolary__buy-price__shipping-fee.f14 
+                = @product.delivery_charged
             %ul.form-box-tempolary__buy-accordion
               %li.form-box-tempolary__buy-accordion__accordion-parent
                 .form-box-tempolary__buy-accordion__accordion-parent__accordion-toggle#acdn-button
                   ポイントを使う
                   = fa_icon 'chevron-down'
                 %ul.form-box-tempolary__buy-accordion__accordion-parent__accordion-child#acdn-target
-                  %li.bold 所持ポイント: P200
+                  %li.bold 
+                    = "所持ポイント: P#{current_user.point}"
                   %li.form-box-tempolary__buy-accordion__accordion-parent__accordion-child__form-group
                     .form-box-tempolary__buy-accordion__accordion-parent__accordion-child__form-group__radio-default
                       %label
@@ -35,7 +37,8 @@
                       %label
                         %input{type:"radio", name:"point", class:"radiobuttomB", value:"1"}
                         全てのポイントを使う
-                        %br P200
+                        %br 
+                        = "P#{current_user.point}"
                     .form-box-tempolary__buy-accordion__accordion-parent__accordion-child__form-group__radio-default
                       %label
                         %input{type:"radio", name:"point", class:"radiobuttomA", value:"2"}
@@ -48,7 +51,7 @@
                   支払い金額
                 .form-box-tempolary__result-price__row__buy-price-cell2
                   %span#data-buy-pay
-                    ¥3,980
+                    = "¥#{@product.price}"
             %p.confirmation-error-text
               この商品はゆうゆうメルカリ便を利用しているため、アプリからのみ購入できます。
             -# %ul.form-box-tempolary__buy-accordion.not-have
@@ -61,11 +64,15 @@
         .purchase-confirmation__main__container__buy-user-info__inner 
           %h3.bold 配送先
           %address.buy-user-info-text 
-            郵便番号
+            = current_user.myaddress.zip
             %br
-            住所
+            = current_user.myaddress.prefecture
+            = current_user.myaddress.city_name
+            = current_user.myaddress.block_name
+            = current_user.myaddress.bill_name
             %br
-            名前
+            = current_user.myaddress.last_name
+            = current_user.myaddress.first_name
             %p
             = link_to '#', class: "buy-user-info-fix" do
               %span
