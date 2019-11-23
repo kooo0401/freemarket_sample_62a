@@ -43,6 +43,13 @@ class ProductsController < ApplicationController
     @product = Product.create
   end
 
+  def destroy
+    product = Product.find(params[:id])
+    if product.user_id == current_user.id
+      product.destroy #destroyメソッドを使用し対象のツイートを削除する。櫻田
+    end
+  end
+
   def change
   end
 

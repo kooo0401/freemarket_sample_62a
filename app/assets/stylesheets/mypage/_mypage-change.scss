@@ -66,7 +66,7 @@
         font-weight: 400;
         background: #fafafa;
         padding: 8px
-    　}
+     }
       td{
         width: 61%;
         background: #fff;
@@ -146,7 +146,18 @@
   line-height: 30px;
   background-color: #fff;
 }
-.itembuy-gray-box{
+.itembuy-gray-box1{
+  text-decoration: none;
+  font-size: 15px;
+  line-height: 60px;
+  display: block;
+  margin-top: 3px;
+  background: gray;
+  color: #fff;
+  text-align: center;
+  font-weight: 600;
+}
+.itembuy-gray-box2{
   text-decoration: none;
   font-size: 15px;
   line-height: 60px;
