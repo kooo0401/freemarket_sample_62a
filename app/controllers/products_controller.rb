@@ -41,6 +41,13 @@ class ProductsController < ApplicationController
     @product = Product.create
   end
 
+  def destroy
+    product = Product.find(params[:id])
+    if product.user_id == current_user.id
+      product.destroy #destroyメソッドを使用し対象のツイートを削除する。櫻田
+    end
+  end
+
   # 以下、仮に人気カテゴリー、人気ブランドをリアルタイム対応させる場合の記述。
   # productテーブルにcategory_idカラムとbrand_idカラムを追加した後に実装予定
   # ------------------------------------------------------------------------------------------------

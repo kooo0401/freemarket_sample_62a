@@ -3,6 +3,7 @@
     %h1.itembuy-content__name
       @product.name
     .itembuy-content__clearfix
+    = form_with model: @product, local: true do |f|
       .itembuy-content__photo
         .itembuy-content__auter
           .itembuy-content__owl-carousel
@@ -93,10 +94,10 @@
     .itembuy-content__text-center
       or
     .itembuy-content__change-status-btns
-      = link_to '#', class: 'itembuy-gray-box' do
+      = link_to '', class: 'itembuy-gray-box1' do
         出品を一旦停止する
     .itembuy-content__change-status-btns
-      = link_to '#', class: 'itembuy-gray-box' do
+      = link_to '', class: 'itembuy-gray-box2' do
         この商品を削除する
     .itembuy-content__comment
       %form.itembuy-message__form
@@ -105,3 +106,5 @@
         %button
           %span 
             コメントする
+
+= javascript_include_tag 'mypage-change.js'
