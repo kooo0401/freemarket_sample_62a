@@ -174,7 +174,6 @@
         .user-confirmation-btn{
           height: 50px;
           width: 90%;
-          margin-top: 30px;
           background-color: #ea352d;
           color: #ffffff;
           text-align: center;
@@ -182,6 +181,7 @@
           text-decoration: none;
           float: left;
           font-size: 0.9rem;
+          margin: 30px 70px 0 0;
         }
         .user-confirmation-about{
           margin: 30px 70px 0 0;
@@ -193,4 +193,126 @@
           .user-angle-right{
             font-size: 1.2rem;
           }
+}
+
+.user-confirmation-form-confirmation {
+  margin: 300px 0 0;
+}
+.user-confirmation-form1 {
+  margin: 10px 0 0;
+  .user-confirmation-form1-fullname {
+    background-repeat: no-repeat;
+    margin: 0;
+    padding: 0;
+  }
+  &__label {
+    font-weight: 600;
+    display: inline-block;
+    font-size: 14px;
+  }
+  &__span {
+    background: #ccc;
+    margin: 0 0 0 8px;
+    padding: 2px 4px;
+    border-radius: 2px;
+    color: #fff;
+    font-size: 12px;
+    vertical-align: top;
+  }
+  &__form {
+    width: 90%;
+    margin: 8px 0 0;
+    height: 48px;
+    padding: 10px 16px 8px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    background: #fff;
+    line-height: 1.5;
+    font-size: 16px;
+  }
+  &__identification {
+    font-size: 16px;
+    font-weight: bold;
+    padding: 10px 0 0 0;
+  }
+  &__explanation {
+    margin: 8px 0 0;
+    padding: 0;
+    line-height: 1.5;
+    font-size: 14px;
+  }
+  &__last-name {
+    height: 48px;
+    padding: 10px 16px 8px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    background: #fff;
+    line-height: 1.5;
+    font-size: 16px;
+    margin-right: 8px;
+    width: calc(50% - 6px);
+    float: left;
+
+  }
+  &__first-name {
+    height: 48px;
+    padding: 10px 16px 8px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    background: #fff;
+    line-height: 1.5;
+    font-size: 16px;
+    width: calc(50% - 6px);
+  }
+  .birthday-form {
+    .user-confirmation-birthday {
+      width: 76px;
+      height: 48px;
+      margin: 8px 0 0;
+      font-size: 16px;
+      line-height: 1.5;
+      cursor: pointer;
+    }
+  }
+  .credit-image {
+    width: 100%;
+    height: 70px;
+  }
+}
+.user-confirmation-form2 {
+  margin: 65px 0 0;
+}
+
+.prefecture-select-wrap {
+  position: relative;
+  #user_prefecture {
+    width: 90%;
+    margin: 8px 20px 0 0;
+    height: 48px;
+    padding: 10px 16px 8px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    background: #fff;
+    line-height: 1.5;
+    font-size: 16px;
+    -webkit-appearance: none;
+    cursor: pointer;
+  }
+  .fa-chevron-down {
+    cursor: pointer;
+  }
+}
+
+.user-confirmation-signup-text-right {
+  margin-top: 102px;
+  .signup-text-content {
+    display: block;
+    text-align: right;
+    margin: 10px 0 0;
+    .signup-text-link {
+      color: #0099e8;
+      text-decoration: none;
+      font-size: 14px;
+    }
+  }
 }

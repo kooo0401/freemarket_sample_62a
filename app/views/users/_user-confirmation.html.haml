@@ -1,7 +1,9 @@
+.signup-view-1page
+  %section.signup-view-block
+    %h2.signup-view-block__explanation 
+      本人情報の登録
 = form_with model: @user, local: true do |f|
   .user-confirmation
-    .user-confirmation__title
-      %h1 本人情報の登録
     .user-confirmation__main
       %p.user-confirmation-description
         お客さまの本人情報をご登録ください。
@@ -16,36 +18,39 @@
       %p.user-confirmation-namekana-each #{@user.last_name_kana} #{@user.first_name_kana}
       %h4.user-confirmation-born 生年月日
       %p.user-confirmation-born-each #{@user.birthday}
-      .user-confirmation-zip-space
-        %h5.user-confirmation-zip 郵便番号
-        %p.user-confirmation-any 任意
-      .zip-place-holder
-        = f.text_field :zip, class: 'zip-place-holder-field', value: "#{@user.zip}", placeholder: '例）1234567'
-      .user-confirmation-prefectures-space
-        %h5.user-confirmation-prefectures 都道府県
-        %p.user-confirmation-any 任意
-      .prefectures-place-holder
-        = f.collection_select :prefecture, Prefecture.all, :id, :name, { prompt:"---" }, value: "#{@user.prefecture}", class: 'prefectures-place-holder-field'
-      .user-confirmation-municipalities-space
-        %h5.user-confirmation-municipalities 市区町村
-        %p.user-confirmation-any 任意
-        .user-confirmation-any
-      .municipalities-place-holder
-        = f.text_field :city_name, class: 'municipalities-place-holder-field', value: "#{@user.city_name}", placeholder: '例）横浜市緑区'
-      .user-confirmation-address-space
-        %h5.user-confirmation-address 番地
-        %p.user-confirmation-any 任意
-        .user-confirmation-any
-      .address-place-holder
-        = f.text_field :block_name, class: 'address-place-holder-field', value: "#{@user.block_name}", placeholder: '例）青山1-1-1'
-      .user-confirmation-building-space
-        %h5.user-confirmation-building 建物名
-        %p.user-confirmation-any 任意
-        .user-confirmation-any
-      .building-place-holder
-        = f.text_field :bill_name, class: 'building-place-holder-field', value: "#{@user.bill_name}", placeholder: '例）柳ビル103'
-      -# =link_to "登録する", "javascript:void(0)", class: "user-confirmation-btn"
+      .user-confirmation-form-confirmation
+        %label.user-confirmation-form1__label
+          郵便番号
+        %span.user-confirmation-form1__span
+          必須
+        = f.text_field :zip, value: "#{@user.zip}", placeholder: '例） 123-4567', class: 'user-confirmation-form1__form'
+      .user-confirmation-form1
+        %label.user-confirmation-form1__label
+          都道府県
+        %span.user-confirmation-form1__span
+          必須
+        .prefecture-select-wrap
+          = f.collection_select :prefecture, Prefecture.all, :id, :name, { prompt:"---" }
+          = fa_icon 'chevron-down', class:'prefecture.fas.fa-chevron-down'
+      .user-confirmation-form2
+        %label.user-confirmation-form1__label
+          市区町村
+        %span.user-confirmation-form1__span
+          必須
+        = f.text_field :city_name, value: "#{@user.city_name}", placeholder: '例）横浜市緑区', class: 'user-confirmation-form1__form'
+      .user-confirmation-form1
+        %label.user-confirmation-form1__label
+          番地
+        %span.user-confirmation-form1__span
+          必須
+        = f.text_field :block_name, value: "#{@user.block_name}", placeholder: '例）青山1-1-1', class: 'user-confirmation-form1__form'
+      .user-confirmation-form1
+        %label.user-confirmation-form1__label
+          建物名
+        %span.user-confirmation-form1__span
+          任意
+        = f.text_field :bill_name, value: "#{@user.bill_name}", placeholder: '例）柳ビル103', class: 'user-confirmation-form1__form'
       %button{type: "submit", class: 'user-confirmation-btn'} 変更する
-      -# = submit class: "user-confirmation-about" do
-      -#   本人情報の登録について
-      -#   =fa_icon 'angle-right', class: 'user-angle-right'
+      .user-confirmation-signup-text-right
+        %p.signup-text-content
+          = link_to( "本人情報の登録について〉", "/", class: "signup-text-link")

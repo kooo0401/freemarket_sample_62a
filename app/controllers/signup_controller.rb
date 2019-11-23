@@ -18,7 +18,7 @@ class SignupController < ApplicationController
     if verify_recaptcha # recaptcha（ロボット認証）
       render action: 'user_registration2' # trueなら次のページ
     else
-      render 'user_registration1.html'    # falseなら再度入力
+      render user_registration1_signup_index_path    # falseなら再度入力
     end
   end
 
