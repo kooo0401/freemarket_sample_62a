@@ -30,9 +30,9 @@
       -# = form_for(resource, as: resource_name, url: user_session_path, html: { method: :post }) do |f|
       = form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "user-login-form"}) do |f|
         .field
-          = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "メールアドレス"
+          = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "メールアドレス", class: "validate[custom[email]]"
         .field
-          = f.password_field :password, autocomplete: "current-password", placeholder: "パスワード"
+          = f.password_field :password, autocomplete: "current-password", placeholder: "パスワード", class: "validate[minSize[6], maxSize[20]]"
         .recaptcha-block
           .recaptcha-block-frame
             .recaptcha-block-frame__btn
@@ -43,6 +43,7 @@
           = link_to "パスワードをお忘れの方", new_password_path(resource_name), class: 'forgot-password-btn'
 
 = render "layouts/exhibit-footer"
+= javascript_include_tag 'signup.js'
 
 -# ↓元々のerbファイル、安全の為、ログイン機能実装まで残す
 

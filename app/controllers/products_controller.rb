@@ -1,4 +1,6 @@
 class ProductsController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :change]
+  before_action :ensure_correct_product, only: [:change]
 
   def index
     @products = Product.order("id DESC").limit(10)
@@ -33,13 +35,37 @@ class ProductsController < ApplicationController
     @parent = @child.parent
   end
 
+  # editアクション内のインスタンスは購入確認画面をproduct#editに割り当てると仮定し記載
   def edit
-
+    @product = Product.find(params[:id])
+    gon.product_price = @product.price
+    gon.all_point = current_user.point
   end
 
   def create
     @product = Product.create
   end
+
+  def destroy
+    product = Product.find(params[:id])
+    if product.user_id == current_user.id
+      product.destroy #destroyメソッドを使用し対象のツイートを削除する。櫻田
+    end
+  end
+
+  def change
+  end
+
+  def ensure_correct_product
+
+    if current_user.id !=  params[:id].to_i
+     redirect_to new_user_session_path
+    else
+      true
+    end
+  
+  end
+
 
   # 以下、仮に人気カテゴリー、人気ブランドをリアルタイム対応させる場合の記述。
   # productテーブルにcategory_idカラムとbrand_idカラムを追加した後に実装予定
