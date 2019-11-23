@@ -35,8 +35,11 @@ class ProductsController < ApplicationController
     @parent = @child.parent
   end
 
+  # editアクション内のインスタンスは購入確認画面をproduct#editに割り当てると仮定し記載
   def edit
-
+    @product = Product.find(params[:id])
+    gon.product_price = @product.price
+    gon.all_point = current_user.point
   end
 
   def create
