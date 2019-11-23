@@ -1,4 +1,6 @@
 class ProductsController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :change]
+  before_action :ensure_correct_product, only: [:change]
 
   def index
     @products = Product.order("id DESC").limit(10)
@@ -40,6 +42,20 @@ class ProductsController < ApplicationController
   def create
     @product = Product.create
   end
+
+  def change
+  end
+
+  def ensure_correct_product
+
+    if current_user.id !=  params[:id].to_i
+     redirect_to new_user_session_path
+    else
+      true
+    end
+  
+  end
+
 
   # 以下、仮に人気カテゴリー、人気ブランドをリアルタイム対応させる場合の記述。
   # productテーブルにcategory_idカラムとbrand_idカラムを追加した後に実装予定

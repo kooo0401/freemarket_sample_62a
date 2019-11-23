@@ -1,4 +1,10 @@
-=link_to  new_product_path, class: "exhibit-btn" do
-  %p.exhibit-name
-    出品
-  = fa_icon 'camera', class: 'exhibit-icon'
+- if user_signed_in?
+  =link_to  new_product_path, class: "exhibit-btn" do
+    %p.exhibit-name
+      出品
+    = fa_icon 'camera', class: 'exhibit-icon'
+- else
+  =link_to  new_user_session_path, class: "exhibit-btn" do
+    %p.exhibit-name
+      出品
+    = fa_icon 'camera', class: 'exhibit-icon'
