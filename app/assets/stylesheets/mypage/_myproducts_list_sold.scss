@@ -1,0 +1,67 @@
+.buy-product-mypage{
+  height: 75px;
+  width: 700px;
+  background-color: #fafafa;
+  color: black;
+  float: left;
+  }
+  .buy-product-title-mypage{
+    line-height: 50px;
+    margin-left: 10px; 
+    font-weight: bold;
+  }
+.border-red-2-mypage{
+  height: 2px;
+  width: 233px;
+  background-color: red;
+}
+.transaction-mypage{
+  height: 75px;
+  width: 700px;
+  float: left;
+  }
+  .transaction-now-mypage{
+    height: 75px;
+    width: 233px;
+    float: left;
+    text-align: center;
+    line-height: 75px;
+    background-color: #ffffff;
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+  }
+  .transaction-past-mypage{
+    height: 75px;
+    width: 233px;
+    float: left;
+    text-align: center;
+    line-height: 75px;
+    background-color: #ffffff;
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    }
+    .btn:hover-mypage{
+      opacity: 0.5;
+    }
+    .buy-products-now-list-mypage{
+      height: 240px;
+      width: 700px;
+      float: left;
+      background: url("/assets/IMG_no-buy-products-now.png");
+      background-size: cover;
+      }
+    .buy-products-past-list-mypage{
+      height: 240px;
+      width: 700px;
+      float: left;
+      background: url("/assets/IMG_no-buy-products-past.png");
+      background-size: cover;
+      }
+
+.border-red-2-mypage{
+  height: 2px;
+  width: 233px;
+  background-color: red;
+}

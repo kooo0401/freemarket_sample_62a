@@ -1,6 +1,6 @@
 .main__left
   .main__left-list
-    =link_to "#", class: "main__left-list__nav btn space-1" do
+    =link_to user_path, class: "main__left-list__nav btn space-1" do
       マイページ
       .select-icon-space
         =fa_icon 'angle-right', class: 'select-icon i1'
@@ -20,12 +20,12 @@
       .select-icon-space
         = fa_icon 'angle-right', class: 'select-icon i4'
   .main__left-list
-    =link_to "#", class: "main__left-list__nav btn space-5" do
+    =link_to new_product_path, class: "main__left-list__nav btn space-5" do
       出品する
       .select-icon-space
         = fa_icon 'angle-right', class: 'select-icon i5'
   .main__left-list
-    =link_to "#", class: "main__left-list__nav btn space-6" do
+    =link_to myproducts_list_exhibiting_user_path, class: "main__left-list__nav btn space-6" do
       出品した商品 - 出品中
       .select-icon-space
         = fa_icon 'angle-right', class: 'select-icon i6'
@@ -40,12 +40,12 @@
       .select-icon-space
         = fa_icon 'angle-right', class: 'select-icon i8'
   .main__left-list
-    =link_to "#", class: "main__left-list__nav btn space-9" do
+    =link_to myproducts_list_exhibiting_user_path, class: "main__left-list__nav btn space-9" do
       購入した商品 - 取引中
       .select-icon-space
         = fa_icon 'angle-right', class: 'select-icon i9'
   .main__left-list
-    =link_to "#", class: "main__left-list__nav btn space-10" do
+    =link_to myproducts_list_exhibiting_user_path, class: "main__left-list__nav btn space-10" do
       購入した商品 - 過去の取引
       .select-icon-space
         = fa_icon 'angle-right', class: 'select-icon i10'

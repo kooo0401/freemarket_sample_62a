@@ -63,6 +63,19 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def myproducts_list_exhibiting
+    @user = User.find(params[:id])
+  end
+
+  def myproducts_list_trading
+    @user = User.find(params[:id])
+  end
+
+  def myproducts_list_sold
+    @user = User.find(params[:id])
+  end
+
+
   # ログイン中ユーザーでなければ、他ユーザーのマイページは見れない
   def ensure_correct_user
 
