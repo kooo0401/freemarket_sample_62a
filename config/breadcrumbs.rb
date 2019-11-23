@@ -26,3 +26,12 @@ end
 #   parent :user_show
 # end
 
+# crumb :user_mail_pass_edit do
+#   link "メール/パスワード", mail_pass_edit_user_path
+#   parent :user_show
+# end
+
+# crumb :user_tel_edit do
+#   link "本人情報の登録", tel_edit_user_path
+#   parent :user_show
+# end

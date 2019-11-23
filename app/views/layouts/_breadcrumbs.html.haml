@@ -13,7 +13,14 @@
 - when ['users', 'confirmation_edit']
   - breadcrumb :user_confirmation_edit
 
-= breadcrumbs separator: ' &nbsp;>&nbsp;&nbsp;'
+-# - when ['users', 'myaddress_edit']
+-#   - breadcrumb :user_myaddress_edit
 
--# - when ['user_chat_rooms', 'index']
--#   - breadcrumb :user_chat_rooms_index
+-# - when ['users', 'mail_pass_edit']
+-#   - breadcrumb :user_confirmation_edit
+
+-# - when ['users', 'tel_edit']
+-#   - breadcrumb :user_tel_edit
+
+= breadcrumbs separator: ' &nbsp;>&nbsp;&nbsp;',class: 'bread-crumbs'
+

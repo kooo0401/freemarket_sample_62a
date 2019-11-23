@@ -3,23 +3,20 @@
   border-top: 1px solid #eee;
   background: #fff;
   box-shadow: 0 3px 3px 0 rgba(112, 38, 38, 0.16);
-  ul{
-    padding: 16px;
-    font-size: 0;
-    white-space: nowrap;
-    overflow: auto;
-    -webkit-overflow-scrolling: touch;
-  }
-  li {
+  padding: 16px;
+  text-decoration: none;
+  a {
     display: inline-block;
     font-size: 14px;
     line-height: 1.2;
+    color: #333;
+    text-decoration: none;
   }
-  .breadcrumbs-list {
-    width: 1020px;
-    overflow: visible;
-    margin: 0 auto;
-    padding: 16px 0;
-    white-space: normal;
+  span {
+    display: inline-block;
+    font-size: 14px;
+    line-height: 1.2;
+    color: #333;
+    font-weight: 600;
   }
 }

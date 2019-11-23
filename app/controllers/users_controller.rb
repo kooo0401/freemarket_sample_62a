@@ -23,7 +23,15 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
-  def myaddress_edit
-    @user = User.find(params[:id])
-  end
+  # def myaddress_edit
+  #   @user = User.find(params[:id])
+  # end
+
+  # def mail_pass_edit
+  #   @user = User.find(params[:id])
+  # end
+
+  # def tel_edit
+  #   @user = User.find(params[:id])
+  # end
 end
