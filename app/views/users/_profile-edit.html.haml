@@ -5,7 +5,7 @@
     .profile-image
       = fa_icon 'smile-o', class: 'profile-icon'
       .name-place-holder
-        = f.text_field :name, class: 'name-place-holder-field', value: "おさる", placeholder: '例）AYA☆セール中'
+        = f.text_field :nickname, class: 'name-place-holder-field', value: "#{@user.nickname}", placeholder: '例）AYA☆セール中'
     .text-place-holder
-      = f.text_field :content, class: 'text-place-holder-field', placeholder: '例）こんにちは☆ご覧いただきありがとうございます！かわいいものやきれいめオフィスカジュアル中心に出品しています。服のサイズは主に９号です。気持ちよくお取引できるよう心がけていますので、商品や発送方法などご質問がありましたらお気軽にどうぞ♪'
+      = f.text_field :self_introduction, class: 'text-place-holder-field', value: "#{@user.self_introduction}", placeholder: '例）こんにちは☆ご覧いただきありがとうございます！かわいいものやきれいめオフィスカジュアル中心に出品しています。服のサイズは主に９号です。気持ちよくお取引できるよう心がけていますので、商品や発送方法などご質問がありましたらお気軽にどうぞ♪'
       %button{type: "submit", class: 'profile-btn'} 変更する
