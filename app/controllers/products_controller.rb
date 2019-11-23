@@ -31,7 +31,7 @@ class ProductsController < ApplicationController
   end
 
   def show
-    @product = Product.find(1)
+    @product = Product.find(params[:id])
     #実際にテーブルからid:1のproductを取得できているかの記述。
     # @product = Product.find(params[:id])
     # 商品出品が可能になったら、一つ一つのproductからidで取得する。
@@ -41,24 +41,28 @@ class ProductsController < ApplicationController
   end
 
   def edit
+
   end
 
   def create
     @product = Product.new(product_params)
     # @product = current_user.products.build(product_params)
-
     if @product.save
-      params[:images][:image].each do |image|
-        @product.images.create(image: image, product_id: @product.id)
-      end
+      # params[:images][:image].each do |image|
+      #   @product.images.create(image: image, product_id: @product.id)
+      # end
       flash[:notice] = '商品が出品されました'
       redirect_to root_path
     else
       render :new
       flash.alert = '再度入力してください'
-      # 入力内容がおかしい所に赤字で表示
-        # → 例：選択して下さい
-        # おそらくJS
+    end
+  end
+
+  def destroy
+    product = Product.find(params[:id])
+    if product.user_id == current_user.id
+      product.destroy #destroyメソッドを使用し対象のツイートを削除する。櫻田
     end
   end
 

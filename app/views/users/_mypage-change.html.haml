@@ -1,0 +1,110 @@
+.itembuy-container
+  %section.itembuy-content
+    %h1.itembuy-content__name
+      @product.name
+    .itembuy-content__clearfix
+    = form_with model: @product, local: true do |f|
+      .itembuy-content__photo
+        .itembuy-content__auter
+          .itembuy-content__owl-carousel
+            .owl-carousel-space
+              =image_tag("/IMG_mercari-footer-image.png", class: 'owl-carousel-main show', size: '300x300')
+              =image_tag("/IMG_footer-top-image.png", class: 'owl-carousel-main', size: '300x300')
+              =image_tag("/IMG_mercari-footer-image.png", class: 'owl-carousel-main', size: '300x300')
+              =image_tag("/IMG_footer-top-image.png", class: 'owl-carousel-main', size: '300x300')
+              =image_tag("/IMG_mercari-footer-image.png", class: 'owl-carousel-main', size: '300x300')
+              =image_tag("/IMG_footer-top-image.png", class: 'owl-carousel-main', size: '300x300')
+        .itembuy-content__owl-carousel-thumb
+          =image_tag("/IMG_mercari-footer-image.png", class: 'owl-carousel-sub active', size: '60x60')
+          =image_tag("/IMG_footer-top-image.png", class: 'owl-carousel-sub', size: '60x60')
+          =image_tag("/IMG_mercari-footer-image.png", class: 'owl-carousel-sub', size: '60x60')
+          =image_tag("/IMG_footer-top-image.png", class: 'owl-carousel-sub', size: '60x60')
+          =image_tag("/IMG_mercari-footer-image.png", class: 'owl-carousel-sub', size: '60x60')
+          =image_tag("/IMG_footer-top-image.png", class: 'owl-carousel-sub', size: '60x60')
+      %table.itembuy-content__table
+        %tbody
+          %tr
+            %th 出品者
+            %td
+              = link_to "@user.nickname", "#"
+              %div
+                .itembuy-content__ratings{ id: 'itembuy-icon-good' }
+                  =fa_icon 'smile-o', class: 'icon-r'
+                  %span 437
+                .itembuy-content__ratings
+                  =fa_icon 'meh-o', class: 'icon-y'
+                  %span 4
+                .itembuy-content__ratings
+                  =fa_icon 'frown-o', class: 'icon-b'
+                  %span 0
+          %tr
+            %th カテゴリー
+            %td
+              = link_to "レディース", "#"
+              %br
+              = link_to "＞ジャケット/アウター", "#"
+              %br
+              = link_to "＞ジャンパー/ブルゾン", "#"
+          %tr
+            %th  ブランド
+            %td
+              = link_to "3カン4カン", "#"
+          %tr
+            %th 商品のサイズ
+            %td
+              %span 
+                @size.size_name
+          %tr
+            %th 商品の状態
+            %td
+              %span
+                @condition.value
+          %tr
+            %th 配送料の負担
+            %td
+              %span
+                @delivery_charge.value
+          %tr
+            %th 配送の方法
+            %td
+              %span
+                @delivery_way.value
+          %tr
+            %th 配送元地域
+            %td
+              %span
+                = link_to "大阪府", "#"  
+          %tr
+            %th 発送日の目安
+            %td
+              %span
+                @delivery_days.value
+    .itembuy-content__price
+      %span.itembuy-content__bold<
+        ＠product.plice
+      %span.itembuy-content__tax (税込)
+      %span.itembuy-content__fee 送料込み
+    .itembuy-detail
+      %p.itembuy-detail__inner
+        @product.description
+  .itembuy-content__change-status
+    .itembuy-content__change-status-btns
+      = link_to '#', class: 'itembuy-red-box' do
+        商品の編集
+    .itembuy-content__text-center
+      or
+    .itembuy-content__change-status-btns
+      = link_to '', class: 'itembuy-gray-box1' do
+        出品を一旦停止する
+    .itembuy-content__change-status-btns
+      = link_to '', class: 'itembuy-gray-box2' do
+        この商品を削除する
+    .itembuy-content__comment
+      %form.itembuy-message__form
+        %p 相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
+        %textarea
+        %button
+          %span 
+            コメントする
+
+= javascript_include_tag 'mypage-change.js'

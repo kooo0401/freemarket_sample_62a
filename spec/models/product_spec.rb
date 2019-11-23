@@ -72,12 +72,7 @@ describe Product do
       expect(product.errors[:category_id]).to include("を入力してください")
     end
 
-    # # brand_id
-    # it "is invalid without brand_id" do
-    #   product = build(:product, brand_id: nil)
-    #   product.valid?
-    #   expect(product.errors[:brand_id]).to include("を入力してください")
-    # end
+   
 
     # size_id
     it "is invalid without a size_id" do

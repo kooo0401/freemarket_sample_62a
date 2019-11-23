@@ -18,7 +18,7 @@ class Product < ApplicationRecord
   validates :delivery_way, presence: true
   validates :user_id, presence: true
   validates :category_id, presence: true
-  # validates :brand_id
+  
   validates :size_id, presence: true
   validates :price, presence: true, numericality: { only_integr: true,greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999 }
 

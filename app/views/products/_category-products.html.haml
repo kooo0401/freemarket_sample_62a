@@ -4,7 +4,6 @@
       %h3#ladies.new-category レディース新着アイテム
       =link_to "#", class: "more-read"  do
         もっと見る >
-    
       .category-products--new__lists
         %ul.new-category__lists
           - @products.each do |product|
@@ -19,3 +18,4 @@
                       %span.figure-container__image__price
                         = product.price
                       = image_tag("#{product.images[0].image}", class: "image-price")
+

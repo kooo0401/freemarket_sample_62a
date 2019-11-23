@@ -1,0 +1,18 @@
+.signup-view-1page
+  %section.signup-view-block
+    %h2.signup-view-block__explanation 
+      電話番号の確認
+
+    = form_with model: @user, local: true do |f|
+      .signup-tel-block
+        .signup-tel-block__form
+          %label.signup-tel-block__form--label
+            携帯電話の番号
+          = f.text_field :tel, value: "#{@user.tel}", placeholder: '携帯電話の番号を入力'
+          本人確認のため、携帯電話のSMS(ショートメッセージサービス)を利用して認証を行います。
+        = f.submit 'SMSを送信する', class: "signup-tel-block__btn"
+        %p.signup-tel-block__content
+          ※電話番号は本人確認や不正利用防止のために利用します。他のユーザーに公開されることはありません。
+        %p.signup-tel-block__text
+          = link_to( "電話番号の確認が必要な理由〉", "/", class: "signup-tel-block__text--link")
+        .mail-pass-white-space

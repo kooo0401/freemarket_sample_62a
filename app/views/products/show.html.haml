@@ -1,37 +1,142 @@
-.product-space
-  = @product.description
-  /13.商品説明
-  = @product.name
-  /12.商品名
-  = @product.price
-  /11.価格
-  = @product.delivery_days
-  /10.発送目安
-  = @product.area
-  /9.配送地域
-  = @product.delivery_way
-  /8.配送方法
-  = @product.delivery_charged
-  /7.配送料
-  = @product.seles_status
-  /6.商品状態
-  = @product.brand.name
-  /5.ブランド
-  = @parent.name
-  = @child.name
-  = @grandchild.name
-  /4.カテゴリー
-  = @product.user.name
-  /3.商品出費者
-  = image_tag("/#{@product.images[1].image}", class: "news-todo-list-image")
-  = image_tag("/#{@product.images[2].image}", class: "news-todo-list-image")
-  = image_tag("/#{@product.images[3].image}", class: "news-todo-list-image")
-  = image_tag("/#{@product.images[4].image}", class: "news-todo-list-image")
-  = image_tag("/#{@product.images[5].image}", class: "news-todo-list-image")
-  = image_tag("/#{@product.images[6].image}", class: "news-todo-list-image")
-  = image_tag("/#{@product.images[7].image}", class: "news-todo-list-image")
-  = image_tag("/#{@product.images[8].image}", class: "news-todo-list-image")
-  = image_tag("/#{@product.images[9].image}", class: "news-todo-list-image")
-  /2.画像（9枚）
-  = image_tag("/#{@product.images[0].image}", class: "news-todo-list-image")
-  /1.画像（top)
+= render "layouts/header"
+.itembuy-container
+  %section.itembuy-content
+    %h1.itembuy-content__name
+      @product.name
+    .itembuy-content__clearfix
+      .itembuy-content__photo
+        .itembuy-content__auter
+          .itembuy-content__owl-carousel
+            .owl-carousel-space
+              =image_tag("/IMG_mercari-footer-image.png", class: 'owl-carousel-main show', size: '300x300')
+              =image_tag("/IMG_footer-top-image.png", class: 'owl-carousel-main', size: '300x300')
+              =image_tag("/IMG_mercari-footer-image.png", class: 'owl-carousel-main', size: '300x300')
+              =image_tag("/IMG_footer-top-image.png", class: 'owl-carousel-main', size: '300x300')
+              =image_tag("/IMG_mercari-footer-image.png", class: 'owl-carousel-main', size: '300x300')
+              =image_tag("/IMG_footer-top-image.png", class: 'owl-carousel-main', size: '300x300')
+        .itembuy-content__owl-carousel-thumb
+          =image_tag("/IMG_mercari-footer-image.png", class: 'owl-carousel-sub active', size: '60x60')
+          =image_tag("/IMG_footer-top-image.png", class: 'owl-carousel-sub', size: '60x60')
+          =image_tag("/IMG_mercari-footer-image.png", class: 'owl-carousel-sub', size: '60x60')
+          =image_tag("/IMG_footer-top-image.png", class: 'owl-carousel-sub', size: '60x60')
+          =image_tag("/IMG_mercari-footer-image.png", class: 'owl-carousel-sub', size: '60x60')
+          =image_tag("/IMG_footer-top-image.png", class: 'owl-carousel-sub', size: '60x60')
+      %table.itembuy-content__table
+        %tbody
+          %tr
+            %th 出品者
+            %td
+              = link_to "@user.nickname", "#"
+              %div
+                .itembuy-content__ratings{ id: 'itembuy-icon-good' }
+                  =fa_icon 'smile-o', class: 'icon-r'
+                  %span 437
+                .itembuy-content__ratings
+                  =fa_icon 'meh-o', class: 'icon-y'
+                  %span 4
+                .itembuy-content__ratings
+                  =fa_icon 'frown-o', class: 'icon-b'
+                  %span 0
+          %tr
+            %th カテゴリー
+            %td
+              = link_to "レディース", "#"
+              %br
+              = link_to "＞ジャケット/アウター", "#"
+              %br
+              = link_to "＞ジャンパー/ブルゾン", "#"
+          %tr
+            %th  ブランド
+            %td
+              = link_to "3カン4カン", "#"
+          %tr
+            %th 商品のサイズ
+            %td
+              %span 
+                M
+          %tr
+            %th 商品の状態
+            %td
+              %span
+                目立った傷や汚れなし
+          %tr
+            %th 配送料の負担
+            %td
+              %span
+                送料込み(出品者負担)
+          %tr
+            %th 配送の方法
+            %td
+              %span
+                普通郵便(定形、定形外)
+          %tr
+            %th 配送元地域
+            %td
+              %span
+              = link_to "大阪府", "#"  
+          %tr
+            %th 発送日の目安
+            %td
+              %span
+                2~3日で発送
+    .itembuy-content__price
+      %span.itembuy-content__bold<
+        ¥2,100 
+      %span.itembuy-content__tax (税込)
+      %span.itembuy-content__fee 送料込み
+      = link_to "#", class: "itembuy-price-box" do
+        購入画面に進む
+    .itembuy-detail
+      %p.itembuy-detail__inner
+        = @product.description
+    .itembuy-button
+      .itembuy-button__left
+        =link_to "#", class: "new-item-image" do
+          %button
+            = fa_icon 'heart-o', class: 'icon-g'
+            %span
+              いいね! ０
+      .itembuy-button__left__report
+        =link_to "#", class: "new-item-image" do
+          %button 
+            =fa_icon 'flag-o', class: 'icon-g'
+            %span 
+              不適切な商品の報告
+      .itembuy-button__right
+        =link_to "#", class: "new-item-image" do
+          %button
+            =fa_icon 'shopping-bag', class: 'icon-b'
+            %span
+              あんしん・あんぜんへの取り組み
+.itembuy-content-box
+  .itembuy-detail-message
+    .itembuy-content__comment
+      %form.itembuy-message__form
+        %p 相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
+        %textarea
+        %button
+          %span 
+            コメントする
+      %ul.itembuy-nav
+        %li.itembuy-nav__left
+          = fa_icon 'chevron-left', class: 'icon-g'
+          = link_to "@prev_product.name","#"
+      %ul.itembuy-nav
+        %li.itembuy-nav__right
+          = link_to "@next_product.name","#"
+          = fa_icon 'chevron-right', class: 'icon-g'
+  .itembuy-media-box
+    %ul.itembuy-media-box__list
+      %li
+        =link_to '/' do
+          = fa_icon 'facebook-square', class: 'icon-facebook'
+      %li
+        =link_to '/' do
+          = fa_icon 'twitter-square', class: 'icon-twitter'
+      %li
+        =link_to '/' do
+          = fa_icon 'pinterest-square', class: 'icon-pinterest'
+  = render "products/itembuy"
+= render "layouts/footer"
+
+= javascript_include_tag 'itembuy-slider.js'

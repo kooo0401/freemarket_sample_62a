@@ -14,4 +14,8 @@
 //= require jquery_ujs
 //= require owl.carousel
 //= require activestorage
-//= require_tree .
+// require_tree . 個別でjsを読み込む為、コメントアウト(2019/11/21堀)
+
+//= require jquery.validationEngine-en
+//= require jquery.validationEngine
+//= require jquery.validationEngine-ja.js

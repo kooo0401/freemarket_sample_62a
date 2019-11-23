@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_17_075127) do
+ActiveRecord::Schema.define(version: 2019_11_18_080652) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "prefecture_id"
@@ -43,6 +43,23 @@ ActiveRecord::Schema.define(version: 2019_11_17_075127) do
     t.index ["product_id"], name: "index_images_on_product_id"
   end
 
+  create_table "myaddresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "last_name", null: false
+    t.string "first_name", null: false
+    t.string "last_name_kana", null: false
+    t.string "first_name_kana", null: false
+    t.string "zip", null: false
+    t.string "prefecture", null: false
+    t.string "city_name", null: false
+    t.string "block_name", null: false
+    t.string "bill_name"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "tel"
+    t.index ["user_id"], name: "index_myaddresses_on_user_id"
+  end
+
   create_table "products", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.text "description", null: false
     t.string "name", null: false
@@ -70,6 +87,15 @@ ActiveRecord::Schema.define(version: 2019_11_17_075127) do
     t.string "size_name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "sns_credentials", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "provider"
+    t.string "uid"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_sns_credentials_on_user_id"
   end
 
   create_table "statuses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -107,6 +133,7 @@ ActiveRecord::Schema.define(version: 2019_11_17_075127) do
 
   add_foreign_key "categories", "sizes"
   add_foreign_key "images", "products"
+  add_foreign_key "myaddresses", "users"
   add_foreign_key "products", "brands"
   add_foreign_key "products", "categories"
   add_foreign_key "products", "sizes"

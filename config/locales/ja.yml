@@ -111,3 +111,6 @@ ja:
     unlocks:
       new:
         resend_unlock_instructions: "アカウントの凍結解除方法を再送する"
+  recaptcha:
+    errors:
+      verification_failed: '※ reCAPTCHA認証に失敗しました。'
