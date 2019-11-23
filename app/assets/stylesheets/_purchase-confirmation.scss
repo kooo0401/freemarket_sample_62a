@@ -5,31 +5,23 @@
   &__main{
     text-align: center;
     font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
-
-    
-
     &__container{
       width: 700px;
       margin: 0 auto;
       background-color: white;
-
       &__head{
         padding: 16px;
         font-size: 22px;
         line-height: 1.5;
-
       }
-
       &__buy-content{
         padding: 24px 12.5% 0;
         border-top: 1px solid #f5f5f5;
-
         &__inner{
           display: flex;
           flex-wrap:wrap;
           margin: 0 auto;
           max-width:320px;
-
           &__name {
             display: block;
             font-size: 16px;
@@ -54,31 +46,25 @@
             &__buy-accordion{
               margin-top: 16px;
               &__accordion-parent{
-
                 &__accordion-toggle{
                   padding: 16px;
                   font-size: 14px;
                   border: 1px solid #ccc;
                   cursor: pointer;
                 }
-
                 &__accordion-child{
                   padding: 24px 40px;
                   font-size: 14px;
                   text-align: left;
                   background-color:#fafafa;
                   display:none;
-                  &__form-group{
-                    
+                  &__form-group{                    
                     &__radio-default{
                       margin-top: 10px;
                       // -webkit-appearance: none;
-                      cursor: pointer;
-                      
-                      
+                      cursor: pointer;                   
                         label{
-                          display: flex;
-                          
+                          display: flex;                       
                           .radiobuttomA{
                             -webkit-transform: scale(1.3);
                             transform: scale(1.3);
@@ -87,7 +73,6 @@
                             position: relative;
                             top: 3px;
                           }
-
                           .radiobuttomB{
                             -webkit-transform: scale(1.3);
                             transform: scale(1.3);
@@ -97,7 +82,6 @@
                             top: 10px;
                           }
                         }
-
                     }
                     &__used-point{
                       margin-top: 8px;
@@ -108,10 +92,8 @@
                       line-height: 1.5;
                       height: 48px;
                       padding: 10px 16px 8px;
-                      width: 100%;
-                      
+                      width: 100%;                  
                     }
-
                     input[type=number]::-webkit-inner-spin-button,input[type=number]::-webkit-outer-spin-button {
                       -webkit-appearance: none;
                       margin: 0;
@@ -146,9 +128,6 @@
               font-size: 14px;
               display: none;
             }
-            
-
-
             &__btm-default{
               margin-top: 8px;
               border: 1px solid #888;
@@ -159,7 +138,6 @@
               line-height: 48px;
               font-size: 14px;
             }
-
           }
         }
         }
@@ -173,27 +151,21 @@
             margin: 0 auto;
             text-align: left;
             font-size: 14px;
-            h3{
-              
+            h3{            
             }
             address{
               margin-top: 8px;
-              line-height: 1.4;
-              
+              line-height: 1.4;             
             }
-
           }
       }
   }
-    
-
   }
   
 
 .bold {
   font-weight: 600;
 }
-
 .buy-user-info-fix{
   display: block;
   text-align: right;
@@ -201,11 +173,7 @@
   color: #0099e8;
   text-decoration: none;
 }
-
 .pay-method{
   padding: 40px 0;
 }
-
-
-
 }
