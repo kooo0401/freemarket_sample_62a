@@ -15,118 +15,48 @@ describe ProductsController do
     end
   end
 
-
   # 以下、出品ページの登録時に実装する
-  # describe 'GET #new' do
-  #   it 'render product registraion page' do
-  #     get :new
-  #     expect(response).to render_template :new
-  #   end
-  # end
-
-  # ===============ここから髙橋記述===============
-  describe Product do
-    describe '#create' do
-      it 'is valid with a description, name, price, delivery_charged, area, 
-          delovery_days, sales_status, delivery_way, user_id, category_id, brand_id, size_id, status_id' do
-        product = build(:product)
-        expect(product).to be_valid
-      end
-    
-
-    # 各項目入力されているかどうかのテスト
-      it "is invalid without a description" do
-        product = build(:product, description: nil)
-        product.valid?
-        expect(product.errors[:description]).to include("can't be blank")
-      end
-    
-
-      it "is invalid without a name" do
-        product = build(:product, name: nil)
-        product.valid?
-        expect(product.errors[:name]).to include("can't be blank")
-      end
-
-      it "is invalid without a price" do
-        product = build(:product, price: nil)
-        product.valid?
-        expect(product.errors[:price]).to include("can't be blank")
-      end
-
-      it "is invalid without a delivery_charged" do
-        product = build(:product, delivery_charged: nil)
-        product.valid?
-        expect(product.errors[:]).to include("can't be blank")
-      end
-
-      it "is invalid without a area" do
-        product = build(:product, area: nil)
-        product.valid?
-        expect(product.errors[:area]).to include("can't be blank")
-      end
-
-      it "is invalid without delicery_" do
-        user = build(:user, birthday: nil)
-        user.valid?
-        expect(user.errors[:birthday]).to include("が入力されていません。")
-      end
-
-      # it "is invalid without a tel" do
-      #   user = build(:user, tel: nil)
-      #   user.valid?
-      #   expect(user.errors[:tel]).to include("が入力されていません。")
-      # end
-
-      # it "is invalid without a zip" do
-      #   user = build(:user, zip: nil)
-      #   user.valid?
-      #   expect(user.errors[:zip]).to include("が入力されていません。")
-      # end
-
-      # it "is invalid without a prefecture" do
-      #   user = build(:user, prefecture: nil)
-      #   user.valid?
-      #   expect(user.errors[:prefecture]).to include("が入力されていません。")
-      # end
-
-      # it "is invalid without a city_name" do
-      #   user = build(:user, city_name: nil)
-      #   user.valid?
-      #   expect(user.errors[:city_name]).to include("が入力されていません。")
-      # end
-
-      # it "is invalid without a block_name" do
-      #   user = build(:user, block_name: nil)
-      #   user.valid?
-      #   expect(user.errors[:block_name]).to include("が入力されていません。")
-      # end
-
-      # it "is invalid without a bill_name" do
-      #   user = build(:user, bill_name: nil)
-      #   user.valid?
-      #   expect(user.errors[:bill_name]).to include("が入力されていません。")
-      # end
+  describe 'GET #new' do
+    it 'render product registraion page' do
+      get :new
+      expect(response).to render_template :new
     end
   end
-end
-# ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝髙橋ここまで＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
 
+  # =========#create ここから髙橋記述===============
+  describe "#create" do
+    let(:user) {create(:user)}
+    context "as a user login" do
+      before do
+        login user
+        #「product_params」をPOSTで送信する
+        product_params = FactoryBot.attributes_for(:product)
+        post :create, params: {product:product_params }
+      end
+      # ルートパスにリダイレクトすること
+      it "redirects to the root page" do
+        # ルートパスに遷移することを確認
+        expect(response).to be_successful
+      end
+    end
+  end
+ # ===============ここまで髙橋記述===============
 
   # 以下、showのパスにidが入るように変更したのち追加（show/:id?)
-  describe 'GET #show' do
-    
-    it "assigns the requested product to @product" do
-      product = build(:product)
-      get :show, params: { id: 1 }
-      expect(assigns(:product)).to eq product
-    end
+  # 村上さん作成の下記を,一旦コメントアウトしてます!!   191121 (髙橋)
+  
+  # describe 'GET #show' do
+  #   it "assigns the requested product to @product" do
+  #     product = build(:product)
+  #     get :show, params: { id: 1 }
+  #     expect(assigns(:product)).to eq product
+  #   end
 
-    it 'render show page' do
-      get :show, params: { id: 1 }
-      expect(response).to render_template :show
-    end
-  end
+  #   it 'render show page' do
+  #     get :show, params: { id: 1 }
+  #     expect(response).to render_template :show
+  #   end
+  # end
 
   # 以下、edit(purchese)のパスを作ったのち実装、但しまずパスの書き方を考える必要あり
   # descibe 'GET #edit' do
@@ -135,6 +65,6 @@ end
   #   end
   # end
 
-
+end
 
  

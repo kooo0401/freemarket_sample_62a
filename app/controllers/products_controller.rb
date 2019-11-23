@@ -20,7 +20,10 @@ class ProductsController < ApplicationController
   def new
 
     @product = Product.new
-
+    @product.images.build
+    # 10.times { @product.images.build }
+    # ⇨ 毎回１０枚保存する（もしかしたらいらないかも：髙橋）
+    
     # 以下、ログイン機能設計次第で要不要判断
     # 以下の記述はログイン、ログアウト機能の導入後にコメントアウトを外すこと
     # redirect_to: controller: :user, action: :ログイン画面に対応するアクション unless user_signed_in?
@@ -41,14 +44,18 @@ class ProductsController < ApplicationController
   end
 
   def create
-
     @product = Product.new(product_params)
+    # @product = current_user.products.build(product_params)
+
     if @product.save
-      # ビュー（アラートでビューを表示）
-      #   続けて出品する（リンク product/new）
-      #   商品詳細ページへ (リンク product/show)
+      params[:images][:image].each do |image|
+        @product.images.create(image: image, product_id: @product.id)
+      end
+      flash[:notice] = '商品が出品されました'
+      redirect_to root_path
     else
-      # render :new
+      render :new
+      flash.alert = '再度入力してください'
       # 入力内容がおかしい所に赤字で表示
         # → 例：選択して下さい
         # おそらくJS
@@ -66,24 +73,21 @@ class ProductsController < ApplicationController
   # ------------------------------------------------------------------------------------------------
   
   private
-    #  ↑ ちなみに、Privateメソッドとは？
-    # 記述されたコントローラの内部でのみ、実行することができるメソッド。
-
-      # 商品出品実装時にstrong parameterを追加する
+    # ↑記述されたコントローラの内部でのみ、実行することができるメソッド。
+    # 商品出品実装時にstrong parameterを追加する
     # → 髙橋担当！！
     # <大前提>：Strong Parameterを設定する理由
-    # →画面内の入力項目以外のデータについては受け取らないようにできる
-    # →セキュリティを強固にできるメリットがある
+    # →画面内の入力項目以外のデータについては受け取らないようにできる →セキュリティを強固にできるメリット
  # ------------------------------------------------------------------------------------------------
 
   def product_params
     params.require(:product)
             .permit(:description, :name, :price, :delivery_charged,
-                    :area, :delivery_days, :seles_status, :delivery_way, 
+                    :area, :delivery_days, :sales_status, :delivery_way, 
                     :category_id,
                     :brand_id,
                     :size_id,
-                    images: [:image])
+                    images_attributes: [:image])
           .merge(user_id: current_user.id)
   end
 

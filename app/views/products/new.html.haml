@@ -1,96 +1,119 @@
 = render "layouts/exhibit-header"
 .exhibitmiddle
-  = form_with model: @product, local: true do |f|
-    .exhibitmain
-      .exhibitmain__head
-        商品の情報を入力
-      .exhibitmain__uploadbox
-        .exhibitmain__uploadbox__head
-          出品画像 
-          %span 必須
-        .exhibitmain__uploadbox__content
-          最大10枚までアップロードできます
-        .exhibitmain__uploadbox__item
-          ドラッグアンドドロップ
-          %br
-          またはクリックしてファイルをアップロード
-      .exhibitmain__description
-        .exhibitmain__description__name
-          商品名
-          %span 必須
-        = f.text_field :title,size: "67px", placeholder: "商品名 (必須40文字まで)" 
-        .exhibitmain__description__explanation
-          商品の説明
-          %span 必須
-        .exhibitmain__description__explanation-box 
-          = f.text_area :content, size: "75x8",placeholder: "商品の説明（必須1,000文字以内 (色、素材、重さ、定価、注意点など)例)2010年頃に１万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。"
-      .exhibitmain__details
-        .exhibitmain__details__name
-          商品の詳細
-        .exhibitmain__details__category-name
-          カテゴリー
-          %span 必須
-        .exhibitmain__details__category-box  
-          = f.select :karamu, [["---", 0],["dog", 1],["cat", 2]] 
-        .exhibitmain__details__status-name
-          商品の状態
-          %span 必須 
-        .exhibitmain__details__status-box 
-          = f.select :karamu, [["---", 0],["新品、未使用", 1],["未使用に近い", 2],["目立った傷や汚れなし",3],["やや傷や汚れなし", 4],["傷や汚れなし", 5],["全体的に状態が悪い",6] ]
-      .exhibitmain__delivery
-        .exhibitmain__delivery__name
-          配送について
-        .exhibitmain__delivery__burden
-          配送料の負担
-          %span 必須 
-        .exhibitmain__delivery__burden-box
-          = f.select :karamu, [["---", 0],["送料込み（出品者負担）", 1],["着払い（購入者負担）", 2]] 
-        .exhibitmain__delivery__area
-          配送元の地域
-          %span 必須 
-        .exhibitmain__delivery__area-box
-          = f.collection_select :prefecture_id, Prefecture.all, :id, :name
-        .exhibitmain__delivery__days  
-          配送までの日数
-          %span 必須
-        .exhibitmain__delivery__days-box
-          = f.select :karamu, [["---", 0],["1日~2日で発送", 1],["2日~3日で発送", 2],["4日~7日で発送"]] 
-      .exhibitmain__price
-        .exhibitmain__price__name
-          販売価格(300~9,999,999)
-        .exhibitmain__price__group
-          .exhibitmain__price__group__left
-            価格
+  .exhibitmain
+    .exhibitmain__head
+      商品の情報を入力
+      = form_with model: @product, local: true do |f|
+        .exhibitmain__uploadbox
+          .exhibitmain__uploadbox__head
+            出品画像 
             %span 必須
-          .exhibitmain__price__group__right
-            ¥
-            = f.text_field :title, placeholder: "例） 300"     
-        .exhibitmain__price__fee
-          .exhibitmain__price__fee__left
-            販売手数料（10％）
-          .exhibitmain__price__fee__right
-        .exhibitmain__price__profit
-          .exhibitmain__price__profit__left
-            販売利益
-          .exhibitmain__price__profit__right
-      .exhibitmain__exhibit
-        .exhibitmain__exhibit__text
-          = link_to("禁止されている出品", "＃")
-          、
-          = link_to("行為", "＃")
-          を必ずご確認ください。
-          %br
-          またブランド品でシリアルナンバー等がある場合はご記載ください。
-          = link_to("偽ブランドの販売", "＃")
-          は犯罪であり処罰される可能性があります。
-          %br
-          また、出品をもちまして
-          = link_to("加盟店規約", "＃")
-          に同意したことになります。
-        .exhibitmain__exhibit__btn
-          %button{type: "submit"} 
-          -# "ここはjsで実装予定"
-        .exhibitmain__exhibit__return
-          = link_to :back do
-            %button 戻る
+          = f.fields_for :images do |i|
+            .exhibitmain__uploadbox__content
+              最大10枚までアップロードできます
+            .preview-list
+              = i.file_field :image, multiple: true, name: 'images[image][]'
+              = i.file_field :image, multiple: true, name: 'images[image][]'
+              -# .preview-1
+              -#   %p.preview-title-1 ドラッグアンドドロップ
+              -# = f.file_field :title, class: 'img2'
+        .exhibitmain__description
+          .exhibitmain__description__name
+            商品名
+            %span 必須
+            = f.text_field :name,size: "67px", placeholder: "商品名 (必須40文字まで)" 
+          .exhibitmain__description__explanation
+            商品の説明
+            %span 必須
+          .exhibitmain__description__explanation-box 
+            = f.text_area :description, size: "75x8",placeholder: "商品の説明（必須1,000文字以内 (色、素材、重さ、定価、注意点など)例)2010年頃に１万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。"
+        .exhibitmain__details
+          .exhibitmain__details__name
+            商品の詳細
+          .exhibitmain__details__category-name
+            カテゴリー
+            %span 必須
+          .exhibitmain__details__category-box  
+            = f.select :category_id, [["---", 0],["Tシャツ", 1],["半袖", 2]] 
+          .exhibitmain__details__category-name
+            サイズ
+            %span 必須
+          .exhibitmain__details__category-box  
+            = f.select :size_id, [["---", 0],["LL", 1],["L", 2]] 
+          .exhibitmain__details__brand-name
+            
+            = f.text_field :brand_id
+            ブランド
+          .exhibitmain__details__status-name
+            商品の状態
+            %span 必須 
+          .exhibitmain__details__status-box 
+            = f.select :sales_status, [["---", 0],["新品、未使用", 1],["未使用に近い", 2],["目立った傷や汚れなし",3],["やや傷や汚れなし", 4],["傷や汚れなし", 5],["全体的に状態が悪い",6] ]
+        .exhibitmain__delivery
+          .exhibitmain__delivery__name
+            配送について
+          .exhibitmain__delivery__burden
+            配送料の負担
+            %span 必須 
+          .exhibitmain__delivery__burden-box
+            = f.select :delivery_charged, [["---", 0],["送料込み（出品者負担）", 1],["着払い（購入者負担）", 2]] 
+          .exhibitmain__delivery__way
+            配送方法
+            %span 必須 
+          .exhibitmain__delivery__way-box
+            = f.select :delivery_way, [["---", 0],["クロネコヤマト", 1],["ゆうパック", 2],["ゆうメール", 2]] 
+          .exhibitmain__delivery__area
+            配送元の地域
+            %span 必須 
+          .exhibitmain__delivery__area-box
+            = f.collection_select :area, Prefecture.all, :id, :name
+          .exhibitmain__delivery__days  
+            配送までの日数
+            %span 必須
+          .exhibitmain__delivery__days-box
+            = f.select :delivery_days, [["---", 0],["1日~2日で発送", 1],["2日~3日で発送", 2],["4日~7日で発送"]] 
+        .exhibitmain__price
+          .exhibitmain__price__name
+            販売価格(300~9,999,999)
+          .exhibitmain__price__group
+            .exhibitmain__price__group__left
+              価格
+              %span 必須
+            .exhibitmain__price__group__right
+              ¥
+              = f.text_field :price, id: "pricebox", placeholder: "例） 300"     
+          .exhibitmain__price__fee
+            .exhibitmain__price__fee__left
+              販売手数料（10％）
+            .exhibitmain__price__fee__left__box
+              -# = f.text_field :title, id: "priceboxa", placeholder: "-"  
+            
+            .exhibitmain__price__fee__right
+          .exhibitmain__price__profit
+            .exhibitmain__price__profit__left
+              販売利益
+            .exhibitmain__price__profit__right
+              -# = f.text_field :title, id: "priceboxb", placeholder: "-" 
+        .exhibitmain__exhibit
+          .exhibitmain__exhibit__text
+            = link_to("禁止されている出品", "＃")
+            、
+            = link_to("行為", "＃")
+            を必ずご確認ください。
+            %br
+            またブランド品でシリアルナンバー等がある場合はご記載ください。
+            = link_to("偽ブランドの販売", "＃")
+            は犯罪であり処罰される可能性があります。
+            %br
+            また、出品をもちまして
+            = link_to("加盟店規約", "＃")
+            に同意したことになります。
+          .exhibitmain__exhibit__btn
+            = f.submit :出品する,id: "btn"
+          .exhibitmain__exhibit__return
+            = link_to :back do
+              %button 戻る
 = render "layouts/exhibit-footer"
+-# %form
+-#   %input#file{:type => "file"}/
+-# #result
