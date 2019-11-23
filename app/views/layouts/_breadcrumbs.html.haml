@@ -1,2 +1,19 @@
-%nav.bread-crumbs
-  = breadcrumbs pretext: '', separator: ' &rsaquo; ', class: 'breadcrumbs-list'
+- case params.values_at :controller, :action
+
+- when ['users', 'show']
+  - breadcrumb :user_show
+
+- when ['users', 'profile_edit']
+  - breadcrumb :user_profile_edit
+
+
+- when ['users', 'credit_edit']
+  - breadcrumb :user_credit_edit
+
+- when ['users', 'confirmation_edit']
+  - breadcrumb :user_confirmation_edit
+
+= breadcrumbs separator: ' &nbsp;>&nbsp;&nbsp;'
+
+-# - when ['user_chat_rooms', 'index']
+-#   - breadcrumb :user_chat_rooms_index

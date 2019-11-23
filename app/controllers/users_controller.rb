@@ -22,4 +22,8 @@ class UsersController < ApplicationController
   def confirmation_edit
     @user = User.find(params[:id])
   end
+
+  def myaddress_edit
+    @user = User.find(params[:id])
+  end
 end
