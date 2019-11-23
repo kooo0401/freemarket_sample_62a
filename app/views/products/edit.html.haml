@@ -29,15 +29,20 @@
                   %li.bold 所持ポイント: P200
                   %li.form-box-tempolary__buy-accordion__accordion-parent__accordion-child__form-group
                     .form-box-tempolary__buy-accordion__accordion-parent__accordion-child__form-group__radio-default
-                      %label 
+                      %label
+                        %input{type:"radio", name:"point", class:"radiobuttomA"}
                         ポイントを使わない
                     .form-box-tempolary__buy-accordion__accordion-parent__accordion-child__form-group__radio-default
                       %label
-                        全てのポイントを使う 200
+                        %input{type:"radio", name:"point", class:"radiobuttomB"}
+                        全てのポイントを使う
+                        %br 200
                     .form-box-tempolary__buy-accordion__accordion-parent__accordion-child__form-group__radio-default
                       %label
+                        %input{type:"radio", name:"point", class:"radiobuttomA"}
                         一部のポイントを使う
-                    .form-box-tempolary__buy-accordion__accordion-parent__accordion-child__form-group__used-point 使うポイントを入力
+                    .form-box-tempolary__buy-accordion__accordion-parent__accordion-child__form-group__used-point
+                      使うポイントを入力
             %ul.form-box-tempolary__result-price
               %li.form-box-tempolary__result-price__row.bold
                 .form-box-tempolary__result-price__row__buy-price-cell1
@@ -55,7 +60,7 @@
        
       %section.purchase-confirmation__main__container__buy-user-info
         .purchase-confirmation__main__container__buy-user-info__inner 
-          %h3 配送先
+          %h3.bold 配送先
           %address.buy-user-info-text 
             郵便番号
             %br
@@ -71,10 +76,11 @@
 
       %section.purchase-confirmation__main__container__buy-user-info
         .purchase-confirmation__main__container__buy-user-info__inner.pay-method
-          %h3 支払い方法
+          %h3.bold 支払い方法
           %p
           %figure
-          %p
+          %p.buy-user-info-text 
+            クレカ情報
           = link_to '#', class: "buy-user-info-fix" do
             %span
               変更する
