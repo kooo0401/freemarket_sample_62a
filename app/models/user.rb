@@ -50,11 +50,11 @@ class User < ApplicationRecord
   VALID_PHONE_REGEX = /\A\d{10}$|^\d{11}\z/
   VALID_POSTAL_CODE = /\A\d{3}-?\d{4}\z/
 
-  # user_registration1入力項目 ※(名前のバリデーション緩い)堀
+  # user_registration1入力項目
   validates :nickname, presence: true, length: { maximum: 20 }, on: :validates_step1
-  # validates :email, presence: true, uniqueness: true, format: { with: VALID_EMAIL_REGEX, message: 'は有効でありません。' }, on: :validates_step1
-  # validates :password, presence: true, length: { in: 7..255 }, format: { with: VALID_PASSWORD_REGEX, message: 'は255文字以下に設定して下さい'}, on: :validates_step1
-  # validates :password_confirmation, presence: true, length: { in: 7..255 }, format: { with: VALID_PASSWORD_REGEX, message: 'は255文字以下に設定して下さい'}, on: :validates_step1
+  validates :email, presence: true, uniqueness: true, format: { with: VALID_EMAIL_REGEX, message: 'は有効でありません。' }, on: :validates_step1
+  validates :password, presence: true, length: { in: 7..255 }, format: { with: VALID_PASSWORD_REGEX, message: 'は255文字以下に設定して下さい'}, on: :validates_step1
+  validates :password_confirmation, presence: true, length: { in: 7..255 }, format: { with: VALID_PASSWORD_REGEX, message: 'は255文字以下に設定して下さい'}, on: :validates_step1
   validates :birthday, presence: true, on: :validates_step1
   validates :last_name, presence: true, length: { maximum: 20 }, on: :validates_step1
   validates :first_name, presence: true, length: { maximum: 20 }, on: :validates_step1
