@@ -1,7 +1,11 @@
 $(function(){  
 
   $( '#acdn-button' ).click( function(){
-    $( '#acdn-target' ).slideToggle() ;
+    $( '#acdn-target' ).slideToggle();
+    // console.log(this)
+    $("i", this).toggleClass("fa-chevron-down fa-chevron-up");
+    // $("i", this).toggleClass("fa-chevron-up");
+    // console.log(this);
   });
 
   $('input[name="point"]:radio').change(function(){
@@ -26,8 +30,6 @@ $(function(){
     let price_to_paid = 3980 - used_point;
     $('#data-buy-pay').html(price_to_paid);
   })
-
-
 
 
 });
