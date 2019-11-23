@@ -2,12 +2,6 @@
 
 class Users::SessionsController < Devise::SessionsController
 
-  # if verify_recaptcha # recaptcha（ロボット認証）
-  #   render action: root_path # trueなら次のページ
-  # else
-  #   render new_user_session_path    # falseなら再度入力
-  # end
-
     # GET /resource/sign_in
     def new
       super
@@ -23,6 +17,8 @@ class Users::SessionsController < Devise::SessionsController
       end
     end
   
+  # 下記元の記述
+
   # before_action :configure_sign_in_params, only: [:create]
 
   # GET /resource/sign_in

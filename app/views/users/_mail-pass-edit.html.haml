@@ -1,0 +1,30 @@
+.signup-view-1page
+  %section.signup-view-block
+    %h2.signup-view-block__explanation 
+      メール/パスワード
+    = form_with model: @user, local: true do |f|
+      .signup-view-block__form--top
+        .signup-form1
+          %label.signup-form1__label
+            メールアドレス
+          = f.email_field :email, placeholder: 'PC・携帯どちらでも可', class: 'signup-form1__form validate custom[email]'
+          %p.mail-pass-explanation
+            メールアドレスを変更すると確認メールが送信されます。メール内のURLをクリックすると変更完了です。
+        .signup-form1
+          %label.signup-form1__label
+            現在のパスワード
+          = f.password_field :password, class: 'signup-form1__form '
+        .signup-form1
+          %label.signup-form1__label
+            新しいパスワード
+          = f.password_field :password, placeholder: '6文字以上', class: 'signup-form1__form '
+        .signup-form1
+          %label.signup-form1__label
+            新しいパスワード確認
+          = f.password_field :password, placeholder: '6文字以上', class: 'signup-form1__form '
+        .signup-form1
+          %p.mail-pass-explanation
+            パスワードを設定したい場合は上記をすべて入力してください。（設定しない場合は空欄）
+        .signup-next-submit
+          = f.submit '変更する'
+        .mail-pass-white-space

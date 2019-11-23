@@ -9,12 +9,23 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    if @user.update(user_params)
-      redirect_to user_path(@user), notice: 'ユーザーを編集しました'
-    else
-      # 訂正要
-      render :profile_edit
+    @myaddress = Myaddress.includes(:user).find_by(user_id: @user.id)
+
+    # ストロングパラメータが片方nilだった場合、エラーを発生させるので、回避（requireメソッドの特徴）堀
+    if params[:myaddress] == nil
+      if @user.update(user_params)
+        redirect_to user_path(@user)
+      else
+        redirect_to　root_path
+      end
+    else params[:user] == nil
+      if @myaddress.update(myaddress_params)
+        redirect_to user_path(@user)
+      else
+        redirect_to root_path
+      end
     end
+
   end
 
   def logout_page
@@ -29,9 +40,27 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def credit_edit
+    @user = User.find(params[:id])
+  end
+
   def confirmation_edit
     @user = User.find(params[:id])
   end
+
+  def myaddress_edit
+    @user = User.find(params[:id])
+    @myaddress = Myaddress.includes(:user).find_by(user_id: @user.id)
+  end
+
+  def mail_pass_edit
+    @user = User.find(params[:id])
+  end
+
+  def tel_edit
+    @user = User.find(params[:id])
+  end
+
 
   private
 
@@ -44,6 +73,24 @@ class UsersController < ApplicationController
       :city_name,
       :block_name,
       :bill_name,
+      :tel,
+      :email,
+      :password
+    )
+  end
+
+  def myaddress_params
+    params.require(:myaddress).permit(
+      :zip,
+      :prefecture,
+      :city_name,
+      :block_name,
+      :bill_name,
+      :last_name,
+      :first_name,
+      :last_name_kana,
+      :first_name_kana,
+      :tel
     )
   end
 
