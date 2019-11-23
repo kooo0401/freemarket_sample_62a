@@ -30,19 +30,19 @@
                   %li.form-box-tempolary__buy-accordion__accordion-parent__accordion-child__form-group
                     .form-box-tempolary__buy-accordion__accordion-parent__accordion-child__form-group__radio-default
                       %label
-                        %input{type:"radio", name:"point", class:"radiobuttomA"}
+                        %input{type:"radio", name:"point", class:"radiobuttomA", value:"0"}
                         ポイントを使わない
                     .form-box-tempolary__buy-accordion__accordion-parent__accordion-child__form-group__radio-default
                       %label
-                        %input{type:"radio", name:"point", class:"radiobuttomB"}
+                        %input{type:"radio", name:"point", class:"radiobuttomB", value:"0"}
                         全てのポイントを使う
                         %br 200
                     .form-box-tempolary__buy-accordion__accordion-parent__accordion-child__form-group__radio-default
                       %label
-                        %input{type:"radio", name:"point", class:"radiobuttomA"}
+                        %input{type:"radio", name:"point", class:"radiobuttomA", value:"1"}
                         一部のポイントを使う
-                    .form-box-tempolary__buy-accordion__accordion-parent__accordion-child__form-group__used-point
-                      使うポイントを入力
+                    %input{class: "form-box-tempolary__buy-accordion__accordion-parent__accordion-child__form-group__used-point", placeholder: "使うポイントを入力", type: "number", disabled: "disabled"}
+                      
             %ul.form-box-tempolary__result-price
               %li.form-box-tempolary__result-price__row.bold
                 .form-box-tempolary__result-price__row__buy-price-cell1
