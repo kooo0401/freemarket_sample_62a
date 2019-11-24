@@ -32,6 +32,7 @@ class ProductsController < ApplicationController
 
   end
 
+
   def show
     @product = Product.find(params[:id])
     #実際にテーブルからid:1のproductを取得できているかの記述。
@@ -64,13 +65,14 @@ class ProductsController < ApplicationController
       flash.alert = '再度入力してください'
     end
   end
+  #まだ実装途中櫻田
+  # def destroy
+  #   product = Product.find(params[:id])
+  #   if product.user_id == current_user.id
+  #     product.destroy 
+  #   end
+  # end
 
-  def destroy
-    product = Product.find(params[:id])
-    if product.user_id == current_user.id
-      product.destroy #destroyメソッドを使用し対象のツイートを削除する。櫻田
-    end
-  end
 
   def change
   end
@@ -84,6 +86,7 @@ class ProductsController < ApplicationController
     end
   
   end
+
 
 
   # 以下、仮に人気カテゴリー、人気ブランドをリアルタイム対応させる場合の記述。
