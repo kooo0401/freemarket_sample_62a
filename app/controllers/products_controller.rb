@@ -77,12 +77,6 @@ class ProductsController < ApplicationController
   # ------------------------------------------------------------------------------------------------
   
   private
-    # ↑記述されたコントローラの内部でのみ、実行することができるメソッド。
-    # 商品出品実装時にstrong parameterを追加する
-    # → 髙橋担当！！
-    # <大前提>：Strong Parameterを設定する理由
-    # →画面内の入力項目以外のデータについては受け取らないようにできる →セキュリティを強固にできるメリット
- # ------------------------------------------------------------------------------------------------
 
   def product_params
     params.require(:product)
@@ -94,13 +88,4 @@ class ProductsController < ApplicationController
                     images_attributes: [:image])
           .merge(user_id: current_user.id)
   end
-
-    # 事実：product.images[0].image でトップページで画像が取得できている
-      # ⇨ product.images.image で 出品したproductのimagesのimageを取得できるはず。。。
-    # mergeメソッドを使うことによって、ストロングパラメーター(create_params)が生成される際にuser_idとgroup_idのキーと値を持つハッシュを追加することができます。
-    # ＜要検討事項＞
-    # category_id  →  取得必須（入力アリ）
-    # brand_id  →  取得必須（入力アリ）
-    # size_id  →  取得必須（入力アリ）
-    # status_id  →  入力欄ナシ（最初は必ず”出品中”という表現になるはず）
 end
