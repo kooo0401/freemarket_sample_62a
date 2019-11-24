@@ -13,7 +13,7 @@ Rails.application.routes.draw do
 
   root 'products#index'
   
-  resources :products, only: [:index, :new, :show, :edit]
+  resources :products, only: [:index, :new, :show, :edit, :create]
   resources :users, only: [:show, :edit, :update] do
     member do
       get '/products/:id', to: "products#change"
@@ -32,6 +32,7 @@ Rails.application.routes.draw do
   end
   
   resources :signup, only: [:create] do 
+
     collection do
       get 'new'
       get 'user_registration1'

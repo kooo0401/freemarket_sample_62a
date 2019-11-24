@@ -20,9 +20,16 @@ class ProductsController < ApplicationController
   end
 
   def new
+
+    @product = Product.new
+    @product.images.build
+    # 10.times { @product.images.build }
+    # ⇨ 毎回１０枚保存する（もしかしたらいらないかも：髙橋）
+    
     # 以下、ログイン機能設計次第で要不要判断
     # 以下の記述はログイン、ログアウト機能の導入後にコメントアウトを外すこと
     # redirect_to: controller: :user, action: :ログイン画面に対応するアクション unless user_signed_in?
+
   end
 
   def show
@@ -41,8 +48,21 @@ class ProductsController < ApplicationController
     gon.all_point = current_user.point
   end
 
+  
   def create
-    @product = Product.create
+    @product = Product.new(product_params)
+    # @product = current_user.products.build(product_params)
+    if @product.save
+      # 下記コメントアウト３行は今後使用予定です 191124 髙橋
+      # params[:images][:image].each do |image|
+      #   @product.images.create(image: image, product_id: @product.id)
+      # end
+      flash[:notice] = '商品が出品されました'
+      redirect_to root_path
+    else
+      render :new
+      flash.alert = '再度入力してください'
+    end
   end
 
   def destroy
@@ -75,7 +95,17 @@ class ProductsController < ApplicationController
   # end
   #  category_rankingが上手くいったらbrand_rankingも同様にここに追加する
   # ------------------------------------------------------------------------------------------------
+  
   private
-  # 商品出品実装時にstrong parameterを追加する
 
+  def product_params
+    params.require(:product)
+            .permit(:description, :name, :price, :delivery_charged,
+                    :area, :delivery_days, :sales_status, :delivery_way, 
+                    :category_id,
+                    :brand_id,
+                    :size_id,
+                    images_attributes: [:image])
+          .merge(user_id: current_user.id)
+  end
 end
