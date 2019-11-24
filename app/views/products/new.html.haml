@@ -10,10 +10,10 @@
           .exhibitmain__upbox__head
             出品画像
             %span 必須
+            = i.file_field :image
           .exhibitmain__upbox__content
             最大１枚までアップロードできます
           .exhibitmain__upbox__imagebox1
-            = i.file_field :image,multiple: true, name: 'images[image][]'
             ドラッグアンドドロップ
             %br
             またはクリックしてファイルをアップロード
@@ -96,14 +96,12 @@
           .exhibitmain__price__fee__left
             販売手数料（10％）
           .exhibitmain__price__fee__left__box
-            -# = f.text_field :title, id: "priceboxa", placeholder: "-"  
             #priceboxa
           .exhibitmain__price__fee__right
         .exhibitmain__price__profit
           .exhibitmain__price__profit__left
             販売利益
           .exhibitmain__price__profit__right
-            -# = f.text_field :title, id: "priceboxb", placeholder: "-" 
             #priceboxb
       .exhibitmain__exhibit
         .exhibitmain__exhibit__text
@@ -126,4 +124,6 @@
             %button 戻る
 = render "layouts/exhibit-footer"
 
+
 = javascript_include_tag 'exhibit.js'
+
