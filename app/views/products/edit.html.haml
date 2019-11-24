@@ -1,2 +1,97 @@
-%h1 Products#edit
-%p Find me in app/views/products/edit.html.haml
+
+.purchase-confirmation
+
+  = render "layouts/exhibit-header"
+
+  %main.purchase-confirmation__main
+
+    %section.purchase-confirmation__main__container
+      %h2.purchase-confirmation__main__container__head.bold
+        購入内容の確認
+      %section.purchase-confirmation__main__container__buy-content
+        .purchase-confirmation__main__container__buy-content__inner
+          %h3.purchase-confirmation__main__container__buy-content__inner__image
+            = image_tag("/#{@product.images[0].image}", height: '64', width: '64')
+          %p.purchase-confirmation__main__container__buy-content__inner__name.bold
+            = @product.name
+
+          .form-box-tempolary.form-hairu-yotei
+            %p.form-box-tempolary__buy-price.bold 
+              = "¥#{@product.price}"
+              %span.form-box-tempolary__buy-price__shipping-fee.f14 
+                = @product.delivery_charged
+            %ul.form-box-tempolary__buy-accordion
+              %li.form-box-tempolary__buy-accordion__accordion-parent
+                .form-box-tempolary__buy-accordion__accordion-parent__accordion-toggle#acdn-button
+                  ポイントを使う
+                  = fa_icon 'chevron-down'
+                %ul.form-box-tempolary__buy-accordion__accordion-parent__accordion-child#acdn-target
+                  %li.bold 
+                    = "所持ポイント: P#{current_user.point}"
+                  %li.form-box-tempolary__buy-accordion__accordion-parent__accordion-child__form-group
+                    .form-box-tempolary__buy-accordion__accordion-parent__accordion-child__form-group__radio-default
+                      %label
+                        %input{type:"radio", name:"point", class:"radiobuttomA", value:"0"}
+                        ポイントを使わない
+                    .form-box-tempolary__buy-accordion__accordion-parent__accordion-child__form-group__radio-default
+                      %label
+                        %input{type:"radio", name:"point", class:"radiobuttomB", value:"1"}
+                        全てのポイントを使う
+                        %br 
+                        = "P#{current_user.point}"
+                    .form-box-tempolary__buy-accordion__accordion-parent__accordion-child__form-group__radio-default
+                      %label
+                        %input{type:"radio", name:"point", class:"radiobuttomA", value:"2"}
+                        一部のポイントを使う
+                    %input{class: "form-box-tempolary__buy-accordion__accordion-parent__accordion-child__form-group__used-point", placeholder: "使うポイントを入力", type: "number", disabled: "disabled"}
+                      
+            %ul.form-box-tempolary__result-price
+              %li.form-box-tempolary__result-price__row.bold
+                .form-box-tempolary__result-price__row__buy-price-cell1
+                  支払い金額
+                .form-box-tempolary__result-price__row__buy-price-cell2
+                  %span#data-buy-pay
+                    = "¥#{@product.price}"
+            %p.confirmation-error-text
+              この商品はゆうゆうメルカリ便を利用しているため、アプリからのみ購入できます。
+            -# %ul.form-box-tempolary__buy-accordion.not-have
+            -# %p
+            -#   アプリをお持ちでない方は以下よりインストールしてご利用いただけます。
+          %buttom.form-box-tempolary__btm-default.bold 購入する
+      %div
+       
+      %section.purchase-confirmation__main__container__buy-user-info
+        .purchase-confirmation__main__container__buy-user-info__inner 
+          %h3.bold 配送先
+          %address.buy-user-info-text 
+            = current_user.myaddress.zip
+            %br
+            = current_user.myaddress.prefecture
+            = current_user.myaddress.city_name
+            = current_user.myaddress.block_name
+            = current_user.myaddress.bill_name
+            %br
+            = current_user.myaddress.last_name
+            = current_user.myaddress.first_name
+            %p
+            = link_to '#', class: "buy-user-info-fix" do
+              %span
+                変更する
+              -# %i.fas.fa-greater-than
+              = fa_icon 'chevron-right'
+
+      %section.purchase-confirmation__main__container__buy-user-info
+        .purchase-confirmation__main__container__buy-user-info__inner.pay-method
+          %h3.bold 支払い方法
+          %p
+          %figure
+          %p.buy-user-info-text 
+            クレカ情報
+          = link_to '#', class: "buy-user-info-fix" do
+            %span
+              変更する
+            = fa_icon 'chevron-right'
+
+  = render "layouts/exhibit-footer"
+
+= javascript_include_tag 'purchase-confirmation.js'

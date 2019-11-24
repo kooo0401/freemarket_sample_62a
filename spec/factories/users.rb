@@ -2,7 +2,7 @@ FactoryBot.define do
 
   factory :user do
     last_name             {"太郎"}
-    first_name             {"山田"}
+    first_name            {"山田"}
     last_name_kana        {"たろう"}
     first_name_kana       {"やまだ"}
     nickname              {"yamachan"}

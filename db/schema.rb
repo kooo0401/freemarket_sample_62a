@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_18_080652) do
+ActiveRecord::Schema.define(version: 2019_11_24_055753) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "prefecture_id"
@@ -75,11 +75,10 @@ ActiveRecord::Schema.define(version: 2019_11_18_080652) do
     t.bigint "category_id"
     t.bigint "brand_id"
     t.bigint "size_id"
-    t.bigint "status_id"
+    t.bigint "status_id", default: 1
     t.index ["brand_id"], name: "index_products_on_brand_id"
     t.index ["category_id"], name: "index_products_on_category_id"
     t.index ["size_id"], name: "index_products_on_size_id"
-    t.index ["status_id"], name: "index_products_on_status_id"
     t.index ["user_id"], name: "index_products_on_user_id"
   end
 
@@ -137,6 +136,5 @@ ActiveRecord::Schema.define(version: 2019_11_18_080652) do
   add_foreign_key "products", "brands"
   add_foreign_key "products", "categories"
   add_foreign_key "products", "sizes"
-  add_foreign_key "products", "statuses"
   add_foreign_key "products", "users"
 end
