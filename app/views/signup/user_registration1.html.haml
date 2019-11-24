@@ -67,12 +67,12 @@
                 お名前(全角)
               %span.signup-form1__span
                 必須
-              - if session["devise.google_data"].present?
-                = f.text_field :last_name, placeholder: '例) 山田', value: "#{session["devise.google_data"]["last_name"]}", class: 'signup-form1__last-name validate[required]'
-                = f.text_field :first_name, placeholder: '例) 彩', value: "#{session["devise.google_data"]["first_name"]}", class: 'signup-form1__first-name validate[required]'
-              - else
-                = f.text_field :last_name, placeholder: '例) 山田', class: 'signup-form1__last-name validate[required]'
-                = f.text_field :first_name, placeholder: '例) 彩', class: 'signup-form1__first-name validate[required]'
+            - if session["devise.google_data"].present?
+              = f.text_field :last_name, placeholder: '例) 山田', value: "#{session["devise.google_data"]["last_name"]}", class: 'signup-form1__last-name validate[required]'
+              = f.text_field :first_name, placeholder: '例) 彩', value: "#{session["devise.google_data"]["first_name"]}", class: 'signup-form1__first-name validate[required]'
+            - else
+              = f.text_field :last_name, placeholder: '例) 山田', class: 'signup-form1__last-name validate[required]'
+              = f.text_field :first_name, placeholder: '例) 彩', class: 'signup-form1__first-name validate[required]'
           .signup-form1
             .signup-form1-fullname
               %label.signup-form1__label
