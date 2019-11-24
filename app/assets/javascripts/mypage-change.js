@@ -11,5 +11,3 @@ jQuery('#purchase-comformation-btn').click(function() {
   window.location.href = "/";
 });
 });
-
-// %button{ href: '/products/new',id:'#purchase-comformation-btn'}削除する
