@@ -21,6 +21,9 @@ Rails.application.routes.draw do
       get 'myaddress_edit'
       get 'mail_pass_edit'
       get 'tel_edit'
+      get 'myproducts_list_exhibiting'
+      get 'myproducts_list_trading'
+      get 'myproducts_list_sold'
     end
   end
   
