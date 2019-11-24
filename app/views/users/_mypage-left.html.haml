@@ -30,12 +30,12 @@
       .select-icon-space
         = fa_icon 'angle-right', class: 'select-icon i6'
   .main__left-list
-    =link_to "#", class: "main__left-list__nav btn space-7" do
+    =link_to myproducts_list_trading_user_path, class: "main__left-list__nav btn space-7" do
       出品した商品 - 取引中
       .select-icon-space
         = fa_icon 'angle-right', class: 'select-icon i7'
   .main__left-list
-    =link_to "#", class: "main__left-list__nav btn space-8" do
+    =link_to myproducts_list_sold_user_path, class: "main__left-list__nav btn space-8" do
       出品した商品 - 売却済み
       .select-icon-space
         = fa_icon 'angle-right', class: 'select-icon i8'
