@@ -14,7 +14,8 @@ class SignupController < ApplicationController
   def user_registration2
     @user = User.new
     @user.build_myaddress
-    session["devise.facebook_data"].clear
+    session["devise.facebook_data"] = nil
+    session["devise.google_data"] = nil
 
     if verify_recaptcha # recaptcha（ロボット認証）
       render action: 'user_registration2' # trueなら次のページ
