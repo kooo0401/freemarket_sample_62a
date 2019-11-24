@@ -109,4 +109,14 @@ $(function()  {
     $('.exhibitmain__delivery__way-box2').hide();
   })
 });
+// まだ実装途中
+// $(function(){
+//   $('.exhibitmain__details__brand-box').click(function(){
+//     $('#buy-overlay1').fadeIn();
+//     $('haml, body').css('overflow', 'hidden');
+//   });
+//   jQuery('#purchase-exhibit-btn1').click(function() {
+//     window.location.href = "/";
+//   });
+//   });
 });
