@@ -74,7 +74,7 @@
     input {
       margin-top: 8px;
       padding: 10px 16px 8px;
-      color: #cccccc;
+      color: #333333;
     }
     &__explanation{
       margin-top: 40px;
@@ -344,6 +344,58 @@
   }
   }
  }
+ #buy-overlay1 {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.3);
+  display: none;
+  z-index: 1;
+}
+ #buy-modalWindow1 {
+  position: absolute;
+  width: 600px;
+  height: 287px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  background: white;
+  .buy-modal-message-head1 {
+    width: 600px;
+    height: 80px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    font-size: 16px;
+    font-weight: bold;
+  }
+  .buy-modal-message-boy1{
+    width: 600px;
+    height: 207px;
+    padding: 40px;
+    font-size: 14px;
+  }
+  #purchase-exhibit-btn1{
+    width: 520px;
+    line-height: 48px;
+    background: #ea352d;
+    border: 1px solid #ea352d;
+    color: #fff;
+    margin: 40px auto 0;
+    text-align: center;
+  }
+  .buy-modal-text2{
+    text-align: center;
+  }
+}
+
+
 
 
 

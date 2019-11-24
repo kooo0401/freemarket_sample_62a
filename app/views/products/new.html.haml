@@ -34,7 +34,7 @@
           カテゴリー
           %span 必須
         .exhibitmain__details__category-box1  
-          = f.select :parent_id, [["---", 0],["レディース", 1],["", 2]] 
+          = f.select :parent_id, [["---", 0],["レディース", 1],["メンズ", 2],["ベビー・キッズ", 3],["インテリア・住まい・小物", 4],["本、音楽、ゲーム", 5],["おもちゃ・ホビー・グッズ", 6],["コスメ・香水・美容", 7],["家電・スマホ・カメラ", 8],["スポーツ・レジャー", 9],["ハンドメイド", 10],["チケット", 11],["自転車・オートバイ", 12]]
         .exhibitmain__details__category-box2
           = f.select :child_id, [["---", 0],["トップス", 1],["", 2]] 
         .exhibitmain__details__category-box3
@@ -96,14 +96,12 @@
           .exhibitmain__price__fee__left
             販売手数料（10％）
           .exhibitmain__price__fee__left__box
-            -# = f.text_field :title, id: "priceboxa", placeholder: "-"  
             #priceboxa
           .exhibitmain__price__fee__right
         .exhibitmain__price__profit
           .exhibitmain__price__profit__left
             販売利益
           .exhibitmain__price__profit__right
-            -# = f.text_field :title, id: "priceboxb", placeholder: "-" 
             #priceboxb
       .exhibitmain__exhibit
         .exhibitmain__exhibit__text
@@ -124,6 +122,16 @@
         .exhibitmain__exhibit__return
           = link_to :back do
             %button 戻る
+        #buy-overlay1
+          #buy-modalWindow1
+            .buy-modal-message-head1
+              %div#buy-modal-message-head1 出品が完了しました。
+            .buy-modal-message-boy1
+              #buy-modal-text1 あなたが出品した商品は「出品した商品一覧」からいつでも見ることができます。     
+              #purchase-exhibit-btn1 続けて出品する
+              .buy-modal-text2 
+              = link_to("商品ページに行ってシェアする。", "＃")
+
 = render "layouts/exhibit-footer"
 
 = javascript_include_tag 'exhibit.js'

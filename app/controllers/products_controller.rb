@@ -18,10 +18,8 @@ class ProductsController < ApplicationController
   end
 
   def new
-    # 以下、ログイン機能設計次第で要不要判断
-    # 以下の記述はログイン、ログアウト機能の導入後にコメントアウトを外すこと
-    # redirect_to: controller: :user, action: :ログイン画面に対応するアクション unless user_signed_in?
-  end
+  
+ end
 
   def show
     @product = Product.find(params[:id])
@@ -44,10 +42,9 @@ class ProductsController < ApplicationController
   def destroy
     product = Product.find(params[:id])
     if product.user_id == current_user.id
-      product.destroy #destroyメソッドを使用し対象のツイートを削除する。櫻田
+      product.destroy #destroyメソッドを使用し削除する。櫻田
     end
   end
-
   # 以下、仮に人気カテゴリー、人気ブランドをリアルタイム対応させる場合の記述。
   # productテーブルにcategory_idカラムとbrand_idカラムを追加した後に実装予定
   # ------------------------------------------------------------------------------------------------
