@@ -40,7 +40,10 @@
               メールアドレス
             %span.signup-form1__span
               必須
-            = f.email_field :email, placeholder: 'PC・携帯どちらでも可', class: 'signup-form1__form validate[required] custom[email]'
+            -if session["devise.facebook_data"].present?
+              = f.email_field :email, placeholder: 'PC・携帯どちらでも可',value: "#{session["devise.facebook_data"]["info"]["email"]}", class: 'signup-form1__form validate[required] custom[email]'
+            - else
+              = f.email_field :email, placeholder: 'PC・携帯どちらでも可', class: 'signup-form1__form validate[required] custom[email]'
           .signup-form1
             %label.signup-form1__label
               パスワード
