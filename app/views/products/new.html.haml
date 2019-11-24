@@ -10,10 +10,10 @@
           .exhibitmain__upbox__head
             出品画像
             %span 必須
+            = i.file_field :image
           .exhibitmain__upbox__content
             最大１枚までアップロードできます
           .exhibitmain__upbox__imagebox1
-            = i.file_field :image,multiple: true, name: 'images[image][]'
             ドラッグアンドドロップ
             %br
             またはクリックしてファイルをアップロード
@@ -134,4 +134,6 @@
 
 = render "layouts/exhibit-footer"
 
+
 = javascript_include_tag 'exhibit.js'
+

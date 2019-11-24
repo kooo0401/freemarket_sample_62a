@@ -1,6 +1,5 @@
 = render 'layouts/header'
 .main-top
-
   .slide-zone
     %section.slide-banner.owl-carousel
       = link_to "", root_path, class: "slide-banner__link slide-banner__link--natsukashi"
@@ -48,5 +47,6 @@
 
 
   = render 'layouts/footer'
+  = render partial: '/layouts/exhibit-button'
 
 = javascript_include_tag 'owl-carousel.js'

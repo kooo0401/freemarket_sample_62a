@@ -13,7 +13,13 @@ ja:
       models:
         user:
           attributes:
-            name:
+            nickname:
+              blank: "が入力されていません。"
+              too_long: "は%{count}文字以下に設定して下さい。"
+            last_name:
+              blank: "が入力されていません。"
+              too_long: "は%{count}文字以下に設定して下さい。"
+            first_name:
               blank: "が入力されていません。"
               too_long: "は%{count}文字以下に設定して下さい。"
             email:

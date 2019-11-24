@@ -8,12 +8,6 @@ describe User do
     end
 
   # 文字が入っているかどうかテスト
-    it "is invalid without a name" do
-      user = build(:user, name: nil)
-      user.valid?
-      expect(user.errors[:name]).to include("が入力されていません。")
-    end
-
     it "is invalid without a nickname" do
       user = build(:user, nickname: nil)
       user.valid?
@@ -32,10 +26,28 @@ describe User do
       expect(user.errors[:password]).to include("が入力されていません。")
     end
 
-    it "is invalid without a name_kana" do
-      user = build(:user, name_kana: nil)
+    it "is invalid without a last_name" do
+      user = build(:user, last_name: nil)
       user.valid?
-      expect(user.errors[:name_kana]).to include("が入力されていません。")
+      expect(user.errors[:last_name]).to include("が入力されていません。")
+    end
+
+    it "is invalid without a first_name" do
+      user = build(:user, first_name: nil)
+      user.valid?
+      expect(user.errors[:first_name]).to include("が入力されていません。")
+    end
+
+    it "is invalid without a last_name_kana" do
+      user = build(:user, last_name_kana: nil)
+      user.valid?
+      expect(user.errors[:last_name_kana]).to include("が入力されていません。")
+    end
+
+    it "is invalid without a first_name_kana" do
+      user = build(:user, first_name_kana: nil)
+      user.valid?
+      expect(user.errors[:first_name_kana]).to include("が入力されていません。")
     end
 
     it "is invalid without a birthday" do
@@ -78,20 +90,6 @@ describe User do
       user = build(:user, bill_name: nil)
       user.valid?
       expect(user.errors[:bill_name]).to include("が入力されていません。")
-    end
-
-    # name
-    # nameが20文字以下なら登録できる
-    it "is valid with a name that has less than 20 characters " do
-      user = build(:user, name: "やややややややややややややややややややや") # 20文字
-      expect(user).to be_valid
-    end
-
-    # nameが21文字以上なら不適切
-    it "is invalid with a name that has more than 21 characters" do
-      user = build(:user, name: "aaaaaaaaaaaaaaaaaaaaa") # 21文字
-      user.valid?
-      expect(user.errors[:name]).to include("は20文字以下に設定して下さい。")
     end
 
     # ニックネーム
@@ -195,23 +193,65 @@ describe User do
       expect(user).to be_valid
     end
 
-    # name_kana
-    # 35文字以下に設定してください
-    it "is invalid with a name_kana that has more than 36 characters " do
-      user = build(:user, name_kana: "アアアアアアアアアアアアアアアアアアアアアアアアアアアアアアアアアアアア") # 36文字
+    # last_name
+    # last_nameが20文字以下なら適切
+    it "is valid with a last_name that has less than 20 characters " do
+      user = build(:user, last_name: "やややややややややややややややややややや") # 20文字
+      expect(user).to be_valid
+    end
+
+    # last_nameが21文字以上なら不適切
+    it "is invalid with a last_name that has more than 21 characters" do
+      user = build(:user, last_name: "aaaaaaaaaaaaaaaaaaaaa") # 21文字
       user.valid?
-      expect(user.errors[:name_kana]).to include("は35文字以下に設定して下さい。")
+      expect(user.errors[:last_name]).to include("は20文字以下に設定して下さい。")
+    end
+
+    # first_name
+    # first_nameが20文字以下なら適切
+    it "is valid with a first_name that has less than 20 characters " do
+      user = build(:user, first_name: "やややややややややややややややややややや") # 20文字
+      expect(user).to be_valid
+    end
+
+    # first_nameが21文字以上なら不適切
+    it "is invalid with a first_name that has more than 21 characters" do
+      user = build(:user, first_name: "aaaaaaaaaaaaaaaaaaaaa") # 21文字
+      user.valid?
+      expect(user.errors[:first_name]).to include("は20文字以下に設定して下さい。")
+    end
+
+    # last_name_kana
+    # 35文字以下に設定してください
+    it "is invalid with a last_name_kana that has more than 36 characters " do
+      user = build(:user, last_name_kana: "アアアアアアアアアアアアアアアアアアアアアアアアアアアアアアアアアアアア") # 36文字
+      user.valid?
+      expect(user.errors[:last_name_kana]).to include("は35文字以下に設定して下さい。")
     end
 
     # ひらがななら不適切
-    it "is invalid with a name_kana that katakana " do
-      user = build(:user, name_kana: "あ")
+    it "is invalid with a last_name_kana that katakana " do
+      user = build(:user, last_name_kana: "あ")
       user.valid?
-      expect(user.errors[:name_kana][0]).to include("はカタカナで入力して下さい")
+      expect(user.errors[:last_name_kana][0]).to include("はカタカナで入力して下さい")
+    end
+
+    # first_name_kana
+    # 35文字以下に設定してください
+    it "is invalid with a first_name_kana that has more than 36 characters " do
+      user = build(:user, first_name_kana: "アアアアアアアアアアアアアアアアアアアアアアアアアアアアアアアアアアアア") # 36文字
+      user.valid?
+      expect(user.errors[:first_name_kana]).to include("は35文字以下に設定して下さい。")
+    end
+
+    # ひらがななら不適切
+    it "is invalid with a first_name_kana that katakana " do
+      user = build(:user, first_name_kana: "あ")
+      user.valid?
+      expect(user.errors[:first_name_kana][0]).to include("はカタカナで入力して下さい")
     end
 
     # tel
-
     it "is valid with a tel that Phone number format " do
       user = build(:user, tel: "08012345678")
       user.valid?
@@ -233,62 +273,62 @@ describe User do
       expect(user.errors[:zip]).to include("は有効でありません。")
     end
     
-    # 都道府県のhashが1~48であるか
+#     # 都道府県のhashが1~48であるか
 
-    it "is valid with a prefecture that has less than 48" do
-      user = build(:user, prefecture: "48")
-      expect(user).to be_valid
-    end
+#     it "is valid with a prefecture that has less than 48" do
+#       user = build(:user, prefecture: "48")
+#       expect(user).to be_valid
+#     end
 
-    it "is invalid with a prefecture that has more than 49" do
-      user = build(:user, prefecture: "49")
-      user.valid?
-      expect(user.errors[:prefecture])
-    end
+#     it "is invalid with a prefecture that has more than 49" do
+#       user = build(:user, prefecture: "49")
+#       user.valid?
+#       expect(user.errors[:prefecture])
+#     end
 
-    it "is invalid with a prefecture only integer" do
-      user = build(:user, prefecture: "a")
-      user.valid?
-      expect(user.errors[:prefecture])
-    end
+#     it "is invalid with a prefecture only integer" do
+#       user = build(:user, prefecture: "a")
+#       user.valid?
+#       expect(user.errors[:prefecture])
+#     end
 
-    # 市区町村が50文字以下であるか
+#     # 市区町村が50文字以下であるか
 
-    it "is valid with a city_name that has less than 50 characters " do
-      user = build(:user, city_name: "12345678901234567890123456789012345678901234567890") # 50文字
-      expect(user).to be_valid
-    end
+#     it "is valid with a city_name that has less than 50 characters " do
+#       user = build(:user, city_name: "12345678901234567890123456789012345678901234567890") # 50文字
+#       expect(user).to be_valid
+#     end
 
-    it "is invalid with a city_name that has more than 51 characters" do
-      user = build(:user, city_name: "123456789012345678901234567890123456789012345678901") # 51文字
-      user.valid?
-      expect(user.errors[:city_name]).to include("は50文字以内で入力してください")
-    end
+#     it "is invalid with a city_name that has more than 51 characters" do
+#       user = build(:user, city_name: "123456789012345678901234567890123456789012345678901") # 51文字
+#       user.valid?
+#       expect(user.errors[:city_name]).to include("は50文字以内で入力してください")
+#     end
 
-    # block_nameが100文字以下であるか
+#     # block_nameが100文字以下であるか
 
-    it "is valid with a block_name that has less than 100 characters " do
-      user = build(:user, block_name: "1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890") # 100文字
-      expect(user).to be_valid
-    end
+#     it "is valid with a block_name that has less than 100 characters " do
+#       user = build(:user, block_name: "1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890") # 100文字
+#       expect(user).to be_valid
+#     end
 
-    it "is invalid with a block_name that has more than 101 characters" do
-      user = build(:user, block_name: "12345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901") # 101文字
-      user.valid?
-      expect(user.errors[:block_name]).to include("は100文字以下に設定して下さい。")
-    end
+#     it "is invalid with a block_name that has more than 101 characters" do
+#       user = build(:user, block_name: "12345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901") # 101文字
+#       user.valid?
+#       expect(user.errors[:block_name]).to include("は100文字以下に設定して下さい。")
+#     end
 
-    # bill_nameが100文字以下であるか
+#     # bill_nameが100文字以下であるか
 
-    it "is valid with a bill_name that has less than 100 characters " do
-      user = build(:user, bill_name: "1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890") # 100文字
-      expect(user).to be_valid
-    end
+#     it "is valid with a bill_name that has less than 100 characters " do
+#       user = build(:user, bill_name: "1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890") # 100文字
+#       expect(user).to be_valid
+#     end
 
-    it "is invalid with a bill_name that has more than 101 characters" do
-      user = build(:user, bill_name: "12345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901") # 101文字
-      user.valid?
-      expect(user.errors[:bill_name]).to include("は100文字以下に設定して下さい。")
-    end
-  end
-end
+#     it "is invalid with a bill_name that has more than 101 characters" do
+#       user = build(:user, bill_name: "12345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901") # 101文字
+#       user.valid?
+#       expect(user.errors[:bill_name]).to include("は100文字以下に設定して下さい。")
+#     end
+#   end
+# end
