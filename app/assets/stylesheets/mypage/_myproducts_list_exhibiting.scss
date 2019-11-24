@@ -45,11 +45,11 @@
     .btn:hover-mypage{
       opacity: 0.5;
     }
-    .buy-products-now-list-mypage{
+    .buy-products-now-list-mypage2 {
       height: 240px;
       width: 700px;
-      float: left;
-      background: url("/assets/IMG_no-buy-products-now.png");
+      display: inline-block;
+      background: url("/exhibiting.png");
       background-size: cover;
       }
     .buy-products-past-list-mypage{

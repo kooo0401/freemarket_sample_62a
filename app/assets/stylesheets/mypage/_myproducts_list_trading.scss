@@ -45,11 +45,11 @@
     .btn:hover-mypage{
       opacity: 0.5;
     }
-    .buy-products-now-list-mypage{
+    .buy-products-now-list-trading {
+      display: inline-block;
       height: 240px;
       width: 700px;
-      float: left;
-      background: url("/assets/IMG_no-buy-products-now.png");
+      background: url("/IMG_no-buy-products-now.png");
       background-size: cover;
       }
     .buy-products-past-list-mypage{
@@ -67,10 +67,8 @@
 }
 
 .mypage-products-arrow {
-  position: absolute;
-  height: 44px;
-  width: 700px;
-  top: 560px;
+  margin: 40px 0 0;
+  text-align: right;
   &__left {
     left: 0;
     &--icon {
@@ -80,7 +78,6 @@
     }
   }
   &__right {
-    position: absolute;
     right: 0;
     &--icon {
       width: 40px;

@@ -73,6 +73,7 @@ class UsersController < ApplicationController
 
   def myproducts_list_sold
     @user = User.find(params[:id])
+    @product = Product.where(user_id: current_user.id)
   end
 
 

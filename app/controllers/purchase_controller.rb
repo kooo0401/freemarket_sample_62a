@@ -6,7 +6,6 @@ class PurchaseController < ApplicationController
 
     card = Card.where(user_id: current_user.id).first
     product = Product.find_by(user_id: current_user.id)
-    binding.pry
     if card.blank?
       redirect_to controller: "card", action: "new"
     else
