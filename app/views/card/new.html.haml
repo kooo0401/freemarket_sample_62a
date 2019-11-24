@@ -1,2 +1,89 @@
-%h1 Card#new
-%p Find me in app/views/card/new.html.haml
+.user-container
+  .user-container-header
+    %h1.user-container-header__left
+      =link_to root_path, class: "signup-home-link" do
+        = image_tag("//www-mercari-jp.akamaized.net/assets/img/common/common/logo.svg?404657508",size: "189x49",class: "image")
+    %nav.user-signup-bar
+      %ol.user-signup-bar-progress4
+        %li.user-signup-bar-progress4__type
+          会員情報
+          .user-signup-bar-progress4__rod-red-first
+        %li.user-signup-bar-progress4__type
+          電場番号認証
+          .user-signup-bar-progress4__rod-red
+        %li.user-signup-bar-progress4__type
+          お届け先住所入力
+          .user-signup-bar-progress4__rod-red
+        %li.user-signup-bar-progress4__type-red
+          支払い方法
+          .user-signup-bar-progress4__rod-red-middle
+        %li.user-signup-bar-progress4__type
+          完了
+          .user-signup-bar-progress4__rod-last
+
+  .signup-view-1page
+    %section.signup-view-block
+      %h2.signup-view-block__explanation 
+        支払い方法
+      = form_tag(pay_card_index_path, method: :post, id: 'charge-form',  name: "inputForm", class: "signup-view-block__form") do
+        .signup-view-block__form--top
+          .signup-form1
+            %label.signup-form1__label
+              カード番号
+            %span.signup-form1__span
+              必須
+            = text_field_tag "number", "", class: "number signup-form1__form", placeholder: "半角数字のみ" ,maxlength: "16", type: "text", id: "card_number"
+          .signup-form4
+            .signup-form4-block
+              %label.signup-form1__label
+                有効期限
+              %span.signup-form1__span
+                必須
+            .signup-form4__form
+              -# != sprintf(f.date_select(:last_name, order:[:month,:year,:day], use_month_numbers:true, discard_day:true, start_year:Time.now.year-2000, end_year:Time.now.year-2000+10, date_separator:'%s'),'月') + '年'
+              %select#exp_month{name: "exp_month", type: "text"}
+                %option{value: ""} --
+                %option{value: "1"}01
+                %option{value: "2"}02
+                %option{value: "3"}03
+                %option{value: "4"}04
+                %option{value: "5"}05
+                %option{value: "6"}06
+                %option{value: "7"}07
+                %option{value: "8"}08
+                %option{value: "9"}09
+                %option{value: "10"}10
+                %option{value: "11"}11
+                %option{value: "12"}12
+              %span 月/
+              %select#exp_year{name: "exp_year", type: "text"}
+                %option{value: ""} --
+                %option{value: "2019"}19
+                %option{value: "2020"}20
+                %option{value: "2021"}21
+                %option{value: "2022"}22
+                %option{value: "2023"}23
+                %option{value: "2024"}24
+                %option{value: "2025"}25
+                %option{value: "2026"}26
+                %option{value: "2027"}27
+                %option{value: "2028"}28
+                %option{value: "2029"}29
+              %span 年
+          .signup-form1
+            = image_tag("/credit_card_logo.jpg",size: "189x49",class: "credit-image")
+          .signup-form1
+            %label.signup-form1__label
+              セキュリティコード
+            %span.signup-form1__span
+              必須
+            = text_field_tag "cvc", "", class: "cvc signup-form1__form", placeholder: "カード背面3~4桁の番号", maxlength: "4", id: "cvc"
+          .signup-credit-form-label
+            %span.credit-form-question ?
+            = link_to( "カード裏面の番号とは？", "/", class: "credit-form-text")
+          .signup-next-submit
+            #card_token
+              = submit_tag "追加する", id: "token_submit"
+  
+  = render "layouts/exhibit-footer"
+= javascript_include_tag 'payjp.js'

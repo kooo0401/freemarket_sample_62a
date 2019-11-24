@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'purchase/index'
+  get 'purchase/done'
   get 'card/new'
   get 'card/show'
   devise_for :users, skip: :sessions, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' } #今回はadminなど他のスコープは使用せず、ログイン関係のパス名を変更したい為sessionsをskip（下記のscopeで定義）
@@ -36,11 +38,26 @@ Rails.application.routes.draw do
       get 'user_registration2'
       get 'user_registration3'
       get 'user_registration4'
-      get 'user_registration5'
       get 'done'
     end
   end
   delete 'products/:id' , to: 'products#destroy'
+
+  resources :card, only: [:new] do
+    collection do
+      post 'show', to: 'card#show'
+      post 'pay', to: 'card#pay'
+      post 'delete', to: 'card#delete'
+    end
+  end
+
+  resources :purchase, only: [:index] do
+    collection do
+      get 'index', to: 'purchase#index'
+      post 'pay', to: 'purchase#pay'
+      get 'done', to: 'purchase#done'
+    end
+  end
   
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
