@@ -26,7 +26,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       sign_in_and_redirect @user, event: :authentication 
       set_flash_message(:notice, :success, kind: 'google') if is_navigational_format?
     else
-      session["devise.google_data"] = request.env["omniauth.auth"]
+      session["devise.google_data"] = request.env["omniauth.auth"][:info]
       redirect_to user_registration1_signup_index_url
     end
   end

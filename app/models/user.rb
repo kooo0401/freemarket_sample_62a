@@ -32,6 +32,8 @@ class User < ApplicationRecord
         email: auth.info.email,
         password: Devise.friendly_token[0, 20],
         nickname: auth.info.name,
+        last_name: auth.info.last_name,
+        first_name: auth.info.first_name,
       )
       SnsCredential.new(
         provider: auth.provider,
@@ -54,7 +56,7 @@ class User < ApplicationRecord
   validates :nickname, presence: true, length: { maximum: 20 }, on: :validates_step1
   validates :email, presence: true, uniqueness: true, format: { with: VALID_EMAIL_REGEX, message: 'は有効でありません。' }, on: :validates_step1
   validates :password, presence: true, length: { in: 7..255 }, format: { with: VALID_PASSWORD_REGEX, message: 'は255文字以下に設定して下さい'}, on: :validates_step1
-  validates :password_confirmation, presence: true, length: { in: 7..255 }, format: { with: VALID_PASSWORD_REGEX, message: 'は255文字以下に設定して下さい'}, on: :validates_step1
+  # validates :password_confirmation, presence: true, length: { in: 7..255 }, format: { with: VALID_PASSWORD_REGEX, message: 'は255文字以下に設定して下さい'}, on: :validates_step1
   validates :birthday, presence: true, on: :validates_step1
   validates :last_name, presence: true, length: { maximum: 20 }, on: :validates_step1
   validates :first_name, presence: true, length: { maximum: 20 }, on: :validates_step1
