@@ -15,7 +15,6 @@ class PurchaseController < ApplicationController
   end
 
   def pay
-    binding.pry
     card = Card.where(user_id: current_user.id).first
     product = Product.find_by(id: params[:product_id])
     Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
