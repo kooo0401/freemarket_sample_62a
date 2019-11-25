@@ -23,6 +23,8 @@ class PurchaseController < ApplicationController
       :customer => card.customer_id,
       currency: :'jpy',
     )
+    product.status_id = 3
+    product.save
     redirect_to action: 'done'
   end
 
