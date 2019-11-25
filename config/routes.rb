@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
   root 'products#index'
   
-  resources :products, only: [:index, :new, :show, :edit, :create] do
+  resources :products, expect: [:update] do
     resources :purchase, only: [:index] do
       collection do
         post 'pay'
@@ -46,7 +46,6 @@ Rails.application.routes.draw do
       get 'done'
     end
   end
-  # delete 'products/:id' , to: 'products#destroy'　修正してください／堀
 
   resources :card, only: [:new] do
     collection do
