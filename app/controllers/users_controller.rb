@@ -3,6 +3,7 @@ class UsersController < ApplicationController
   before_action :ensure_correct_user
   before_action :set_user, except:[:edit]
   before_action :set_myaddress, only:[:update, :myaddress]
+  before_action :set_products, only: [:myproducts_exhibiting, :myproducts_trading, :myproducts_sold]
 
   def show
   end
@@ -54,13 +55,15 @@ class UsersController < ApplicationController
   end
 
   def myproducts_exhibiting
+    @product = @products.where(status_id: "1")
   end
 
   def myproducts_trading
+    @product = @products.where(status_id: "2")
   end
 
   def myproducts_sold
-    @product = Product.where(user_id: current_user.id)
+    @product = @products.where(status_id: "3")
   end
 
   # ログイン中ユーザーでなければ、他ユーザーのマイページは見れない
@@ -112,6 +115,10 @@ class UsersController < ApplicationController
 
   def set_myaddress
     @myaddress = Myaddress.includes(:user).find_by(user_id: @user.id)
+  end
+
+  def set_products
+    @products = Product.where(user_id: current_user.id)
   end
 
 end

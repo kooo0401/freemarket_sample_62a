@@ -23,13 +23,11 @@
             .myproducts-list-block-ul__box--link__title
               .myproducts-list-block-ul__box--link__title--name
                 #{product.name}
-              .myproducts-list-block-ul__box--link__title--status
+              .myproducts-list-block-ul__box--link__title--sold
                 売却済
             = fa_icon 'angle-right', class: 'myproducts-select-icon'
       - if @product.empty?
         .myproducts-list-block-ul__nil-case
-
-
 
   %ul.mypage-products-arrow
     %li.mypage-products-arrow__left
