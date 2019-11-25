@@ -85,7 +85,7 @@
         = @product.price
       %span.itembuy-content__tax (税込)
       %span.itembuy-content__fee 送料込み
-      = link_to "#", class: "itembuy-price-box" do
+      = link_to edit_product_path, class: "itembuy-price-box" do
         購入画面に進む
     .itembuy-detail
       %p.itembuy-detail__inner

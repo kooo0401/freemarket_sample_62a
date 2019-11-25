@@ -1,6 +1,6 @@
 .buy-product-mypage
   %p.buy-product-title-mypage
-    購入した商品
+    出品した商品
 .transaction-mypage
   =link_to "javascript:void(0)", class: "transaction-now-mypage transaction-tab-mypage btn active-2-mypage" do
     .border-red-2-mypage.line-up-2-mypage
@@ -12,7 +12,8 @@
   =link_to myproducts_list_sold_user_path, class: "transaction-past-mypage2 transaction-tab-mypage btn" do
     %p.transaction-past-title-mypage
       売却済み
-.buy-products-now-list.content-2.show-2-mypage
+.buy-products-now-list-mypage2.content-2.show-2-mypage
+.myproducts-list-block
   %ul.mypage-products-arrow
     %li.mypage-products-arrow__left
       = link_to image_tag("/left.png", class:"mypage-products-arrow__left--icon")

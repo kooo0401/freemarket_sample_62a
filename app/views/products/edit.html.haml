@@ -11,7 +11,7 @@
       %section.purchase-confirmation__main__container__buy-content
         .purchase-confirmation__main__container__buy-content__inner
           %h3.purchase-confirmation__main__container__buy-content__inner__image
-            = image_tag("/#{@product.images[0].image}", height: '64', width: '64')
+            = image_tag("#{@product.images[0].image}", height: '64', width: '64')
           %p.purchase-confirmation__main__container__buy-content__inner__name.bold
             = @product.name
 
@@ -57,7 +57,7 @@
             -# %ul.form-box-tempolary__buy-accordion.not-have
             -# %p
             -#   アプリをお持ちでない方は以下よりインストールしてご利用いただけます。
-          %buttom.form-box-tempolary__btm-default.bold 購入する
+          = link_to "購入する", product_purchase_index_path(@product.id), class: "form-box-tempolary__btm-default .bold"
       %div
        
       %section.purchase-confirmation__main__container__buy-user-info
@@ -93,5 +93,4 @@
             = fa_icon 'chevron-right'
 
   = render "layouts/exhibit-footer"
-
 = javascript_include_tag 'purchase-confirmation.js'
