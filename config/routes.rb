@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
   root 'products#index'
   
-  resources :products, expect: [:update] do
+  resources :products, except: [:update] do
     resources :purchase, only: [:index] do
       collection do
         post 'pay'
