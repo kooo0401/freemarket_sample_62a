@@ -20,6 +20,11 @@
         %li.user-signup-bar-progress4__type
           完了
           .user-signup-bar-progress4__rod-last
+  
+  -# 下記2行は、payjpチェックアウトの際（後日消すが説明の為、保留）堀
+  %form{:action => "/pay", :method => "post"}
+    %script.payjp-button{"data-key" => "pk_test_3a2bd137c29df5b7eebba094", :src => "https://checkout.pay.jp/"}
+
 
   .signup-view-1page
     %section.signup-view-block
