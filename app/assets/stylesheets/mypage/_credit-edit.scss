@@ -6,7 +6,7 @@
     height: 50px;
     width: 700px;
     background-color: #ffffff;
-    color: black;
+    color:#333333;
     text-align: center;
     line-height: 50px;
     font-size: 24px;
@@ -20,26 +20,37 @@
     padding: 64px;
     }
     .credit-list{
-      width: 100%;
-      margin: 0 126px;
+      margin: 0;
+      padding: 0;
       }
-      .cledit-list-title{
-        color: black;
-        font-weight: bold;
+      .credit-list-title {
+        max-width: 320px;
+        margin: 0 auto;
       }
-    .credit-detail{
-      height: 65px;
-      width: 100%;
-      padding-left: 126px;
+      .credit-list-text {
+        font-size: 16px;
+      }
+      .credit-create-card {
+        list-style: none;
+      }
+    .credit-detail {
+    padding: 24px 0;
+    }
+    .credit-card-display {
       position: relative;
-      }
+      max-width: 320px;
+      margin: 0 auto;
+    }
       .credit-img{
         height: 25px;
-        width: 30%;  
+        width: 30%;
+        background-repeat: no-repeat;
+        margin: 0;
+        padding: 0;
       }
       .credit-number{
-        height: 20px;
-        width: 60%;
+        margin: 8px 0 0;
+        font-size: 16px;
       }
       .credit-date{
         height: 20px;
@@ -72,4 +83,20 @@
     }
     .credit-angle-right{
       font-size: 1.2rem;
+    }
+
+    .charge-form {
+      margin: 8px 0 0;
+      font-size: 16px;
+    }
+
+    .credit-send-button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      padding: 4px 6px;
+      background: #fff;
+      border-radius: 3px;
+      border: 1px solid #ea352d;
+      color: #ea352d;
     }

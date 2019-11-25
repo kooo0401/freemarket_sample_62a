@@ -40,12 +40,14 @@ class UsersController < ApplicationController
 
   def credit_add
     @user = User.find(params[:id])
+    card = Card.where(user_id: current_user.id)
+    redirect_to user_card_index_path(@user) if card.exists?
   end
 
   def credit_edit
     @user = User.find(params[:id])
   end
-
+  
   def confirmation_edit
     @user = User.find(params[:id])
   end

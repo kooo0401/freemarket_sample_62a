@@ -4,7 +4,20 @@
 .main
   = render partial: 'users/mypage-left'
   .main__right
-    = render partial: 'users/credit-new-edit'
+    .credit-space
+      .credit-title
+        支払い方法
+      .credit-edit
+        .credit-list
+          %p.credit-list-title クレジットカード一覧
+        .credit-create
+          =link_to  addition_user_card_index_path(@user), class: "credit-create-btn" do
+            =fa_icon 'credit-card', class: 'credit-card'
+            クレジットカードを追加する
+        .credit-line
+        =link_to "javascript:void(0)", class: "credit-method" do
+          支払い方法について
+          =fa_icon 'angle-right', class: 'credit-angle-right'
 
 = render partial: '/layouts/exhibit-button'
 = render 'layouts/footer'

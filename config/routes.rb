@@ -34,6 +34,14 @@ Rails.application.routes.draw do
       get 'myproducts_list_trading'
       get 'myproducts_list_sold'
     end
+    resources :card, only: [:new] do
+      collection do
+        get 'show'
+        post 'pay'
+        post 'delete'
+        get 'addition'
+      end
+    end
   end
   
   resources :signup, only: [:create] do 
@@ -47,13 +55,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :card, only: [:new] do
-    collection do
-      post 'show'
-      post 'pay'
-      post 'delete'
-    end
-  end
+
   
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
