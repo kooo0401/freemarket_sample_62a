@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
   root 'products#index'
   
-  resources :products, except: [:update] do
+  resources :products do
     resources :purchase, only: [:index] do
       collection do
         post 'pay'
@@ -21,7 +21,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [:show, :edit, :update] do
     member do
-      get '/products/:id', to: "products#change"
+      get '/products/:id', to: "products#change" #要検討20191125
       get 'logout_page'
       get 'profile_edit'
       get 'credit_add'
