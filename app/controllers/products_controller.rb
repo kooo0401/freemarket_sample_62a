@@ -66,13 +66,15 @@ class ProductsController < ApplicationController
       flash.alert = '再度入力してください'
     end
   end
-  #まだ実装途中櫻田
-  # def destroy
-  #   product = Product.find(params[:id])
-  #   if product.user_id == current_user.id
-  #     product.destroy 
-  #   end
-  # end
+  まだ実装途中櫻田
+  def destroy
+    product = Product.find(params[:id])
+    if product.user_id == current_user.id
+      product.destroy
+    else
+      redirect_to root_path 
+    end
+  end
 
 
   def change
