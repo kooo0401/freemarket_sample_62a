@@ -95,7 +95,8 @@ class SignupController < ApplicationController
 
   def done
     sign_in User.find(session[:id]) unless user_signed_in?
-    redirect_to new_card_path
+
+    redirect_to new_user_card_path(session[:id])
   end
 
   def create
