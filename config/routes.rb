@@ -1,8 +1,5 @@
 Rails.application.routes.draw do
-  get 'purchase/index'
-  get 'purchase/done'
-  get 'card/new'
-  get 'card/show'
+
   devise_for :users, skip: :sessions, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' } #今回はadminなど他のスコープは使用せず、ログイン関係のパス名を変更したい為sessionsをskip（下記のscopeで定義）
     
   devise_scope :user do #ログイン関係のパス名をloginとlogoutに変更
@@ -13,7 +10,15 @@ Rails.application.routes.draw do
 
   root 'products#index'
   
-  resources :products, only: [:index, :new, :show, :edit, :create]
+  resources :products, only: [:index, :new, :show, :edit, :create] do
+    resources :purchase, only: [:index] do
+      collection do
+        post 'pay'
+        get 'done'
+      end
+    end  
+  end
+
   resources :users, only: [:show, :edit, :update] do
     member do
       get '/products/:id', to: "products#change"
@@ -32,7 +37,6 @@ Rails.application.routes.draw do
   end
   
   resources :signup, only: [:create] do 
-
     collection do
       get 'new'
       get 'user_registration1'
@@ -42,21 +46,13 @@ Rails.application.routes.draw do
       get 'done'
     end
   end
-  delete 'products/:id' , to: 'products#destroy'
+  # delete 'products/:id' , to: 'products#destroy'　修正してください／堀
 
   resources :card, only: [:new] do
     collection do
-      post 'show', to: 'card#show'
-      post 'pay', to: 'card#pay'
-      post 'delete', to: 'card#delete'
-    end
-  end
-
-  resources :purchase, only: [:index] do
-    collection do
-      get 'index', to: 'purchase#index'
-      post 'pay', to: 'purchase#pay'
-      get 'done', to: 'purchase#done'
+      post 'show'
+      post 'pay'
+      post 'delete'
     end
   end
   

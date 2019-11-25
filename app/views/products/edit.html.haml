@@ -57,7 +57,7 @@
             -# %ul.form-box-tempolary__buy-accordion.not-have
             -# %p
             -#   アプリをお持ちでない方は以下よりインストールしてご利用いただけます。
-          = link_to "購入する", {controller: :purchase, action: :index}, class: "form-box-tempolary__btm-default .bold"
+          = link_to "購入する", product_purchase_index_path(@product.id), class: "form-box-tempolary__btm-default .bold"
       %div
        
       %section.purchase-confirmation__main__container__buy-user-info
