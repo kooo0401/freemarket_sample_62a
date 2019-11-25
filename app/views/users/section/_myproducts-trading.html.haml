@@ -2,14 +2,14 @@
   %p.buy-product-title-mypage
     出品した商品
 .transaction-mypage
-  =link_to myproducts_list_exhibiting_user_path, class: "transaction-now-mypage2 transaction-tab-mypage btn active-2-mypage" do
+  =link_to myproducts_exhibiting_user_path, class: "transaction-now-mypage2 transaction-tab-mypage btn active-2-mypage" do
     %p.transaction-now-title-mypage
       出品中
   =link_to "javascript:void(0)", class: "transaction-past-mypage transaction-tab-mypage btn" do
     .border-red-2-mypage.line-up-2-mypage
     %p.transaction-past-title-mypage
       取引中
-  =link_to myproducts_list_sold_user_path, class: "transaction-past-mypage2 transaction-tab-mypage btn" do
+  =link_to myproducts_sold_user_path, class: "transaction-past-mypage2 transaction-tab-mypage btn" do
     %p.transaction-past-title-mypage
       売却済み
   .buy-products-now-list-trading.content-2.show-2-mypage
