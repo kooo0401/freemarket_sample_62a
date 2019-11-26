@@ -114,7 +114,7 @@ class UsersController < ApplicationController
   end
 
   def set_myaddress
-    @myaddress = Myaddress.includes(:user).find_by(user_id: @user.id)
+    @myaddress = Myaddress.find_by(user_id: @user.id)
   end
 
   def set_products
