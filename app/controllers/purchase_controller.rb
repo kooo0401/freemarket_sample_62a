@@ -3,10 +3,10 @@ class PurchaseController < ApplicationController
   require 'payjp'
 
   def index
-
+    @user = User.find(current_user.id)
     card = Card.where(user_id: current_user.id).first
     if card.blank?
-      redirect_to controller: "card", action: "new"
+      redirect_to new_user_card_path(@user)
     else
       Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
       customer = Payjp::Customer.retrieve(card.customer_id)
@@ -23,6 +23,8 @@ class PurchaseController < ApplicationController
       :customer => card.customer_id,
       currency: :'jpy',
     )
+    product.status_id = 3
+    product.save
     redirect_to action: 'done'
   end
 
