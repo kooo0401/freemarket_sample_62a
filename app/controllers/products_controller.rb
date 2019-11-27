@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :change]
+  before_action :authenticate_user!, only: [:new, :change, :destroy]
   before_action :ensure_correct_product, only: [:change]
 
   def index
@@ -68,12 +68,9 @@ class ProductsController < ApplicationController
   
   def destroy
     @product = Product.find(params[:id])
-    if 
-      @product.destroy
+    @product.destroy
+      flash[:notice] = '商品が削除されました'
       redirect_to root_path
-    else
-      redirect_to root_path
-    end
   end
 
 

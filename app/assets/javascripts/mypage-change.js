@@ -7,7 +7,5 @@ $('#buy-modal-close-btn').click(function(){
   $('#buy-overlay').hide();
   $('haml, body').css('overflow', 'auto');
 });
-jQuery('#purchase-comformation-btn').click(function() {
-  window.location.href = "/";
-});
+
 });
