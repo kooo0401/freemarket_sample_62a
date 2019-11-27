@@ -1,5 +1,5 @@
 class PurchaseController < ApplicationController
-  before_action :set_products, only: [:index, :pay]
+  before_action :set_product, only: [:index, :pay]
   require 'payjp'
 
   def index
@@ -23,8 +23,12 @@ class PurchaseController < ApplicationController
       currency: :'jpy',
     )
     @product.status_id = 3
-    @product.save
-    redirect_to action: 'done'
+    if @product.save
+      redirect_to action: 'done'
+    else
+      flash[:notice] = '問題が発生して処理を中止しました。'
+      redirect_to root_path
+    end
   end
 
 
