@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_25_010322) do
+ActiveRecord::Schema.define(version: 2019_11_27_023256) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "prefecture_id"
@@ -37,10 +37,9 @@ ActiveRecord::Schema.define(version: 2019_11_25_010322) do
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "size_id"
     t.string "ancestry"
+    t.integer "size_tag"
     t.index ["ancestry"], name: "index_categories_on_ancestry"
-    t.index ["size_id"], name: "index_categories_on_size_id"
   end
 
   create_table "images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -94,6 +93,7 @@ ActiveRecord::Schema.define(version: 2019_11_25_010322) do
     t.string "size_name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "size_tag"
   end
 
   create_table "sns_credentials", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -137,7 +137,6 @@ ActiveRecord::Schema.define(version: 2019_11_25_010322) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "categories", "sizes"
   add_foreign_key "images", "products"
   add_foreign_key "myaddresses", "users"
   add_foreign_key "products", "brands"
