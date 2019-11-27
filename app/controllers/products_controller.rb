@@ -24,13 +24,7 @@ class ProductsController < ApplicationController
   def new
     @product = Product.new
     @product.images.build
-    # 10.times { @product.images.build }
-    # ⇨ 毎回１０枚保存する（もしかしたらいらないかも：髙橋）
-    
-    # 以下、ログイン機能設計次第で要不要判断
-    # 以下の記述はログイン、ログアウト機能の導入後にコメントアウトを外すこと
-    # redirect_to: controller: :user, action: :ログイン画面に対応するアクション unless user_signed_in?
-
+    @parent = Category.where(id: 1..13)
   end
 
 

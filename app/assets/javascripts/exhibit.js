@@ -135,3 +135,52 @@ $(function(){
 //   });
 //   });
 });
+
+
+
+$(function(){
+  $('#product_parent_id').change(function() {
+    var parent_id = $('#product_parent_id').val();
+    $.ajax({
+      type: 'POST',
+      url: '../api/products',
+      data: {id : parent_id},
+      dataType: 'json',
+    })
+    .done(function(data){
+      var obj = data;
+      $('#product_child_id').html("");
+      for(var i=0;i<obj.length;i++){
+        $('#product_child_id').append("<option value=" + obj[i].id+">"+obj[i].name+"</option>");
+      }
+
+    })
+    .fail(function(){
+      alert('error');
+    })
+  });
+  //孫カテゴリー実装のための記述 村上191127
+  // $('#product_child_id').change(function() {
+  //   var child_id = $('#product_child_id').val();
+  //   $.ajax({
+  //     type: 'POST',
+  //     url: '../api/products',
+  //     data: {id : child_id},
+  //     dataType: 'json',
+  //     // contentType: false,
+  //     // processData: false,
+  //   })
+  //   .done(function(data){
+  //     // var html = child_category(data);
+  //     var obj2 = data;
+  //     $('#product_category_id').html("");
+  //     for(var i=0;i<obj.length;i++){
+  //       $('#product_category_id').append("<option value=" + obj2[i].id+">"+obj2[i].name+"</option>");
+  //     }
+
+  //   })
+  //   .fail(function(){
+  //     alert('error');
+  //   })
+  // });
+})
