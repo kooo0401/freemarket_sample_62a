@@ -1,5 +1,6 @@
 class ProductsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :change]
+  before_action :set_product, only: [:destroy, :change, :show, :edit, :ensure_correct_product]
   before_action :ensure_correct_product, only: [:change]
 
   def index
@@ -78,22 +79,7 @@ class ProductsController < ApplicationController
   end
 
   def ensure_correct_product
-    @product = Product.find(params[:id])
-    if
-      # 下記の「current_user ~ 」で問題点が２点あったため、コードを訂正しました。＜要相談 191126 髙橋＞
-      # 問題①:current_user.id と ”product.id” を!=で比較してしまっている。
-      # 問題②:current_user.id !=  params[:id].to_i の時は、new_user_session_path に
-      #     遷移するようになっているが、ログインしているユーザーがnew_user_session_path に遷移するのは変？
-      # ⇩元のコード
-      # current_user.id !=  params[:id].to_i
-      # redirect_to new_user_session_path
-
-      current_user.id !=  @product.user_id
-      redirect_to root_path
-    else
-      true
-    end
-  
+    redirect_to root_path if current_user.id !=  @product.user_id
   end
 
 
@@ -119,5 +105,9 @@ class ProductsController < ApplicationController
                     :size_id,
                     images_attributes: [:image])
           .merge(user_id: current_user.id)
+  end
+
+  def set_product
+    @product = Product.find(params[:id])
   end
 end
