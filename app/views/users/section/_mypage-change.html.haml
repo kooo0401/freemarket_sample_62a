@@ -107,12 +107,7 @@
           %p 削除する代わりに停止することもできます。
           %br 本当に削除しますか？
         %button#buy-modal-close-btn キャンセル
-        = button_to "削除する", "#{@product.id}",  method: :delete , id: "purchase-comformation-btn" 
-        
-       
-       
-
- 
+        = button_to "削除する", "#{@product.id}", method: :delete , id: "purchase-comformation-btn" 
     .itembuy-content__comment
       %form.itembuy-message__form
         %p 相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
@@ -120,7 +115,6 @@
         %button
           %span  
             コメントする
--# = link_to '/products/new', class: 'itembuy-gray-box2' do
 
 = javascript_include_tag 'mypage-change.js'
 
