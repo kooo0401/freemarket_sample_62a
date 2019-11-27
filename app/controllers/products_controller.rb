@@ -65,23 +65,25 @@ class ProductsController < ApplicationController
       flash.alert = '再度入力してください'
     end
   end
-  # まだ実装途中櫻田
-  # def destroy
-  #   product = Product.find(params[:id])
-  #   if product.user_id == current_user.id
-  #     product.destroy
-  #   else
-  #     redirect_to root_path 
-  #   end
-  # end
+  
+  def destroy
+    @product = Product.find(params[:id])
+    if 
+      @product.destroy
+      redirect_to root_path
+    else
+      redirect_to root_path
+    end
+  end
 
 
   def change
+    @product = Product.find(params[:id])
   end
 
   def ensure_correct_product
-
-    if current_user.id !=  params[:id].to_i
+    @product = Product.find(params[:id])
+    if current_user.id !=  @product.user_id.to_i
      redirect_to new_user_session_path
     else
       true

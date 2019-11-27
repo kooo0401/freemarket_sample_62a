@@ -1,7 +1,7 @@
 .itembuy-container
   %section.itembuy-content
     %h1.itembuy-content__name
-      @product.name
+      = @product.name
     .itembuy-content__clearfix
     = form_with model: @product, local: true do |f|
       .itembuy-content__photo
@@ -53,12 +53,12 @@
             %th 商品のサイズ
             %td
               %span 
-                @size.size_name
+                = @product.size
           %tr
             %th 商品の状態
             %td
               %span
-                @condition.value
+               
           %tr
             %th 配送料の負担
             %td
@@ -68,12 +68,12 @@
             %th 配送の方法
             %td
               %span
-                @delivery_way.value
+                = @product.delivery_way
           %tr
             %th 配送元地域
             %td
               %span
-                = link_to "大阪府", "#"  
+            
           %tr
             %th 発送日の目安
             %td
@@ -81,12 +81,12 @@
                 @delivery_days.value
     .itembuy-content__price
       %span.itembuy-content__bold<
-        ＠product.plice
+        = @product.price
       %span.itembuy-content__tax (税込)
       %span.itembuy-content__fee 送料込み
     .itembuy-detail
       %p.itembuy-detail__inner
-        @product.description
+        = @product.description
   .itembuy-content__change-status
     .itembuy-content__change-status-btns
       = link_to '#', class: 'itembuy-red-box' do
@@ -106,8 +106,13 @@
           %br 削除すると二度と復活できません。
           %p 削除する代わりに停止することもできます。
           %br 本当に削除しますか？
-        %button#buy-modal-close-btn キャンセル     
-        %button#purchase-comformation-btn 削除する 
+        %button#buy-modal-close-btn キャンセル
+        = button_to "削除する", "#{@product.id}",  method: :delete , id: "purchase-comformation-btn" 
+        
+       
+       
+
+ 
     .itembuy-content__comment
       %form.itembuy-message__form
         %p 相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
