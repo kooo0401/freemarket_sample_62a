@@ -116,15 +116,15 @@ $(function(){
       }
   });
 
-$(function()  {
-  $(window).load(function(){
-    $('.exhibitmain__delivery__way').hide();
-    $('.exhibitmain__delivery__way-box').hide();
-    $('.exhibitmain__delivery__way2').hide();
-    $('.exhibitmain__delivery__way-box2').hide();
-  })
-});
-// まだ実装途中
+// $(function()  {
+//   $(window).load(function(){
+//     $('.exhibitmain__delivery__way').hide();
+//     $('.exhibitmain__delivery__way-box').hide();
+//     $('.exhibitmain__delivery__way2').hide();
+//     $('.exhibitmain__delivery__way-box2').hide();
+//   })
+// });
+
 // $(function(){
 //   $('.exhibitmain__details__brand-box').click(function(){
 //     $('#buy-overlay1').fadeIn();
