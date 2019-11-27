@@ -53,7 +53,7 @@
           商品の状態
           %span 必須 
         .exhibitmain__details__status-box 
-          = f.select  :sales_status, [["---", 0],["新品、未使用", 1],["未使用に近い", 2],["目立った傷や汚れなし",3],["やや傷や汚れなし", 4],["傷や汚れなし", 5],["全体的に状態が悪い",6] ]
+          = f.select  :sales_status, Product.sales_statuses.keys.map {|k| [I18n.t("enums.product.sales_status.#{k}"), k]}
       .exhibitmain__delivery
         .exhibitmain__delivery__name
           配送について
