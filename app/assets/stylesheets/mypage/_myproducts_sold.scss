@@ -48,16 +48,17 @@
     .buy-products-now-list-mypage3 {
       width: 700px;
       float: left;
-      // background: url("/sold.png");
       .myproducts-list-block {
         background: #fff;
         background-size: cover;
         max-height: 100%;
+        min-height: 240px;
         margin: 0;
         padding: 0;
         .myproducts-list-block-ul {
           position: relative;
           display: block;
+          background: #fff;
           &__box {
             border-bottom: 1px solid #eee;
             position: relative;
@@ -102,7 +103,7 @@
                   line-height: 1.5;
                   text-decoration: none;
                 }
-                &--status {
+                &--sold {
                   display: inline-block;
                   margin: 8px 0 0 0;
                   padding: 5px 6px;
@@ -110,6 +111,24 @@
                   font-size: 12px;
                   color: #fff;
                   background: #888;
+                }
+                &--exhibiting {
+                  display: inline-block;
+                  margin: 8px 0 0 0;
+                  padding: 5px 6px;
+                  border-radius: 2px;
+                  font-size: 12px;
+                  color: #fff;
+                  background: #66CCFF;
+                }
+                &--trading {
+                  display: inline-block;
+                  margin: 8px 0 0 0;
+                  padding: 5px 6px;
+                  border-radius: 2px;
+                  font-size: 12px;
+                  color: #fff;
+                  background: #FF3333;
                 }
               }
               .myproducts-select-icon {
@@ -124,6 +143,30 @@
           &__box:hover {
             opacity: 0.7;
             filter: alpha(opacity=70);
+          }
+          &__nil-case {
+            background: url("/sold.png");
+            background-size: cover;
+            max-height: 100%;
+            min-height: 240px;
+            margin: 0;
+            padding: 0;
+          }
+          &__nil-tranding {
+            background: url("/IMG_no-buy-products-now.png");
+            background-size: cover;
+            max-height: 100%;
+            min-height: 240px;
+            margin: 0;
+            padding: 0;
+          }
+          &__nil-exhibiting {
+            background: url("/exhibiting.png");
+            background-size: cover;
+            max-height: 100%;
+            min-height: 240px;
+            margin: 0;
+            padding: 0;
           }
         }
       }

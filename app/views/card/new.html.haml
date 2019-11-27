@@ -30,7 +30,7 @@
     %section.signup-view-block
       %h2.signup-view-block__explanation 
         支払い方法
-      = form_tag(pay_card_index_path, method: :post, id: 'charge-form',  name: "inputForm", class: "signup-view-block__form") do
+      = form_tag(pay_user_card_index_path, method: :post, id: 'charge-form',  name: "inputForm", class: "signup-view-block__form") do
         .signup-view-block__form--top
           .signup-form1
             %label.signup-form1__label
@@ -60,7 +60,7 @@
                 %option{value: "10"}10
                 %option{value: "11"}11
                 %option{value: "12"}12
-              %span 月/
+              %span 月
               %select#exp_year{name: "exp_year", type: "text"}
                 %option{value: ""} --
                 %option{value: "2019"}19
