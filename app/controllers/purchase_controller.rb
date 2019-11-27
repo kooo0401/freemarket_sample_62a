@@ -1,9 +1,8 @@
 class PurchaseController < ApplicationController
-
+  before_action :set_products, only: [:index, :pay]
   require 'payjp'
 
   def index
-    @product = Product.find_by(id: params[:product_id])
     @user = User.find(current_user.id)
     card = Card.where(user_id: current_user.id).first
     if card.blank?
@@ -17,15 +16,14 @@ class PurchaseController < ApplicationController
 
   def pay
     card = Card.where(user_id: current_user.id).first
-    product = Product.find_by(id: params[:product_id])
     Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
     Payjp::Charge.create(
-      :amount => product.price,
+      :amount => @product.price,
       :customer => card.customer_id,
       currency: :'jpy',
     )
-    product.status_id = 3
-    product.save
+    @product.status_id = 3
+    @product.save
     redirect_to action: 'done'
   end
 
@@ -33,4 +31,9 @@ class PurchaseController < ApplicationController
   def done
   end
 
+  private
+
+  def set_products
+    @product = Product.find_by(id: params[:product_id])
+  end
 end

@@ -1,6 +1,7 @@
 class ProductsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :change, :destroy]
   before_action :ensure_correct_product, only: [:change]
+  before_action :set_products, only: [:destroy, :change,:show, :edit]
 
   def index
     @products = Product.order("id DESC").limit(10)
@@ -20,7 +21,6 @@ class ProductsController < ApplicationController
   end
 
   def new
-
     @product = Product.new
     @product.images.build
     # 10.times { @product.images.build }
@@ -34,7 +34,6 @@ class ProductsController < ApplicationController
 
 
   def show
-    @product = Product.find(params[:id])
     #実際にテーブルからid:1のproductを取得できているかの記述。
     # @product = Product.find(params[:id])
     # 商品出品が可能になったら、一つ一つのproductからidで取得する。
@@ -44,7 +43,6 @@ class ProductsController < ApplicationController
   end
 
   def edit
-    @product = Product.find(params[:id])
     gon.product_price = @product.price
     gon.all_point = current_user.point
   end
@@ -67,15 +65,19 @@ class ProductsController < ApplicationController
   end
   
   def destroy
-    @product = Product.find(params[:id])
+    begin
     @product.destroy
       flash[:notice] = '商品が削除されました'
       redirect_to root_path
+    rescue
+      flash[:notice] = '問題が発生して削除できませんでした'
+      redirect_to root_path
+    end   
   end
 
 
   def change
-    @product = Product.find(params[:id])
+   
   end
 
   def ensure_correct_product
@@ -111,5 +113,9 @@ class ProductsController < ApplicationController
                     :size_id,
                     images_attributes: [:image])
           .merge(user_id: current_user.id)
+  end
+
+  def set_products
+    @product = Product.find(params[:id])
   end
 end
