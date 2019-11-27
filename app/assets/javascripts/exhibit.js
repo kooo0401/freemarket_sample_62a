@@ -135,3 +135,37 @@ $(function()  {
 //   });
 //   });
 });
+
+
+
+$(function(){
+  // function child_category(children){
+  //   var child_category =``
+  //       return child_category;
+  // }
+
+  $('#product_category_id').change(function() {
+    var parent_id = $('#product_category_id').val();
+    $.ajax({
+      type: 'POST',
+      url: '../api/products',
+      data: {id : parent_id},
+      dataType: 'json',
+      // contentType: false,
+      // processData: false,
+    })
+    .done(function(data){
+      console.log(data);
+      // var html = child_category(data);
+      var obj = data;
+      $('#product_child_id').html("");
+      for(var i=0;i<obj.length;i++){
+        $('#product_child_id').append("<option value=" + obj[i].id+">"+obj[i].name+"</option>");
+      }
+
+    })
+    .fail(function(){
+      alert('error');
+    })
+  });
+})
