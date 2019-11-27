@@ -1,7 +1,8 @@
 class ProductsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :change, :destroy]
+  before_action :set_product, only: [:destroy, :change,:show, :edit,:ensure_correct_product]
   before_action :ensure_correct_product, only: [:change]
-  before_action :set_products, only: [:destroy, :change,:show, :edit]
+  
 
   def index
     @products = Product.order("id DESC").limit(10)
@@ -65,11 +66,10 @@ class ProductsController < ApplicationController
   end
   
   def destroy
-    begin
-    @product.destroy
+    if @product.destroy
       flash[:notice] = '商品が削除されました'
       redirect_to root_path
-    rescue
+    else
       flash[:notice] = '問題が発生して削除できませんでした'
       redirect_to root_path
     end   
@@ -81,7 +81,6 @@ class ProductsController < ApplicationController
   end
 
   def ensure_correct_product
-    @product = Product.find(params[:id])
     if current_user.id !=  @product.user_id.to_i
      redirect_to new_user_session_path
     else
@@ -115,7 +114,7 @@ class ProductsController < ApplicationController
           .merge(user_id: current_user.id)
   end
 
-  def set_products
+  def set_product
     @product = Product.find(params[:id])
   end
 end
