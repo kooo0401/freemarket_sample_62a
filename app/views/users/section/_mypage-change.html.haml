@@ -58,7 +58,7 @@
             %th 商品の状態
             %td
               %span
-               
+              =@product.sales_status
           %tr
             %th 配送料の負担
             %td
@@ -78,7 +78,7 @@
             %th 発送日の目安
             %td
               %span
-                @delivery_days.value
+              = @product.delivery_days
     .itembuy-content__price
       %span.itembuy-content__bold<
         = @product.price
