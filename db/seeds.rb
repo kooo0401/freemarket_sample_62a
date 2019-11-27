@@ -2,6 +2,18 @@
 # 洋服のサイズtagだけは入れておきたい
 
 lady = Category.create!(name:'レディース')
+men = Category.create!(name:'メンズ')
+baby = Category.create!(name:'ベビー・キッズ')
+living = Category.create!(name:'インテリア・住まい・小物')
+book = Category.create!(name:'本・音楽・ゲーム')
+toy = Category.create!(name:'おもちゃ・ホビー・グッズ')
+cosmetic = Category.create!(name:'コスメ・香水・美容')
+electronics = Category.create!(name:'家電・スマホ・カメラ')
+sport = Category.create!(name:'スポーツ・レジャー')
+handmade = Category.create!(name:'ハンドメイド')
+ticket = Category.create!(name:'チケット')
+mobile = Category.create!(name:'自動車・オートバイ')
+others = Category.create!(name:'その他')
 
 lady_tops = lady.children.create!(name:'トップス')
 lady_jacket = lady.children.create!(name:'ジャケット/アウター')
@@ -44,7 +56,6 @@ lady_matanity.children.create!([{name:'すべて'},{name:'トップス'},{name:'
 lady_others.children.create!([{name:'すべて'},{name:'コスプレ'},{name:'下着'},{name:'その他'}])
   
 
-men = Category.create!(name:'メンズ')
 
 men_tops = men.children.create!(name:'トップス')
 men_jacket = men.children.create!(name:'ジャケット/アウター')
@@ -76,8 +87,6 @@ men_legwear.children.create!([{name:'すべて'},{name:'ソックス'},{name:'�
 men_underwear.children.create!([{name:'すべて'},{name:'トランクス'},{name:'ボクサーパンツ'},{name:'その他'}])
 men_others.children.create!([{name:'すべて'}])
 
-
-baby = Category.create!(name:'ベビー・キッズ')
 
 baby_w_small = baby.children.create!(name:'ベビー服(女の子用)~95cm')
 baby_m_small = baby.children.create!(name:'ベビー服(男の子用)~95cm')
@@ -114,7 +123,6 @@ baby_event.children.create!([{name:'すべて'},{name:'お宮参り用品'},{nam
 baby_others.children.create!([{name:'すべて'},{name:'母子手帳用品'},{name:'その他'}])
 
 
-living = Category.create!(name:'インテリア・住まい・小物')
 
 living_dish = living.children.create!(name:'キッチン/食器')
 living_bed = living.children.create!(name:'ベッド/マットレス')
@@ -145,7 +153,6 @@ living_events.children.create!([{name:'すべて'},{name:'正月'},{name:'成人
 living_others.children.create!([{name:'すべて'}])
 
 
-book = Category.create!(name:'本・音楽・ゲーム')
 
 book_book = book.children.create!(name:'本')
 book_comic = book.children.create!(name:'漫画')
@@ -156,7 +163,6 @@ book_record = book.children.create!(name:'レコード')
 book_TVgame = book.children.create!(name:'テレビゲーム')
 
 
-# ここから左([追加
 
 book_book.children.create!([{name:'すべて'},{name:'文学/小説'},{name:'人文/社会'},{name:'ノンフィクション/教養'},{name:'地図/旅行ガイド'},{name:'ビジネス/経済'},{name:'健康/医学'},{name:'コンピュータ/IT'},{name:'趣味/スポーツ/実用'},{name:'住まい/暮らし/子育て'},{name:'アート/エンタメ'},{name:'洋書'},{name:'絵本'},{name:'参考書'},{name:'その他'}])
 book_comic.children.create!([{name:'すべて'},{name:'全巻セット'},{name:'少年漫画'},{name:'少女漫画'},{name:'青年漫画'},{name:'女性漫画'},{name:'同人誌'},{name:'その他'}])
@@ -166,7 +172,6 @@ book_DVD.children.create!([{name:'すべて'},{name:'外国映画'},{name:'日�
 book_record.children.create!([{name:'すべて'},{name:'邦楽'},{name:'洋楽'},{name:'その他'}])
 book_TVgame.children.create!([{name:'すべて'},{name:'家庭用ゲーム本体'},{name:'家庭用ゲームソフト'},{name:'携帯用ゲーム本体'},{name:'携帯用ゲームソフト'},{name:'PCゲーム'},{name:'その他'}])
 
-toy = Category.create!(name:'おもちゃ・ホビー・グッズ')
 
 toy_toy = toy.children.create!(name:'おもちゃ')
 toy_talent_goods= toy.children.create!(name:'タレントグッズ')
@@ -193,7 +198,6 @@ toy_art_goods.children.create!([{name:'すべて'},{name:'画材'},{name:'額縁
 toy_others.children.create!([{name:'すべて'},{name:'トランプ/UNO'},{name:'カルタ/百人一首'},{name:'ダーツ'},{name:'ビリヤード'},{name:'麻雀'},{name:'パズル/ジグソーパズル'},{name:'囲碁/将棋'},{name:'オセロ/チェス'},{name:'人生ゲーム'},{name:'野球/サッカーゲーム'},{name:'スポーツ'},{name:'三輪車/乗り物'},{name:'ヨーヨー'},{name:'模型製作用品'},{name:'鉄道'},{name:'航空機'},{name:'アマチュア無線'},{name:'パチンコ/パチスロ'},{name:'その他'}])
 
 
-cosmetic = Category.create!(name:'コスメ・香水・美容')
 
 cosmetic_basemake = cosmetic.children.create!(name:'ベースメイク')
 cosmetic_makeup = cosmetic.children.create!(name:'メイクアップ')
@@ -220,7 +224,6 @@ cosmetic_diet.children.create!([{name:'すべて'},{name:'ダイエット食品'
 cosmetic_others.children.create!([{name:'すべて'},{name:'健康用品'},{name:'看護/介護用品'},{name:'救急/衛生用品'},{name:'その他'}])
 
 
-electronics = Category.create!(name:'家電・スマホ・カメラ')
 
 electronics_phone = electronics.children.create!(name:'スマートフォン/携帯電話')
 electronics_phone_acce = electronics.children.create!(name:'スマホアクセサリー')
@@ -244,7 +247,6 @@ electronics_aircon.children.create!([{name:'すべて'},{name:'エアコン'},{n
 electronics_life.children.create!([{name:'すべて'},{name:'冷蔵庫'},{name:'洗濯機'},{name:'炊飯器'},{name:'電子レンジ/オーブン'},{name:'調理機器'},{name:'アイロン'},{name:'掃除機'},{name:'エスプレッソマシン'},{name:'コーヒーメーカー'},{name:'衣類乾燥機'},{name:'その他'}])
 electronics_others.children.create!([{name:'すべて'},{name:'その他'}])
 
-sport = Category.create!(name:'スポーツ・レジャー')
 
 sport_golf = sport.children.create!(name:'ゴルフ')
 sport_fishing = sport.children.create!(name:'フィッシング')
@@ -273,7 +275,6 @@ sport_others.children.create!([{name:'すべて'},{name:'テント/タープ'},{
 
 
 
-handmade = Category.create!(name:'ハンドメイド')
 
 handmade_lady_acce = handmade.children.create!(name:'アクセサリー(女性用)')
 handmade_fashion = handmade.children.create!(name:'ファッション/小物')
@@ -295,7 +296,6 @@ handmade_material.children.create!([{name:'すべて'},{name:'各種パーツ'},
 handmade_creation.children.create!([{name:'すべて'},{name:'Ingress'},{name:'クリエイターズ宇宙兄弟'},{name:'シンデレラガールズCPグッズ'}])
 handmade_others.children.create!([{name:'すべて'}])
 
-ticket = Category.create!(name:'チケット')
 
 ticket_music = ticket.children.create!(name:'音楽')
 ticket_sport = ticket.children.create!(name:'スポーツ')
@@ -315,7 +315,6 @@ ticket_facility.children.create!([{name:'すべて'},{name:'遊園地/テーマ�
 ticket_coupon.children.create!([{name:'すべて'},{name:'ショッピング'},{name:'レストラン/食事券'},{name:'フード/ドリンク券'},{name:'宿泊券'},{name:'その他'}])
 ticket_others.children.create!([{name:'すべて'}])
 
-mobile = Category.create!(name:'自動車・オートバイ')
 
 mobile_body = mobile.children.create!(name:'自動車本体')
 mobile_tire = mobile.children.create!(name:'自動車タイヤ/ホイール')
@@ -334,7 +333,7 @@ mobile_bike_part.children.create!([{name:'すべて'},{name:'タイヤ'},{name:'
 mobile_bike_acce.children.create!([{name:'すべて'},{name:'ヘルメット/シールド', size_tag:11},{name:'バイクウエア/装備'},{name:'アクセサリー'},{name:'メンテナンス'},{name:'カタログ/マニュアル'},{name:'その他'}])
 
 
-others = Category.create!(name:'その他')
+
 
 others_wholesell = others.children.create!(name:'まとめ売り')
 others_pet = others.children.create!(name:'ペット用品')
