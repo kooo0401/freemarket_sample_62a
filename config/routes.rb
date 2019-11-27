@@ -22,17 +22,17 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :edit, :update] do
     member do
       get '/products/:id', to: "products#change" #要検討20191125
-      get 'logout_page'
-      get 'profile_edit'
+      get 'logout'
+      get 'profile'
       get 'credit_add'
       get 'credit_edit'
-      get 'confirmation_edit'
-      get 'myaddress_edit'
-      get 'mail_pass_edit'
-      get 'tel_edit'
-      get 'myproducts_list_exhibiting'
-      get 'myproducts_list_trading'
-      get 'myproducts_list_sold'
+      get 'confirmation'
+      get 'myaddress'
+      get 'mail_pass'
+      get 'tel'
+      get 'myproducts_exhibiting'
+      get 'myproducts_trading'
+      get 'myproducts_sold'
     end
     resources :card, only: [:new] do
       collection do
