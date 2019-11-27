@@ -110,8 +110,22 @@
       select{
         @include box;
       } 
+    }
+    &__category-box3{
+        padding-left: 217px;
+        padding-top: 10px;
+        select{
+          @include box;
+        } 
+    }
+    &__category-box4{
+      padding-left: 217px;
+      padding-top: 10px;
+      select{
+        @include box;
+      } 
   }
-  &__category-box3{
+  &__category-box16{
     padding-left: 217px;
     padding-top: 10px;
     padding-bottom: 30px;
