@@ -98,3 +98,4 @@ gem "omniauth-rails_csrf_protection"
 gem "gretel"
 gem "gon"
 gem 'payjp'
+gem 'enum_help' 

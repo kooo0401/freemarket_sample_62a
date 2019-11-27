@@ -74,12 +74,9 @@ class ProductsController < ApplicationController
   end
 
   def ensure_correct_product
-    if current_user.id !=  @product.user_id.to_i
-     redirect_to new_user_session_path
-    else
-      true
-    end
-  
+
+    redirect_to root_path if current_user.id !=  @product.user_id
+
   end
 
 
