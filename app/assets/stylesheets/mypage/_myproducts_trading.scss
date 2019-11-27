@@ -1,0 +1,103 @@
+.buy-product-mypage{
+  height: 75px;
+  width: 700px;
+  background-color: #fafafa;
+  color: black;
+  float: left;
+  }
+  .buy-product-title-mypage{
+    line-height: 50px;
+    margin-left: 10px; 
+    font-weight: bold;
+  }
+.border-red-2-mypage{
+  height: 2px;
+  width: 233px;
+  background-color: red;
+}
+.transaction-mypage{
+  height: 75px;
+  width: 700px;
+  float: left;
+  }
+  .transaction-now-mypage2{
+    height: 75px;
+    width: 233px;
+    float: left;
+    text-align: center;
+    line-height: 75px;
+    background-color: #eeeeee;
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+  }
+  .transaction-past-mypage2{
+    height: 75px;
+    width: 233px;
+    float: left;
+    text-align: center;
+    line-height: 75px;
+    background-color: #eeeeee;
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    }
+    .btn:hover-mypage{
+      opacity: 0.5;
+    }
+    .buy-products-now-list-trading {
+      display: inline-block;
+      height: 240px;
+      width: 700px;
+      background: url("/IMG_no-buy-products-now.png");
+      background-size: cover;
+      }
+    .buy-products-past-list-mypage{
+      height: 240px;
+      width: 700px;
+      float: left;
+      background: url("/assets/IMG_no-buy-products-past.png");
+      background-size: cover;
+      }
+
+.border-red-2-mypage{
+  height: 2px;
+  width: 233px;
+  background-color: red;
+}
+
+.mypage-products-arrow {
+  margin: 40px 0 0;
+  text-align: right;
+  &__left {
+    left: 0;
+    &--icon {
+      width: 40px;
+      height: 40px;
+      float: left;
+    }
+  }
+  &__right {
+    right: 0;
+    &--icon {
+      width: 40px;
+      height: 40px;
+    }
+  }
+}
+
+a .mypage-products-arrow__left--icon{
+  transition:all 0.1s ease;
+}
+a:hover .mypage-products-arrow__left--icon{
+  opacity: 0.7;
+  filter: alpha(opacity=70);
+}
+
+a .mypage-products-arrow__right--icon{
+  transition:all 0.1s ease;
+}
+a:hover .mypage-products-arrow__right--icon{
+  opacity: 0.7;
+  filter: alpha(opacity=70);
+}

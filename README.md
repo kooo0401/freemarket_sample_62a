@@ -39,7 +39,7 @@
 |birthday|date|null: false|
 |tel|string|null: false|
 |self_introduction|text|
-|money|integer|
+<!-- |money|integer| payjpによるcardsテーブル使用の為、不要 --> 
 |point|integer|
 |zip|string|
 |prefecture|string|
@@ -78,7 +78,8 @@
 - belongs_to :user
 
 
-## creditsテーブル
+creditsテーブルは不要（payjpにより、cardsテーブルを作成した為）20191125堀
+<!-- ## creditsテーブル
 |Column|Type|Options|
 |------|----|-------|
 |card_number|integer|null: false|
@@ -87,7 +88,7 @@
 |user_id|integer|foreign_key: true, null: false|
 
 ### Association
-- belongs_to :user
+- belongs_to :user -->
 
 
 ## historiesテーブル

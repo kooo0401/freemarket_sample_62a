@@ -1,0 +1,33 @@
+
+= render 'layouts/header' 
+
+.main
+  = render partial: 'users/section/mypage-left'
+  .main__right
+    .credit-space
+      .credit-title
+        支払い方法
+      .credit-edit
+        .credit-list
+          %section.credit-list-title
+            %h3.credit-list-text クレジットカード一覧
+          %ul.credit-create-card
+            %li.credit-detail
+              .credit-card-display
+                = image_tag("/IMG_visa-image.png", class: "credit-img")
+                .credit-number ************#{@default_card_information.last4}
+                - exp_month = @default_card_information.exp_month.to_s
+                - exp_year = @default_card_information.exp_year.to_s.slice(2,3)
+                = exp_month + " / " + exp_year
+                = form_tag(delete_user_card_index_path, method: :post, id: 'charge-form',  name: "inputForm") do
+                  %input{ type: "hidden", name: "card_id", value: "" }
+                  %button.credit-send-button 削除する
+        .credit-line
+          =link_to "javascript:void(0)", class: "credit-method" do
+            支払い方法について
+            =fa_icon 'angle-right', class: 'credit-angle-right'
+
+= render partial: '/layouts/exhibit-button'
+= render 'layouts/footer'
+
+= javascript_include_tag 'payjp.js'

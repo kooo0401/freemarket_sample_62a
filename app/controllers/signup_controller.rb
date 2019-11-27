@@ -1,8 +1,7 @@
 class SignupController < ApplicationController
   before_action :validates_step1, only: :user_registration2
   before_action :validates_step2, only: :user_registration3
-  before_action :validates_step3, only: :user_registration4
-  before_action :validates_step4, only: :create
+  before_action :validates_step3, only: :create
 
   def new
   end
@@ -25,10 +24,6 @@ class SignupController < ApplicationController
   end
 
   def user_registration3
-    @user = User.new
-  end
-
-  def user_registration4
     @user = User.new
   end
 
@@ -98,20 +93,10 @@ class SignupController < ApplicationController
     render user_registration3_signup_index_path unless @user.valid?(:validates_step3)
   end
 
-  def validates_step4
-    # カード情報
-    # session[:card_number] = user_params[:card_number]
-
-    # @user = User.new(
-    #   card_number: session[:card_number],
-
-    # )
-    # render user_registration4_signup_index_path unless @user.valid?(:validates_step4)
-  end
-
   def done
     sign_in User.find(session[:id]) unless user_signed_in?
-    redirect_to user_registration5_signup_index_path
+
+    redirect_to new_user_card_path(session[:id])
   end
 
   def create

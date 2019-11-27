@@ -1,0 +1,206 @@
+.buy-product-mypage{
+  height: 75px;
+  width: 700px;
+  background-color: #fafafa;
+  color: black;
+  float: left;
+  }
+  .buy-product-title-mypage{
+    line-height: 75px;
+    margin-left: 10px; 
+    font-weight: bold;
+  }
+.border-red-2-mypage{
+  height: 2px;
+  width: 233px;
+  background-color: red;
+}
+.transaction-mypage{
+  height: 75px;
+  width: 700px;
+  float: left;
+  }
+  .transaction-now-mypage{
+    height: 75px;
+    width: 233px;
+    float: left;
+    text-align: center;
+    line-height: 75px;
+    background-color: #ffffff;
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+  }
+  .transaction-past-mypage{
+    height: 75px;
+    width: 233px;
+    float: left;
+    text-align: center;
+    line-height: 75px;
+    background-color: #ffffff;
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    }
+    .btn:hover-mypage{
+      opacity: 0.5;
+    }
+    .buy-products-now-list-mypage3 {
+      width: 700px;
+      float: left;
+      .myproducts-list-block {
+        background: #fff;
+        background-size: cover;
+        max-height: 100%;
+        min-height: 240px;
+        margin: 0;
+        padding: 0;
+        .myproducts-list-block-ul {
+          position: relative;
+          display: block;
+          background: #fff;
+          &__box {
+            border-bottom: 1px solid #eee;
+            position: relative;
+            transition:all 0.2s ease;
+            &--link {
+              display: block;
+              min-height: 80px;
+              padding: 5px;
+              color: #333;
+              text-decoration: none;
+              &__figure {
+                position: relative;
+                overflow: hidden;
+                float: left;
+                width: 48px;
+                height: 48px;
+                &__image {
+                  top: 50%;
+                  transform: translate(0, -50%);
+                  position: absolute;
+                  right: 0;
+                  bottom: 0;
+                  left: 0;
+                  z-index: 1;
+                  width: 100%;
+                }
+                &__link {
+                  top: 50%;
+                  transform: translate(0, -50%);
+                }
+              }
+              &__title {
+                margin: 0 40px 0 68px;
+                &--name {
+                  overflow: hidden;
+                  display: block;
+                  display: -webkit-box;
+                  max-height: 4.4em;
+                  -webkit-line-clamp: 3;
+                  -webkit-box-orient: vertical;
+                  text-overflow: ellipsis;
+                  line-height: 1.5;
+                  text-decoration: none;
+                }
+                &--sold {
+                  display: inline-block;
+                  margin: 8px 0 0 0;
+                  padding: 5px 6px;
+                  border-radius: 2px;
+                  font-size: 12px;
+                  color: #fff;
+                  background: #888;
+                }
+                &--exhibiting {
+                  display: inline-block;
+                  margin: 8px 0 0 0;
+                  padding: 5px 6px;
+                  border-radius: 2px;
+                  font-size: 12px;
+                  color: #fff;
+                  background: #66CCFF;
+                }
+                &--trading {
+                  display: inline-block;
+                  margin: 8px 0 0 0;
+                  padding: 5px 6px;
+                  border-radius: 2px;
+                  font-size: 12px;
+                  color: #fff;
+                  background: #FF3333;
+                }
+              }
+              .myproducts-select-icon {
+                position: absolute;
+                top: 40%;
+                right: 30px;
+                // -webkit-transform: translate(0, -50%);
+                // transform: translate(0, -50%);
+              }
+            }
+          }
+          &__box:hover {
+            opacity: 0.7;
+            filter: alpha(opacity=70);
+          }
+          &__nil-case {
+            background: url("/sold.png");
+            background-size: cover;
+            max-height: 100%;
+            min-height: 240px;
+            margin: 0;
+            padding: 0;
+          }
+          &__nil-tranding {
+            background: url("/IMG_no-buy-products-now.png");
+            background-size: cover;
+            max-height: 100%;
+            min-height: 240px;
+            margin: 0;
+            padding: 0;
+          }
+          &__nil-exhibiting {
+            background: url("/exhibiting.png");
+            background-size: cover;
+            max-height: 100%;
+            min-height: 240px;
+            margin: 0;
+            padding: 0;
+          }
+        }
+      }
+    }
+    .buy-products-past-list-mypage{
+      height: 240px;
+      width: 700px;
+      float: left;
+      background: url("/assets/IMG_no-buy-products-past.png");
+      background-size: cover;
+    }
+
+.border-red-2-mypage{
+  height: 2px;
+  width: 233px;
+  background-color: red;
+}
+
+
+
+.select-icon-space{
+  height: 100%;
+  width: 14%;
+  float: right;
+  }
+  .select-icon{
+    background-color: #ffffff;
+    float: left;
+    font-size: 25px;
+    margin-right: 30px;
+    line-height: 50px;
+    color: darkgrey;
+  }
+  .i1.i2.i3.i4.i5.i6.i7.i8.i9.i10.i11.i12.i13.i14.i15.i16.i17.i18.i19.i20.i21.i22.i23{
+    float: left;
+    width: 5%;
+  }

@@ -25,6 +25,14 @@ ActiveRecord::Schema.define(version: 2019_11_27_023256) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "cards", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.string "customer_id", null: false
+    t.string "card_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", null: false
@@ -110,7 +118,6 @@ ActiveRecord::Schema.define(version: 2019_11_27_023256) do
     t.date "birthday", null: false
     t.string "tel", null: false
     t.text "self_introduction"
-    t.integer "money"
     t.integer "point"
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"

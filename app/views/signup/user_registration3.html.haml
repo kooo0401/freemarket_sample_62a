@@ -27,7 +27,7 @@
         住所入力
       = render partial: 'error-messages', locals: {user: @user, column: "nickname"}
 
-      = form_for @user, url: user_registration4_signup_index_path, method: :get, html: {class: 'signup-view-block__form'} do |f|
+      = form_for @user, url: { controller: :signup, action: :create }, method: :post, html: {class: 'signup-view-block__form'} do |f|
         = f.fields_for :myaddress, @user.build_myaddress do |d|
           .signup-view-block__form--top
             .signup-form1
