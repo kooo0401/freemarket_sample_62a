@@ -29,3 +29,4 @@
 # Ignore master key for decrypting credentials and more.
 /config/master.key
 # config/secrets.yml 今回はcredentials.yml.encを使用する為、不要
+.DS_store
