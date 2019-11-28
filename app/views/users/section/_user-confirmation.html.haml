@@ -31,7 +31,7 @@
           必須
         .prefecture-select-wrap
           = f.collection_select :prefecture, Prefecture.all, :id, :name, { prompt:"---" }
-          = fa_icon 'chevron-down', class:'prefecture.fas.confirmation-position'
+          = fa_icon 'chevron-down', class:'prefecture.fas.fa-chevron-down'
       .user-confirmation-form2
         %label.user-confirmation-form1__label
           市区町村
