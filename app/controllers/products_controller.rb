@@ -108,5 +108,8 @@ class ProductsController < ApplicationController
 
   def set_product
     @product = Product.find(params[:id])
+    if @product.size_id.present?
+      @size = Size.find(@product.size_id)
+    end
   end
 end
