@@ -3,6 +3,26 @@ require 'rails_helper'
 RSpec.describe CardController, type: :controller do
 
   describe "GET #new" do
+    it "renders the :new template" do
+      get :new
+      expect(response).to render_template :new
+    end
+  end
+
+  describe "GET #addition" do
+    it "renders the :addtion template" do
+      get :addition
+    end
+  end
+
+  describe "GET #show" do
+    it "renders the :show template" do
+      get :show
+    end
+  end
+
+
+  describe "GET #new" do
     it "returns http success" do
       get :new
       expect(response).to have_http_status(:success)
@@ -15,7 +35,7 @@ RSpec.describe CardController, type: :controller do
       expect(response).to have_http_status(:success)
     end
   end
-  
+
   describe "GET #show" do
     it "returns http success" do
       get :show
