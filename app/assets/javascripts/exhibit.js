@@ -20,6 +20,7 @@ $(function() {
       else if(num > 300) {
         var p = Math.floor(num*0.1);
         var price = '¥' + p;
+        var price = '¥' + num.toLocaleString();
         tagOutput.html(price);
       } 
     
@@ -30,10 +31,10 @@ $(function() {
     var maxNum = 1000000; // 注文できる金額の上限
     var tagInput = $('#pricebox'); // 入力対象のinputタグID名
     var tagOutput = $('#priceboxb'); // 出力対象のinputタグID名
-
     tagInput.on('keyup', function() {
     var str = $(this).val();
     var num = Number(str.replace(/[^0-9]/g, '')); // 整数以外の文字列を削除
+   
       if(num == 0) {
         num = '';
       } else if (num > maxNum) { // 上限を超える金額を入力した場合
@@ -43,6 +44,7 @@ $(function() {
         if(num > 300) {
         var p = Math.floor(num*0.9);
         var price = '¥' + p;
+        var price = '¥' + num.toLocaleString();
         tagOutput.html(price);
       } 
       });
