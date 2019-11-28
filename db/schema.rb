@@ -10,17 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_27_023256) do
+ActiveRecord::Schema.define(version: 2019_11_28_035938) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "prefecture_id"
     t.string "city"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "brands", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -80,10 +74,9 @@ ActiveRecord::Schema.define(version: 2019_11_27_023256) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "category_id"
-    t.bigint "brand_id"
-    t.bigint "size_id"
     t.bigint "status_id", default: 1
-    t.index ["brand_id"], name: "index_products_on_brand_id"
+    t.string "brand"
+    t.bigint "size_id"
     t.index ["category_id"], name: "index_products_on_category_id"
     t.index ["size_id"], name: "index_products_on_size_id"
     t.index ["user_id"], name: "index_products_on_user_id"
@@ -139,7 +132,6 @@ ActiveRecord::Schema.define(version: 2019_11_27_023256) do
 
   add_foreign_key "images", "products"
   add_foreign_key "myaddresses", "users"
-  add_foreign_key "products", "brands"
   add_foreign_key "products", "categories"
   add_foreign_key "products", "sizes"
   add_foreign_key "products", "users"

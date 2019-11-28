@@ -50,15 +50,14 @@ class ProductsController < ApplicationController
     @product = Product.new(product_params)
     # @product = current_user.products.build(product_params)
     if @product.save
+     
       # 下記コメントアウト３行は今後使用予定です 191124 髙橋
       # params[:images][:image].each do |image|
       #   @product.images.create(image: image, product_id: @product.id)
       # end
-      flash[:notice] = '商品が出品されました'
       redirect_to root_path
     else
       render :new
-      flash.alert = '再度入力してください'
     end
   end
   
@@ -101,7 +100,7 @@ class ProductsController < ApplicationController
             .permit(:description, :name, :price, :delivery_charged,
                     :area, :delivery_days, :sales_status, :delivery_way, 
                     :category_id,
-                    :brand_id,
+                    :brand,
                     :size_id,
                     images_attributes: [:image])
           .merge(user_id: current_user.id)
