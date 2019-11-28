@@ -20,11 +20,6 @@
         %li.user-signup-bar-progress4__type
           完了
           .user-signup-bar-progress4__rod-last
-  
-  -# 下記2行は、payjpチェックアウトの際（後日消すが説明の為、保留）堀
-  %form{:action => "/pay", :method => "post"}
-    %script.payjp-button{"data-key" => "pk_test_3a2bd137c29df5b7eebba094", :src => "https://checkout.pay.jp/"}
-
 
   .signup-view-1page
     %section.signup-view-block
@@ -45,7 +40,6 @@
               %span.signup-form1__span
                 必須
             .signup-form4__form
-              -# != sprintf(f.date_select(:last_name, order:[:month,:year,:day], use_month_numbers:true, discard_day:true, start_year:Time.now.year-2000, end_year:Time.now.year-2000+10, date_separator:'%s'),'月') + '年'
               %select#exp_month{name: "exp_month", type: "text"}
                 %option{value: ""} --
                 %option{value: "1"}01

@@ -1,9 +1,11 @@
 class ProductsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :change]
-  # before_action :ensure_correct_product, only: [:change]
+  before_action :authenticate_user!, only: [:new, :change, :destroy]
+  before_action :set_product, only: [:destroy, :change,:show, :edit,:ensure_correct_product]
+  before_action :ensure_correct_product, only: [:change]
+  
 
   def index
-    @products = Product.order("id DESC").limit(10)
+    @products = Product.where(status_id: 1).order("id DESC").limit(10)
     # 以下、カテゴリ・
     # productsの内、人気カテゴリーベスト4、人気ブランドベスト4 10個ずつ持ってくるよう変更予定
     # ------------------------------------------------------------------------------------------------
@@ -20,21 +22,15 @@ class ProductsController < ApplicationController
   end
 
   def new
-
     @product = Product.new
     @product.images.build
-    # 10.times { @product.images.build }
-    # ⇨ 毎回１０枚保存する（もしかしたらいらないかも：髙橋）
-    
-    # 以下、ログイン機能設計次第で要不要判断
-    # 以下の記述はログイン、ログアウト機能の導入後にコメントアウトを外すこと
-    # redirect_to: controller: :user, action: :ログイン画面に対応するアクション unless user_signed_in?
-
+    @parent = Category.where(id: 1..13)
+    # 平野テスト用コード、idの値を一時的に変更しています・・・後ほど修正予定
+    # @parent = Category.where(id: 3927..3939)
   end
 
 
   def show
-    @product = Product.find(params[:id])
     #実際にテーブルからid:1のproductを取得できているかの記述。
     # @product = Product.find(params[:id])
     # 商品出品が可能になったら、一つ一つのproductからidで取得する。
@@ -45,7 +41,6 @@ class ProductsController < ApplicationController
   end
 
   def edit
-    @product = Product.find(params[:id])
     gon.product_price = @product.price
     gon.all_point = current_user.point
   end
@@ -66,27 +61,26 @@ class ProductsController < ApplicationController
       flash.alert = '再度入力してください'
     end
   end
-  #まだ実装途中櫻田
-  # def destroy
-  #   product = Product.find(params[:id])
-  #   if product.user_id == current_user.id
-  #     product.destroy 
-  #   end
-  # end
+  
+  def destroy
+    if @product.destroy
+      flash[:notice] = '商品が削除されました'
+    else
+      flash[:notice] = '問題が発生して削除できませんでした'
+      redirect_to root_path
+    end   
+  end
 
 
   def change
+   
   end
 
-  # def ensure_correct_product
+  def ensure_correct_product
 
-  #   if current_user.id !=  params[:id].to_i
-  #    redirect_to new_user_session_path
-  #   else
-  #     true
-  #   end
-  
-  # end
+    redirect_to root_path if current_user.id !=  @product.user_id
+
+  end
 
 
 
@@ -111,5 +105,9 @@ class ProductsController < ApplicationController
                     :size_id,
                     images_attributes: [:image])
           .merge(user_id: current_user.id)
+  end
+
+  def set_product
+    @product = Product.find(params[:id])
   end
 end

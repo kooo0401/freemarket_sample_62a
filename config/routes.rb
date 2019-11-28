@@ -21,7 +21,8 @@ Rails.application.routes.draw do
 
   resources :users, only: [:show, :edit, :update] do
     member do
-      get '/products/:id', to: "products#change", as: :users_myproduct_change #要検討20191125
+      get '/products/:id', to: "products#change"#, as: :users_myproduct_change 要検討20191125
+      delete '/products/:id', to: "products#destroy"
       get 'logout'
       get 'profile'
       get 'credit_add'
@@ -55,7 +56,11 @@ Rails.application.routes.draw do
     end
   end
 
+  namespace :api do
+    resources :products, only: :create, defaults: { format: 'json'}
+    resources :products2, only: :create, defaults: { format: 'json'}
+    resources :products3, only: :create, defaults: { format: 'json'}
+  end 
 
-  
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

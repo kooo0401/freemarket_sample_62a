@@ -16,6 +16,6 @@
                         = product.name
                     .figure-container__image
                       %span.figure-container__image__price
-                        = product.price
+                        = " ¥ #{product.price.to_s(:delimited)}"
                       = image_tag("#{product.images[0].image}", class: "image-price")
 

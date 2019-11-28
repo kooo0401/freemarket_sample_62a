@@ -2,7 +2,7 @@
 .itembuy-container
   %section.itembuy-content
     %h1.itembuy-content__name
-      @product.name
+      =@product.name
     .itembuy-content__clearfix
       .itembuy-content__photo
         .itembuy-content__auter
@@ -58,8 +58,8 @@
           %tr
             %th 商品の状態
             %td
-              %span
-                目立った傷や汚れなし
+              %span 
+              = @product.sales_status_i18n
           %tr
             %th 配送料の負担
             %td
@@ -82,7 +82,7 @@
                 2~3日で発送
     .itembuy-content__price
       %span.itembuy-content__bold<
-        = @product.price
+        = @product.price.to_s(:delimited)
       %span.itembuy-content__tax (税込)
       %span.itembuy-content__fee 送料込み
       = link_to edit_product_path, class: "itembuy-price-box" do

@@ -1,4 +1,4 @@
-$(function() {
+$(function(){
   
   $(function(){
     var maxNum = 1000000; // 注文できる金額の上限
@@ -22,10 +22,9 @@ $(function() {
         var price = '¥' + p;
         tagOutput.html(price);
       } 
-    
-      
       });
     });
+
   $(function(){
     var maxNum = 1000000; // 注文できる金額の上限
     var tagInput = $('#pricebox'); // 入力対象のinputタグID名
@@ -116,15 +115,15 @@ $(function(){
       }
   });
 
-$(function()  {
-  $(window).load(function(){
-    $('.exhibitmain__delivery__way').hide();
-    $('.exhibitmain__delivery__way-box').hide();
-    $('.exhibitmain__delivery__way2').hide();
-    $('.exhibitmain__delivery__way-box2').hide();
-  })
-});
-// まだ実装途中
+// $(function()  {
+//   $(window).load(function(){
+//     $('.exhibitmain__delivery__way').hide();
+//     $('.exhibitmain__delivery__way-box').hide();
+//     $('.exhibitmain__delivery__way2').hide();
+//     $('.exhibitmain__delivery__way-box2').hide();
+//   })
+// });
+
 // $(function(){
 //   $('.exhibitmain__details__brand-box').click(function(){
 //     $('#buy-overlay1').fadeIn();
@@ -135,3 +134,90 @@ $(function()  {
 //   });
 //   });
 });
+
+
+
+$(function(){
+  $('#product_child_id').hide();
+  $('#product_category_id').hide();
+  $('.exhibitmain__details__size-name').hide();
+  $('#product_size_id').hide();
+  $('#product_parent_id').change(function() {
+    var parent_id = $('#product_parent_id').val();
+    $.ajax({
+      type: 'POST',
+      url: '../api/products',
+      data: {id : parent_id},
+      dataType: 'json',
+    })
+    .done(function(data){
+      var obj = data;
+      $('#product_child_id').html("");
+      $('.exhibitmain__details__size-name').hide();
+      $('#product_size_id').hide();
+      $('#product_size_id').val('');
+      $('#product_category_id').hide();
+      $('#product_child_id').show();
+      $('#product_child_id').append('<option value="0">---</option>');
+      for(var i=0;i<obj.length;i++){
+        $('#product_child_id').append("<option value=" + obj[i].id+">"+obj[i].name+"</option>");
+      }
+
+    })
+    .fail(function(){
+      alert('error');
+    })
+  });
+  //孫カテゴリー実装のための記述 村上191127
+  $('#product_child_id').change(function() {
+    var child_id = $('#product_child_id').val();
+    $.ajax({
+      type: 'POST',
+      url: '../api/products2',
+      data: {id : child_id},
+      dataType: 'json',
+      // contentType: false,
+      // processData: false,
+    })
+    .done(function(data){
+      var obj2 = data;
+      $('#product_category_id').html("");
+      $('.exhibitmain__details__size-name').hide();
+      $('#product_size_id').hide();
+      $('#product_size_id').val('');
+      $('#product_category_id').show();
+      $('#product_category_id').append('<option value="0">---</option>');
+      for(var i=0;i<obj2.length;i++){
+        $('#product_category_id').append("<option value=" + obj2[i].id+">"+obj2[i].name+"</option>");
+      }
+    })
+    .fail(function(){
+      alert('error');
+    })
+  })
+    $('#product_category_id').change(function() {
+      var grandchild_id = $('#product_category_id').val();
+      $.ajax({
+        type: 'POST',
+        url: '../api/products3',
+        data: {id : grandchild_id},
+        dataType: 'json',
+        // contentType: false,
+        // processData: false,
+      })
+      .done(function(data){
+        var obj3 = data;
+        $('#product_size_id').html("");
+        $('.exhibitmain__details__size-name').show();
+        $('#product_size_id').show();
+        $('#product_size_id').append('<option value="0">---</option>');
+        for(var i=0;i<obj3.length;i++){
+          $('#product_size_id').append("<option value=" + obj3[i].id+">"+obj3[i].name+"</option>");
+        }
+      })
+      .fail(function(){
+        alert('error');
+      });
+    });
+
+})

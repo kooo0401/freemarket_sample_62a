@@ -1,5 +1,5 @@
 class PurchaseController < ApplicationController
-
+  before_action :set_product, only: [:index, :pay]
   require 'payjp'
 
   def index
@@ -16,20 +16,28 @@ class PurchaseController < ApplicationController
 
   def pay
     card = Card.where(user_id: current_user.id).first
-    product = Product.find_by(id: params[:product_id])
     Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
     Payjp::Charge.create(
-      :amount => product.price,
-      :customer => card.customer_id,
+      amount: @product.price,
+      customer: card.customer_id,
       currency: :'jpy',
     )
-    product.status_id = 3
-    product.save
-    redirect_to action: 'done'
+    @product.status_id = 3
+    if @product.save
+      redirect_to action: 'done'
+    else
+      flash[:notice] = '問題が発生して処理を中止しました。'
+      redirect_to root_path
+    end
   end
 
 
   def done
   end
 
+  private
+
+  def set_product
+    @product = Product.find_by(id: params[:product_id])
+  end
 end
