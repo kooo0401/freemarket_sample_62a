@@ -17,7 +17,7 @@
     %ul.myproducts-list-block-ul
       - @product.each do |product|
         %li.myproducts-list-block-ul__box
-          = link_to product_path, class: "myproducts-list-block-ul__box--link" do
+          = link_to users_myproduct_change_user_path, class: "myproducts-list-block-ul__box--link" do
             %figure.myproducts-list-block-ul__box--link__figure
               = image_tag("#{product.images[0].image}", class:"myproducts-list-block-ul__box--link__figure__image")
             .myproducts-list-block-ul__box--link__title
