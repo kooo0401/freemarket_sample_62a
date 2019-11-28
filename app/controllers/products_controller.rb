@@ -65,11 +65,11 @@ class ProductsController < ApplicationController
   def destroy
     if @product.destroy
       flash[:notice] = '商品が削除されました'
-      redirect_to "/users/#{current_user.id}/myproducts_exhibiting"
+      redirect_to  myproducts_exhibiting_user_path(current_user)
     else
       flash[:notice] = '問題が発生して削除できませんでした'
-      redirect_to "/users/#{current_user.id}/myproducts_exhibiting"
-    end   
+      redirect_to root_path
+    end
   end
 
 
