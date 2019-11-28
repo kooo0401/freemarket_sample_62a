@@ -142,7 +142,6 @@ $(function(){
   $('#product_category_id').hide();
   $('.exhibitmain__details__size-name').hide();
   $('#product_size_id').hide();
-  $('#product_parent_id').prepend('<option value="0">---</option>');
   $('#product_parent_id').change(function() {
     var parent_id = $('#product_parent_id').val();
     $.ajax({
