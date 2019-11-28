@@ -272,6 +272,8 @@ describe User do
       user.valid?
       expect(user.errors[:zip]).to include("は有効でありません。")
     end
+  end
+end
     
 #     # 都道府県のhashが1~48であるか
 
