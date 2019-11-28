@@ -136,9 +136,11 @@
   &__size-name{
     @include title;
     text-indent: 220px;
+    margin-top: 15px;
   }
   span {
     @include need;
+    margin-top: 15px;
    }
   &__size-box{
     padding-left: 217px;

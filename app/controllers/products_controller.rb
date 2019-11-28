@@ -24,7 +24,9 @@ class ProductsController < ApplicationController
   def new
     @product = Product.new
     @product.images.build
-    @parent = Category.where(id: 1..13)
+    # @parent = Category.where(id: 1..13)
+    # 平野テストのため、idの値を一時的に変更しています・・・
+    @parent = Category.where(id: 3927..3939)
   end
 
 
