@@ -21,7 +21,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [:show, :edit, :update] do
     member do
-      get '/products/:id', to: "products#change" #要検討20191125
+      get '/products/:id', to: "products#change", as: :users_myproduct_change #要検討20191125
       get 'logout'
       get 'profile'
       get 'credit_add'

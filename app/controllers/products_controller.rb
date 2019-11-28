@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :change]
-  before_action :ensure_correct_product, only: [:change]
+  # before_action :ensure_correct_product, only: [:change]
 
   def index
     @products = Product.order("id DESC").limit(10)
@@ -41,6 +41,7 @@ class ProductsController < ApplicationController
     @grandchild = Category.find("#{@product.category_id}")
     @child = @grandchild.parent
     @parent = @child.parent
+    redirect_to "/users/#{current_user.id}/products/#{@product.id}" if @product.user_id == current_user.id
   end
 
   def edit
@@ -77,15 +78,15 @@ class ProductsController < ApplicationController
   def change
   end
 
-  def ensure_correct_product
+  # def ensure_correct_product
 
-    if current_user.id !=  params[:id].to_i
-     redirect_to new_user_session_path
-    else
-      true
-    end
+  #   if current_user.id !=  params[:id].to_i
+  #    redirect_to new_user_session_path
+  #   else
+  #     true
+  #   end
   
-  end
+  # end
 
 
 
