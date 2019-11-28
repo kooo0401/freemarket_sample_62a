@@ -20,9 +20,11 @@ Rails.application.routes.draw do
   end
 
   resources :users, only: [:show, :edit, :update] do
-    member do
+    collection do
       get '/products/:id', to: "products#change", as: :users_myproduct_change #要検討20191125
       delete '/products/:id', to: "products#destroy"
+    end
+    member do
       get 'logout'
       get 'profile'
       get 'credit_add'

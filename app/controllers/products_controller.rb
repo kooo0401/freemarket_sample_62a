@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :change, :destroy]
-  before_action :set_product, only: [:destroy, :change,:show, :edit,:ensure_correct_product]
+  before_action :set_product, only: [:destroy, :change, :show, :edit, :ensure_correct_product]
   before_action :ensure_correct_product, only: [:change]
   
 
@@ -25,8 +25,6 @@ class ProductsController < ApplicationController
     @product = Product.new
     @product.images.build
     @parent = Category.where(id: 1..13)
-    # 平野テスト用コード、idの値を一時的に変更しています・・・後ほど修正予定
-    # @parent = Category.where(id: 3927..3939)
   end
 
 
@@ -37,7 +35,7 @@ class ProductsController < ApplicationController
     @grandchild = Category.find("#{@product.category_id}")
     @child = @grandchild.parent
     @parent = @child.parent
-    redirect_to  users_myproduct_change_user_path if @product.user_id == current_user.id
+    redirect_to  users_myproduct_change_users_path(@product) if @product.user_id == current_user.id
   end
 
   def edit
@@ -50,31 +48,29 @@ class ProductsController < ApplicationController
     @product = Product.new(product_params)
     # @product = current_user.products.build(product_params)
     if @product.save
+     
       # 下記コメントアウト３行は今後使用予定です 191124 髙橋
       # params[:images][:image].each do |image|
       #   @product.images.create(image: image, product_id: @product.id)
       # end
-      flash[:notice] = '商品が出品されました'
       redirect_to root_path
     else
       render :new
-      flash.alert = '再度入力してください'
     end
   end
   
   def destroy
     if @product.destroy
       flash[:notice] = '商品が削除されました'
-      redirect_to "/users/#{current_user.id}/myproducts_exhibiting"
+      redirect_to  myproducts_exhibiting_user_path(current_user)
     else
       flash[:notice] = '問題が発生して削除できませんでした'
-      redirect_to "/users/#{current_user.id}/myproducts_exhibiting"
-    end   
+      redirect_to root_path
+    end
   end
 
 
   def change
-   
   end
 
   def ensure_correct_product
@@ -102,7 +98,7 @@ class ProductsController < ApplicationController
             .permit(:description, :name, :price, :delivery_charged,
                     :area, :delivery_days, :sales_status, :delivery_way, 
                     :category_id,
-                    :brand_id,
+                    :brand,
                     :size_id,
                     images_attributes: [:image])
           .merge(user_id: current_user.id)
@@ -110,5 +106,8 @@ class ProductsController < ApplicationController
 
   def set_product
     @product = Product.find(params[:id])
+    if @product.size_id.present?
+      @size = Size.find(@product.size_id)
+    end
   end
 end

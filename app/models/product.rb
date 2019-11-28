@@ -5,10 +5,11 @@ class Product < ApplicationRecord
   
 
   belongs_to :category
-  belongs_to :brand
+  # DB変更に伴い、brandを削除してます 191128 髙橋
+  # belongs_to :brand
   belongs_to :status
   belongs_to :user
-  belongs_to :size
+
 
   validates :name,        length: { maximum: 40 }, presence: true
   validates :description,     length: { maximum: 1000 }, presence: true
@@ -19,8 +20,7 @@ class Product < ApplicationRecord
   validates :delivery_way, presence: true
   validates :user_id, presence: true
   validates :category_id, presence: true
-  
-  validates :size_id, presence: true
+
   validates :price, presence: true, numericality: { only_integr: true,greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999 }
 
 
