@@ -48,7 +48,7 @@
           ブランド
           %span.span1 任意
         .exhibitmain__details__brand-box 
-          = f.select :brand_id, [["---", 0],["エルメス", 1],["プラダ", 2]] 
+          = f.text_field :brand ,placeholder: "例）シャネル", class: "exhibitmain__details__brand-box__input"
         .exhibitmain__details__status-name
           商品の状態
           %span 必須 

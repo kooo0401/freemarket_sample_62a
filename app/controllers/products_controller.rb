@@ -45,6 +45,7 @@ class ProductsController < ApplicationController
   
   def create
     @product = Product.new(product_params)
+    binding.pry
     # @product = current_user.products.build(product_params)
     if @product.save
       # 下記コメントアウト３行は今後使用予定です 191124 髙橋
@@ -98,7 +99,7 @@ class ProductsController < ApplicationController
             .permit(:description, :name, :price, :delivery_charged,
                     :area, :delivery_days, :sales_status, :delivery_way, 
                     :category_id,
-                    :brand_id,
+                    :brand,
                     :size_id,
                     images_attributes: [:image])
           .merge(user_id: current_user.id)

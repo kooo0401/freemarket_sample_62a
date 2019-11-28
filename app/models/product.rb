@@ -5,7 +5,8 @@ class Product < ApplicationRecord
   
 
   belongs_to :category
-  belongs_to :brand
+  # DB変更に伴い、brandを削除してます 191128 髙橋
+  # belongs_to :brand
   belongs_to :status
   belongs_to :user
   belongs_to :size
