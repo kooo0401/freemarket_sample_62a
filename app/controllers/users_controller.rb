@@ -16,6 +16,7 @@ class UsersController < ApplicationController
     if params[:myaddress] == nil
       if @user.update(user_params)
         redirect_to user_path(@user)
+        
       else
         redirect_to root_path
       end
