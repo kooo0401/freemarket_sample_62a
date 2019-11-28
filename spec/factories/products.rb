@@ -11,7 +11,7 @@ FactoryBot.define do
     delivery_way        {1}
     user_id             {1}
     category_id         {1}
-    brand_id            {1}
+    brand              {'ナイキ'}
     size_id             {1}
     status_id           {1}
     # product_id          {1}

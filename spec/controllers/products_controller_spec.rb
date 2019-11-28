@@ -35,22 +35,22 @@ end
   # end
 
 #   =========#create ここから髙橋記述===============
-  describe "#create" do
-    let(:user) {create(:user)}
-    context "as a user login" do
-      before do
-        login user
-        #「product_params」をPOSTで送信する
-        product_params = FactoryBot.attributes_for(:product)
-        post :create, params: {product:product_params }
-      end
-      # ルートパスにリダイレクトすること
-      it "redirects to the root page" do
-        # ルートパスに遷移することを確認
-        expect(response).to be_successful
-      end
-    end
-  end
+  # describe "#create" do
+  #   let(:user) {create(:user)}
+  #   context "as a user login" do
+  #     before do
+  #       login user
+  #       #「product_params」をPOSTで送信する
+  #       product_params = FactoryBot.attributes_for(:product)
+  #       post :create, params: {product:product_params }
+  #     end
+  #     # ルートパスにリダイレクトすること
+  #     it "redirects to the root page" do
+  #       # ルートパスに遷移することを確認
+  #       expect(response).to be_successful
+  #     end
+  #   end
+  # end
 #  ===============ここまで髙橋記述===============
 
 #   以下、showのパスにidが入るように変更したのち追加（show/:id?)
