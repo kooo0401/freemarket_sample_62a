@@ -210,12 +210,14 @@ $(function(){
       .done(function(data){
         var obj3 = data;
         $('#product_size_id').html("");
+        if( data.length != 0 ){
         $('.exhibitmain__details__size-name').show();
         $('#product_size_id').show();
         $('#product_size_id').append('<option value="0">---</option>');
         for(var i=0;i<obj3.length;i++){
           $('#product_size_id').append("<option value=" + obj3[i].id+">"+obj3[i].name+"</option>");
         }
+       }
       })
       .fail(function(){
         alert('error');
