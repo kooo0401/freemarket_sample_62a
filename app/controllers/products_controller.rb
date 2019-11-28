@@ -37,7 +37,7 @@ class ProductsController < ApplicationController
     @grandchild = Category.find("#{@product.category_id}")
     @child = @grandchild.parent
     @parent = @child.parent
-    redirect_to "/users/#{current_user.id}/products/#{@product.id}" if @product.user_id == current_user.id
+    redirect_to  users_myproduct_change_user_path if @product.user_id == current_user.id
   end
 
   def edit
