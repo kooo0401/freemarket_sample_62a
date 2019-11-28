@@ -21,12 +21,12 @@
         .exhibitmain__description__name
           商品名
           %span 必須
-          = f.text_field :name,size: "67px", placeholder: "商品名 (必須40文字まで)" 
+          = f.text_field :name,size: "67px", placeholder: "商品名 (必須40文字まで)",id: "productr_name"
         .exhibitmain__description__explanation
           商品の説明
           %span 必須
         .exhibitmain__description__explanation-box 
-          = f.text_area :description, size: "75x8",placeholder: "商品の説明（必須1,000文字以内 (色、素材、重さ、定価、注意点など)  例)              2010年頃に１万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。",id: "product_description"
+          = f.text_area :description, size: "73x7",placeholder: "商品の説明（必須1,000文字以内 (色、素材、重さ、定価、注意点など)  例)              2010年頃に１万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。",id: "product_description"
       .exhibitmain__details
         .exhibitmain__details__name
           商品の詳細

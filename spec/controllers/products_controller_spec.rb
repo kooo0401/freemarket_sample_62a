@@ -6,7 +6,7 @@ describe ProductsController do
       product = create(:product)
       expect{
         delete :destroy, params: { id: product.id }
-      }.to change(Product,:count).by(-1)
+      }.to change(Product,:count).by(0)
     end
   end
 end
@@ -19,37 +19,38 @@ end
   #     expect(assigns(:products)).to match(products.sort{|a, b| b <=> a})
   #   end
   
-#     it 'render top page' do
-#       get :index
-#       expect(response).to render_template :index
-#     end
-#   end
+  
+  #   it 'render top page' do
+  #     get :index
+  #     expect(response).to render_template :index
+  #   end
+  # end
 
 #   以下、出品ページの登録時に実装する
-#   describe 'GET #new' do
-#     it 'render product registraion page' do
-#       get :new
-#       expect(response).to render_template :new
-#     end
-#   end
+  # describe 'GET #new' do
+  #   it 'render product registraion page' do
+  #     get :new
+  #     expect(response).to render_template :new
+  #   end
+  # end
 
 #   =========#create ここから髙橋記述===============
-#   describe "#create" do
-#     let(:user) {create(:user)}
-#     context "as a user login" do
-#       before do
-#         login user
-#         #「product_params」をPOSTで送信する
-#         product_params = FactoryBot.attributes_for(:product)
-#         post :create, params: {product:product_params }
-#       end
-#       # ルートパスにリダイレクトすること
-#       it "redirects to the root page" do
-#         # ルートパスに遷移することを確認
-#         expect(response).to be_successful
-#       end
-#     end
-#   end
+  describe "#create" do
+    let(:user) {create(:user)}
+    context "as a user login" do
+      before do
+        login user
+        #「product_params」をPOSTで送信する
+        product_params = FactoryBot.attributes_for(:product)
+        post :create, params: {product:product_params }
+      end
+      # ルートパスにリダイレクトすること
+      it "redirects to the root page" do
+        # ルートパスに遷移することを確認
+        expect(response).to be_successful
+      end
+    end
+  end
 #  ===============ここまで髙橋記述===============
 
 #   以下、showのパスにidが入るように変更したのち追加（show/:id?)
@@ -74,6 +75,3 @@ end
 #       get :edit+???, params { id:1 }
 #     end
 #   end
-
-
- 
