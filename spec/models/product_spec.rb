@@ -3,7 +3,7 @@ require 'rails_helper'
 describe Product do
   describe '#create' do
     it 'is valid with a description, name, price, delivery_charged, area, 
-        delivery_days, sales_status, delivery_way, user_id, category_id, size_id, status_id' do
+        delivery_days, sales_status, delivery_way, user_id, category_id, status_id' do
       product = build(:product)
       expect(product).to be_valid
     end
@@ -74,12 +74,12 @@ describe Product do
 
    
 
-    # size_id
-    it "is invalid without a size_id" do
-      product = build(:product, size_id: nil)
-      product.valid?
-      expect(product.errors[:size_id]).to include("を入力してください")
-    end
+    # # size_id
+    # it "is invalid without a size_id" do
+    #   product = build(:product, size_id: nil)
+    #   product.valid?
+    #   expect(product.errors[:size_id]).to include("を入力してください")
+    # end
 
     # name
     # nameが40文字以下なら登録できる

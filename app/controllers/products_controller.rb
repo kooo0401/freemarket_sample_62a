@@ -27,8 +27,6 @@ class ProductsController < ApplicationController
     @product = Product.new
     @product.images.build
     @parent = Category.where(id: 1..13)
-    # 平野テスト用コード、idの値を一時的に変更しています・・・後ほど修正予定
-    # @parent = Category.where(id: 3927..3939)
   end
 
 
@@ -53,15 +51,14 @@ class ProductsController < ApplicationController
     @product = Product.new(product_params)
     # @product = current_user.products.build(product_params)
     if @product.save
+     
       # 下記コメントアウト３行は今後使用予定です 191124 髙橋
       # params[:images][:image].each do |image|
       #   @product.images.create(image: image, product_id: @product.id)
       # end
-      flash[:notice] = '商品が出品されました'
       redirect_to root_path
     else
       render :new
-      flash.alert = '再度入力してください'
     end
   end
   
@@ -104,7 +101,7 @@ class ProductsController < ApplicationController
             .permit(:description, :name, :price, :delivery_charged,
                     :area, :delivery_days, :sales_status, :delivery_way, 
                     :category_id,
-                    :brand_id,
+                    :brand,
                     :size_id,
                     images_attributes: [:image])
           .merge(user_id: current_user.id)
@@ -112,5 +109,8 @@ class ProductsController < ApplicationController
 
   def set_product
     @product = Product.find(params[:id])
+    if @product.size_id.present?
+      @size = Size.find(@product.size_id)
+    end
   end
 end

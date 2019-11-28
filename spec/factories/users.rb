@@ -11,7 +11,6 @@ FactoryBot.define do
     birthday              {"1994-04-01"}
     tel                   {"09012345678"}
     self_introduction     {"よろしく"}
-    money                 {"10000"}
     point                 {"111111"}
     zip                   {"1111111"}
     prefecture            {"大阪府"}

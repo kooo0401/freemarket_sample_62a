@@ -53,7 +53,8 @@
             %th 商品のサイズ
             %td
               %span 
-                = @product.size
+                - if @size.present?
+                  = @size.size_name
           %tr
             %th 商品の状態
             %td
