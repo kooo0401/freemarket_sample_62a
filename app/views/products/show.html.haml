@@ -27,7 +27,7 @@
             %th 出品者
             %td
               = link_to "/" do
-                @user.nickname
+                = @product.user.nickname
               %div
                 .itembuy-content__ratings{ id: 'itembuy-icon-good' }
                   =fa_icon 'smile-o', class: 'icon-r'
@@ -41,20 +41,20 @@
           %tr
             %th カテゴリー
             %td
-              = link_to "レディース", "#"
+              = link_to "#{@parent.name}", "#"
               %br
-              = link_to "＞ジャケット/アウター", "#"
+              = link_to "＞#{@child.name}", "#"
               %br
-              = link_to "＞ジャンパー/ブルゾン", "#"
+              = link_to "＞#{@grandchild.name}", "#"
           %tr
             %th  ブランド
             %td
-              = link_to "3カン4カン", "#"
+              = link_to "#{@product.brand.name}", "#"
           %tr
             %th 商品のサイズ
             %td
               %span 
-                M
+                = @product.size.size_name
           %tr
             %th 商品の状態
             %td
@@ -64,22 +64,22 @@
             %th 配送料の負担
             %td
               %span
-                送料込み(出品者負担)
+                = @product.delivery_charged
           %tr
             %th 配送の方法
             %td
               %span
-                普通郵便(定形、定形外)
+                = @product.delivery_way
           %tr
             %th 配送元地域
             %td
               %span
-              = link_to "大阪府", "#"  
+              = link_to "#{@product.area}", "#"  
           %tr
             %th 発送日の目安
             %td
               %span
-                2~3日で発送
+                = @product.delivery_days
     .itembuy-content__price
       %span.itembuy-content__bold<
         = @product.price.to_s(:delimited)
@@ -118,14 +118,13 @@
         %button
           %span 
             コメントする
-      %ul.itembuy-nav
-        %li.itembuy-nav__left
-          = fa_icon 'chevron-left', class: 'icon-g'
-          = link_to "@prev_product.name","#"
-      %ul.itembuy-nav
-        %li.itembuy-nav__right
-          = link_to "@next_product.name","#"
-          = fa_icon 'chevron-right', class: 'icon-g'
+        .itembuy-nav
+          .itembuy-nav__left
+            = fa_icon 'chevron-left', class: 'icon-g'
+            = link_to "","#"
+          .itembuy-nav__right
+            = link_to "","#"
+            = fa_icon 'chevron-right', class: 'icon-g'
   .itembuy-media-box
     %ul.itembuy-media-box__list
       %li

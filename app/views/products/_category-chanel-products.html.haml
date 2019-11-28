@@ -1,0 +1,21 @@
+.category-products
+  .category-products--new
+    .category-products--new__introduction
+      %h3#ladies.new-category シャネル新着アイテム
+      =link_to "#", class: "more-read"  do
+        もっと見る >
+      .category-products--new__lists
+        %ul.new-category__lists
+          - @products_ladies.each do |product|
+            %li.new-item
+              .new-item__content
+                =link_to "products/#{product.id}", class: "new-item-image" do
+                  %figure.figure-container
+                    %figcaption.figure-container__figcaption
+                      %span.figure-container__figcaption__span
+                        = product.name
+                    .figure-container__image
+                      %span.figure-container__image__price
+                        = " ¥ #{product.price.to_s(:delimited)}"
+                      = image_tag("#{product.images[0].image}", class: "image-price")
+

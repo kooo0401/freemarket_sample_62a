@@ -6,7 +6,7 @@
         もっと見る >
       .category-products--new__lists
         %ul.new-category__lists
-          - @products.each do |product|
+          - @products_ladies.each do |product|
             %li.new-item
               .new-item__content
                 =link_to "products/#{product.id}", class: "new-item-image" do
