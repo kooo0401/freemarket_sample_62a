@@ -33,7 +33,6 @@ class ProductsController < ApplicationController
   def show
     @products = Product.order("id DESC").limit(6)
     #実際にテーブルからid:1のproductを取得できているかの記述。
-    @product = Product.find(params[:id])
     # 商品出品が可能になったら、一つ一つのproductからidで取得する。
     @grandchild = Category.find("#{@product.category_id}")
     @child = @grandchild.parent
