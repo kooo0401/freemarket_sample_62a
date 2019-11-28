@@ -26,7 +26,7 @@
           商品の説明
           %span 必須
         .exhibitmain__description__explanation-box 
-          = f.text_area :description, size: "75x8",placeholder: "商品の説明（必須1,000文字以内 (色、素材、重さ、定価、注意点など)例)2010年頃に１万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。"
+          = f.text_area :description, size: "75x8",placeholder: "商品の説明（必須1,000文字以内 (色、素材、重さ、定価、注意点など)  例)              2010年頃に１万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。",id: "product_description"
       .exhibitmain__details
         .exhibitmain__details__name
           商品の詳細
@@ -35,6 +35,8 @@
           %span 必須
         .exhibitmain__details__category-box1  
           = f.collection_select :parent_id, @parent.all, :id, :name, class: "parent_category", name: "parent_box"
+            
+          
         .exhibitmain__details__category-box2
           = f.collection_select :child_id, {}, :id, :name, class: "child_category"
         .exhibitmain__details__category-box3
