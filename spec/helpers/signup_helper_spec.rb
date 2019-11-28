@@ -11,6 +11,8 @@
 # #     end
 # #   end
 # # end
+
+# エラー出るため一度コメントアウトしてますby平野
 # RSpec.describe SignupHelper, type: :helper do
 #   pending "add some examples to (or delete) #{__FILE__}"
 # end
