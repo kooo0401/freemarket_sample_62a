@@ -9,6 +9,13 @@ RSpec.describe CardController, type: :controller do
     end
   end
 
+  describe "GET #addtion" do
+    it "returns http success" do
+      get :addtion
+      expect(response).to have_http_status(:success)
+    end
+  end
+  
   describe "GET #show" do
     it "returns http success" do
       get :show
