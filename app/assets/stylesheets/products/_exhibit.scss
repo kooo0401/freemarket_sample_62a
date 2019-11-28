@@ -1,14 +1,25 @@
 @mixin need{
   background: #ea352d;
-  color: white;
-  padding: 3px;
-  margin-left: 8px;
-  font-weight: bold;
+  margin: 0 0 0 8px;
+  padding: 2px 4px;
+  border-radius: 2px;
+  color: #fff;
+  font-size: 12px;
+  vertical-align: top;
+
 }
+
 @mixin box{
   width: 400px;
   height: 48px;
   border: 1px solid #cccccc;
+  background-color: white;
+  -webkit-appearance: none;
+  padding: 0px 16px;
+  background-image: url('/assets/sakurada2.png');
+  background-repeat: no-repeat;
+  background-size: 25px 25px;
+  background-position: right 10px center;
 }
 @mixin title{
   font-weight: bold;
@@ -58,6 +69,7 @@
       background: #f5f5f5;
       border: 1px dashed #ccc;
     }
+    
   }
     
   .exhibitmain__description{
@@ -79,6 +91,12 @@
     &__explanation{
       margin-top: 40px;
     @include title;
+    }
+    &__explanation-box{
+    padding-top: 10px;
+    }
+    #product_description{
+      padding: 10px;
     }
   }
   .exhibitmain__details{
@@ -158,6 +176,20 @@
    }
   &__brand-box{
     padding-left: 217px;
+    .exhibitmain__details__brand-box__input{
+      height: 44px;
+      width: 400px;
+      padding: 10px 16px 8px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      background: #fff;
+      line-height: 1.5;
+      font-size: 16px;
+      margin-top: 3px;
+      outline: 0;
+      font-family: inherit;
+      -webkit-appearance: none;
+    }
     select{
       @include box;
     } 

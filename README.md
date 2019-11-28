@@ -115,22 +115,23 @@ creditsテーブルは不要（payjpにより、cardsテーブルを作成した
 |delivery_way|string|null: false|
 |user_id|integer|foreign_key: true, null: false|
 |category_id|integer|foreign_key: true, null: false|
-|brand_id|integer|foreign_key: true, null: false|
+|brand|string|
 |status_id|integer|foreign_key: true, default: 1|
 |size_id||integer||foreign_key: true|
 <!-- categorry_idカラム, brand_idカラムを追加 191112平野 -->
 <!-- status_idカラム, size_idカラムを追加 191117村上・髙橋 -->
+<!-- brand_idカラムを削除・brandカラムを追加 191128髙橋 -->
 
 
 ### Association
 - belongs_to :user
 - belongs_to :category
-- belongs_to :brand
 - belongs_to :status
 - belongs_to :size
 - has_many :images, dependent: :destroy
 - has_one :history, dependent: :destroy
-<!-- size,status を belongs_to に変更191117髙橋-->
+<!-- size,status を belongs_to に変更 191117髙橋-->
+<!-- belongs_to brand を削除 191128髙橋-->
 
 ## imagesテーブル
 |Column|Type|Options|
@@ -141,15 +142,17 @@ creditsテーブルは不要（payjpにより、cardsテーブルを作成した
 ### Association
 - belongs_to :product
 
-
+<!-- 
 ## brandsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|name|string|null: false|
+|name|string|null: false| -->
 <!-- product_idカラムを削除しました 191112平野 -->
+<!-- brandテーブルを泣く泣く削除しました 191128髙橋 -->
 
-### Association
-- has_many :products
+<!-- ### Association
+- has_many :products -->
+<!-- brandテーブルを削除したので不要に 191128髙橋 -->
 
 
 ## statusesテーブル
