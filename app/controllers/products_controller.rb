@@ -5,7 +5,7 @@ class ProductsController < ApplicationController
   
 
   def index
-    @products = Product.order("id DESC").limit(10)
+    @products = Product.where(status_id: 1).order("id DESC").limit(10)
     # 以下、カテゴリ・
     # productsの内、人気カテゴリーベスト4、人気ブランドベスト4 10個ずつ持ってくるよう変更予定
     # ------------------------------------------------------------------------------------------------
@@ -37,6 +37,7 @@ class ProductsController < ApplicationController
     @grandchild = Category.find("#{@product.category_id}")
     @child = @grandchild.parent
     @parent = @child.parent
+    redirect_to  users_myproduct_change_user_path if @product.user_id == current_user.id
   end
 
   def edit
