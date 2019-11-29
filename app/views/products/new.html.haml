@@ -21,12 +21,12 @@
         .exhibitmain__description__name
           商品名
           %span 必須
-          = f.text_field :name,size: "67px", placeholder: "商品名 (必須40文字まで)" 
+          = f.text_field :name,size: "67px", placeholder: "商品名 (必須40文字まで)",id: "productr_name"
         .exhibitmain__description__explanation
           商品の説明
           %span 必須
         .exhibitmain__description__explanation-box 
-          = f.text_area :description, size: "75x8",placeholder: "商品の説明（必須1,000文字以内 (色、素材、重さ、定価、注意点など)  例)              2010年頃に１万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。",id: "product_description"
+          = f.text_area :description, size: "73x7",placeholder: "商品の説明（必須1,000文字以内 (色、素材、重さ、定価、注意点など)  例)              2010年頃に１万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。",id: "product_description"
       .exhibitmain__details
         .exhibitmain__details__name
           商品の詳細
@@ -69,12 +69,6 @@
           %span 必須 
         .exhibitmain__delivery__way-box
           = f.select :delivery_way, [["---", 0],["クロネコヤマト", 1],["ゆうパック", 2],["ゆうメール", 3]], {}, class: 'exhibitmain__delivery__way-box1'
-        -# 下記コメントは念のため残しています 191125 髙橋
-        -# .exhibitmain__delivery__way2
-        -#   配送方法
-        -#   %span 必須 
-        -# .exhibitmain__delivery__way-box2
-        -#   = f.select :delivery_way, [["---", 0],[" クロネコヤマト",1], ["ゆうパック",2],["らくらくメルカリ便", 10],["レターパック", 11], ["普通郵便（定型、定型外) ",12], ["クリックポスト",13]] 
         .exhibitmain__delivery__area
           配送元の地域
           %span 必須 

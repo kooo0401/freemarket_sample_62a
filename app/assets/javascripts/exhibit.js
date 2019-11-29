@@ -19,8 +19,7 @@ $(function(){
       }
       else if(num > 300) {
         var p = Math.floor(num*0.1);
-        var price = '¥' + p;
-        var price = '¥' + num.toLocaleString();
+        var price = '¥' + p.toLocaleString();
         tagOutput.html(price);
       } 
       });
@@ -42,8 +41,7 @@ $(function(){
       $(this).val(num);
         if(num > 300) {
         var p = Math.floor(num*0.9);
-        var price = '¥' + p;
-        var price = '¥' + num.toLocaleString();
+        var price = '¥' + p.toLocaleString();
         tagOutput.html(price);
       } 
       });
@@ -127,12 +125,16 @@ $(function()  {
 });
 
 $(function(){
-  $('.exhibitmain__details__brand-box').click(function(){
+
+  $('.exhibitmain__exhibit__btn').click(function(){
+  
+
     $('#buy-overlay1').fadeIn();
     $('haml, body').css('overflow', 'hidden');
   });
   jQuery('#purchase-exhibit-btn1').click(function() {
-    window.location.href = "/";
+
+    window.location.href = "new";
   });
   });
 });
