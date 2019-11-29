@@ -46,8 +46,8 @@ class ProductsController < ApplicationController
   end
 
   def edit
-      gon.product_price = @product.price
-      gon.all_point = current_user.point
+    gon.product_price = @product.price
+    gon.all_point = current_user.point
   end
 
   def sell_edit
@@ -128,7 +128,7 @@ class ProductsController < ApplicationController
   end
 
   def ensure_correct_product
-    @product = Product.find_by(id: params[:id])
+    @product = Product.find(params[:id])
     redirect_to root_path if current_user.id !=  @product.user_id
   end
 
