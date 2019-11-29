@@ -90,8 +90,9 @@
         = @product.description
   .itembuy-content__change-status
     .itembuy-content__change-status-btns
-      = link_to '#', class: 'itembuy-red-box' do
-        商品の編集
+
+      = link_to '商品の編集', myedit_users_path, class: 'itembuy-red-box' 
+      
     .itembuy-content__text-center
       or
     .itembuy-content__change-status-btns

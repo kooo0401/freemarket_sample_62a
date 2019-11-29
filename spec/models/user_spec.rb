@@ -11,85 +11,85 @@ describe User do
     it "is invalid without a nickname" do
       user = build(:user, nickname: nil)
       user.valid?
-      expect(user.errors[:nickname]).to include("が入力されていません。")
+      expect(user).to be_invalid(:validates_step1)
     end
 
     it "is invalid without a email" do
       user = build(:user, email: nil)
       user.valid?
-      expect(user.errors[:email]).to include("が入力されていません。")
+      expect(user).to be_invalid(:validates_step1)
     end
 
     it "is invalid without a password" do
       user = build(:user, password: nil)
       user.valid?
-      expect(user.errors[:password]).to include("が入力されていません。")
+      expect(user).to be_invalid(:validates_step1)
     end
 
     it "is invalid without a last_name" do
       user = build(:user, last_name: nil)
       user.valid?
-      expect(user.errors[:last_name]).to include("が入力されていません。")
+      expect(user).to be_invalid(:validates_step1)
     end
 
     it "is invalid without a first_name" do
       user = build(:user, first_name: nil)
       user.valid?
-      expect(user.errors[:first_name]).to include("が入力されていません。")
+      expect(user).to be_invalid(:validates_step1)
     end
 
     it "is invalid without a last_name_kana" do
       user = build(:user, last_name_kana: nil)
       user.valid?
-      expect(user.errors[:last_name_kana]).to include("が入力されていません。")
+      expect(user).to be_invalid(:validates_step1)
     end
 
     it "is invalid without a first_name_kana" do
       user = build(:user, first_name_kana: nil)
       user.valid?
-      expect(user.errors[:first_name_kana]).to include("が入力されていません。")
+      expect(user).to be_invalid(:validates_step1)
     end
 
     it "is invalid without a birthday" do
       user = build(:user, birthday: nil)
       user.valid?
-      expect(user.errors[:birthday]).to include("が入力されていません。")
+      expect(user).to be_invalid(:validates_step1)
     end
 
     it "is invalid without a tel" do
       user = build(:user, tel: nil)
       user.valid?
-      expect(user.errors[:tel]).to include("が入力されていません。")
+      expect(user).to be_invalid(:validates_step2)
     end
 
     it "is invalid without a zip" do
       user = build(:user, zip: nil)
       user.valid?
-      expect(user.errors[:zip]).to include("が入力されていません。")
-    end
+      expect(user).to be_invalid(:validates_step3)
+     end
 
     it "is invalid without a prefecture" do
       user = build(:user, prefecture: nil)
       user.valid?
-      expect(user.errors[:prefecture]).to include("が入力されていません。")
+      expect(user).to be_invalid(:validates_step3)
     end
 
     it "is invalid without a city_name" do
       user = build(:user, city_name: nil)
       user.valid?
-      expect(user.errors[:city_name]).to include("が入力されていません。")
+      expect(user).to be_invalid(:validates_step3)
     end
 
     it "is invalid without a block_name" do
       user = build(:user, block_name: nil)
       user.valid?
-      expect(user.errors[:block_name]).to include("が入力されていません。")
+      expect(user).to be_invalid(:validates_step3)
     end
 
     it "is invalid without a bill_name" do
       user = build(:user, bill_name: nil)
       user.valid?
-      expect(user.errors[:bill_name]).to include("が入力されていません。")
+      expect(user).to be_invalid(:validates_step3)
     end
 
     # ニックネーム
@@ -103,7 +103,7 @@ describe User do
     it "is invalid with a nickname that has more than 21 characters" do
       user = build(:user, nickname: "aaaaaaaaaaaaaaaaaaaaa") # 21文字
       user.valid?
-      expect(user.errors[:nickname]).to include("は20文字以下に設定して下さい。")
+      expect(user).to be_invalid(:validates_step1)
     end
 
     # emailのフォーマットが不適切でないか
@@ -133,7 +133,7 @@ describe User do
     it "is invalid with a email includes non-alphanumeric characters " do
       user = build(:user, email: "aaあa@aaa")
       user.valid?
-      expect(user.errors[:email][0]).to include("は有効でありません。")
+      expect(user).to be_invalid(:validates_step1)
     end
 
     # パスワード
@@ -176,14 +176,14 @@ describe User do
     it "is invalid with a password except for numbers" do
       user = build(:user, password: "1111111111")
       user.valid?
-      expect(user.errors[:password][0]).to include("")
+      expect(user).to be_invalid(:validates_step1)
     end
 
     # 英字のみのため不適切
     it "is invalid with a password except for alphabets" do
       user = build(:user, password: "aaaaaaa")
       user.valid?
-      expect(user.errors[:password][0]).to include("")
+      expect(user).to be_invalid(:validates_step1)
     end
 
     # パスワードに記号を入れても登録できる
@@ -204,7 +204,7 @@ describe User do
     it "is invalid with a last_name that has more than 21 characters" do
       user = build(:user, last_name: "aaaaaaaaaaaaaaaaaaaaa") # 21文字
       user.valid?
-      expect(user.errors[:last_name]).to include("は20文字以下に設定して下さい。")
+      expect(user).to be_invalid(:validates_step1)
     end
 
     # first_name
@@ -218,7 +218,7 @@ describe User do
     it "is invalid with a first_name that has more than 21 characters" do
       user = build(:user, first_name: "aaaaaaaaaaaaaaaaaaaaa") # 21文字
       user.valid?
-      expect(user.errors[:first_name]).to include("は20文字以下に設定して下さい。")
+      expect(user).to be_invalid(:validates_step1)
     end
 
     # last_name_kana
@@ -226,14 +226,14 @@ describe User do
     it "is invalid with a last_name_kana that has more than 36 characters " do
       user = build(:user, last_name_kana: "アアアアアアアアアアアアアアアアアアアアアアアアアアアアアアアアアアアア") # 36文字
       user.valid?
-      expect(user.errors[:last_name_kana]).to include("は35文字以下に設定して下さい。")
+      expect(user).to be_invalid(:validates_step1)
     end
 
     # ひらがななら不適切
     it "is invalid with a last_name_kana that katakana " do
       user = build(:user, last_name_kana: "あ")
       user.valid?
-      expect(user.errors[:last_name_kana][0]).to include("はカタカナで入力して下さい")
+      expect(user).to be_invalid(:validates_step1)
     end
 
     # first_name_kana
@@ -241,14 +241,14 @@ describe User do
     it "is invalid with a first_name_kana that has more than 36 characters " do
       user = build(:user, first_name_kana: "アアアアアアアアアアアアアアアアアアアアアアアアアアアアアアアアアアアア") # 36文字
       user.valid?
-      expect(user.errors[:first_name_kana]).to include("は35文字以下に設定して下さい。")
+      expect(user).to be_invalid(:validates_step1)
     end
 
     # ひらがななら不適切
     it "is invalid with a first_name_kana that katakana " do
       user = build(:user, first_name_kana: "あ")
       user.valid?
-      expect(user.errors[:first_name_kana][0]).to include("はカタカナで入力して下さい")
+      expect(user).to be_invalid(:validates_step1)
     end
 
     # tel
@@ -262,7 +262,7 @@ describe User do
     it "is invalid with a tel that Phone number format " do
       user = build(:user, tel: "a8012345678")
       user.valid?
-      expect(user.errors[:tel][0]).to include("は有効でありません。")
+      expect(user).to be_invalid(:validates_step2)
     end
 
     # 郵便番号が不適切な形式になっていないか
@@ -270,7 +270,7 @@ describe User do
     it "is invalid with a zip that Postal code format " do
       user = build(:user, zip: "a00-0000")
       user.valid?
-      expect(user.errors[:zip]).to include("は有効でありません。")
+      expect(user).to be_invalid(:validates_step3)
     end
   end
 end
