@@ -16,6 +16,7 @@ class UsersController < ApplicationController
     if params[:myaddress] == nil
       if @user.update(user_params)
         redirect_to user_path(@user)
+        
       else
         redirect_to root_path
       end
@@ -55,15 +56,15 @@ class UsersController < ApplicationController
   end
 
   def myproducts_exhibiting
-    @product = @products.where(status_id: "1")
+    @product = @products.where(status_id: "1").order("id DESC").limit(15)
   end
 
   def myproducts_trading
-    @product = @products.where(status_id: "2")
+    @product = @products.where(status_id: "2").order("id DESC").limit(15)
   end
 
   def myproducts_sold
-    @product = @products.where(status_id: "3")
+    @product = @products.where(status_id: "3").order("id DESC").limit(15)
   end
 
   # ログイン中ユーザーでなければ、他ユーザーのマイページは見れない

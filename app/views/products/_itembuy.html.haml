@@ -1,38 +1,40 @@
 .itembuy-user-title
   %section.itembuy-user-profile__box
   %h2.itembuy-user-profile__head
-    = link_to '/' do
-      user.nicknameさんのその他の出品
+    = link_to '/', class: 'itembuy-user-profile__head-name' do
+      = @product.user.nickname
+      さんのその他の出品
 
--# 一旦コメントアウト(2019/11/21　堀)
 
--#     .itembuy-user-parents
--#       %ul.itembuy-user-profile
--#         - @products.each do |product|
--#           %li.itembuy-user-profile__box
--#             =image_tag("/mercari-logo.png", size: '220x220')
--#             .itembuy-user-profile__body
--#               %h3.itembuy-user-profile__name
--#                 = product.name
--#               .itembuy-user-profile__num
--#                 .itembuy-user-profile__price
--#                   = product.price
--# .itembuy-user-title
--#   %section.itembuy-user-profile__box
--#   %h2.itembuy-user-profile__head
--#     = link_to '/' do
--#       product.name その他の商品
 
--#     .itembuy-user-parents
--#       %ul.itembuy-user-profile
--#         - @products.each do |product|
--#           %li.itembuy-user-profile__box
--#             =image_tag("/mercari-logo.png", size: '220x220')
--#             .itembuy-user-profile__body
--#               %h3.itembuy-user-profile__name
--#                 = product.name
--#               .itembuy-user-profile__num
--#                 .itembuy-user-profile__price
--#                   = product.price
+    .itembuy-user-parents
+      %ul.itembuy-user-profile
+        - @products.each do |product|
+          %li.itembuy-user-profile__box
+            =image_tag("#{product.images[0].image}", size: '220x220')
+            .itembuy-user-profile__body
+              %h3.itembuy-user-profile__name
+                = product.name
+              .itembuy-user-profile__num
+                .itembuy-user-profile__price
+                  = " ¥ #{product.price.to_s(:delimited)}"
+.itembuy-user-title
+  %section.itembuy-user-profile__box
+  %h2.itembuy-user-profile__head
+    = link_to root_path, class: 'itembuy-user-profile__head-name' do
+      = @product.name
+      その他の商品
+
+    .itembuy-user-parents
+      %ul.itembuy-user-profile
+        - @products.each do |product|
+          %li.itembuy-user-profile__box
+            =image_tag("#{product.images[0].image}", size: '220x220')
+            .itembuy-user-profile__body
+              %h3.itembuy-user-profile__name
+                = product.name
+              .itembuy-user-profile__num
+                .itembuy-user-profile__price
+                  = " ¥ #{product.price.to_s(:delimited)}"
 
 

@@ -1,32 +1,32 @@
 .itembuy-container
   %section.itembuy-content
     %h1.itembuy-content__name
-      = @product.name
+      =@product.name
     .itembuy-content__clearfix
-    = form_with model: @product, local: true do |f|
       .itembuy-content__photo
         .itembuy-content__auter
           .itembuy-content__owl-carousel
             .owl-carousel-space
-              =image_tag("/IMG_mercari-footer-image.png", class: 'owl-carousel-main show', size: '300x300')
-              =image_tag("/IMG_footer-top-image.png", class: 'owl-carousel-main', size: '300x300')
-              =image_tag("/IMG_mercari-footer-image.png", class: 'owl-carousel-main', size: '300x300')
-              =image_tag("/IMG_footer-top-image.png", class: 'owl-carousel-main', size: '300x300')
-              =image_tag("/IMG_mercari-footer-image.png", class: 'owl-carousel-main', size: '300x300')
-              =image_tag("/IMG_footer-top-image.png", class: 'owl-carousel-main', size: '300x300')
+              =image_tag("/for_js/js_1.jpg", class: 'owl-carousel-main show', size: '300x300')
+              =image_tag("/for_js/js_2.jpg", class: 'owl-carousel-main', size: '300x300')
+              =image_tag("/for_js/js_3.jpg", class: 'owl-carousel-main', size: '300x300')
+              =image_tag("/for_js/js_4.jpg", class: 'owl-carousel-main', size: '300x300')
+              =image_tag("/for_js/js_5.jpg", class: 'owl-carousel-main', size: '300x300')
+              =image_tag("/for_js/js_6.jpg", class: 'owl-carousel-main', size: '300x300')
         .itembuy-content__owl-carousel-thumb
-          =image_tag("/IMG_mercari-footer-image.png", class: 'owl-carousel-sub active', size: '60x60')
-          =image_tag("/IMG_footer-top-image.png", class: 'owl-carousel-sub', size: '60x60')
-          =image_tag("/IMG_mercari-footer-image.png", class: 'owl-carousel-sub', size: '60x60')
-          =image_tag("/IMG_footer-top-image.png", class: 'owl-carousel-sub', size: '60x60')
-          =image_tag("/IMG_mercari-footer-image.png", class: 'owl-carousel-sub', size: '60x60')
-          =image_tag("/IMG_footer-top-image.png", class: 'owl-carousel-sub', size: '60x60')
+          =image_tag("/for_js/js_1.jpg", class: 'owl-carousel-sub active', size: '60x60')
+          =image_tag("/for_js/js_2.jpg", class: 'owl-carousel-sub', size: '60x60')
+          =image_tag("/for_js/js_3.jpg", class: 'owl-carousel-sub', size: '60x60')
+          =image_tag("/for_js/js_4.jpg", class: 'owl-carousel-sub', size: '60x60')
+          =image_tag("/for_js/js_5.jpg", class: 'owl-carousel-sub', size: '60x60')
+          =image_tag("/for_js/js_6.jpg", class: 'owl-carousel-sub', size: '60x60')
       %table.itembuy-content__table
         %tbody
           %tr
             %th 出品者
             %td
-              = link_to "@user.nickname", "#"
+              = link_to "/", class: "user-nickname" do
+                = @product.user.nickname
               %div
                 .itembuy-content__ratings{ id: 'itembuy-icon-good' }
                   =fa_icon 'smile-o', class: 'icon-r'
@@ -40,30 +40,31 @@
           %tr
             %th カテゴリー
             %td
-              = link_to "レディース", "#"
+              = link_to "#{@parent.name}", "#", class: "parent-category"
               %br
-              = link_to "＞ジャケット/アウター", "#"
+              = link_to "＞#{@child.name}", "#", class: "child-category"
               %br
-              = link_to "＞ジャンパー/ブルゾン", "#"
+              = link_to "＞#{@grandchild.name}", "#", class: "grandchild-category"
           %tr
             %th  ブランド
             %td
-              = link_to "3カン4カン", "#"
+              = link_to "#{@product.brand}", "#", class: "brand-link"
           %tr
             %th 商品のサイズ
             %td
               %span 
-                = @product.size_id
+                - if @size.present?
+                  = @size.size_name
           %tr
             %th 商品の状態
             %td
-              %span
-              =@product.sales_status_i18n
+              %span 
+              = @product.sales_status_i18n
           %tr
             %th 配送料の負担
             %td
               %span
-                @delivery_charge.value
+                = @product.delivery_charged
           %tr
             %th 配送の方法
             %td
@@ -73,15 +74,15 @@
             %th 配送元地域
             %td
               %span
-            
+              = link_to "#{@product.area}", "#", class: "area-link"
           %tr
             %th 発送日の目安
             %td
               %span
-              = @product.delivery_days
+                = @product.delivery_days
     .itembuy-content__price
       %span.itembuy-content__bold<
-        = @product.price
+        = @product.price.to_s(:delimited)
       %span.itembuy-content__tax (税込)
       %span.itembuy-content__fee 送料込み
     .itembuy-detail
@@ -114,6 +115,3 @@
         %button
           %span  
             コメントする
-
-= javascript_include_tag 'mypage-change.js'
-

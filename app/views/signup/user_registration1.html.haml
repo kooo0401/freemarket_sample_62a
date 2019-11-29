@@ -2,7 +2,7 @@
   .user-container-header
     %h1.user-container-header__left
       =link_to root_path, class: "signup-home-link" do
-        = image_tag("//www-mercari-jp.akamaized.net/assets/img/common/common/logo.svg?404657508",size: "189x49",class: "image")
+        = image_tag("fmarket_logo_red.svg",size: "189x49",class: "image")
     %nav.user-signup-bar
       %ol.user-signup-bar-progress
         %li.user-signup-bar-progress__type-red
@@ -97,7 +97,7 @@
               = recaptcha_tags
             .caution-statement-block
               %p.caution-statement-block-text
-                次へ進む」のボタンを押すことにより、
+                「次へ進む」のボタンを押すことにより、
                 = link_to( "利用規約", "/" , class: "caution-statement-block-link")
                 に同意したものとみなします
           .signup-next-submit
