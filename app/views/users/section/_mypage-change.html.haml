@@ -53,7 +53,7 @@
             %th 商品のサイズ
             %td
               %span 
-                = @product.size
+                = @product.size_id
           %tr
             %th 商品の状態
             %td
@@ -89,8 +89,7 @@
         = @product.description
   .itembuy-content__change-status
     .itembuy-content__change-status-btns
-      = link_to '#', class: 'itembuy-red-box' do
-        商品の編集
+      = link_to '商品の編集', myedit_user_path, class: 'itembuy-red-box' 
     .itembuy-content__text-center
       or
     .itembuy-content__change-status-btns

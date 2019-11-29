@@ -9,8 +9,21 @@ describe ProductsController do
       }.to change(Product,:count).by(-1)
     end
   end
-end
 
+  describe 'PATCH #update' do
+    before do
+      @user = FactoryBot.create(:user)
+      @product = FactoryBot.create(:product, name: "Same Old Name")
+      # @image = Image.create(product_id: "1", image: "mercari-logo.png"
+    end
+    
+    it "update the prpduct name" do
+      sign_in @user
+      product_params = FactoryBot.attributes_for(:product, name: "New Name")
+      patch :update, params: { id: "1", product: product_params }
+      expect(@product.reload.name).not_to eq "Same Old Name"
+    end
+  end
   
   # describe 'GET #index' do
   #   it 'assigns the requested product to @product' do
@@ -67,13 +80,4 @@ end
 #       expect(response).to render_template :show
 #     end
 #   end
-
-#   以下、edit(purchese)のパスを作ったのち実装、但しまずパスの書き方を考える必要あり
-#   descibe 'GET #edit' do
-#     it 'render pruduct purchase page' do
-#       get :edit+???, params { id:1 }
-#     end
-#   end
-
-
- 
+end
