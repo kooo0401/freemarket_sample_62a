@@ -1,4 +1,5 @@
 # require 'rails_helper'
+
 describe ProductsController do
   describe 'delete #destroy' do
     it "deletes the products" do
@@ -112,3 +113,4 @@ describe ProductsController do
 #     end
 #   end
 # end
+

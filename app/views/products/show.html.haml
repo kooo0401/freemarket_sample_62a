@@ -7,6 +7,9 @@
       .itembuy-content__photo
         .itembuy-content__auter
           .itembuy-content__owl-carousel
+            - if @product.status_id == 3
+              .sold-out
+              %p.sold-out-name SOLD
             .owl-carousel-space
               =image_tag("/for_js/js_1.jpg", class: 'owl-carousel-main show', size: '300x300')
               =image_tag("/for_js/js_2.jpg", class: 'owl-carousel-main', size: '300x300')
@@ -83,11 +86,15 @@
                 = @product.delivery_days
     .itembuy-content__price
       %span.itembuy-content__bold<
-        = @product.price.to_s(:delimited)
+        = "¥#{@product.price.to_s(:delimited)}"
       %span.itembuy-content__tax (税込)
       %span.itembuy-content__fee 送料込み
-      = link_to edit_product_path, class: "itembuy-price-box" do
-        購入画面に進む
+      - if @product.status_id == 1
+        = link_to edit_product_path, class: "itembuy-price-box" do
+          購入画面に進む
+      - elsif @product.status_id == 3
+        .sold-out-btn
+          %p.sold-out-name2 売り切れました
     .itembuy-detail
       %p.itembuy-detail__inner
         =@product.description
@@ -116,9 +123,13 @@
       %form.itembuy-message__form
         %p 相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
         %textarea
+      - if @product.status_id == 1
         %button
           %span 
             コメントする
+      - elsif @product.status_id == 3
+        .sold-out-btn2
+          %p.sold-out-name2 売り切れのためコメントできません
         .itembuy-nav
           .itembuy-nav__left
             = fa_icon 'chevron-left', class: 'icon-g'

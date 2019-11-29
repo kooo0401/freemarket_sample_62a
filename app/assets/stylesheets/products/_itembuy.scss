@@ -25,6 +25,25 @@
     position: relative;
     height: 300px;
     width: 300px ;
+    .sold-out{
+      border-top: 150px solid #ea352d;
+      border-right: 150px solid transparent;
+      z-index: 100;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+    .sold-out-name{
+      transform: rotate(-45deg);
+      -moz-transform: rotate(-45deg);
+      -webkit-transform: rotate(-45deg);
+      color: #ffffff;
+      position: absolute;
+      top: 35px;
+      left: 5px;
+      z-index: 150;
+      font-size: 2.4rem;
+    }
     .owl-carousel-space{
       height: 300px;
       width: 3000px;
@@ -32,7 +51,7 @@
       position: absolute;
       left: 0;
       top: 0;
-      }
+    }
       .owl-carousel-main{
         height: 300px;
         width: 300px;
@@ -191,6 +210,17 @@
   text-align: center;
   font-weight: 600;
 }
+.sold-out-btn{
+  text-decoration: none;
+  font-size: 24px;
+  line-height: 60px;
+  display: block;
+  margin-top: 16px;
+  background: #aaa;
+  color: #fff;
+  text-align: center;
+  font-weight: 600;
+  }
 .itembuy-detail{
   padding: 32px 0;
   line-height: 1.5;
@@ -253,6 +283,23 @@
   width: 700px;
   margin: 8px auto;
 }
+.sold-out-btn2{
+  height: 53px;
+  width: 652px;
+  margin-top: 20px;
+  text-decoration: none;
+  font-size: 24px;
+  line-height: 40px;
+  display: block;
+  background: #aaa !important;
+  color: #fff;
+  text-align: center;
+  font-weight: 600;
+  }
+  .sold-out-name2{
+    height: 53px;
+    background: #aaa !important;
+  }
 .itembuy-nav{
   margin-top: 24px;
   width: 100%;

@@ -12,7 +12,7 @@ class ProductsController < ApplicationController
     # 以下、カテゴリ・
     # productsの内、人気カテゴリーベスト4、人気ブランドベスト4 10個ずつ持ってくるよう変更予定
     # ------------------------------------------------------------------------------------------------
-    @products_ladies = Product.where(category_id: 33..230, status_id: 1).order("id DESC").limit(10)
+    @products_ladies = Product.where(category_id: 33..230).order("id DESC").limit(10)
     @products_mens = Product.where(category_id:245..388, status_id: 1).order("id DESC").limit(10)
     # @products_homeappliance = Product.where(category_id:?).order("id DESC").limit(10)
     # @products_toys = Product.where(category_id:?).order("id DESC").limit(10)
