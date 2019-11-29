@@ -22,8 +22,8 @@ class PurchaseController < ApplicationController
       customer: card.customer_id,
       currency: :'jpy',
     )
-    @product.status_id = 3
-    if @product.save
+    @product.update(status_id: 3)
+    if @product.save(validate: false)
       redirect_to action: 'done'
     else
       flash[:notice] = '問題が発生して処理を中止しました。'

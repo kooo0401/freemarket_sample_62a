@@ -12,7 +12,7 @@ class ProductsController < ApplicationController
     # 以下、カテゴリ・
     # productsの内、人気カテゴリーベスト4、人気ブランドベスト4 10個ずつ持ってくるよう変更予定
     # ------------------------------------------------------------------------------------------------
-    @products_ladies = Product.where(category_id: 33..230, status_id: 1).order("id DESC").limit(10)
+    @products_ladies = Product.where(category_id: 33..230).order("id DESC").limit(10)
     @products_mens = Product.where(category_id:245..388, status_id: 1).order("id DESC").limit(10)
     # @products_homeappliance = Product.where(category_id:?).order("id DESC").limit(10)
     # @products_toys = Product.where(category_id:?).order("id DESC").limit(10)
@@ -33,7 +33,9 @@ class ProductsController < ApplicationController
 
   def show
     @products = Product.order("id DESC").limit(6)
+    @image = @product.images.first
     @images = @product.images.where(product_id: @product.id)
+    # @imagesall = @images.where(id: [1,2,3])
     #実際にテーブルからid:1のproductを取得できているかの記述。
     # 商品出品が可能になったら、一つ一つのproductからidで取得する。
     if user_signed_in?
