@@ -52,7 +52,7 @@ class ProductsController < ApplicationController
 
   def sell_edit
     @product = Product.find(params[:id])
-    @parent = Category.where(id: 1..13)
+    # @parent = Category.where(id: 1..13)
   end
 
   def update 

@@ -1,7 +1,7 @@
 = render "layouts/exhibit-header"
 
 .exhibitmiddle
-  = form_with model: @product, remote: true do |f|
+  = form_with model: @product, local: true do |f|
     .exhibitmain
       .exhibitmain__head
         商品の情報を入力
@@ -127,7 +127,7 @@
               #buy-modal-text1 あなたが出品した商品は「出品した商品一覧」からいつでも見ることができます。     
               #purchase-exhibit-btn1 続けて出品する
               .buy-modal-text2 
-              = link_to("商品ページに行ってシェアする。", "＃")
+              = link_to "商品ページに行ってシェアする。", myproducts_exhibiting_user_path(current_user_id)
 
 = render "layouts/exhibit-footer"
 
