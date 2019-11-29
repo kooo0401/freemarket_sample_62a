@@ -116,7 +116,7 @@ $(function(){
           // $('.exhibitmain__delivery__way-box2').show();
       }
   });
-
+  // 念の為記載を残しています 191129 髙橋
 // $(function()  {
 //   $(window).load(function(){
 //     $('.exhibitmain__delivery__way').hide();
