@@ -17,9 +17,8 @@
 
           .form-box-tempolary.form-hairu-yotei
             %p.form-box-tempolary__buy-price.bold 
-              = "¥#{@product.price}"
+              = "¥#{@product.price.to_s(:delimited)}"
               %span.form-box-tempolary__buy-price__shipping-fee.f14 
-                = @product.delivery_charged
             %ul.form-box-tempolary__buy-accordion
               %li.form-box-tempolary__buy-accordion__accordion-parent
                 .form-box-tempolary__buy-accordion__accordion-parent__accordion-toggle#acdn-button
@@ -51,7 +50,7 @@
                   支払い金額
                 .form-box-tempolary__result-price__row__buy-price-cell2
                   %span#data-buy-pay
-                    = "¥#{@product.price}"
+                    = "¥#{@product.price.to_s(:delimited)}"
             %p.confirmation-error-text
               この商品はゆうゆうメルカリ便を利用しているため、アプリからのみ購入できます。
             -# %ul.form-box-tempolary__buy-accordion.not-have

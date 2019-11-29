@@ -23,13 +23,16 @@
   &__link {
     display: block;
     &--natsukashi {
-      @include slide-banner-owl-item-background("banner-natsukashi.jpg");
+      @include slide-banner-owl-item-background("banner-xmas.jpeg");
+      background-size: 100% 100%;
     }
     &--new-life {
-      @include slide-banner-owl-item-background("banner-new-life.jpg");
+      @include slide-banner-owl-item-background("banner-fukubukuro.jpeg");
+      background-size: 100% 100%;
     }
     &--bokurano-heisei {
-      @include slide-banner-owl-item-background("banner-bokurano-heisei.jpg");
+      @include slide-banner-owl-item-background("banner-otoshidama.jpeg");
+      background-size: 100% 100%;
     }
   }
   

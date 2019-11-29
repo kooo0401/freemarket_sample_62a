@@ -1,21 +1,24 @@
 class ProductsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :change, :destroy, :edit]
   before_action :set_product, only: [:destroy, :change, :show, :edit, :ensure_correct_product]
+  before_action :set_category, only: [:show, :change]
   before_action :ensure_correct_product, only: [:change]
-  
+
 
   def index
-    @products = Product.where(status_id: 1).order("id DESC").limit(10)
+    # @products = Product.order("id DESC").limit(10)
+    # @products = Product.where(status_id: 1).order("id DESC").limit(10)
+
     # 以下、カテゴリ・
     # productsの内、人気カテゴリーベスト4、人気ブランドベスト4 10個ずつ持ってくるよう変更予定
     # ------------------------------------------------------------------------------------------------
-    # @products_ladies = Product.where(category_id:?).order("id DESC").limit(10)
-    # @products_mens = Product.where(category_id:?).order("id DESC").limit(10)
+    @products_ladies = Product.where(category_id: 33..230, status_id: 1).order("id DESC").limit(10)
+    @products_mens = Product.where(category_id:245..388, status_id: 1).order("id DESC").limit(10)
     # @products_homeappliance = Product.where(category_id:?).order("id DESC").limit(10)
     # @products_toys = Product.where(category_id:?).order("id DESC").limit(10)
 
-    # @products_chanel = Product.where(brand_id:?).order("id DESC").limit(10)
-    # @products_louisvuitton = Product.where(brand_id:?).order("id DESC").limit(10)
+    @products_chanel = Product.where(brand_id: 1, status_id: 1).order("id DESC").limit(10)
+    @products_louisvuitton = Product.where(brand_id: 2,status_id: 1).order("id DESC").limit(10)
     # @products_supreme = Product.where(brand_id:?).order("id DESC").limit(10)
     # @products_nike = Product.where(brand_id:?).order("id DESC").limit(10)
     # ------------------------------------------------------------------------------------------------
@@ -29,12 +32,10 @@ class ProductsController < ApplicationController
 
 
   def show
+    @products = Product.order("id DESC").limit(6)
+    @images = @product.images.where(product_id: @product.id)
     #実際にテーブルからid:1のproductを取得できているかの記述。
-    # @product = Product.find(params[:id])
     # 商品出品が可能になったら、一つ一つのproductからidで取得する。
-    @grandchild = Category.find("#{@product.category_id}")
-    @child = @grandchild.parent
-    @parent = @child.parent
     if user_signed_in?
       redirect_to  users_myproduct_change_users_path(@product) if @product.user_id == current_user.id
     end
@@ -111,5 +112,11 @@ class ProductsController < ApplicationController
     if @product.size_id.present?
       @size = Size.find(@product.size_id)
     end
+  end
+
+  def set_category
+    @grandchild = Category.find("#{@product.category_id}")
+    @child = @grandchild.parent
+    @parent = @child.parent
   end
 end

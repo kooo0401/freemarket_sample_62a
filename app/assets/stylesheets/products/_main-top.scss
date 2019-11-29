@@ -39,7 +39,7 @@ body {
       display: block;
       text-align: center;
       width: 100%;
-      margin-top: 12px;
+      margin: 12px 0 16px 0;
       list-style: none;
       .category-list {
         background-color: rgb(239, 239, 239);
@@ -65,7 +65,6 @@ body {
 .category-products {
   padding: 42px 0px 20px;
   display: block;
-  margin-top: 16px ;
   background-color: rgb(239, 239, 239);
   display: flex;
   &--new {
@@ -93,7 +92,6 @@ body {
         color: rgb(0, 149, 238);
         display: inline;
         font-weight: 600;
-      
         text-decoration: none;
         float: right;
       }
@@ -257,7 +255,7 @@ body {
       display: block;
       text-align: center;
       width: 100%;
-      margin-top: 12px;
+      margin: 12px 0 16px 0;
       list-style: none;
       .bland-list {
         background-color: rgb(239, 239, 239);
