@@ -11,19 +11,13 @@
               .sold-out
               %p.sold-out-name SOLD
             .owl-carousel-space
-              =image_tag("/for_js/js_1.jpg", class: 'owl-carousel-main show', size: '300x300')
-              =image_tag("/for_js/js_2.jpg", class: 'owl-carousel-main', size: '300x300')
-              =image_tag("/for_js/js_3.jpg", class: 'owl-carousel-main', size: '300x300')
-              =image_tag("/for_js/js_4.jpg", class: 'owl-carousel-main', size: '300x300')
-              =image_tag("/for_js/js_5.jpg", class: 'owl-carousel-main', size: '300x300')
-              =image_tag("/for_js/js_6.jpg", class: 'owl-carousel-main', size: '300x300')
+              =image_tag("#{@image.image}", class: 'owl-carousel-main show', size: '300x300')
+            - @images[1..9].each do |image|
+              =image_tag("#{image.image}", class: 'owl-carousel-main', size: '300x300')
         .itembuy-content__owl-carousel-thumb
-          =image_tag("/for_js/js_1.jpg", class: 'owl-carousel-sub active', size: '60x60')
-          =image_tag("/for_js/js_2.jpg", class: 'owl-carousel-sub', size: '60x60')
-          =image_tag("/for_js/js_3.jpg", class: 'owl-carousel-sub', size: '60x60')
-          =image_tag("/for_js/js_4.jpg", class: 'owl-carousel-sub', size: '60x60')
-          =image_tag("/for_js/js_5.jpg", class: 'owl-carousel-sub', size: '60x60')
-          =image_tag("/for_js/js_6.jpg", class: 'owl-carousel-sub', size: '60x60')
+          =image_tag("#{@image.image}", class: 'owl-carousel-sub active', size: '60x60')
+        - @images[1..9].each do |image|
+          =image_tag("#{image.image}", class: 'owl-carousel-sub', size: '60x60')
       %table.itembuy-content__table
         %tbody
           %tr
