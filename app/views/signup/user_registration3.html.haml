@@ -2,7 +2,7 @@
   .user-container-header
     %h1.user-container-header__left
       =link_to root_path, class: "signup-home-link" do
-        = image_tag("//www-mercari-jp.akamaized.net/assets/img/common/common/logo.svg?404657508",size: "189x49",class: "image")
+        = image_tag("fmarket_logo_red.svg",size: "189x49",class: "image")
     %nav.user-signup-bar
       %ol.user-signup-bar-progress3
         %li.user-signup-bar-progress3__type
@@ -56,7 +56,7 @@
               %span.signup-form1__span
                 必須
               .prefecture-select-wrap
-                = d.collection_select :prefecture, Prefecture.all, :id, :name, { prompt:"---" }, class: 'validate[required]'
+                = d.collection_select :prefecture, Prefecture.all, :id, :name, {}, class: 'validate[required]'
                 = fa_icon 'chevron-down', class:'prefecture.fas.fa-chevron-down'
             .signup-form1
               %label.signup-form1__label

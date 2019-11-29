@@ -115,21 +115,25 @@ $(function(){
       }
   });
 
-// $(function()  {
-//   $(window).load(function(){
-//     $('.exhibitmain__delivery__way').hide();
-//     $('.exhibitmain__delivery__way-box').hide();
-//     $('.exhibitmain__delivery__way2').hide();
-//     $('.exhibitmain__delivery__way-box2').hide();
-//   })
-// });
+$(function()  {
+  $(window).load(function(){
+    $('.exhibitmain__delivery__way').hide();
+    $('.exhibitmain__delivery__way-box').hide();
+    $('.exhibitmain__delivery__way2').hide();
+    $('.exhibitmain__delivery__way-box2').hide();
+  })
+});
 
 $(function(){
+
   $('.exhibitmain__exhibit__btn').click(function(){
+  
+
     $('#buy-overlay1').fadeIn();
     $('haml, body').css('overflow', 'hidden');
   });
   jQuery('#purchase-exhibit-btn1').click(function() {
+
     window.location.href = "new";
   });
   });

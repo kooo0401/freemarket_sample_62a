@@ -5,17 +5,19 @@ class ProductsController < ApplicationController
   
 
   def index
-    @products = Product.where(status_id: 1).order("id DESC").limit(10)
+    # @products = Product.order("id DESC").limit(10)
+    # @products = Product.where(status_id: 1).order("id DESC").limit(10)
+
     # 以下、カテゴリ・
     # productsの内、人気カテゴリーベスト4、人気ブランドベスト4 10個ずつ持ってくるよう変更予定
     # ------------------------------------------------------------------------------------------------
-    # @products_ladies = Product.where(category_id:?).order("id DESC").limit(10)
-    # @products_mens = Product.where(category_id:?).order("id DESC").limit(10)
+    @products_ladies = Product.where(category_id: 33..230, status_id: 1).order("id DESC").limit(10)
+    @products_mens = Product.where(category_id:245..388, status_id: 1).order("id DESC").limit(10)
     # @products_homeappliance = Product.where(category_id:?).order("id DESC").limit(10)
     # @products_toys = Product.where(category_id:?).order("id DESC").limit(10)
 
-    # @products_chanel = Product.where(brand_id:?).order("id DESC").limit(10)
-    # @products_louisvuitton = Product.where(brand_id:?).order("id DESC").limit(10)
+    @products_chanel = Product.where(brand_id: 1, status_id: 1).order("id DESC").limit(10)
+    @products_louisvuitton = Product.where(brand_id: 2,status_id: 1).order("id DESC").limit(10)
     # @products_supreme = Product.where(brand_id:?).order("id DESC").limit(10)
     # @products_nike = Product.where(brand_id:?).order("id DESC").limit(10)
     # ------------------------------------------------------------------------------------------------
@@ -29,8 +31,8 @@ class ProductsController < ApplicationController
 
 
   def show
+    @products = Product.order("id DESC").limit(6)
     #実際にテーブルからid:1のproductを取得できているかの記述。
-    # @product = Product.find(params[:id])
     # 商品出品が可能になったら、一つ一つのproductからidで取得する。
     @grandchild = Category.find("#{@product.category_id}")
     @child = @grandchild.parent
