@@ -114,29 +114,25 @@ $(function(){
           // $('.exhibitmain__delivery__way-box2').show();
       }
   });
+  // 念の為記載を残しています 191129 髙橋
+// $(function()  {
+//   $(window).load(function(){
+//     $('.exhibitmain__delivery__way').hide();
+//     $('.exhibitmain__delivery__way-box').hide();
+//     $('.exhibitmain__delivery__way2').hide();
+//     $('.exhibitmain__delivery__way-box2').hide();
+//   })
+// });
 
-$(function()  {
-  $(window).load(function(){
-    $('.exhibitmain__delivery__way').hide();
-    $('.exhibitmain__delivery__way-box').hide();
-    $('.exhibitmain__delivery__way2').hide();
-    $('.exhibitmain__delivery__way-box2').hide();
-  })
-});
-
-$(function(){
-
-  $('.exhibitmain__exhibit__btn').click(function(){
-  
-
-    $('#buy-overlay1').fadeIn();
-    $('haml, body').css('overflow', 'hidden');
-  });
-  jQuery('#purchase-exhibit-btn1').click(function() {
-
-    window.location.href = "new";
-  });
-  });
+// $(function(){
+//   $('.exhibitmain__details__brand-box').click(function(){
+//     $('#buy-overlay1').fadeIn();
+//     $('haml, body').css('overflow', 'hidden');
+//   });
+//   jQuery('#purchase-exhibit-btn1').click(function() {
+//     window.location.href = "/";
+//   });
+//   });
 });
 
 
@@ -150,7 +146,7 @@ $(function(){
     var parent_id = $('#product_parent_id').val();
     $.ajax({
       type: 'POST',
-      url: '../api/products',
+      url: '../../../../api/products',
       data: {id : parent_id},
       dataType: 'json',
     })
@@ -177,7 +173,7 @@ $(function(){
     var child_id = $('#product_child_id').val();
     $.ajax({
       type: 'POST',
-      url: '../api/products2',
+      url: '../../../../api/products2',
       data: {id : child_id},
       dataType: 'json',
       // contentType: false,
@@ -203,7 +199,7 @@ $(function(){
       var grandchild_id = $('#product_category_id').val();
       $.ajax({
         type: 'POST',
-        url: '../api/products3',
+        url: '../../../../api/products3',
         data: {id : grandchild_id},
         dataType: 'json',
         // contentType: false,

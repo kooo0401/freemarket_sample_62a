@@ -21,12 +21,12 @@
         .exhibitmain__description__name
           商品名
           %span 必須
-          = f.text_field :name,size: "67px", placeholder: "商品名 (必須40文字まで)",id: "productr_name"
+          = f.text_field :name,size: "67px", placeholder: "商品名 (必須40文字まで)" 
         .exhibitmain__description__explanation
           商品の説明
           %span 必須
         .exhibitmain__description__explanation-box 
-          = f.text_area :description, size: "73x7",placeholder: "商品の説明（必須1,000文字以内 (色、素材、重さ、定価、注意点など)  例)              2010年頃に１万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。",id: "product_description"
+          = f.text_area :description, size: "75x8",placeholder: "商品の説明（必須1,000文字以内 (色、素材、重さ、定価、注意点など)  例)              2010年頃に１万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。",id: "product_description"
       .exhibitmain__details
         .exhibitmain__details__name
           商品の詳細
@@ -78,7 +78,7 @@
           配送までの日数
           %span 必須
         .exhibitmain__delivery__days-box
-          = f.select :delivery_days,[["---", 0],["1日~2日で発送", 1],["2日~3日で発送", 2],["4日~7日で発送", 3]] 
+          = f.select :delivery_days,[["---", 0],["1日~2日で発送", 1],["2日~3日で発送", 2],["4日~7日で発送"]] 
       .exhibitmain__price
         .exhibitmain__price__name
           販売価格(300~9,999,999)
@@ -115,10 +115,10 @@
           = link_to("加盟店規約", "＃")
           に同意したことになります。
         .exhibitmain__exhibit__btn
-          = f.submit :出品する,id: "btn"
+          = f.submit :変更する, id: "btn"
         .exhibitmain__exhibit__return
           = link_to :back do
-            %button 戻る
+            %button キャンセル
         #buy-overlay1
           #buy-modalWindow1
             .buy-modal-message-head1
@@ -132,5 +132,6 @@
 = render "layouts/exhibit-footer"
 
 
-= javascript_include_tag 'exhibit.js'
+= javascript_include_tag 'sell_edit.js'
+
 

@@ -30,7 +30,7 @@
         %span.user-confirmation-form1__span
           必須
         .prefecture-select-wrap
-          = f.collection_select :prefecture, Prefecture.all, :id, :name, { prompt:"---" }
+          = f.collection_select :prefecture, Prefecture.all, :id, :name
       .user-confirmation-form2
         %label.user-confirmation-form1__label
           市区町村
