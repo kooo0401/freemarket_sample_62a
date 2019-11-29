@@ -11,7 +11,7 @@
       %ul.itembuy-user-profile
         - @products.each do |product|
           %li.itembuy-user-profile__box
-            =image_tag("/mercari-logo.png", size: '220x220')
+            =image_tag("#{product.images[0].image}", size: '220x220')
             .itembuy-user-profile__body
               %h3.itembuy-user-profile__name
                 = product.name
@@ -29,7 +29,7 @@
       %ul.itembuy-user-profile
         - @products.each do |product|
           %li.itembuy-user-profile__box
-            =image_tag("/mercari-logo.png", size: '220x220')
+            =image_tag("#{product.images[0].image}", size: '220x220')
             .itembuy-user-profile__body
               %h3.itembuy-user-profile__name
                 = product.name
