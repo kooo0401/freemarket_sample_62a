@@ -78,21 +78,18 @@ describe User do
       user = build(:user, city_name: nil)
       user.valid?
       expect(user).to be_invalid(:validates_step3)
-      # expect(user.errors[:city_name]).to include("が入力されていません。")
     end
 
     it "is invalid without a block_name" do
       user = build(:user, block_name: nil)
       user.valid?
       expect(user).to be_invalid(:validates_step3)
-      # expect(user.errors[:block_name]).to include("が入力されていません。")
     end
 
     it "is invalid without a bill_name" do
       user = build(:user, bill_name: nil)
       user.valid?
       expect(user).to be_invalid(:validates_step3)
-      # expect(user.errors[:bill_name]).to include("が入力されていません。")
     end
 
     # ニックネーム
@@ -107,7 +104,6 @@ describe User do
       user = build(:user, nickname: "aaaaaaaaaaaaaaaaaaaaa") # 21文字
       user.valid?
       expect(user).to be_invalid(:validates_step1)
-      # expect(user.errors[:nickname]).to include("は20文字以下に設定して下さい。")
     end
 
     # emailのフォーマットが不適切でないか
@@ -138,7 +134,6 @@ describe User do
       user = build(:user, email: "aaあa@aaa")
       user.valid?
       expect(user).to be_invalid(:validates_step1)
-      # expect(user.errors[:email][0]).to include("は有効でありません。")
     end
 
     # パスワード
