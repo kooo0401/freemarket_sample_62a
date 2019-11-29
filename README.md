@@ -207,8 +207,8 @@ brands,categoryの中身をメルカリサイトから引っ張ってくる際�
 
 
 
-<!-- 以下、編集ページのためテーブル追加 -->
-## delivery_chargedテーブル
+<!-- 以下、編集ページのためテーブル追加か？enum使用の場合、追加しない -->
+<!-- ## delivery_chargedsテーブル
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false|
@@ -226,10 +226,10 @@ brands,categoryの中身をメルカリサイトから引っ張ってくる際�
 - belongs_to :user
 
 
-## delivery_wayテーブル
+## delivery_waysテーブル
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false|
 
-### Association
-- belongs_to :user
+### Association -->
+<!-- - belongs_to :user -->
