@@ -1,4 +1,29 @@
 # require 'rails_helper'
+describe ProductsController do
+  describe 'delete #destroy' do
+    it "deletes the products" do
+      product = create(:product)
+      expect{
+        delete :destroy, params: { id: product.id }
+      }.to change(Product,:count).by(-1)
+    end
+  end
+
+  describe 'PATCH #update' do
+    before do
+      @user = FactoryBot.create(:user)
+      @product = FactoryBot.create(:product, name: "Same Old Name")
+      # @image = Image.create(product_id: "1", image: "mercari-logo.png"
+    end
+    
+    it "update the prpduct name" do
+      sign_in @user
+      product_params = FactoryBot.attributes_for(:product, name: "New Name")
+      patch :update, params: { id: "1", product: product_params }
+      expect(@product.reload.name).not_to eq "Same Old Name"
+    end
+    
+  end
 
 # describe ProductsController do
 #   describe 'delete #destroy' do

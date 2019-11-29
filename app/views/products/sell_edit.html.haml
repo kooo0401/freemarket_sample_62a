@@ -1,0 +1,137 @@
+= render "layouts/exhibit-header"
+
+.exhibitmiddle
+  = form_with model: @product, remote: true do |f|
+    .exhibitmain
+      .exhibitmain__head
+        商品の情報を入力
+      .exhibitmain__upbox
+        = f.fields_for :images do |i|
+          .exhibitmain__upbox__head
+            出品画像
+            %span 必須
+            = i.file_field :image
+          .exhibitmain__upbox__content
+            最大１枚までアップロードできます
+          .exhibitmain__upbox__imagebox1
+            ドラッグアンドドロップ
+            %br
+            またはクリックしてファイルをアップロード
+      .exhibitmain__description
+        .exhibitmain__description__name
+          商品名
+          %span 必須
+          = f.text_field :name,size: "67px", placeholder: "商品名 (必須40文字まで)" 
+        .exhibitmain__description__explanation
+          商品の説明
+          %span 必須
+        .exhibitmain__description__explanation-box 
+          = f.text_area :description, size: "75x8",placeholder: "商品の説明（必須1,000文字以内 (色、素材、重さ、定価、注意点など)  例)              2010年頃に１万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。",id: "product_description"
+      .exhibitmain__details
+        .exhibitmain__details__name
+          商品の詳細
+        .exhibitmain__details__category-name
+          カテゴリー
+          %span 必須
+        .exhibitmain__details__category-box1  
+          = f.collection_select :parent_id, @parent.all, :id, :name, class: "parent_category", name: "parent_box"
+            
+          
+        .exhibitmain__details__category-box2
+          = f.collection_select :child_id, {}, :id, :name, class: "child_category"
+        .exhibitmain__details__category-box3
+          = f.collection_select :category_id, {}, :id, :name, class: "grandchild_category"
+        .exhibitmain__details__size-name
+          サイズ
+          %span 必須
+        .exhibitmain__details__size-box 
+          = f.select :size_id, {}
+        .exhibitmain__details__brand-name
+          ブランド
+          %span.span1 任意
+        .exhibitmain__details__brand-box 
+          = f.text_field :brand ,placeholder: "例）シャネル", class: "exhibitmain__details__brand-box__input"
+        .exhibitmain__details__status-name
+          商品の状態
+          %span 必須 
+        .exhibitmain__details__status-box 
+          = f.select  :sales_status, Product.sales_statuses.keys.map {|k| [I18n.t("enums.product.sales_status.#{k}"), k]}
+      .exhibitmain__delivery
+        .exhibitmain__delivery__name
+          配送について
+        .exhibitmain__delivery__burden
+          配送料の負担
+          %span 必須 
+        .exhibitmain__delivery__burden__box
+          = f.select :delivery_charged, [["---", 0],[ "送料込み（出品者負担）", 1 ],["着払い（購入者負担）", 2] ], {}, class: 'exhibitmain__delivery__burden__box1'
+        .exhibitmain__delivery__way
+          配送方法
+          %span 必須 
+        .exhibitmain__delivery__way-box
+          = f.select :delivery_way, [["---", 0],["クロネコヤマト", 1],["ゆうパック", 2],["ゆうメール", 3]], {}, class: 'exhibitmain__delivery__way-box1'
+        .exhibitmain__delivery__area
+          配送元の地域
+          %span 必須 
+        .exhibitmain__delivery__area-box
+          = f.collection_select :area, Prefecture.all, :id, :name
+        .exhibitmain__delivery__days  
+          配送までの日数
+          %span 必須
+        .exhibitmain__delivery__days-box
+          = f.select :delivery_days,[["---", 0],["1日~2日で発送", 1],["2日~3日で発送", 2],["4日~7日で発送"]] 
+      .exhibitmain__price
+        .exhibitmain__price__name
+          販売価格(300~9,999,999)
+        .exhibitmain__price__group
+          .exhibitmain__price__group__left
+            価格
+            %span 必須
+          .exhibitmain__price__group__right
+            ¥
+            = f.text_field :price, id: "pricebox", placeholder: "例） 300"     
+        .exhibitmain__price__fee
+          .exhibitmain__price__fee__left
+            販売手数料（10％）
+          .exhibitmain__price__fee__left__box
+            #priceboxa
+          .exhibitmain__price__fee__right
+        .exhibitmain__price__profit
+          .exhibitmain__price__profit__left
+            販売利益
+          .exhibitmain__price__profit__right
+            #priceboxb
+      .exhibitmain__exhibit
+        .exhibitmain__exhibit__text
+          = link_to("禁止されている出品", "＃")
+          、
+          = link_to("行為", "＃")
+          を必ずご確認ください。
+          %br
+          またブランド品でシリアルナンバー等がある場合はご記載ください。
+          = link_to("偽ブランドの販売", "＃")
+          は犯罪であり処罰される可能性があります。
+          %br
+          また、出品をもちまして
+          = link_to("加盟店規約", "＃")
+          に同意したことになります。
+        .exhibitmain__exhibit__btn
+          = f.submit :変更する, id: "btn"
+        .exhibitmain__exhibit__return
+          = link_to :back do
+            %button キャンセル
+        #buy-overlay1
+          #buy-modalWindow1
+            .buy-modal-message-head1
+              %div#buy-modal-message-head1 出品が完了しました。
+            .buy-modal-message-boy1
+              #buy-modal-text1 あなたが出品した商品は「出品した商品一覧」からいつでも見ることができます。     
+              #purchase-exhibit-btn1 続けて出品する
+              .buy-modal-text2 
+              = link_to("商品ページに行ってシェアする。", "＃")
+
+= render "layouts/exhibit-footer"
+
+
+= javascript_include_tag 'sell_edit.js'
+
+
