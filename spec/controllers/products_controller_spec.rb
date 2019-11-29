@@ -47,12 +47,19 @@ describe ProductsController do
 #   end
 # end
   
-#   describe ProductsController do
-#     it 'render top page' do
-#       get :index
-#       expect(response).to render_template :index
-#     end
-#   end
+  describe 'GET #index' do
+    it 'assigns the requested product to @product' do
+      products = create_list(:product, 10)
+      get :index
+      expect(assigns(:products)).to match(products.sort{|a, b| b <=> a})
+    end
+  
+    it 'render top page' do
+      get :index
+      expect(response).to render_template :index
+    end
+  end
+
 
 #   以下、出品ページの登録時に実装する
 # describe ProductsController do
