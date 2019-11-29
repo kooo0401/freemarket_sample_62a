@@ -55,6 +55,8 @@ class ProductsController < ApplicationController
   def sell_edit
     @product = Product.find(params[:id])
     @parent = Category.where(id: 1..13)
+    @product_fee = (@product.price * 0.1).round
+    @product_profit = (@product.price * 0.9).round
   end
 
   def update 
