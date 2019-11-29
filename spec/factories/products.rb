@@ -7,7 +7,7 @@ FactoryBot.define do
     delivery_charged    {1}
     area                {1}
     delivery_days       {1}
-    sales_status        {1}
+    sales_status        {'unused'}
     delivery_way        {1}
     user_id             {1}
     category_id         {1}
