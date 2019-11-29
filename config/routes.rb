@@ -24,9 +24,9 @@ Rails.application.routes.draw do
       get '/products/:id', to: "products#change", as: :users_myproduct_change #要検討20191125
       delete '/products/:id', to: "products#destroy"
       patch '/products/:id', to: "products#update"
+      get '/products/:id/edit', to: "products#sell_edit", as: :myedit
     end
     member do
-      get '/products/:id/edit', to: "products#sell_edit", as: :myedit
       get 'logout'
       get 'profile'
       get 'credit_add'
