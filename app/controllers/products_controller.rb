@@ -93,10 +93,6 @@ class ProductsController < ApplicationController
     end
   end
 
-
-  def change
-  end
-
   def ensure_correct_product
 
     redirect_to root_path if current_user.id !=  @product.user_id
