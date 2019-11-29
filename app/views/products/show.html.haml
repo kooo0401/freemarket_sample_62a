@@ -7,27 +7,30 @@
       .itembuy-content__photo
         .itembuy-content__auter
           .itembuy-content__owl-carousel
+            - if @product.status_id == 3
+              .sold-out
+              %p.sold-out-name SOLD
             .owl-carousel-space
-              =image_tag("/IMG_mercari-footer-image.png", class: 'owl-carousel-main show', size: '300x300')
-              =image_tag("/IMG_footer-top-image.png", class: 'owl-carousel-main', size: '300x300')
-              =image_tag("/IMG_mercari-footer-image.png", class: 'owl-carousel-main', size: '300x300')
-              =image_tag("/IMG_footer-top-image.png", class: 'owl-carousel-main', size: '300x300')
-              =image_tag("/IMG_mercari-footer-image.png", class: 'owl-carousel-main', size: '300x300')
-              =image_tag("/IMG_footer-top-image.png", class: 'owl-carousel-main', size: '300x300')
+              =image_tag("/for_js/js_1.jpg", class: 'owl-carousel-main show', size: '300x300')
+              =image_tag("/for_js/js_2.jpg", class: 'owl-carousel-main', size: '300x300')
+              =image_tag("/for_js/js_3.jpg", class: 'owl-carousel-main', size: '300x300')
+              =image_tag("/for_js/js_4.jpg", class: 'owl-carousel-main', size: '300x300')
+              =image_tag("/for_js/js_5.jpg", class: 'owl-carousel-main', size: '300x300')
+              =image_tag("/for_js/js_6.jpg", class: 'owl-carousel-main', size: '300x300')
         .itembuy-content__owl-carousel-thumb
-          =image_tag("/IMG_mercari-footer-image.png", class: 'owl-carousel-sub active', size: '60x60')
-          =image_tag("/IMG_footer-top-image.png", class: 'owl-carousel-sub', size: '60x60')
-          =image_tag("/IMG_mercari-footer-image.png", class: 'owl-carousel-sub', size: '60x60')
-          =image_tag("/IMG_footer-top-image.png", class: 'owl-carousel-sub', size: '60x60')
-          =image_tag("/IMG_mercari-footer-image.png", class: 'owl-carousel-sub', size: '60x60')
-          =image_tag("/IMG_footer-top-image.png", class: 'owl-carousel-sub', size: '60x60')
+          =image_tag("/for_js/js_1.jpg", class: 'owl-carousel-sub active', size: '60x60')
+          =image_tag("/for_js/js_2.jpg", class: 'owl-carousel-sub', size: '60x60')
+          =image_tag("/for_js/js_3.jpg", class: 'owl-carousel-sub', size: '60x60')
+          =image_tag("/for_js/js_4.jpg", class: 'owl-carousel-sub', size: '60x60')
+          =image_tag("/for_js/js_5.jpg", class: 'owl-carousel-sub', size: '60x60')
+          =image_tag("/for_js/js_6.jpg", class: 'owl-carousel-sub', size: '60x60')
       %table.itembuy-content__table
         %tbody
           %tr
             %th 出品者
             %td
-              = link_to "/" do
-                @user.nickname
+              = link_to "/", class: "user-nickname" do
+                = @product.user.nickname
               %div
                 .itembuy-content__ratings{ id: 'itembuy-icon-good' }
                   =fa_icon 'smile-o', class: 'icon-r'
@@ -41,15 +44,15 @@
           %tr
             %th カテゴリー
             %td
-              = link_to "レディース", "#"
+              = link_to "#{@parent.name}", "#", class: "parent-category"
               %br
-              = link_to "＞ジャケット/アウター", "#"
+              = link_to "＞#{@child.name}", "#", class: "child-category"
               %br
-              = link_to "＞ジャンパー/ブルゾン", "#"
+              = link_to "＞#{@grandchild.name}", "#", class: "grandchild-category"
           %tr
             %th  ブランド
             %td
-              = link_to "3カン4カン", "#"
+              = link_to "#{@product.brand}", "#", class: "brand-link"
           %tr
             %th 商品のサイズ
             %td
@@ -65,29 +68,33 @@
             %th 配送料の負担
             %td
               %span
-                送料込み(出品者負担)
+                = @product.delivery_charged
           %tr
             %th 配送の方法
             %td
               %span
-                普通郵便(定形、定形外)
+                = @product.delivery_way
           %tr
             %th 配送元地域
             %td
               %span
-              = link_to "大阪府", "#"  
+              = link_to "#{@product.area}", "#", class: "area-link"
           %tr
             %th 発送日の目安
             %td
               %span
-                2~3日で発送
+                = @product.delivery_days
     .itembuy-content__price
       %span.itembuy-content__bold<
-        = @product.price.to_s(:delimited)
+        = "¥#{@product.price.to_s(:delimited)}"
       %span.itembuy-content__tax (税込)
       %span.itembuy-content__fee 送料込み
-      = link_to edit_product_path, class: "itembuy-price-box" do
-        購入画面に進む
+      - if @product.status_id == 1
+        = link_to edit_product_path, class: "itembuy-price-box" do
+          購入画面に進む
+      - elsif @product.status_id == 3
+        .sold-out-btn
+          %p.sold-out-name2 売り切れました
     .itembuy-detail
       %p.itembuy-detail__inner
         =@product.description
@@ -116,17 +123,20 @@
       %form.itembuy-message__form
         %p 相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
         %textarea
+      - if @product.status_id == 1
         %button
           %span 
             コメントする
-      %ul.itembuy-nav
-        %li.itembuy-nav__left
-          = fa_icon 'chevron-left', class: 'icon-g'
-          = link_to "@prev_product.name","#"
-      %ul.itembuy-nav
-        %li.itembuy-nav__right
-          = link_to "@next_product.name","#"
-          = fa_icon 'chevron-right', class: 'icon-g'
+      - elsif @product.status_id == 3
+        .sold-out-btn2
+          %p.sold-out-name2 売り切れのためコメントできません
+        .itembuy-nav
+          .itembuy-nav__left
+            = fa_icon 'chevron-left', class: 'icon-g'
+            = link_to "","#"
+          .itembuy-nav__right
+            = link_to "","#"
+            = fa_icon 'chevron-right', class: 'icon-g'
   .itembuy-media-box
     %ul.itembuy-media-box__list
       %li
