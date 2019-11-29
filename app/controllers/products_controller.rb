@@ -1,8 +1,9 @@
 class ProductsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :change, :destroy]
+  before_action :authenticate_user!, only: [:new, :change, :destroy, :edit]
   before_action :set_product, only: [:destroy, :change, :show, :edit, :ensure_correct_product]
+  before_action :set_category, only: [:show, :change]
   before_action :ensure_correct_product, only: [:change]
-  
+
 
   def index
     # @products = Product.order("id DESC").limit(10)
@@ -32,12 +33,12 @@ class ProductsController < ApplicationController
 
   def show
     @products = Product.order("id DESC").limit(6)
+    @images = @product.images.where(product_id: @product.id)
     #実際にテーブルからid:1のproductを取得できているかの記述。
     # 商品出品が可能になったら、一つ一つのproductからidで取得する。
-    @grandchild = Category.find("#{@product.category_id}")
-    @child = @grandchild.parent
-    @parent = @child.parent
-    redirect_to  users_myproduct_change_users_path(@product) if @product.user_id == current_user.id
+    if user_signed_in?
+      redirect_to  users_myproduct_change_users_path(@product) if @product.user_id == current_user.id
+    end
   end
 
   def edit
@@ -64,7 +65,7 @@ class ProductsController < ApplicationController
   def destroy
     if @product.destroy
       flash[:notice] = '商品が削除されました'
-      redirect_to  myproducts_exhibiting_user_path(current_user)
+      redirect_to myproducts_exhibiting_user_path(current_user)
     else
       flash[:notice] = '問題が発生して削除できませんでした'
       redirect_to root_path
@@ -111,5 +112,11 @@ class ProductsController < ApplicationController
     if @product.size_id.present?
       @size = Size.find(@product.size_id)
     end
+  end
+
+  def set_category
+    @grandchild = Category.find("#{@product.category_id}")
+    @child = @grandchild.parent
+    @parent = @child.parent
   end
 end
