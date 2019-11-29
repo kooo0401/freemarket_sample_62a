@@ -117,8 +117,7 @@
         .exhibitmain__exhibit__btn
           = f.submit :出品する,id: "btn"
         .exhibitmain__exhibit__return
-          = link_to :back do
-            %button 戻る
+          = link_to "もどる", "/", class: "button"
         #buy-overlay1
           #buy-modalWindow1
             .buy-modal-message-head1
@@ -127,7 +126,8 @@
               #buy-modal-text1 あなたが出品した商品は「出品した商品一覧」からいつでも見ることができます。     
               #purchase-exhibit-btn1 続けて出品する
               .buy-modal-text2 
-              = link_to "商品ページに行ってシェアする。", myproducts_exhibiting_user_path(current_user_id)
+                = link_to("商品ページに行ってシェアする。", myproducts_exhibiting_user_path(current_user.id) )
+
 
 = render "layouts/exhibit-footer"
 
