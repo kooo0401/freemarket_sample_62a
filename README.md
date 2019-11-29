@@ -204,3 +204,32 @@ brands,categoryの中身をメルカリサイトから引っ張ってくる際�
 ### Association
 - belongs_to :user
 <!-- oauth認証のため追加 191118平野 -->
+
+
+
+<!-- 以下、編集ページのためテーブル追加 -->
+## delivery_chargedテーブル
+|Column|Type|Options|
+|------|----|-------|
+|name|string|null: false|
+
+### Association
+- belongs_to :user
+
+
+## delivery_daysテーブル
+|Column|Type|Options|
+|------|----|-------|
+|name|string|null: false|
+
+### Association
+- belongs_to :user
+
+
+## delivery_wayテーブル
+|Column|Type|Options|
+|------|----|-------|
+|name|string|null: false|
+
+### Association
+- belongs_to :user
