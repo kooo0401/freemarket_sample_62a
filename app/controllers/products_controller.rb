@@ -41,10 +41,32 @@ class ProductsController < ApplicationController
     end
   end
 
+  def change
+    @product = Product.find(params[:id])
+  end
+
   def edit
     gon.product_price = @product.price
     gon.all_point = current_user.point
   end
+
+  def sell_edit
+    @product = Product.find(params[:id])
+    @parent = Category.where(id: 1..13)
+  end
+
+  def update 
+    @product = Product.find(params[:id])
+
+    if @product.update(product_params) 
+      @product.images[0].destroy
+      redirect_to root_path
+    else       
+      render :edit
+    end
+  end
+
+
 
   
   def create
