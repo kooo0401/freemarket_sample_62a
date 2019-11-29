@@ -34,18 +34,18 @@
           カテゴリー
           %span 必須
         .exhibitmain__details__category-box1  
-          = f.collection_select :parent_id, @parent.all, :id, :name, class: "parent_category", name: "parent_box"
+          = f.collection_select :parent_id, @parent_group.all, :id, :name, class: "parent_category", name: "parent_box", selected: "#{@product.category_id}"
             
           
         .exhibitmain__details__category-box2
-          = f.collection_select :child_id, {}, :id, :name, class: "child_category"
+          = f.collection_select :child_id, @child_group.all, :id, :name, class: "child_category", selected: "#{@selected_child_category.id}"
         .exhibitmain__details__category-box3
-          = f.collection_select :category_id, {}, :id, :name, class: "grandchild_category"
+          = f.collection_select :category_id, @grandchild_group.all, :id, :name, class: "grandchild_category", selected: "#{@selected_grandson_category.id}"
         .exhibitmain__details__size-name
           サイズ
           %span 必須
         .exhibitmain__details__size-box 
-          = f.select :size_id, {}
+          = f.collection_select :size_id, @size_tag_group.all, :id, :size_name, selected: "#{@size.id}"
         .exhibitmain__details__brand-name
           ブランド
           %span.span1 任意

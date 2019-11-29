@@ -138,10 +138,11 @@ $(function(){
 
 
 $(function(){
-  $('#product_child_id').hide();
-  $('#product_category_id').hide();
-  $('.exhibitmain__details__size-name').hide();
-  $('#product_size_id').hide();
+  //  $('#product_size_id').hide();
+  if ( gon.selected_size == null ){
+    $('.exhibitmain__details__size-name').hide();
+    $('#product_size_id').hide();
+  }
   $('#product_parent_id').change(function() {
     var parent_id = $('#product_parent_id').val();
     $.ajax({
