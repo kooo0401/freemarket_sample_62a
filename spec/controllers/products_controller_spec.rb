@@ -22,6 +22,7 @@ describe ProductsController do
       patch :update, params: { id: "1", product: product_params }
       expect(@product.reload.name).not_to eq "Same Old Name"
     end
+    
   end
 
 # describe ProductsController do

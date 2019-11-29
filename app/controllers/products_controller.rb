@@ -61,8 +61,9 @@ class ProductsController < ApplicationController
     if @product.update(product_params) 
       @product.images[0].destroy
       redirect_to root_path
+    else       
+      render :edit
     end
-    
   end
 
 
