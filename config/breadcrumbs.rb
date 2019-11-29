@@ -21,17 +21,22 @@ crumb :user_confirmation do
   parent :user_show
 end
 
-# crumb :user_myaddress do
-#   link "発送元・お届け先住所変更", myaddress_user_path
-#   parent :user_show
-# end
+crumb :user_myaddress do
+  link "発送元・お届け先住所変更", myaddress_user_path
+  parent :user_show
+end
 
-# crumb :user_mail_pass do
-#   link "メール/パスワード", mail_pass_user_path
-#   parent :user_show
-# end
+crumb :user_mail_pass do
+  link "メール/パスワード", mail_pass_user_path
+  parent :user_show
+end
 
-# crumb :user_tel do
-#   link "本人情報の登録", tel_user_path
-#   parent :user_show
-# end
+crumb :user_tel do
+  link "電話番号の確認", tel_user_path
+  parent :user_show
+end
+
+crumb :user_logout do
+  link "ログアウト", logout_user_path
+  parent :user_show
+end

@@ -17,10 +17,13 @@
   - breadcrumb :user_myaddress
 
 - when ['users', 'mail_pass']
-  - breadcrumb :user_confirmation
+  - breadcrumb :user_mail_pass
 
 - when ['users', 'tel']
   - breadcrumb :user_tel
+
+- when ['users', 'logout']
+  - breadcrumb :user_logout
 
 = breadcrumbs separator: ' &nbsp;>&nbsp;&nbsp;',class: 'bread-crumbs'
 
