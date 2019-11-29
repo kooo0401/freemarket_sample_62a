@@ -90,13 +90,6 @@ class ProductsController < ApplicationController
     end
   end
 
-  def ensure_correct_product
-
-    redirect_to root_path if current_user.id !=  @product.user_id
-
-  end
-
-
   # 以下、仮に人気カテゴリー、人気ブランドをリアルタイム対応させる場合の記述。
   # productテーブルにcategory_idカラムとbrand_idカラムを追加した後に実装予定
   # ------------------------------------------------------------------------------------------------
