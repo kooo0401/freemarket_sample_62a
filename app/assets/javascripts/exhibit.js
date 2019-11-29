@@ -119,18 +119,16 @@ $(function(){
 
 
 
-// $(function(){
-//   $('.exhibitmain__details__brand-box').click(function(){
-//     $('#buy-overlay1').fadeIn();
-//     $('haml, body').css('overflow', 'hidden');
-//   });
-//   jQuery('#purchase-exhibit-btn1').click(function() {
-//     window.location.href = "/";
-//   });
-//   });
+$(function(){
+  $('.exhibitmain__exhibit__btn').click(function(){
+    $('#buy-overlay1').fadeIn();
+    $('haml, body').css('overflow', 'hidden');
+  });
+  jQuery('#purchase-exhibit-btn1').click(function() {
+    window.location.href = "new";
+  });
+  });
 });
-
-
 
 $(function(){
   $('#product_child_id').hide();

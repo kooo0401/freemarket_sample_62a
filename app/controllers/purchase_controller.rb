@@ -1,5 +1,6 @@
 class PurchaseController < ApplicationController
   before_action :set_product, only: [:index, :pay]
+  before_action :user_restriction, except: [:done]
   require 'payjp'
 
   def index
@@ -40,4 +41,9 @@ class PurchaseController < ApplicationController
   def set_product
     @product = Product.find_by(id: params[:product_id])
   end
+
+  def user_restriction
+    redirect_to root_path if current_user.id == @product.user_id
+  end
+
 end

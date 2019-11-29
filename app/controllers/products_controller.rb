@@ -2,7 +2,7 @@ class ProductsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :change, :destroy, :edit]
   before_action :set_product, only: [:destroy, :change, :show, :edit, :ensure_correct_product]
   before_action :set_category, only: [:show, :change]
-  before_action :ensure_correct_product, only: [:change]
+  before_action :ensure_correct_product, except: [:index, :new, :show, :edit, :create]
 
 
   def index
@@ -68,9 +68,6 @@ class ProductsController < ApplicationController
     end
   end
 
-
-
-  
   def create
     @product = Product.new(product_params)
     # @product = current_user.products.build(product_params)
@@ -88,25 +85,12 @@ class ProductsController < ApplicationController
   
   def destroy
     if @product.destroy
-      flash[:notice] = '商品が削除されました'
       redirect_to myproducts_exhibiting_user_path(current_user)
     else
       flash[:notice] = '問題が発生して削除できませんでした'
       redirect_to root_path
     end
   end
-
-
-  def change
-  end
-
-  def ensure_correct_product
-
-    redirect_to root_path if current_user.id !=  @product.user_id
-
-  end
-
-
 
   # 以下、仮に人気カテゴリー、人気ブランドをリアルタイム対応させる場合の記述。
   # productテーブルにcategory_idカラムとbrand_idカラムを追加した後に実装予定
@@ -143,4 +127,10 @@ class ProductsController < ApplicationController
     @child = @grandchild.parent
     @parent = @child.parent
   end
+
+  def ensure_correct_product
+    @product = Product.find(params[:id])
+    redirect_to root_path if current_user.id !=  @product.user_id
+  end
+
 end

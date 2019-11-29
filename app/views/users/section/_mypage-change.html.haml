@@ -90,7 +90,7 @@
         = @product.description
   .itembuy-content__change-status
     .itembuy-content__change-status-btns
-      = link_to '商品の編集', myedit_user_path, class: 'itembuy-red-box' 
+      = link_to '商品の編集', myedit_users_path, class: 'itembuy-red-box' 
     .itembuy-content__text-center
       or
     .itembuy-content__change-status-btns
@@ -115,3 +115,5 @@
         %button
           %span  
             コメントする
+
+= javascript_include_tag 'mypage-change.js'
