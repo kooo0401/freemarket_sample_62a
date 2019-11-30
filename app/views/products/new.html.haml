@@ -14,9 +14,8 @@
           .exhibitmain__upbox__content
             最大１枚までアップロードできます
           .exhibitmain__upbox__imagebox1
-            ドラッグアンドドロップ
-            %br
-            またはクリックしてファイルをアップロード
+            %p.exhibitmain__upbox__imagebox1--first ドラッグアンドドロップ
+            %p.exhibitmain__upbox__imagebox1--second またはクリックしてファイルをアップロード
       .exhibitmain__description
         .exhibitmain__description__name
           商品名
@@ -127,6 +126,7 @@
               #purchase-exhibit-btn1 続けて出品する
               .buy-modal-text2 
                 = link_to("商品ページに行ってシェアする。", myproducts_exhibiting_user_path(current_user.id) )
+
 
 = render "layouts/exhibit-footer"
 
