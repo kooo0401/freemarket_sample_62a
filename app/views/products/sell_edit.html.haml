@@ -10,7 +10,7 @@
           .exhibitmain__upbox__head
             出品画像
             %span 必須
-            = i.file_field :image
+            = i.file_field :image, value: "#{@product.images[0].image}"
           .exhibitmain__upbox__content
             最大１枚までアップロードできます
           .exhibitmain__upbox__imagebox1
