@@ -11,6 +11,9 @@
               .new-item__content
                 =link_to product_path(product), class: "new-item-image" do
                   %figure.figure-container
+                    - if product.status_id == 3
+                      .sold-out
+                      %p.sold-out-name SOLD
                     %figcaption.figure-container__figcaption
                       %span.figure-container__figcaption__span
                         = product.name

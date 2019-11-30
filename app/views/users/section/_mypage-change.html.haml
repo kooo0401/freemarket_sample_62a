@@ -98,7 +98,7 @@
         出品を一旦停止する
     .itembuy-content__change-status-btns
       .itembuy-gray-box2
-        = link_to "この商品を削除する", "#{@product.id}", method: :delete, id: "purchase-comformation-btn"
+        この商品を削除する
     #buy-overlay
       #buy-modalWindow
         .buy-modal-message-box
@@ -115,3 +115,5 @@
         %button
           %span  
             コメントする
+
+= javascript_include_tag 'mypage-change.js'

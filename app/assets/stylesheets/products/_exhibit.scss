@@ -387,16 +387,20 @@
         border: 1px solid #ea352d;
         color: #fff;
         font-size: 14px;
+        cursor: pointer;
       }
   }
     &__return{
-      button{
+      .button{
         width: 279px;
         height: 50px;
         margin: 24px 170.5px 0px;
         background-color: #aaaaaa;
         color: #fff;
         font-size: 14px;
+        display: inline-block;
+        text-align: center;
+        padding-top: 18px;
       }
     }
   }
@@ -411,6 +415,7 @@
   background: rgba(0, 0, 0, 0.3);
   display: none;
   z-index: 1;
+  cursor: pointer;
 }
  #buy-modalWindow1 {
   position: absolute;
