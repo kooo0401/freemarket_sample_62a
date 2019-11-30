@@ -10,7 +10,7 @@
 https://gyazo.com/5d9e5aacbf84e2b858a57faa4aac2c2f
 
 マイページ一覧
-https://gyazo.com/c7bc2c93cdef4a2bebe8f80dfd84a91e
+https://gyazo.com/481a1831ee050397572e18402318e03a
 
 出品一覧ページ
 https://gyazo.com/d4abe2e0fe43860b11642a2b9418f864
