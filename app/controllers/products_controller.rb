@@ -3,6 +3,7 @@ class ProductsController < ApplicationController
   before_action :set_product, only: [:destroy, :change, :show, :edit, :ensure_correct_product]
   before_action :set_category, only: [:show, :change]
   before_action :ensure_correct_product, except: [:index, :new, :show, :edit, :create]
+  before_action :set_image, only: [:show, :change]
 
 
   def index
@@ -33,8 +34,6 @@ class ProductsController < ApplicationController
 
   def show
     @products = Product.order("id DESC").limit(6)
-    @image = @product.images.first
-    @images = @product.images.where(product_id: @product.id)
     # @imagesall = @images.where(id: [1,2,3])
     #実際にテーブルからid:1のproductを取得できているかの記述。
     # 商品出品が可能になったら、一つ一つのproductからidで取得する。
@@ -128,6 +127,11 @@ class ProductsController < ApplicationController
     @grandchild = Category.find("#{@product.category_id}")
     @child = @grandchild.parent
     @parent = @child.parent
+  end
+
+  def set_image
+    @image = @product.images.first
+    @images = @product.images.where(product_id: @product.id)
   end
 
   def ensure_correct_product
