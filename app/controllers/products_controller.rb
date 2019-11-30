@@ -65,19 +65,17 @@ class ProductsController < ApplicationController
 
   def update 
     @product = Product.find(params[:id])
-
     if @product.update(product_params) 
-      @product.images[0].destroy
+      # @product.images[0].destroy
       redirect_to root_path
     else       
-      render :edit
+      redirect_to myedit_users_path(@product)
     end
   end
 
   def create
     @product = Product.new(product_params)
     # @product = current_user.products.build(product_params)
-
         if @product.save
           # 下記コメントアウト３行は今後使用予定です 191124 髙橋
           # params[:images][:image].each do |image|
@@ -116,7 +114,7 @@ class ProductsController < ApplicationController
                     :category_id,
                     :brand,
                     :size_id,
-                    images_attributes: [:image])
+                    images_attributes: [:image, :id])
           .merge(user_id: current_user.id)
   end
 
