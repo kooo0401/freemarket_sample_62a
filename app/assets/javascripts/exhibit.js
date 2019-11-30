@@ -126,19 +126,21 @@ $(function()  {
 });
 
 $(function(){
-
-  $('.exhibitmain__exhibit__btn').click(function(){
-  
-
-    $('#buy-overlay1').fadeIn();
-    $('haml, body').css('overflow', 'hidden');
+  $('.super_btn').on('click', function(){
+    if ($('.image-form').val() === ""){
+      alert('イメージをアップロードしてください');
+      $('.image-form').focus();
+      return false;
+    }else{
+      $('#buy-overlay1').fadeIn()
+          $('haml, body').css('overflow', 'hidden');
+        jQuery('#purchase-exhibit-btn1').click(function() {
+          window.location.href = "new";
+      });
+    }
   });
-  jQuery('#purchase-exhibit-btn1').click(function() {
+})
 
-    window.location.href = "new";
-  });
-  });
-});
 
 
 
@@ -173,7 +175,6 @@ $(function(){
       alert('error');
     })
   });
-  //孫カテゴリー実装のための記述 村上191127
   $('#product_child_id').change(function() {
     var child_id = $('#product_child_id').val();
     $.ajax({
@@ -222,5 +223,5 @@ $(function(){
         alert('error');
       });
     });
-
+  })
 })

@@ -4,10 +4,8 @@ class Product < ApplicationRecord
  
   has_many :images , dependent: :destroy
   accepts_nested_attributes_for :images
-
- 
   
-
+  
   belongs_to :category
   # DB変更に伴い、brandを削除してます 191128 髙橋
   # belongs_to :brand
@@ -26,6 +24,15 @@ class Product < ApplicationRecord
 
   validates :price, presence: true, numericality: { only_integr: true,greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999 }
 
+  # validates_associated :images
+  validate :must_have_image
+
+  def must_have_image
+    if images.empty?
+      errors.add("")
+    end
+  end
+  
 
   enum sales_status:{
     '---':           0, #---
