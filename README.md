@@ -108,11 +108,11 @@ creditsテーブルは不要（payjpにより、cardsテーブルを作成した
 |description|text|null :false|
 |name|string|null: false|
 |price|integer|null: false|
-|delivery_charged|string|null: false|
+|delivery_charged|integer|null: false|
 <!-- |area|string|null: false| -->
-|delivery_days|string|null: false|
-|sales_status|string|null: false|
-|delivery_way|string|null: false|
+|delivery_days|integer|null: false|
+|sales_status|integer|null: false|
+|delivery_way|ingteger|null: false|
 |user_id|integer|foreign_key: true, null: false|
 |category_id|integer|foreign_key: true, null: false|
 |brand|string|
