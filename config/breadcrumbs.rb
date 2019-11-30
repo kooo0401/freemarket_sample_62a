@@ -40,3 +40,18 @@ crumb :user_logout do
   link "ログアウト", logout_user_path
   parent :user_show
 end
+
+crumb :user_myproducts_exhibiting do
+  link "出品した商品−出品中", myproducts_exhibiting_user_path
+  parent :user_show
+end
+
+crumb :user_myproducts_trading do
+  link "出品した商品−取引中", myproducts_trading_user_path
+  parent :user_show
+end
+
+crumb :user_myproducts_sold do
+  link "出品した商品−売却済み", myproducts_sold_user_path
+  parent :user_show
+end

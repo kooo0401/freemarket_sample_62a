@@ -5,6 +5,25 @@
  誰でも簡単に売買が楽しめるフリマアプリ機能を再現しています。
  ユーザー登録、出品、購入機能を再現しています。
 
+***DEMO:***
+トップページ
+https://gyazo.com/5d9e5aacbf84e2b858a57faa4aac2c2f
+
+マイページ一覧
+https://gyazo.com/c7bc2c93cdef4a2bebe8f80dfd84a91e
+
+出品一覧ページ
+https://gyazo.com/d4abe2e0fe43860b11642a2b9418f864
+
+商品購入画面
+https://gyazo.com/2e3f5d2576c4a503cfdb88bde8cf8ee9
+
+商品詳細ページ
+https://gyazo.com/9ca15722253b74a0fe9fe9bd1faa4c82
+
+会員情報入力画面
+https://gyazo.com/7fef038be95b1fa8b9b47212bf1cf83a
+
  ## Features
 
 - HAML/SASS記法とBEMの命名規則に基づいたマークアップ
@@ -12,6 +31,11 @@
 - ajaxを使用した非同期通信
 - RSpecを使った単体テスト
 - AWS EC2へのデプロイ
+- SNS認証による新規登録、ログイン
+- ActiveStorageを使用しAWS S3への画像アップロード
+- pay.jpによる購入処理
+- グレーテルgemを使用したパンくず機能
+- Jqueryによるスライド・モーダル機能
 
 ## Requirement
 
@@ -23,6 +47,15 @@
    $ git clone http://github.com/kooo0401/freemarket_sample_62a.git
    $ cd freemarket_sample_62a
    $ bundle install
+
+## Author 
+6名によるチーム開発
+keitaro hirano
+hideaki takahashi
+koudai  hori
+masaki  murakami
+daisuke sakurada
+masatoshi muraoka
 
 # DB設計
 
