@@ -108,26 +108,28 @@ creditsテーブルは不要（payjpにより、cardsテーブルを作成した
 |description|text|null :false|
 |name|string|null: false|
 |price|integer|null: false|
-|delivery_charged|string|null: false|
-|area|string|null: false|
-|delivery_days|string|null: false|
-|sales_status|string|null: false|
-|delivery_way|string|null: false|
+|delivery_charged|integer|null: false|
+<!-- |area|string|null: false| -->
+|delivery_days|integer|null: false|
+|sales_status|integer|null: false|
+|delivery_way|ingteger|null: false|
 |user_id|integer|foreign_key: true, null: false|
 |category_id|integer|foreign_key: true, null: false|
 |brand|string|
 |status_id|integer|foreign_key: true, default: 1|
 |size_id||integer||foreign_key: true|
+|prefecture_id|integer|null:false|
 <!-- categorry_idカラム, brand_idカラムを追加 191112平野 -->
 <!-- status_idカラム, size_idカラムを追加 191117村上・髙橋 -->
 <!-- brand_idカラムを削除・brandカラムを追加 191128髙橋 -->
-
+<!-- prefecture active hashとアソシエーションを組んで、都道府県名を表示させるため、prefecture_id追加 -->
 
 ### Association
 - belongs_to :user
 - belongs_to :category
 - belongs_to :status
 - belongs_to :size
+- belongs_to_active_hash :prefecture
 - has_many :images, dependent: :destroy
 - has_one :history, dependent: :destroy
 <!-- size,status を belongs_to に変更 191117髙橋-->
@@ -204,3 +206,4 @@ brands,categoryの中身をメルカリサイトから引っ張ってくる際�
 ### Association
 - belongs_to :user
 <!-- oauth認証のため追加 191118平野 -->
+

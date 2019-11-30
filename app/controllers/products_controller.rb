@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :change, :destroy, :edit]
-  before_action :set_product, only: [:destroy, :change, :show, :edit, :ensure_correct_product]
+  before_action :set_product, only: [:destroy, :change, :show, :edit, :ensure_correct_product, :sell_edit]
   before_action :set_category, only: [:show, :change]
   before_action :ensure_correct_product, except: [:index, :new, :show, :edit, :create]
   before_action :set_image, only: [:show, :change]
@@ -52,8 +52,13 @@ class ProductsController < ApplicationController
   end
 
   def sell_edit
-    @product = Product.find(params[:id])
-    @parent = Category.where(id: 1..13)
+    @parent_group = Category.where(id: 1..13)
+    @selected_grandson_category = Category.find(@product.category_id)
+    @grandchild_group = @selected_grandson_category.siblings
+    @selected_child_category = @selected_grandson_category.parent
+    @child_group = @selected_child_category.siblings
+    @size_tag_group = Size.where(size_tag: @size.size_tag)
+    gon.selected_size = @size
     @product_fee = (@product.price * 0.1).round
     @product_profit = (@product.price * 0.9).round
   end
@@ -107,7 +112,7 @@ class ProductsController < ApplicationController
   def product_params
     params.require(:product)
             .permit(:description, :name, :price, :delivery_charged,
-                    :area, :delivery_days, :sales_status, :delivery_way, 
+                    :prefecture_id, :delivery_days, :sales_status, :delivery_way, 
                     :category_id,
                     :brand,
                     :size_id,
