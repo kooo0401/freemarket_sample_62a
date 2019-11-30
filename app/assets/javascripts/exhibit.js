@@ -181,8 +181,6 @@ $(function(){
       url: '../api/products2',
       data: {id : child_id},
       dataType: 'json',
-      // contentType: false,
-      // processData: false,
     })
     .done(function(data){
       var obj2 = data;
@@ -207,8 +205,6 @@ $(function(){
         url: '../api/products3',
         data: {id : grandchild_id},
         dataType: 'json',
-        // contentType: false,
-        // processData: false,
       })
       .done(function(data){
         var obj3 = data;
