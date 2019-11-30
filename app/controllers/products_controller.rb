@@ -2,8 +2,8 @@ class ProductsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :change, :destroy, :edit]
   before_action :set_product, only: [:destroy, :change, :show, :edit, :ensure_correct_product, :sell_edit]
   before_action :set_category, only: [:show, :change]
-  before_action :ensure_correct_product, except: [:index, :new, :show, :edit, :create]
-  before_action :set_image, only: [:show, :change]
+  before_action :ensure_correct_product, except: [:index, :new, :show, :edit, :create,:sell_edit]
+  before_action :set_image, only: [:show, :change,:sell_edit]
 
 
   def index
@@ -67,7 +67,7 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
     if @product.update(product_params) 
       # @product.images[0].destroy
-      redirect_to root_path
+      redirect_to users_myproduct_change_users_path(@product)
     else       
       redirect_to myedit_users_path(@product)
     end
@@ -142,3 +142,4 @@ class ProductsController < ApplicationController
   end
 
 end
+

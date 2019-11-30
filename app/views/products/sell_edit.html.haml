@@ -14,6 +14,8 @@
           .exhibitmain__upbox__content
             最大１枚までアップロードできます
           .exhibitmain__upbox__imagebox1
+            = image_tag("#{@product.images[0].image}")
+            %br
             ドラッグアンドドロップ
             %br
             またはクリックしてファイルをアップロード
@@ -122,8 +124,8 @@
         .exhibitmain__exhibit__btn
           = f.submit :変更する, id: "btn"
         .exhibitmain__exhibit__return
-          = link_to :back do
-            %button キャンセル
+          = link_to users_myproduct_change_users_path(@product), class: 'super-sakurada-btn' do
+            キャンセル
         #buy-overlay1
           #buy-modalWindow1
             .buy-modal-message-head1
