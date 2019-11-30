@@ -129,6 +129,7 @@ creditsテーブルは不要（payjpにより、cardsテーブルを作成した
 - belongs_to :category
 - belongs_to :status
 - belongs_to :size
+- belongs_to_active_hash :prefecture
 - has_many :images, dependent: :destroy
 - has_one :history, dependent: :destroy
 <!-- size,status を belongs_to に変更 191117髙橋-->
@@ -206,31 +207,3 @@ brands,categoryの中身をメルカリサイトから引っ張ってくる際�
 - belongs_to :user
 <!-- oauth認証のため追加 191118平野 -->
 
-
-
-<!-- 以下、編集ページのためテーブル追加か？enum使用の場合、追加しない -->
-<!-- ## delivery_chargedsテーブル
-|Column|Type|Options|
-|------|----|-------|
-|name|string|null: false|
-
-### Association
-- belongs_to :user
-
-
-## delivery_daysテーブル
-|Column|Type|Options|
-|------|----|-------|
-|name|string|null: false|
-
-### Association
-- belongs_to :user
-
-
-## delivery_waysテーブル
-|Column|Type|Options|
-|------|----|-------|
-|name|string|null: false|
-
-### Association -->
-<!-- - belongs_to :user -->
