@@ -109,7 +109,7 @@ creditsテーブルは不要（payjpにより、cardsテーブルを作成した
 |name|string|null: false|
 |price|integer|null: false|
 |delivery_charged|string|null: false|
-|area|string|null: false|
+<!-- |area|string|null: false| -->
 |delivery_days|string|null: false|
 |sales_status|string|null: false|
 |delivery_way|string|null: false|
@@ -118,10 +118,11 @@ creditsテーブルは不要（payjpにより、cardsテーブルを作成した
 |brand|string|
 |status_id|integer|foreign_key: true, default: 1|
 |size_id||integer||foreign_key: true|
+|prefecture_id|integer|null:false|
 <!-- categorry_idカラム, brand_idカラムを追加 191112平野 -->
 <!-- status_idカラム, size_idカラムを追加 191117村上・髙橋 -->
 <!-- brand_idカラムを削除・brandカラムを追加 191128髙橋 -->
-
+<!-- prefecture active hashとアソシエーションを組んで、都道府県名を表示させるため、prefecture_id追加 -->
 
 ### Association
 - belongs_to :user

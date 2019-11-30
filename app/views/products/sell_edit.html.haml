@@ -63,22 +63,25 @@
           配送料の負担
           %span 必須 
         .exhibitmain__delivery__burden__box
-          = f.select :delivery_charged, [["---", 0],[ "送料込み（出品者負担）", 1 ],["着払い（購入者負担）", 2] ], {}, class: 'exhibitmain__delivery__burden__box1'
+          = f.select :delivery_charged, Product.delivery_chargeds.keys.map {|k| [I18n.t("enums.product.delivery_charged.#{k}"), k]}, {}, class: 'exhibitmain__delivery__burden__box1'
+          -# = f.select :delivery_charged, [["---", 0],[ "送料込み（出品者負担）", 1 ],["着払い（購入者負担）", 2] ], {}, class: 'exhibitmain__delivery__burden__box1'
         .exhibitmain__delivery__way
           配送方法
           %span 必須 
         .exhibitmain__delivery__way-box
-          = f.select :delivery_way, [["---", 0],["クロネコヤマト", 1],["ゆうパック", 2],["ゆうメール", 3]], {}, class: 'exhibitmain__delivery__way-box1'
+          = f.select :delivery_way, Product.delivery_ways.keys.map {|k| [I18n.t("enums.product.delivery_way.#{k}"), k]}, {}, class: 'exhibitmain__delivery__way-box1'
+          -# = f.select :delivery_way, [["---", 0],["クロネコヤマト", 1],["ゆうパック", 2],["ゆうメール", 3]], {}, class: 'exhibitmain__delivery__way-box1'
         .exhibitmain__delivery__area
           配送元の地域
           %span 必須 
         .exhibitmain__delivery__area-box
-          = f.collection_select :area, Prefecture.all, :id, :name
+          = f.collection_select :prefecure_id, Prefecture.all, :id, :name, selected: "#{@product.prefecture.id}"
         .exhibitmain__delivery__days  
           配送までの日数
           %span 必須
         .exhibitmain__delivery__days-box
-          = f.select :delivery_days,[["---", 0],["1日~2日で発送", 1],["2日~3日で発送", 2],["4日~7日で発送"]] 
+          = f.select :delivery_days,Product.delivery_days.keys.map {|k| [I18n.t("enums.product.delivery_days.#{k}"), k]} 
+          -# = f.select :delivery_days,[["---", 0],["1日~2日で発送", 1],["2日~3日で発送", 2],["4日~7日で発送"]] 
       .exhibitmain__price
         .exhibitmain__price__name
           販売価格(300~9,999,999)

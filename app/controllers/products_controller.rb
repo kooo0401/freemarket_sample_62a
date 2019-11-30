@@ -110,7 +110,7 @@ class ProductsController < ApplicationController
   def product_params
     params.require(:product)
             .permit(:description, :name, :price, :delivery_charged,
-                    :area, :delivery_days, :sales_status, :delivery_way, 
+                    :prefecture_id, :delivery_days, :sales_status, :delivery_way, 
                     :category_id,
                     :brand,
                     :size_id,

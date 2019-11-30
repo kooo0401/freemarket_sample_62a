@@ -64,22 +64,22 @@
             %th 配送料の負担
             %td
               %span
-                = @product.delivery_charged
+                = @product.delivery_charged_i18n
           %tr
             %th 配送の方法
             %td
               %span
-                = @product.delivery_way
+                = @product.delivery_way_i18n
           %tr
             %th 配送元地域
             %td
               %span
-              = link_to "#{@product.area}", "#", class: "area-link"
+              = link_to "#{@product.prefecture.name}", "#", class: "area-link"
           %tr
             %th 発送日の目安
             %td
               %span
-                = @product.delivery_days
+                = @product.delivery_days_i18n
     .itembuy-content__price
       %span.itembuy-content__bold<
         = "¥#{@product.price.to_s(:delimited)}"

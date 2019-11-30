@@ -83,32 +83,33 @@ $(function(){
   // 配送方法のJSの実装
   $('.exhibitmain__delivery__burden__box1').change(function() {
       var a = $('.exhibitmain__delivery__burden__box1').val();
-      if(a == "0") {
+      if(a == "---") {
           $('.exhibitmain__delivery__way').hide();
           $('.exhibitmain__delivery__way-box').hide();
-          $('.exhibitmain__delivery__way-box1').children('option[value=10]').remove();
-          $('.exhibitmain__delivery__way-box1').children('option[value=11]').remove();
-          $('.exhibitmain__delivery__way-box1').children('option[value=12]').remove();
-          $('.exhibitmain__delivery__way-box1').children('option[value=13]').remove();
+          $('.exhibitmain__delivery__way-box1').children('option[value="rakuraku_mercari_bin"]').remove();
+          $('.exhibitmain__delivery__way-box1').children('option[value="letter_pack"]').remove();
+          $('.exhibitmain__delivery__way-box1').children('option[value="normal"]').remove();
+          $('.exhibitmain__delivery__way-box1').children('option[value="clickpost"]').remove();
           // 下記コメントは念のため記載しております 191125 髙橋
           // $('.exhibitmain__delivery__way2').hide();
           // $('.exhibitmain__delivery__way-box2').hide();
-      }else if(a == "1") {
+      }else if(a == "shipping_fee_on_shipper") {
           $('.exhibitmain__delivery__way-box1').val('0');
           $('.exhibitmain__delivery__way').show();
           $('.exhibitmain__delivery__way-box').show();
-          $('.exhibitmain__delivery__way-box1').children('option[value=10]').remove();
-          $('.exhibitmain__delivery__way-box1').children('option[value=11]').remove();
-          $('.exhibitmain__delivery__way-box1').children('option[value=12]').remove();
-          $('.exhibitmain__delivery__way-box1').children('option[value=13]').remove();
+          $('.exhibitmain__delivery__way-box1').children('option[value="rakuraku_mercari_bin"]').remove();
+          $('.exhibitmain__delivery__way-box1').children('option[value="letter_pack"]').remove();
+          $('.exhibitmain__delivery__way-box1').children('option[value="normal"]').remove();
+          $('.exhibitmain__delivery__way-box1').children('option[value="clickpost"]').remove();
           // 下記コメントは念のため記載しております 191125 髙橋
           // $('.exhibitmain__delivery__way2').hide();
           // $('.exhibitmain__delivery__way-box2').hide();
-      }else if(a == "2") {
+      }else if(a == "shipping_fee_on_receiver") {
           $('.exhibitmain__delivery__way-box1').val('0');
           $('.exhibitmain__delivery__way').show();
           $('.exhibitmain__delivery__way-box').show();
-          $('.exhibitmain__delivery__way-box1').append('<option value="10">らくらくメルカリ便</option>','<option value="11">レターパック</option>','<option value="12">普通郵便（定型、定型外)</option>','<option value="13">クリックポスト</option>');
+          $('.exhibitmain__delivery__way-box1').append('<option value="rakuraku_mercari_bin">らくらくメルカリ便</option>','<option value="letter_pack">レターパック</option>','<option value="normal">普通郵便（定型、定型外)</option>','<option value="clickpost">クリックポスト</option>');
+          // $('.exhibitmain__delivery__way-box1').append('<option value="10">らくらくメルカリ便</option>','<option value="11">レターパック</option>','<option value="12">普通郵便（定型、定型外)</option>','<option value="13">クリックポスト</option>');
           // 下記コメントは念のため記載しております 191125 髙橋
           // $('.exhibitmain__delivery__way2').show();
           // $('.exhibitmain__delivery__way-box2').show();
