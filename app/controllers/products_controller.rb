@@ -72,16 +72,15 @@ class ProductsController < ApplicationController
   def create
     @product = Product.new(product_params)
     # @product = current_user.products.build(product_params)
-    if @product.save
-     
-      # 下記コメントアウト３行は今後使用予定です 191124 髙橋
-      # params[:images][:image].each do |image|
-      #   @product.images.create(image: image, product_id: @product.id)
-      # end
 
-    else
-      render :new
-    end
+        if @product.save
+          # 下記コメントアウト３行は今後使用予定です 191124 髙橋
+          # params[:images][:image].each do |image|
+          #   @product.images.create(image: image, product_id: @product.id)
+          # end
+        else
+          render :new
+        end
   end
   
   def destroy

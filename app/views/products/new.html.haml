@@ -6,11 +6,11 @@
       .exhibitmain__head
         商品の情報を入力
       .exhibitmain__upbox
-        = f.fields_for :images do |i|
+        = f.fields_for :images do |i| 
           .exhibitmain__upbox__head
             出品画像
             %span 必須
-            = i.file_field :image
+            = i.file_field :image, id:"miracle_btn",class: "image-form"
           .exhibitmain__upbox__content
             最大１枚までアップロードできます
           .exhibitmain__upbox__imagebox1
@@ -115,7 +115,7 @@
           = link_to("加盟店規約", "＃")
           に同意したことになります。
         .exhibitmain__exhibit__btn
-          = f.submit :出品する,id: "btn"
+          = f.submit :出品する,id: "btn", class: "super_btn"
         .exhibitmain__exhibit__return
           = link_to :back do
             %button 戻る
