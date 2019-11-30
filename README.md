@@ -31,7 +31,6 @@ https://gyazo.com/7fef038be95b1fa8b9b47212bf1cf83a
 - ajaxを使用した非同期通信
 - RSpecを使った単体テスト
 - AWS EC2へのデプロイ
-- SNS認証による新規登録、ログイン
 - ActiveStorageを使用しAWS S3への画像アップロード
 - pay.jpによる購入処理
 - グレーテルgemを使用したパンくず機能

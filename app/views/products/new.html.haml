@@ -1,7 +1,7 @@
 = render "layouts/exhibit-header"
 
 .exhibitmiddle
-  = form_with model: @product, local: true do |f|
+  = form_with model: @product, remote: true do |f|
     .exhibitmain
       .exhibitmain__head
         商品の情報を入力
