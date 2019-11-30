@@ -131,7 +131,7 @@ class ProductsController < ApplicationController
 
   def set_image
     @image = @product.images.first
-    @images = @product.images.where(product_id: @product.id)
+    @images = @product.images
   end
 
   def ensure_correct_product
