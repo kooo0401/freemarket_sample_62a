@@ -3,6 +3,7 @@ class ProductsController < ApplicationController
   before_action :set_product, only: [:destroy, :change, :show, :edit, :ensure_correct_product]
   before_action :set_category, only: [:show, :change]
   before_action :ensure_correct_product, except: [:index, :new, :show, :edit, :create]
+  before_action :set_image, only: [:show, :change]
 
 
   def index
@@ -12,7 +13,7 @@ class ProductsController < ApplicationController
     # 以下、カテゴリ・
     # productsの内、人気カテゴリーベスト4、人気ブランドベスト4 10個ずつ持ってくるよう変更予定
     # ------------------------------------------------------------------------------------------------
-    @products_ladies = Product.where(category_id: 33..230, status_id: 1).order("id DESC").limit(10)
+    @products_ladies = Product.where(category_id: 33..230).order("id DESC").limit(10)
     @products_mens = Product.where(category_id:245..388, status_id: 1).order("id DESC").limit(10)
     # @products_homeappliance = Product.where(category_id:?).order("id DESC").limit(10)
     # @products_toys = Product.where(category_id:?).order("id DESC").limit(10)
@@ -33,7 +34,7 @@ class ProductsController < ApplicationController
 
   def show
     @products = Product.order("id DESC").limit(6)
-    @images = @product.images.where(product_id: @product.id)
+    # @imagesall = @images.where(id: [1,2,3])
     #実際にテーブルからid:1のproductを取得できているかの記述。
     # 商品出品が可能になったら、一つ一つのproductからidで取得する。
     if user_signed_in?
@@ -52,7 +53,9 @@ class ProductsController < ApplicationController
 
   def sell_edit
     @product = Product.find(params[:id])
-    # @parent = Category.where(id: 1..13)
+    @parent = Category.where(id: 1..13)
+    @product_fee = (@product.price * 0.1).round
+    @product_profit = (@product.price * 0.9).round
   end
 
   def update 
@@ -124,6 +127,11 @@ class ProductsController < ApplicationController
     @grandchild = Category.find("#{@product.category_id}")
     @child = @grandchild.parent
     @parent = @child.parent
+  end
+
+  def set_image
+    @image = @product.images.first
+    @images = @product.images
   end
 
   def ensure_correct_product

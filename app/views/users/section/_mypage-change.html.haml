@@ -6,20 +6,17 @@
       .itembuy-content__photo
         .itembuy-content__auter
           .itembuy-content__owl-carousel
+            - if @product.status_id == 3
+              .sold-out
+              %p.sold-out-name SOLD
             .owl-carousel-space
-              =image_tag("/for_js/js_1.jpg", class: 'owl-carousel-main show', size: '300x300')
-              =image_tag("/for_js/js_2.jpg", class: 'owl-carousel-main', size: '300x300')
-              =image_tag("/for_js/js_3.jpg", class: 'owl-carousel-main', size: '300x300')
-              =image_tag("/for_js/js_4.jpg", class: 'owl-carousel-main', size: '300x300')
-              =image_tag("/for_js/js_5.jpg", class: 'owl-carousel-main', size: '300x300')
-              =image_tag("/for_js/js_6.jpg", class: 'owl-carousel-main', size: '300x300')
+              =image_tag("#{@image.image}", class: 'owl-carousel-main show', size: '300x300')
+            - @images[1..9].each do |image|
+              =image_tag("#{image.image}", class: 'owl-carousel-main', size: '300x300')
         .itembuy-content__owl-carousel-thumb
-          =image_tag("/for_js/js_1.jpg", class: 'owl-carousel-sub active', size: '60x60')
-          =image_tag("/for_js/js_2.jpg", class: 'owl-carousel-sub', size: '60x60')
-          =image_tag("/for_js/js_3.jpg", class: 'owl-carousel-sub', size: '60x60')
-          =image_tag("/for_js/js_4.jpg", class: 'owl-carousel-sub', size: '60x60')
-          =image_tag("/for_js/js_5.jpg", class: 'owl-carousel-sub', size: '60x60')
-          =image_tag("/for_js/js_6.jpg", class: 'owl-carousel-sub', size: '60x60')
+          =image_tag("#{@image.image}", class: 'owl-carousel-sub active', size: '60x60')
+        - @images[1..9].each do |image|
+          =image_tag("#{image.image}", class: 'owl-carousel-sub', size: '60x60')
       %table.itembuy-content__table
         %tbody
           %tr
@@ -98,7 +95,7 @@
         出品を一旦停止する
     .itembuy-content__change-status-btns
       .itembuy-gray-box2
-        = link_to "この商品を削除する", "#{@product.id}", method: :delete, id: "purchase-comformation-btn"
+        この商品を削除する
     #buy-overlay
       #buy-modalWindow
         .buy-modal-message-box
@@ -115,3 +112,5 @@
         %button
           %span  
             コメントする
+
+= javascript_include_tag 'mypage-change.js'

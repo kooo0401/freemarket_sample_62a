@@ -94,12 +94,14 @@
             販売手数料（10％）
           .exhibitmain__price__fee__left__box
             #priceboxa
+              = "¥#{@product_fee.to_s(:delimited)}"
           .exhibitmain__price__fee__right
         .exhibitmain__price__profit
           .exhibitmain__price__profit__left
             販売利益
           .exhibitmain__price__profit__right
             #priceboxb
+              = "¥#{@product_profit.to_s(:delimited)}"
       .exhibitmain__exhibit
         .exhibitmain__exhibit__text
           = link_to("禁止されている出品", "＃")
@@ -124,7 +126,7 @@
             .buy-modal-message-head1
               %div#buy-modal-message-head1 出品が完了しました。
             .buy-modal-message-boy1
-              #buy-modal-text1 あなたが出品した商品は「出品した商品一覧」からいつでも見ることができます。     
+              #buy-modal-text1 あなたが出品した商品は「出品した商品一覧」からいつでも見ることができます。
               #purchase-exhibit-btn1 続けて出品する
               .buy-modal-text2 
               = link_to("商品ページに行ってシェアする。", "＃")
