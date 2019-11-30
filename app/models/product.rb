@@ -35,6 +35,11 @@ class Product < ApplicationRecord
     bad:             6,  #全体的に状態が悪い
   },_prefix: true
 
+  enum delivery_charged:{
+    '---':                        0,  #---
+    'shipping_fee_on_shipper':    1,  #送料込み（出品者負担）
+    'shipping_fee_on_receiver':   2,  #着払い（購入者負担）
+  }
 
 end
 
