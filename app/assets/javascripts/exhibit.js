@@ -1,6 +1,10 @@
 $(function(){
   
   $(function(){
+
+
+
+    
     var maxNum = 1000000; // 注文できる金額の上限
     var tagInput = $('#pricebox'); // 入力対象のinputタグID名
     var tagOutput = $('#priceboxa'); // 出力対象のinputタグID名
