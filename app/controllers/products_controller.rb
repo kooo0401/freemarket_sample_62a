@@ -2,27 +2,18 @@ class ProductsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :change, :destroy, :edit]
   before_action :set_product, only: [:destroy, :change, :show, :edit, :ensure_correct_product, :sell_edit]
   before_action :set_category, only: [:show, :change]
-  before_action :ensure_correct_product, except: [:index, :new, :show, :edit, :create]
-  before_action :set_image, only: [:show, :change]
+  before_action :ensure_correct_product, except: [:index, :new, :show, :edit, :create,:sell_edit]
+  before_action :set_image, only: [:show, :change,:sell_edit]
+  before_action :set_current_category_group, only: :sell_edit
+  before_action :set_current_size_for_sell_edit, only: :sell_edit
 
+  
 
   def index
-    # @products = Product.order("id DESC").limit(10)
-    # @products = Product.where(status_id: 1).order("id DESC").limit(10)
-
-    # 以下、カテゴリ・
-    # productsの内、人気カテゴリーベスト4、人気ブランドベスト4 10個ずつ持ってくるよう変更予定
-    # ------------------------------------------------------------------------------------------------
     @products_ladies = Product.where(category_id: 33..230).order("id DESC").limit(10)
     @products_mens = Product.where(category_id:245..388, status_id: 1).order("id DESC").limit(10)
-    # @products_homeappliance = Product.where(category_id:?).order("id DESC").limit(10)
-    # @products_toys = Product.where(category_id:?).order("id DESC").limit(10)
-
     @products_chanel = Product.where(brand_id: 1, status_id: 1).order("id DESC").limit(10)
     @products_louisvuitton = Product.where(brand_id: 2,status_id: 1).order("id DESC").limit(10)
-    # @products_supreme = Product.where(brand_id:?).order("id DESC").limit(10)
-    # @products_nike = Product.where(brand_id:?).order("id DESC").limit(10)
-    # ------------------------------------------------------------------------------------------------
   end
 
   def new
@@ -34,9 +25,6 @@ class ProductsController < ApplicationController
 
   def show
     @products = Product.order("id DESC").limit(6)
-    # @imagesall = @images.where(id: [1,2,3])
-    #実際にテーブルからid:1のproductを取得できているかの記述。
-    # 商品出品が可能になったら、一つ一つのproductからidで取得する。
     if user_signed_in?
       redirect_to  users_myproduct_change_users_path(@product) if @product.user_id == current_user.id
     end
@@ -53,39 +41,25 @@ class ProductsController < ApplicationController
 
   def sell_edit
     @parent_group = Category.where(id: 1..13)
-    @selected_grandson_category = Category.find(@product.category_id)
-    @grandchild_group = @selected_grandson_category.siblings
-    @selected_child_category = @selected_grandson_category.parent
-    @child_group = @selected_child_category.siblings
-    @size_tag_group = Size.where(size_tag: @size.size_tag)
-    gon.selected_size = @size
     @product_fee = (@product.price * 0.1).round
     @product_profit = (@product.price * 0.9).round
   end
 
   def update 
     @product = Product.find(params[:id])
-
     if @product.update(product_params) 
-      @product.images[0].destroy
-      redirect_to root_path
+      redirect_to users_myproduct_change_users_path(@product)
     else       
-      render :edit
+      redirect_to myedit_users_path(@product)
     end
   end
 
   def create
     @product = Product.new(product_params)
-    # @product = current_user.products.build(product_params)
-
-        if @product.save
-          # 下記コメントアウト３行は今後使用予定です 191124 髙橋
-          # params[:images][:image].each do |image|
-          #   @product.images.create(image: image, product_id: @product.id)
-          # end
-        else
-          render :new
-        end
+    if @product.save
+    else
+      render :new
+    end
   end
   
   def destroy
@@ -96,16 +70,6 @@ class ProductsController < ApplicationController
       redirect_to root_path
     end
   end
-
-  # 以下、仮に人気カテゴリー、人気ブランドをリアルタイム対応させる場合の記述。
-  # productテーブルにcategory_idカラムとbrand_idカラムを追加した後に実装予定
-  # ------------------------------------------------------------------------------------------------
-  # def category_ranking
-  #   ranked_category_ids = Product.group(:category_id).order('category_id DESC).limit(4).count(:category_id).keys
-  #   @category_top4 = ids.map{|product_id| Product.find(product_id) }
-  # end
-  #  category_rankingが上手くいったらbrand_rankingも同様にここに追加する
-  # ------------------------------------------------------------------------------------------------
   
   private
 
@@ -116,7 +80,7 @@ class ProductsController < ApplicationController
                     :category_id,
                     :brand,
                     :size_id,
-                    images_attributes: [:image])
+                    images_attributes: [:image, :id])
           .merge(user_id: current_user.id)
   end
 
@@ -143,4 +107,28 @@ class ProductsController < ApplicationController
     redirect_to root_path if current_user.id !=  @product.user_id
   end
 
+  def set_current_category_group
+    @selected_grandson_category = Category.find(@product.category_id)
+    @selected_child_category = @selected_grandson_category.parent
+    @selected_parent_category = @selected_child_category.parent
+    @grandchild_group = @selected_grandson_category.siblings
+    @child_group = @selected_child_category.siblings
+  end
+
+  def set_current_size_for_sell_edit
+    if @size.present?
+      gon.selected_size = @size
+      if @size.size_tag.present?
+        @size_tag_group = Size.where(size_tag: @size.size_tag)
+      elsif
+        @size_tag_group = Size.where(id: 1..2)
+      end
+    elsif
+      @size = Size.find(1)
+      @size_tag_group = Size.where(id: 1..2)
+      gon.selected_size = nil
+    end
+  end
+
 end
+

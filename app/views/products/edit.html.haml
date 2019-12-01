@@ -53,9 +53,6 @@
                     = "¥#{@product.price.to_s(:delimited)}"
             %p.confirmation-error-text
               この商品はゆうゆうメルカリ便を利用しているため、アプリからのみ購入できます。
-            -# %ul.form-box-tempolary__buy-accordion.not-have
-            -# %p
-            -#   アプリをお持ちでない方は以下よりインストールしてご利用いただけます。
           = link_to "購入する", product_purchase_index_path(@product.id), class: "form-box-tempolary__btm-default .bold"
       %div
        
@@ -76,7 +73,6 @@
             = link_to '#', class: "buy-user-info-fix" do
               %span
                 変更する
-              -# %i.fas.fa-greater-than
               = fa_icon 'chevron-right'
 
       %section.purchase-confirmation__main__container__buy-user-info

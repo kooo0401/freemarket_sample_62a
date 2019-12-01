@@ -1,5 +1,18 @@
 $(function(){
-  
+  if ( gon.selected_size == null ){
+    $('.exhibitmain__details__size-name').hide();
+    $('#product_size_id').hide();
+    $('#product_size_id').html("");
+  }
+  var current_delivery_charged_status = $('.exhibitmain__delivery__burden__box1').val();
+  if ( current_delivery_charged_status == "shipping_fee_on_shipper"){
+    $('.exhibitmain__delivery__way-box1').children('option[value="rakuraku_mercari_bin"]').remove();
+    $('.exhibitmain__delivery__way-box1').children('option[value="letter_pack"]').remove();
+    $('.exhibitmain__delivery__way-box1').children('option[value="normal"]').remove();
+    $('.exhibitmain__delivery__way-box1').children('option[value="clickpost"]').remove();
+  }
+
+
   $(function(){
     var maxNum = 1000000; // 注文できる金額の上限
     var tagInput = $('#pricebox'); // 入力対象のinputタグID名
@@ -82,18 +95,15 @@ $(function(){
 
   // 配送方法のJSの実装
   $('.exhibitmain__delivery__burden__box1').change(function() {
-      var a = $('.exhibitmain__delivery__burden__box1').val();
-      if(a == "---") {
+      var delivery_charged_status = $('.exhibitmain__delivery__burden__box1').val();
+      if(delivery_charged_status == "---") {
           $('.exhibitmain__delivery__way').hide();
           $('.exhibitmain__delivery__way-box').hide();
           $('.exhibitmain__delivery__way-box1').children('option[value="rakuraku_mercari_bin"]').remove();
           $('.exhibitmain__delivery__way-box1').children('option[value="letter_pack"]').remove();
           $('.exhibitmain__delivery__way-box1').children('option[value="normal"]').remove();
           $('.exhibitmain__delivery__way-box1').children('option[value="clickpost"]').remove();
-          // 下記コメントは念のため記載しております 191125 髙橋
-          // $('.exhibitmain__delivery__way2').hide();
-          // $('.exhibitmain__delivery__way-box2').hide();
-      }else if(a == "shipping_fee_on_shipper") {
+      }else if(delivery_charged_status == "shipping_fee_on_shipper") {
           $('.exhibitmain__delivery__way-box1').val('0');
           $('.exhibitmain__delivery__way').show();
           $('.exhibitmain__delivery__way-box').show();
@@ -101,48 +111,18 @@ $(function(){
           $('.exhibitmain__delivery__way-box1').children('option[value="letter_pack"]').remove();
           $('.exhibitmain__delivery__way-box1').children('option[value="normal"]').remove();
           $('.exhibitmain__delivery__way-box1').children('option[value="clickpost"]').remove();
-          // 下記コメントは念のため記載しております 191125 髙橋
-          // $('.exhibitmain__delivery__way2').hide();
-          // $('.exhibitmain__delivery__way-box2').hide();
-      }else if(a == "shipping_fee_on_receiver") {
+      }else if(delivery_charged_status == "shipping_fee_on_receiver") {
           $('.exhibitmain__delivery__way-box1').val('0');
           $('.exhibitmain__delivery__way').show();
           $('.exhibitmain__delivery__way-box').show();
           $('.exhibitmain__delivery__way-box1').append('<option value="rakuraku_mercari_bin">らくらくメルカリ便</option>','<option value="letter_pack">レターパック</option>','<option value="normal">普通郵便（定型、定型外)</option>','<option value="clickpost">クリックポスト</option>');
-          // 下記コメントは念のため記載しております 191125 髙橋
-          // $('.exhibitmain__delivery__way2').show();
-          // $('.exhibitmain__delivery__way-box2').show();
       }
   });
-  // 念の為記載を残しています 191129 髙橋
-// $(function()  {
-//   $(window).load(function(){
-//     $('.exhibitmain__delivery__way').hide();
-//     $('.exhibitmain__delivery__way-box').hide();
-//     $('.exhibitmain__delivery__way2').hide();
-//     $('.exhibitmain__delivery__way-box2').hide();
-//   })
-// });
-
-// $(function(){
-//   $('.exhibitmain__details__brand-box').click(function(){
-//     $('#buy-overlay1').fadeIn();
-//     $('haml, body').css('overflow', 'hidden');
-//   });
-//   jQuery('#purchase-exhibit-btn1').click(function() {
-//     window.location.href = "/";
-//   });
-//   });
 });
 
 
 
 $(function(){
-  //  $('#product_size_id').hide();
-  if ( gon.selected_size == null ){
-    $('.exhibitmain__details__size-name').hide();
-    $('#product_size_id').hide();
-  }
   $('#product_parent_id').change(function() {
     var parent_id = $('#product_parent_id').val();
     $.ajax({
@@ -169,7 +149,6 @@ $(function(){
       alert('error');
     })
   });
-  //孫カテゴリー実装のための記述 村上191127
   $('#product_child_id').change(function() {
     var child_id = $('#product_child_id').val();
     $.ajax({
@@ -177,8 +156,6 @@ $(function(){
       url: '../../../../api/products2',
       data: {id : child_id},
       dataType: 'json',
-      // contentType: false,
-      // processData: false,
     })
     .done(function(data){
       var obj2 = data;
@@ -203,8 +180,6 @@ $(function(){
         url: '../../../../api/products3',
         data: {id : grandchild_id},
         dataType: 'json',
-        // contentType: false,
-        // processData: false,
       })
       .done(function(data){
         var obj3 = data;
@@ -216,11 +191,15 @@ $(function(){
         for(var i=0;i<obj3.length;i++){
           $('#product_size_id').append("<option value=" + obj3[i].id+">"+obj3[i].name+"</option>");
         }
-       }
+      }
+        else if(data.length == 0 ){
+          $('.exhibitmain__details__size-name').hide();
+          $('#product_size_id').hide();
+          $('#product_size_id').val('');
+        }
       })
       .fail(function(){
         alert('error');
       });
     });
-
 })

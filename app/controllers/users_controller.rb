@@ -12,7 +12,7 @@ class UsersController < ApplicationController
   end
 
   def update
-# ストロングパラメータが片方nilだった場合、エラーを発生させるので、回避（requireメソッドの特徴）堀
+# ストロングパラメータが片方nilだった場合、エラーを発生させるので、回避（requireメソッドの特徴)
     if params[:myaddress] == nil
       if @user.update(user_params)
         redirect_to user_path(@user)

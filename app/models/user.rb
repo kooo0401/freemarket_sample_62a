@@ -6,15 +6,9 @@ class User < ApplicationRecord
          :omniauthable
   has_many :products, dependent: :destroy
   has_many :sns_credentials, dependent: :destroy
-  # has_many :histories, dependent: :destroy
-  # has_one  :credit, dependent: :destroy
   has_one  :myaddress, dependent: :destroy
   accepts_nested_attributes_for :myaddress
-  # ↑子モデルのデータに保存する為の記述
 
-
-  # 以下、Oauth用メソッドです。1メールアドレス(=1userレコード)に複数のsns_credentialがつくことを許容する流れを仮定しています。by平野
-  # -------------------------------------------------------------------------------------------
   def self.from_omniauth(auth)
     user = User.where(email: auth.info.email).first
     sns_credential_record = SnsCredential.where(provider: auth.provider, uid: auth.uid)
@@ -43,8 +37,6 @@ class User < ApplicationRecord
     end 
   user
   end
-  # -------------------------------------------------------------------------------------------
-
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   VALID_PASSWORD_REGEX = /\A(?=.*?[a-zA-Z])(?=.*?\d)[a-zA-Z\d!@#\$%\^\&*\)\(+=._-]{7,255}\z/i
@@ -56,7 +48,6 @@ class User < ApplicationRecord
   validates :nickname, presence: true, length: { maximum: 20 }, on: :validates_step1
   validates :email, presence: true, uniqueness: true, format: { with: VALID_EMAIL_REGEX, message: 'は有効でありません。' }, on: :validates_step1
   validates :password, presence: true, length: { in: 7..255 }, format: { with: VALID_PASSWORD_REGEX, message: 'は255文字以下に設定して下さい'}, on: :validates_step1
-  # validates :password_confirmation, presence: true, length: { in: 7..255 }, format: { with: VALID_PASSWORD_REGEX, message: 'は255文字以下に設定して下さい'}, on: :validates_step1
   validates :birthday, presence: true, on: :validates_step1
   validates :last_name, presence: true, length: { maximum: 20 }, on: :validates_step1
   validates :first_name, presence: true, length: { maximum: 20 }, on: :validates_step1

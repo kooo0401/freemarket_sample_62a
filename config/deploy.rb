@@ -36,9 +36,9 @@ set :keep_releases, 5
 after 'deploy:publishing', 'deploy:restart'
 namespace :deploy do
   task :restart do
-    # invoke 'unicorn:restart'
     invoke 'unicorn:stop'
     invoke 'unicorn:start'
+    # invoke 'unicorn:restart'
     # 注意点として、完全にunicornが停止するのでアプリにアクセスできない時間が発生します。ダウンタイムが発生しないunicorn: restart との使い分けやメンテナンス時間の確保など、運用面も考慮する必要があります。
   end
 end

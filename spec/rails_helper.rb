@@ -61,7 +61,7 @@ RSpec.configure do |config|
   # instead of true.
   config.use_transactional_fixtures = true
 
-  # 以下Omniauthテスト用コードby平野
+  # 以下Omniauthテスト用コード
   # ----------------------------------
   OmniAuth.config.test_mode = true
   config.include OmniauthMocks

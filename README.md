@@ -102,12 +102,20 @@ https://gyazo.com/7fef038be95b1fa8b9b47212bf1cf83a
 |city_name|string|null: false|
 |block_name|string|null: false|
 |bill_name|string|
+|tel|string|
+|user_id|integer|foreign_key: true, null: false|
+
+### Association
+- belongs_to :user
+
+## historiesテーブル
+|Column|Type|Options|
+|------|----|-------|
 |user_id|integer|foreign_key: true, null: false|
 |tel|string|
 
 ### Association
 - belongs_to :user
-
 
 ## productsテーブル
 |Column|Type|Options|
@@ -133,6 +141,7 @@ https://gyazo.com/7fef038be95b1fa8b9b47212bf1cf83a
 - belongs_to :size
 - belongs_to_active_hash :prefecture
 - has_many :images, dependent: :destroy
+- has_one :history, dependent: :destroy
 
 
 ## imagesテーブル
@@ -153,7 +162,6 @@ https://gyazo.com/7fef038be95b1fa8b9b47212bf1cf83a
 ### Association
 - has_many :products
 
-
 ## sizesテーブル
 |Column|Type|Options|
 |------|----|-------|
@@ -162,7 +170,6 @@ https://gyazo.com/7fef038be95b1fa8b9b47212bf1cf83a
 
 ### Association
 - has_many :products
-
 
 ## categoriesテーブル
 |Column|Type|Options|
@@ -183,6 +190,7 @@ https://gyazo.com/7fef038be95b1fa8b9b47212bf1cf83a
 |user_id|integer|foreign_key: true|
 
 ### Association
+<<<<<<< HEAD
 - belongs_to :user
 
 

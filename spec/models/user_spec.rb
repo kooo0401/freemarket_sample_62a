@@ -266,7 +266,6 @@ describe User do
     end
 
     # 郵便番号が不適切な形式になっていないか
-
     it "is invalid with a zip that Postal code format " do
       user = build(:user, zip: "a00-0000")
       user.valid?
@@ -274,63 +273,3 @@ describe User do
     end
   end
 end
-    
-#     # 都道府県のhashが1~48であるか
-
-#     it "is valid with a prefecture that has less than 48" do
-#       user = build(:user, prefecture: "48")
-#       expect(user).to be_valid
-#     end
-
-#     it "is invalid with a prefecture that has more than 49" do
-#       user = build(:user, prefecture: "49")
-#       user.valid?
-#       expect(user.errors[:prefecture])
-#     end
-
-#     it "is invalid with a prefecture only integer" do
-#       user = build(:user, prefecture: "a")
-#       user.valid?
-#       expect(user.errors[:prefecture])
-#     end
-
-#     # 市区町村が50文字以下であるか
-
-#     it "is valid with a city_name that has less than 50 characters " do
-#       user = build(:user, city_name: "12345678901234567890123456789012345678901234567890") # 50文字
-#       expect(user).to be_valid
-#     end
-
-#     it "is invalid with a city_name that has more than 51 characters" do
-#       user = build(:user, city_name: "123456789012345678901234567890123456789012345678901") # 51文字
-#       user.valid?
-#       expect(user.errors[:city_name]).to include("は50文字以内で入力してください")
-#     end
-
-#     # block_nameが100文字以下であるか
-
-#     it "is valid with a block_name that has less than 100 characters " do
-#       user = build(:user, block_name: "1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890") # 100文字
-#       expect(user).to be_valid
-#     end
-
-#     it "is invalid with a block_name that has more than 101 characters" do
-#       user = build(:user, block_name: "12345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901") # 101文字
-#       user.valid?
-#       expect(user.errors[:block_name]).to include("は100文字以下に設定して下さい。")
-#     end
-
-#     # bill_nameが100文字以下であるか
-
-#     it "is valid with a bill_name that has less than 100 characters " do
-#       user = build(:user, bill_name: "1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890") # 100文字
-#       expect(user).to be_valid
-#     end
-
-#     it "is invalid with a bill_name that has more than 101 characters" do
-#       user = build(:user, bill_name: "12345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901") # 101文字
-#       user.valid?
-#       expect(user.errors[:bill_name]).to include("は100文字以下に設定して下さい。")
-#     end
-#   end
-# end

@@ -90,9 +90,6 @@ $(function(){
           $('.exhibitmain__delivery__way-box1').children('option[value="letter_pack"]').remove();
           $('.exhibitmain__delivery__way-box1').children('option[value="normal"]').remove();
           $('.exhibitmain__delivery__way-box1').children('option[value="clickpost"]').remove();
-          // 下記コメントは念のため記載しております 191125 髙橋
-          // $('.exhibitmain__delivery__way2').hide();
-          // $('.exhibitmain__delivery__way-box2').hide();
       }else if(a == "shipping_fee_on_shipper") {
           $('.exhibitmain__delivery__way-box1').val('0');
           $('.exhibitmain__delivery__way').show();
@@ -101,18 +98,16 @@ $(function(){
           $('.exhibitmain__delivery__way-box1').children('option[value="letter_pack"]').remove();
           $('.exhibitmain__delivery__way-box1').children('option[value="normal"]').remove();
           $('.exhibitmain__delivery__way-box1').children('option[value="clickpost"]').remove();
-          // 下記コメントは念のため記載しております 191125 髙橋
-          // $('.exhibitmain__delivery__way2').hide();
-          // $('.exhibitmain__delivery__way-box2').hide();
       }else if(a == "shipping_fee_on_receiver") {
           $('.exhibitmain__delivery__way-box1').val('0');
           $('.exhibitmain__delivery__way').show();
           $('.exhibitmain__delivery__way-box').show();
+          $('.exhibitmain__delivery__way-box1').children('option[value="rakuraku_mercari_bin"]').remove();
+          $('.exhibitmain__delivery__way-box1').children('option[value="letter_pack"]').remove();
+          $('.exhibitmain__delivery__way-box1').children('option[value="normal"]').remove();
+          $('.exhibitmain__delivery__way-box1').children('option[value="clickpost"]').remove();
           $('.exhibitmain__delivery__way-box1').append('<option value="rakuraku_mercari_bin">らくらくメルカリ便</option>','<option value="letter_pack">レターパック</option>','<option value="normal">普通郵便（定型、定型外)</option>','<option value="clickpost">クリックポスト</option>');
-          // $('.exhibitmain__delivery__way-box1').append('<option value="10">らくらくメルカリ便</option>','<option value="11">レターパック</option>','<option value="12">普通郵便（定型、定型外)</option>','<option value="13">クリックポスト</option>');
-          // 下記コメントは念のため記載しております 191125 髙橋
-          // $('.exhibitmain__delivery__way2').show();
-          // $('.exhibitmain__delivery__way-box2').show();
+
       }
   });
 

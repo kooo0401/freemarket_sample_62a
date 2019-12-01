@@ -22,25 +22,5 @@
             = link_to root_path, class: 'login-category__google' do
               = fa_icon 'google', class: 'icon'
               Googleで登録する
-          
-            
+                   
   = render "layouts/exhibit-footer"
-
-
-  -# .user-container
-  -# = render "layouts/exhibit-header"
-  -# .user-signin
-  -#   .user-category
-  -#     .user-category__top 新規会員登録
-  -#     .user-category__fut
-  -#       .login-category
-  -#         = link_to user_registration1_signup_index_path, class: 'login-category__email' do
-  -#           = fa_icon 'envelope', class: 'icon'
-  -#           メールアドレスで登録する
-  -#         = link_to user_facebook_omniauth_authorize_path, class: 'login-category__facebook', method: :post do
-  -#           = fa_icon 'facebook-square', class: 'icon'
-  -#           Facebookで登録する
-  -#         = link_to user_google_oauth2_omniauth_authorize_path, class: 'login-category__google', method: :post do
-  -#           = fa_icon 'google', class: 'icon'
-  -#           Googleで登録する
-  -# = render "layouts/exhibit-footer"
