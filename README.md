@@ -5,7 +5,7 @@
  誰でも簡単に売買が楽しめるフリマアプリ機能を再現しています。
  ユーザー登録、出品、購入機能を再現しています。
 
-***DEMO:***
+## DEMO
 ER図(DB設計)
 https://gyazo.com/6ff6607819cab055d6522bb20f69af65
 
@@ -108,14 +108,6 @@ https://gyazo.com/7fef038be95b1fa8b9b47212bf1cf83a
 ### Association
 - belongs_to :user
 
-## historiesテーブル
-|Column|Type|Options|
-|------|----|-------|
-|user_id|integer|foreign_key: true, null: false|
-|tel|string|
-
-### Association
-- belongs_to :user
 
 ## productsテーブル
 |Column|Type|Options|
@@ -126,7 +118,7 @@ https://gyazo.com/7fef038be95b1fa8b9b47212bf1cf83a
 |delivery_charged|integer|null: false|
 |delivery_days|integer|null: false|
 |sales_status|integer|null: false|
-|delivery_way|ingteger|null: false|
+|delivery_way|integer|null: false|
 |user_id|integer|foreign_key: true|
 |category_id|integer|foreign_key: true, null: false|
 |size_id||integer||foreign_key: true|
@@ -162,6 +154,7 @@ https://gyazo.com/7fef038be95b1fa8b9b47212bf1cf83a
 ### Association
 - has_many :products
 
+
 ## sizesテーブル
 |Column|Type|Options|
 |------|----|-------|
@@ -170,6 +163,7 @@ https://gyazo.com/7fef038be95b1fa8b9b47212bf1cf83a
 
 ### Association
 - has_many :products
+
 
 ## categoriesテーブル
 |Column|Type|Options|
@@ -190,17 +184,7 @@ https://gyazo.com/7fef038be95b1fa8b9b47212bf1cf83a
 |user_id|integer|foreign_key: true|
 
 ### Association
-<<<<<<< HEAD
 - belongs_to :user
-
-
-## ar_internal_metadataテーブル
-|Column|Type|Options|
-|------|----|-------|
-|key|string|null: false|
-|value|string|
-
-### Association
 
 
 ## addressesテーブル
