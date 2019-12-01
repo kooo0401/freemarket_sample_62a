@@ -2,6 +2,7 @@ $(function(){
   if ( gon.selected_size == null ){
     $('.exhibitmain__details__size-name').hide();
     $('#product_size_id').hide();
+    $('#product_size_id').html("");
   }
   var current_delivery_charged_status = $('.exhibitmain__delivery__burden__box1').val();
   if ( current_delivery_charged_status == "shipping_fee_on_shipper"){
@@ -225,7 +226,12 @@ $(function(){
         for(var i=0;i<obj3.length;i++){
           $('#product_size_id').append("<option value=" + obj3[i].id+">"+obj3[i].name+"</option>");
         }
-       }
+      }
+        else if(data.length == 0 ){
+          $('.exhibitmain__details__size-name').hide();
+          $('#product_size_id').hide();
+          $('#product_size_id').val('');
+        }
       })
       .fail(function(){
         alert('error');

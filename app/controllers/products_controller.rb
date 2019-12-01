@@ -138,8 +138,9 @@ class ProductsController < ApplicationController
 
   def set_current_category_group
     @selected_grandson_category = Category.find(@product.category_id)
-    @grandchild_group = @selected_grandson_category.siblings
     @selected_child_category = @selected_grandson_category.parent
+    @selected_parent_category = @selected_child_category.parent
+    @grandchild_group = @selected_grandson_category.siblings
     @child_group = @selected_child_category.siblings
   end
 
