@@ -43,18 +43,18 @@ https://gyazo.com/7fef038be95b1fa8b9b47212bf1cf83a
 
 ## Installation
 
-   $ git clone http://github.com/kooo0401/freemarket_sample_62a.git
-   $ cd freemarket_sample_62a
-   $ bundle install
+- $ git clone http://github.com/kooo0401/freemarket_sample_62a.git
+- $ cd freemarket_sample_62a
+- $ bundle install
 
 ## Author 
 6名によるチーム開発
-keitaro hirano
-hideaki takahashi
-koudai  hori
-masaki  murakami
-daisuke sakurada
-masatoshi muraoka
+- keitaro hirano
+- hideaki takahashi
+- koudai  hori
+- masaki  murakami
+- daisuke sakurada
+- masatoshi muraoka
 
 # DB設計
 
