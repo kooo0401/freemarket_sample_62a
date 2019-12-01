@@ -63,11 +63,18 @@
     }
     &__imagebox1{
       width: 620px;
-      height: 162px;
-      padding: 40px;
+      // height,髙橋が変更してます
+      // height: 162px;
+      height: 184px;
       text-align: center;
       background: #f5f5f5;
       border: 1px dashed #ccc;
+      &--first {
+        margin-top: 60px;
+      }
+      .preview {
+        height: 100%;
+      }
     }
     
   }
@@ -457,8 +464,3 @@
     text-align: center;
   }
 }
-
-
-
-
-
