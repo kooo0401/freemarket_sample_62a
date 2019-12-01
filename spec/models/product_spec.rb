@@ -72,15 +72,6 @@ describe Product do
       expect(product.errors[:category_id]).to include("を入力してください")
     end
 
-   
-
-    # # size_id
-    # it "is invalid without a size_id" do
-    #   product = build(:product, size_id: nil)
-    #   product.valid?
-    #   expect(product.errors[:size_id]).to include("を入力してください")
-    # end
-
     # name
     # nameが40文字以下なら登録できる
     it "is valid with a name that has less than 40 characters " do
@@ -140,4 +131,3 @@ describe Product do
 
   end
 end
-# ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝髙橋ここまで＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝

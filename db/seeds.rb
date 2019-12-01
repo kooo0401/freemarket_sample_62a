@@ -1,6 +1,3 @@
-# size_tagを追加する？　{name:'Tシャツ/カットソー(半袖/袖なし)', size_tag: xxx}
-# 洋服のサイズtagだけは入れておきたい
-
 lady = Category.create!(name:'レディース')
 men = Category.create!(name:'メンズ')
 baby = Category.create!(name:'ベビー・キッズ')

@@ -10,22 +10,10 @@ class ProductsController < ApplicationController
   
 
   def index
-    # @products = Product.order("id DESC").limit(10)
-    # @products = Product.where(status_id: 1).order("id DESC").limit(10)
-
-    # 以下、カテゴリ・
-    # productsの内、人気カテゴリーベスト4、人気ブランドベスト4 10個ずつ持ってくるよう変更予定
-    # ------------------------------------------------------------------------------------------------
     @products_ladies = Product.where(category_id: 33..230).order("id DESC").limit(10)
     @products_mens = Product.where(category_id:245..388, status_id: 1).order("id DESC").limit(10)
-    # @products_homeappliance = Product.where(category_id:?).order("id DESC").limit(10)
-    # @products_toys = Product.where(category_id:?).order("id DESC").limit(10)
-
     @products_chanel = Product.where(brand_id: 1, status_id: 1).order("id DESC").limit(10)
     @products_louisvuitton = Product.where(brand_id: 2,status_id: 1).order("id DESC").limit(10)
-    # @products_supreme = Product.where(brand_id:?).order("id DESC").limit(10)
-    # @products_nike = Product.where(brand_id:?).order("id DESC").limit(10)
-    # ------------------------------------------------------------------------------------------------
   end
 
   def new
@@ -37,9 +25,6 @@ class ProductsController < ApplicationController
 
   def show
     @products = Product.order("id DESC").limit(6)
-    # @imagesall = @images.where(id: [1,2,3])
-    #実際にテーブルからid:1のproductを取得できているかの記述。
-    # 商品出品が可能になったら、一つ一つのproductからidで取得する。
     if user_signed_in?
       redirect_to  users_myproduct_change_users_path(@product) if @product.user_id == current_user.id
     end
@@ -72,10 +57,6 @@ class ProductsController < ApplicationController
   def create
     @product = Product.new(product_params)
     if @product.save
-      # 下記コメントアウト３行は今後使用予定です 191124 髙橋
-      # params[:images][:image].each do |image|
-      #   @product.images.create(image: image, product_id: @product.id)
-      # end
     else
       render :new
     end
@@ -89,16 +70,6 @@ class ProductsController < ApplicationController
       redirect_to root_path
     end
   end
-
-  # 以下、仮に人気カテゴリー、人気ブランドをリアルタイム対応させる場合の記述。
-  # productテーブルにcategory_idカラムとbrand_idカラムを追加した後に実装予定
-  # ------------------------------------------------------------------------------------------------
-  # def category_ranking
-  #   ranked_category_ids = Product.group(:category_id).order('category_id DESC).limit(4).count(:category_id).keys
-  #   @category_top4 = ids.map{|product_id| Product.find(product_id) }
-  # end
-  #  category_rankingが上手くいったらbrand_rankingも同様にここに追加する
-  # ------------------------------------------------------------------------------------------------
   
   private
 
