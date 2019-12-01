@@ -4,7 +4,10 @@ class ProductsController < ApplicationController
   before_action :set_category, only: [:show, :change]
   before_action :ensure_correct_product, except: [:index, :new, :show, :edit, :create,:sell_edit]
   before_action :set_image, only: [:show, :change,:sell_edit]
+  before_action :set_current_category_group, only: :sell_edit
+  before_action :set_current_size_for_sell_edit, only: :sell_edit
 
+  
 
   def index
     @products_ladies = Product.where(category_id: 33..230).order("id DESC").limit(10)
@@ -38,12 +41,6 @@ class ProductsController < ApplicationController
 
   def sell_edit
     @parent_group = Category.where(id: 1..13)
-    @selected_grandson_category = Category.find(@product.category_id)
-    @grandchild_group = @selected_grandson_category.siblings
-    @selected_child_category = @selected_grandson_category.parent
-    @child_group = @selected_child_category.siblings
-    @size_tag_group = Size.where(size_tag: @size.size_tag)
-    gon.selected_size = @size
     @product_fee = (@product.price * 0.1).round
     @product_profit = (@product.price * 0.9).round
   end
@@ -108,6 +105,29 @@ class ProductsController < ApplicationController
   def ensure_correct_product
     @product = Product.find(params[:id])
     redirect_to root_path if current_user.id !=  @product.user_id
+  end
+
+  def set_current_category_group
+    @selected_grandson_category = Category.find(@product.category_id)
+    @selected_child_category = @selected_grandson_category.parent
+    @selected_parent_category = @selected_child_category.parent
+    @grandchild_group = @selected_grandson_category.siblings
+    @child_group = @selected_child_category.siblings
+  end
+
+  def set_current_size_for_sell_edit
+    if @size.present?
+      gon.selected_size = @size
+      if @size.size_tag.present?
+        @size_tag_group = Size.where(size_tag: @size.size_tag)
+      elsif
+        @size_tag_group = Size.where(id: 1..2)
+      end
+    elsif
+      @size = Size.find(1)
+      @size_tag_group = Size.where(id: 1..2)
+      gon.selected_size = nil
+    end
   end
 
 end
