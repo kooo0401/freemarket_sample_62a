@@ -66,7 +66,6 @@ class ProductsController < ApplicationController
   def update 
     @product = Product.find(params[:id])
     if @product.update(product_params) 
-      # @product.images[0].destroy
       redirect_to users_myproduct_change_users_path(@product)
     else       
       redirect_to myedit_users_path(@product)
