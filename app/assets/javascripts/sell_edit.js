@@ -1,5 +1,17 @@
 $(function(){
-  
+  if ( gon.selected_size == null ){
+    $('.exhibitmain__details__size-name').hide();
+    $('#product_size_id').hide();
+  }
+  var current_delivery_charged_status = $('.exhibitmain__delivery__burden__box1').val();
+  if ( current_delivery_charged_status == "shipping_fee_on_shipper"){
+    $('.exhibitmain__delivery__way-box1').children('option[value="rakuraku_mercari_bin"]').remove();
+    $('.exhibitmain__delivery__way-box1').children('option[value="letter_pack"]').remove();
+    $('.exhibitmain__delivery__way-box1').children('option[value="normal"]').remove();
+    $('.exhibitmain__delivery__way-box1').children('option[value="clickpost"]').remove();
+  }
+
+
   $(function(){
     var maxNum = 1000000; // 注文できる金額の上限
     var tagInput = $('#pricebox'); // 入力対象のinputタグID名
@@ -82,8 +94,8 @@ $(function(){
 
   // 配送方法のJSの実装
   $('.exhibitmain__delivery__burden__box1').change(function() {
-      var a = $('.exhibitmain__delivery__burden__box1').val();
-      if(a == "---") {
+      var delivery_charged_status = $('.exhibitmain__delivery__burden__box1').val();
+      if(delivery_charged_status == "---") {
           $('.exhibitmain__delivery__way').hide();
           $('.exhibitmain__delivery__way-box').hide();
           $('.exhibitmain__delivery__way-box1').children('option[value="rakuraku_mercari_bin"]').remove();
@@ -93,7 +105,7 @@ $(function(){
           // 下記コメントは念のため記載しております 191125 髙橋
           // $('.exhibitmain__delivery__way2').hide();
           // $('.exhibitmain__delivery__way-box2').hide();
-      }else if(a == "shipping_fee_on_shipper") {
+      }else if(delivery_charged_status == "shipping_fee_on_shipper") {
           $('.exhibitmain__delivery__way-box1').val('0');
           $('.exhibitmain__delivery__way').show();
           $('.exhibitmain__delivery__way-box').show();
@@ -104,7 +116,7 @@ $(function(){
           // 下記コメントは念のため記載しております 191125 髙橋
           // $('.exhibitmain__delivery__way2').hide();
           // $('.exhibitmain__delivery__way-box2').hide();
-      }else if(a == "shipping_fee_on_receiver") {
+      }else if(delivery_charged_status == "shipping_fee_on_receiver") {
           $('.exhibitmain__delivery__way-box1').val('0');
           $('.exhibitmain__delivery__way').show();
           $('.exhibitmain__delivery__way-box').show();
@@ -139,10 +151,7 @@ $(function(){
 
 $(function(){
   //  $('#product_size_id').hide();
-  if ( gon.selected_size == null ){
-    $('.exhibitmain__details__size-name').hide();
-    $('#product_size_id').hide();
-  }
+  
   $('#product_parent_id').change(function() {
     var parent_id = $('#product_parent_id').val();
     $.ajax({

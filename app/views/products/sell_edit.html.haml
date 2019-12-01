@@ -45,6 +45,7 @@
           サイズ
           %span 必須
         .exhibitmain__details__size-box 
+          -# エラー出るかも？
           = f.collection_select :size_id, @size_tag_group.all, :id, :size_name, selected: "#{@size.id}"
         .exhibitmain__details__brand-name
           ブランド
