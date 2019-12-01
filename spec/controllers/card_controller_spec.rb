@@ -14,11 +14,5 @@ RSpec.describe CardController, type: :controller do
         expect(response).to redirect_to new_user_card_path(user.id)
       end
     end
-
-    # 以下、APi_keyをローカル導入後に実装予定
-    # context "cardがすでにある場合" do
-    # end
-
   end
-
 end

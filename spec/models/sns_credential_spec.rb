@@ -1,9 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe SnsCredential, type: :model do
-  # before do
-  #   request.env["devise.mapping"] = Devise.mappings[:user]
-  # end
   
   describe  '#facebook validation' do
     before do

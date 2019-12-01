@@ -4,15 +4,9 @@ class Product < ApplicationRecord
  
   has_many :images , dependent: :destroy
   accepts_nested_attributes_for :images, allow_destroy: true
-  
-  
-
   belongs_to :category
-  # DB変更に伴い、brandを削除してます 191128 髙橋
-  # belongs_to :brand
   belongs_to :status
   belongs_to :user
-
 
   validates :name,        length: { maximum: 40 }, presence: true, on: :create
   validates :name,        length: { maximum: 40 }, presence: true
@@ -29,12 +23,8 @@ class Product < ApplicationRecord
   validates :user_id, presence: true, on: :create
   validates :user_id, presence: true
   validates :category_id, presence: true, on: :create
- 
-  
-
   validates :price, presence: true, numericality: { only_integr: true,greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999 }, on: :create
   validates :price, presence: true, numericality: { only_integr: true,greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999 }
-  # validates_associated :images
   validate :must_have_image
 
   def must_have_image

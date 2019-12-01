@@ -71,15 +71,12 @@ masatoshi muraoka
 |birthday|date|null: false|
 |tel|string|null: false|
 |self_introduction|text|
-<!-- |money|integer| payjpによるcardsテーブル使用の為、不要 --> 
 |point|integer|
 |zip|string|
 |prefecture|string|
 |city_name|string|
 |block_name|string|
 |bill_name|string|
-<!-- nameカラム,name_kanaをlast_name,first_name,last_name_kana,first_name_kanaに変更修正 191116堀 -->
-<!-- telカラムのTypeをintegerからstringに変更済み -->
 
 ### Association
 - has_many :products, dependent: :destroy
@@ -87,7 +84,6 @@ masatoshi muraoka
 - has_one  :credit, dependent: :destroy
 - has_one  :address, dependent: :destroy
 - has_many :sns_credentials, dependent: destroy
-<!-- oauth認証のため追加 191118平野 -->
 
 ## myaddressesテーブル
 |Column|Type|Options|
@@ -103,25 +99,9 @@ masatoshi muraoka
 |bill_name|string|
 |tel|string|
 |user_id|integer|foreign_key: true, null: false|
-<!-- テーブル名が被った為(都道府県テーブル)、テーブル名修正 191116堀 -->
-
 
 ### Association
 - belongs_to :user
-
-
-creditsテーブルは不要（payjpにより、cardsテーブルを作成した為）20191125堀
-<!-- ## creditsテーブル
-|Column|Type|Options|
-|------|----|-------|
-|card_number|integer|null: false|
-|exp_date|integer|null: false|
-|security_code|integer|null: false|
-|user_id|integer|foreign_key: true, null: false|
-
-### Association
-- belongs_to :user -->
-
 
 ## historiesテーブル
 |Column|Type|Options|
@@ -133,7 +113,6 @@ creditsテーブルは不要（payjpにより、cardsテーブルを作成した
 - belongs_to :user
 - belongs_to :product
 
-
 ## productsテーブル
 |Column|Type|Options|
 |------|----|-------|
@@ -141,7 +120,6 @@ creditsテーブルは不要（payjpにより、cardsテーブルを作成した
 |name|string|null: false|
 |price|integer|null: false|
 |delivery_charged|integer|null: false|
-<!-- |area|string|null: false| -->
 |delivery_days|integer|null: false|
 |sales_status|integer|null: false|
 |delivery_way|ingteger|null: false|
@@ -151,10 +129,6 @@ creditsテーブルは不要（payjpにより、cardsテーブルを作成した
 |status_id|integer|foreign_key: true, default: 1|
 |size_id||integer||foreign_key: true|
 |prefecture_id|integer|null:false|
-<!-- categorry_idカラム, brand_idカラムを追加 191112平野 -->
-<!-- status_idカラム, size_idカラムを追加 191117村上・髙橋 -->
-<!-- brand_idカラムを削除・brandカラムを追加 191128髙橋 -->
-<!-- prefecture active hashとアソシエーションを組んで、都道府県名を表示させるため、prefecture_id追加 -->
 
 ### Association
 - belongs_to :user
@@ -164,8 +138,6 @@ creditsテーブルは不要（payjpにより、cardsテーブルを作成した
 - belongs_to_active_hash :prefecture
 - has_many :images, dependent: :destroy
 - has_one :history, dependent: :destroy
-<!-- size,status を belongs_to に変更 191117髙橋-->
-<!-- belongs_to brand を削除 191128髙橋-->
 
 ## imagesテーブル
 |Column|Type|Options|
@@ -176,41 +148,22 @@ creditsテーブルは不要（payjpにより、cardsテーブルを作成した
 ### Association
 - belongs_to :product
 
-<!-- 
-## brandsテーブル
-|Column|Type|Options|
-|------|----|-------|
-|name|string|null: false| -->
-<!-- product_idカラムを削除しました 191112平野 -->
-<!-- brandテーブルを泣く泣く削除しました 191128髙橋 -->
-
-<!-- ### Association
-- has_many :products -->
-<!-- brandテーブルを削除したので不要に 191128髙橋 -->
-
-
 ## statusesテーブル
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false|
-<!-- |product_id|integer|foreign_key: true, null: false|  ← 削除しました 191117髙橋 -->
 
 ### Association
 - has_many :products
-
 
 ## sizesテーブル
 |Column|Type|Options|
 |------|----|-------|
 |size_name|string|null: false|
-<!-- |size_tag|integer|  ←  一旦削除しました 191117髙橋 -->
-<!-- |product_id|integer|foreign_key: true, null: false|  ←  削除しました 191117髙橋 -->
-
 
 ### Association
 - has_many :products
 - belongs_to :catefory
-
 
 ## categoriesテーブル
 |Column|Type|Options|
@@ -218,15 +171,9 @@ creditsテーブルは不要（payjpにより、cardsテーブルを作成した
 |name|string|null: false|
 |ancestry|string|foreign_key: true, null: false|
 
-<!-- product_idカラムを削除しました 191112平野 -->
-<!-- |size_tag|integer| を削除しました　191117髙橋 -->
 ### Association
 - has_many :products
 - has_many :sizes
-
-
-<!-- brandsテーブルとcategoryテーブルが紐づいている可能性あり
-brands,categoryの中身をメルカリサイトから引っ張ってくる際に対応予定 -->
 
 ## sns_credentialsテーブル
 |Column|Type|Options|
@@ -237,5 +184,3 @@ brands,categoryの中身をメルカリサイトから引っ張ってくる際�
 
 ### Association
 - belongs_to :user
-<!-- oauth認証のため追加 191118平野 -->
-
