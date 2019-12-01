@@ -2,8 +2,8 @@ class ProductsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :change, :destroy, :edit]
   before_action :set_product, only: [:destroy, :change, :show, :edit, :ensure_correct_product, :sell_edit]
   before_action :set_category, only: [:show, :change]
-  before_action :ensure_correct_product, except: [:index, :new, :show, :edit, :create]
-  before_action :set_image, only: [:show, :change]
+  before_action :ensure_correct_product, except: [:index, :new, :show, :edit, :create,:sell_edit]
+  before_action :set_image, only: [:show, :change,:sell_edit]
 
 
   def index
@@ -65,27 +65,23 @@ class ProductsController < ApplicationController
 
   def update 
     @product = Product.find(params[:id])
-
     if @product.update(product_params) 
-      @product.images[0].destroy
-      redirect_to root_path
+      redirect_to users_myproduct_change_users_path(@product)
     else       
-      render :edit
+      redirect_to myedit_users_path(@product)
     end
   end
 
   def create
     @product = Product.new(product_params)
-    # @product = current_user.products.build(product_params)
-
-        if @product.save
-          # 下記コメントアウト３行は今後使用予定です 191124 髙橋
-          # params[:images][:image].each do |image|
-          #   @product.images.create(image: image, product_id: @product.id)
-          # end
-        else
-          render :new
-        end
+    if @product.save
+      # 下記コメントアウト３行は今後使用予定です 191124 髙橋
+      # params[:images][:image].each do |image|
+      #   @product.images.create(image: image, product_id: @product.id)
+      # end
+    else
+      render :new
+    end
   end
   
   def destroy
@@ -116,7 +112,7 @@ class ProductsController < ApplicationController
                     :category_id,
                     :brand,
                     :size_id,
-                    images_attributes: [:image])
+                    images_attributes: [:image, :id])
           .merge(user_id: current_user.id)
   end
 
@@ -144,3 +140,4 @@ class ProductsController < ApplicationController
   end
 
 end
+
