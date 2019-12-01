@@ -36,9 +36,7 @@
           カテゴリー
           %span 必須
         .exhibitmain__details__category-box1  
-          = f.collection_select :parent_id, @parent_group.all, :id, :name, class: "parent_category", name: "parent_box", selected: "#{@product.category_id}"
-            
-          
+          = f.collection_select :parent_id, @parent_group.all, :id, :name, class: "parent_category", name: "parent_box", selected: "#{@selected_parent_category.id}"
         .exhibitmain__details__category-box2
           = f.collection_select :child_id, @child_group.all, :id, :name, class: "child_category", selected: "#{@selected_child_category.id}"
         .exhibitmain__details__category-box3
@@ -80,7 +78,7 @@
           配送までの日数
           %span 必須
         .exhibitmain__delivery__days-box
-          = f.select :delivery_days,Product.delivery_days.keys.map {|k| [I18n.t("enums.product.delivery_days.#{k}"), k]}  
+          = f.select :delivery_days,Product.delivery_days.keys.map {|k| [I18n.t("enums.product.delivery_days.#{k}"), k]} 
       .exhibitmain__price
         .exhibitmain__price__name
           販売価格(300~9,999,999)
