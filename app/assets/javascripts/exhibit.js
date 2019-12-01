@@ -102,7 +102,12 @@ $(function(){
           $('.exhibitmain__delivery__way-box1').val('0');
           $('.exhibitmain__delivery__way').show();
           $('.exhibitmain__delivery__way-box').show();
+          $('.exhibitmain__delivery__way-box1').children('option[value="rakuraku_mercari_bin"]').remove();
+          $('.exhibitmain__delivery__way-box1').children('option[value="letter_pack"]').remove();
+          $('.exhibitmain__delivery__way-box1').children('option[value="normal"]').remove();
+          $('.exhibitmain__delivery__way-box1').children('option[value="clickpost"]').remove();
           $('.exhibitmain__delivery__way-box1').append('<option value="rakuraku_mercari_bin">らくらくメルカリ便</option>','<option value="letter_pack">レターパック</option>','<option value="normal">普通郵便（定型、定型外)</option>','<option value="clickpost">クリックポスト</option>');
+
       }
   });
 
