@@ -7,7 +7,7 @@
 
 ## DEMO
 ER図(DB設計)
-https://gyazo.com/0f8a5b807e9c4b46baff89237ac01d46
+https://gyazo.com/80ad57b27634a4fb10d7852a7533f4fa
 
 トップページ
 https://gyazo.com/5d9e5aacbf84e2b858a57faa4aac2c2f
@@ -86,8 +86,9 @@ https://gyazo.com/7fef038be95b1fa8b9b47212bf1cf83a
 
 ### Association
 - has_many :products, dependent: :destroy
-- has_many :myaddress, dependent: :destroy
-- has_many :sns_credentials, dependent: destroy
+- has_one :myaddress, dependent: :destroy
+- has_many :sns_credentials, dependent:destroy
+- has_one  :card
 
 
 ## myaddressesテーブル
@@ -133,7 +134,7 @@ https://gyazo.com/7fef038be95b1fa8b9b47212bf1cf83a
 - belongs_to :size
 - belongs_to_active_hash :prefecture
 - has_many :images, dependent: :destroy
-- has_one :history, dependent: :destroy
+
 
 
 ## imagesテーブル
