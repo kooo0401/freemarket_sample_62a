@@ -2,12 +2,14 @@ class ProductsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :change, :destroy, :edit]
   before_action :set_product, only: [:destroy, :change, :show, :edit, :ensure_correct_product, :sell_edit]
   before_action :set_category, only: [:show, :change]
-  before_action :ensure_correct_product, except: [:index, :new, :show, :edit, :create,:sell_edit]
+  before_action :ensure_correct_product, except: [:index, :new, :show, :edit, :create]
   before_action :set_image, only: [:show, :change,:sell_edit]
   before_action :set_current_category_group, only: :sell_edit
   before_action :set_current_size_for_sell_edit, only: :sell_edit
+  before_action :user_restriction, only: [:edit]
 
   
+
 
   def index
     @products_ladies = Product.where(category_id: 33..230).order("id DESC").limit(10)
@@ -128,6 +130,11 @@ class ProductsController < ApplicationController
       @size_tag_group = Size.where(id: 1..2)
       gon.selected_size = nil
     end
+  end
+
+  def user_restriction
+    @product = Product.find_by(id: params[:product_id])
+    redirect_to root_path if current_user.id == @product.user_id
   end
 
 end
