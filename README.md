@@ -7,7 +7,7 @@
 
 ## DEMO
 ER図(DB設計)
-https://gyazo.com/65db44f10144fcf3b8fc65996f4a7500
+https://gyazo.com/0f8a5b807e9c4b46baff89237ac01d46
 
 トップページ
 https://gyazo.com/5d9e5aacbf84e2b858a57faa4aac2c2f
