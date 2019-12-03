@@ -37,6 +37,7 @@ class ProductsController < ApplicationController
   end
 
   def edit
+    redirect_to root_path if @product.status_id == 3
     gon.product_price = @product.price
     gon.all_point = current_user.point
   end
