@@ -5,7 +5,10 @@
  誰でも簡単に売買が楽しめるフリマアプリ機能を再現しています。
  ユーザー登録、出品、購入機能を再現しています。
 
-***DEMO:***
+## DEMO
+ER図(DB設計)
+https://gyazo.com/80ad57b27634a4fb10d7852a7533f4fa
+
 トップページ
 https://gyazo.com/5d9e5aacbf84e2b858a57faa4aac2c2f
 
@@ -43,47 +46,50 @@ https://gyazo.com/7fef038be95b1fa8b9b47212bf1cf83a
 
 ## Installation
 
-   $ git clone http://github.com/kooo0401/freemarket_sample_62a.git
-   $ cd freemarket_sample_62a
-   $ bundle install
+- $ git clone http://github.com/kooo0401/freemarket_sample_62a.git
+- $ cd freemarket_sample_62a
+- $ bundle install
 
 ## Author 
 6名によるチーム開発
-keitaro hirano
-hideaki takahashi
-koudai  hori
-masaki  murakami
-daisuke sakurada
-masatoshi muraoka
+- keitaro hirano
+- hideaki takahashi
+- koudai  hori
+- masaki  murakami
+- daisuke sakurada
+- masatoshi muraoka
 
 # DB設計
 
 ## usersテーブル
 |Column|Type|Options|
 |------|----|-------|
-|nickname|string|null: false|
 |email|string|null: false, unique: true|
-|password|string|null: false|
-|last_name|string|null: false|
-|first_name|string|null: false|
-|last_name_kana|string|null: false|
-|first_name_kana|string|null: false|
+|encrypted_password|string|null: false|
+|nickname|string|null: false|
 |birthday|date|null: false|
 |tel|string|null: false|
 |self_introduction|text|
 |point|integer|
+|reset_password_token|string|
+|reset_password_sent_at|date|
+|remember_created_at|date|
 |zip|string|
 |prefecture|string|
 |city_name|string|
 |block_name|string|
 |bill_name|string|
+|last_name|string|null: false|
+|first_name|string|null: false|
+|last_name_kana|string|null: false|
+|first_name_kana|string|null: false|
 
 ### Association
 - has_many :products, dependent: :destroy
-- has_many :histories, dependent: :destroy
-- has_one  :credit, dependent: :destroy
-- has_one  :address, dependent: :destroy
-- has_many :sns_credentials, dependent: destroy
+- has_one :myaddress, dependent: :destroy
+- has_many :sns_credentials, dependent:destroy
+- has_one  :card
+
 
 ## myaddressesテーブル
 |Column|Type|Options|
@@ -103,15 +109,6 @@ masatoshi muraoka
 ### Association
 - belongs_to :user
 
-## historiesテーブル
-|Column|Type|Options|
-|------|----|-------|
-|user_id|integer|foreign_key: true, null: false|
-|product_id|integer|foreign_key: true, null: false|
-
-### Association
-- belongs_to :user
-- belongs_to :product
 
 ## productsテーブル
 |Column|Type|Options|
@@ -122,12 +119,12 @@ masatoshi muraoka
 |delivery_charged|integer|null: false|
 |delivery_days|integer|null: false|
 |sales_status|integer|null: false|
-|delivery_way|ingteger|null: false|
-|user_id|integer|foreign_key: true, null: false|
+|delivery_way|integer|null: false|
+|user_id|integer|foreign_key: true|
 |category_id|integer|foreign_key: true, null: false|
-|brand|string|
-|status_id|integer|foreign_key: true, default: 1|
 |size_id||integer||foreign_key: true|
+|status_id|integer|default: 1|
+|brand|string|
 |prefecture_id|integer|null:false|
 
 ### Association
@@ -137,7 +134,8 @@ masatoshi muraoka
 - belongs_to :size
 - belongs_to_active_hash :prefecture
 - has_many :images, dependent: :destroy
-- has_one :history, dependent: :destroy
+
+
 
 ## imagesテーブル
 |Column|Type|Options|
@@ -148,39 +146,53 @@ masatoshi muraoka
 ### Association
 - belongs_to :product
 
+
 ## statusesテーブル
 |Column|Type|Options|
 |------|----|-------|
-|name|string|null: false|
+|status|string|null: false|
 
 ### Association
 - has_many :products
+
 
 ## sizesテーブル
 |Column|Type|Options|
 |------|----|-------|
 |size_name|string|null: false|
+|size_tag|integer|
 
 ### Association
 - has_many :products
-- belongs_to :catefory
+
 
 ## categoriesテーブル
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false|
 |ancestry|string|foreign_key: true, null: false|
+|size_tag|integer|
 
 ### Association
 - has_many :products
-- has_many :sizes
+
 
 ## sns_credentialsテーブル
 |Column|Type|Options|
 |------|----|-------|
 |provider|string|
 |uid|string||
-|user_id|integer|
+|user_id|integer|foreign_key: true|
 
 ### Association
 - belongs_to :user
+
+
+## addressesテーブル
+|Column|Type|Options|
+|------|----|-------|
+|prefecture_id|integer|
+|city|string|
+
+### Association
+- belongs_to_active_hash :prefecture
