@@ -60,7 +60,7 @@ class ProductsController < ApplicationController
     @product = Product.new(product_params)
     if @product.save
     else
-      render :new
+      redirect_to new_product_path
     end
   end
   
