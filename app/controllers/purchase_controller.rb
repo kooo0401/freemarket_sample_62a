@@ -4,6 +4,7 @@ class PurchaseController < ApplicationController
   require 'payjp'
 
   def index
+    redirect_to root_path if @product.status_id == 3
     @user = User.find(current_user.id)
     card = Card.where(user_id: current_user.id).first
     if card.blank?
