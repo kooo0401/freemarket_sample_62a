@@ -133,7 +133,7 @@ class ProductsController < ApplicationController
   end
 
   def user_restriction
-    @product = Product.find_by(id: params[:product_id])
+    @product = Product.find(params[:id])
     redirect_to root_path if current_user.id == @product.user_id
   end
 
