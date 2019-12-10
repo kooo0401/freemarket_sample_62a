@@ -154,7 +154,6 @@ $(function(){
     $('.exhibitmain__details__size-name').val("");
     $('#product_size_id').val("");
 
-
     var parent_id = $('#product_parent_id').val();
     $.ajax({
       type: 'POST',
@@ -174,11 +173,7 @@ $(function(){
       for(var i=0;i<obj.length;i++){
         $('#product_child_id').append("<option value=" + obj[i].id+">"+obj[i].name+"</option>");
       }
-
     })
-    // .fail(function(){
-    //   alert('error');
-    // })
   });
   $('#product_child_id').change(function() {
     var child_id = $('#product_child_id').val();
