@@ -145,6 +145,15 @@ $(function(){
   $('.exhibitmain__details__size-name').hide();
   $('#product_size_id').hide();
   $('#product_parent_id').change(function() {
+    $('#product_child_id').hide();
+    $('#product_category_id').hide();
+    $('.exhibitmain__details__size-name').hide();
+    $('#product_size_id').hide();
+    $('#product_child_id').val("");
+    $('#product_category_id').val("");
+    $('.exhibitmain__details__size-name').val("");
+    $('#product_size_id').val("");
+
     var parent_id = $('#product_parent_id').val();
     $.ajax({
       type: 'POST',
@@ -164,10 +173,6 @@ $(function(){
       for(var i=0;i<obj.length;i++){
         $('#product_child_id').append("<option value=" + obj[i].id+">"+obj[i].name+"</option>");
       }
-
-    })
-    .fail(function(){
-      alert('error');
     })
   });
   $('#product_child_id').change(function() {
