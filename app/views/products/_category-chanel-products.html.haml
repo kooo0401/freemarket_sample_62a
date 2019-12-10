@@ -1,16 +1,19 @@
 .category-products
   .category-products--new
     .category-products--new__introduction
-      %h3#ladies.new-category シャネル新着アイテム
+      %h3#ladies.new-category 新着順
       =link_to "#", class: "more-read"  do
         もっと見る >
       .category-products--new__lists
         %ul.new-category__lists
-          - @products_ladies.each do |product|
+          - @products.each do |product|
             %li.new-item
               .new-item__content
                 =link_to product_path(product), class: "new-item-image" do
                   %figure.figure-container
+                    - if product.status_id == 3
+                      .sold-out
+                      %p.sold-out-name SOLD
                     %figcaption.figure-container__figcaption
                       %span.figure-container__figcaption__span
                         = product.name

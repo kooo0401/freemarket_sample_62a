@@ -6,6 +6,13 @@
       = link_to "", root_path, class: "slide-banner__link slide-banner__link--new-life"
       = link_to "", root_path, class: "slide-banner__link slide-banner__link--bokurano-heisei"
 
+  .popularity-bland
+    %h2 ★最新商品★
+    .popularity-bland__categories
+      %ul.bland-lists
+
+    = render 'products/category-chanel-products'
+
   .popularity-category
     %h2 人気のカテゴリー
     .popularity-category__categories
@@ -26,26 +33,6 @@
 
     = render 'products/category-ladies-products'
     = render 'products/category-mens-products'
-
-  .popularity-bland
-    %h2 人気のブランド
-    .popularity-bland__categories
-      %ul.bland-lists
-        %li.bland-list
-          =link_to '/', class: "link-bland" do
-            シャネル
-        %li.bland-list
-          =link_to '/', class: "link-bland" do
-            ルイヴィトン
-        %li.bland-list
-          =link_to '/', class: "link-bland" do
-            シュプリーム
-        %li.bland-list
-          =link_to '/', class: "link-bland" do
-            ナイキ 
-    
-    = render 'products/category-chanel-products'
-    = render 'products/category-vuitton-products'
 
 
   = render 'layouts/footer'

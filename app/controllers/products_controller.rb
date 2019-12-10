@@ -12,6 +12,7 @@ class ProductsController < ApplicationController
 
 
   def index
+    @products = Product.all.order("id DESC").limit(10)
     @products_ladies = Product.where(category_id: 33..230).order("id DESC").limit(10)
     @products_mens = Product.where(category_id:245..388, status_id: 1).order("id DESC").limit(10)
     @products_chanel = Product.where(brand_id: 1, status_id: 1).order("id DESC").limit(10)
