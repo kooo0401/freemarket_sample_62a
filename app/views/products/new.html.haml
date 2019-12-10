@@ -33,7 +33,7 @@
           カテゴリー
           %span 必須
         .exhibitmain__details__category-box1  
-          = f.collection_select :parent_id, @parent.all, :id, :name, class: "parent_category", name: "parent_box"
+          = f.collection_select :parent_id, @parent.all, :id, :name, prompt:"---", class: "parent_category", name: "parent_box"
             
           
         .exhibitmain__details__category-box2
