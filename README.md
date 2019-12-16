@@ -195,4 +195,4 @@ https://gyazo.com/7fef038be95b1fa8b9b47212bf1cf83a
 |city|string|
 
 ### Association
-- belongs_to_active_hash :prefecture
+- belongs_to_active_hash :prefecture 
